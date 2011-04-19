@@ -1,0 +1,8 @@
+<webscript>
+  <shortname>Login CAS</shortname>
+  <description>Establish a ticket</description>
+  <url>/api/logincas?u={username}&amp;t={ticket}</url>
+  <format default="xml"/>
+  <authentication>none</authentication>
+  <transaction>required</transaction>
+</webscript>
