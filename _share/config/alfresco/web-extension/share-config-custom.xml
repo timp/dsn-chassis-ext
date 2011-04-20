@@ -5,7 +5,7 @@
             <!-- Enable and adjust the following settings to allow for external access URLs to the
             WebScript Framework - to return an externally accessible address for absolute url generation.-->
             <scheme>http</scheme>
-            <hostname>129.67.46.156</hostname>
+            <hostname>IXDV1210.ixxus.co.uk</hostname>
             <port>8080</port>
         </server>
     </config>
@@ -45,7 +45,7 @@
                 <name>Alfresco - System access</name>
                 <description>System account access to Alfresco</description>
                 <connector-id>alfresco</connector-id>
-                <endpoint-url>http://129.67.46.156:8080/alfresco/s</endpoint-url>
+                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
                 <identity>declared</identity>
                 <username>admin</username>
                 <password>admin</password>
@@ -57,9 +57,7 @@
                 <name>Alfresco - unauthenticated access</name>
                 <description>Access to Alfresco Repository WebScripts that do not require authentication</description>
                 <connector-id>alfresco</connector-id>
-                <endpoint-url>
-                    http://129.67.46.156:8080/alfresco/s
-                </endpoint-url>
+                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
                 <identity>none</identity>
             </endpoint>
 
@@ -68,9 +66,7 @@
                 <name>Alfresco - user access</name>
                 <description>Access to Alfresco Repository WebScripts that require user authentication</description>
                 <connector-id>alfresco</connector-id>
-                <endpoint-url>
-                    http://129.67.46.156:8080/alfresco/s
-                </endpoint-url>
+                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
                 <identity>user</identity>
             </endpoint>
 
