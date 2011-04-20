@@ -112,7 +112,7 @@
       </init-param>
       <init-param>
          <param-name>serverName</param-name>
-         <param-value>http://129.67.46.156:8080/alfresco</param-value>
+         <param-value>http://IXDV1210.ixxus.co.uk:8080</param-value>
       </init-param>
    </filter>
    <filter>
@@ -124,7 +124,7 @@
       </init-param>
       <init-param>
          <param-name>serverName</param-name>
-         <param-value>http://129.67.46.156:8080/alfresco</param-value>
+         <param-value>http://IXDV1210.ixxus.co.uk:8080</param-value>
       </init-param>
    </filter>
    <filter>

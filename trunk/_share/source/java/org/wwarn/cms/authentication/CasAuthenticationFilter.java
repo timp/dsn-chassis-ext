@@ -58,7 +58,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class CasAuthenticationFilter implements Filter {
     //private final static String ALFRESCO_WEBAPP_URL = "http://46.137.92.130:8080/alfresco";
-    private final static String ALFRESCO_WEBAPP_URL = "http://129.67.46.156:8080/alfresco";
+    private final static String ALFRESCO_WEBAPP_URL = "http://IXDV1210.ixxus.co.uk:8080/alfresco";
 
     private ServletContext servletContext;
 
