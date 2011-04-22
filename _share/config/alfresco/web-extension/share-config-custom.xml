@@ -40,6 +40,16 @@
 				<class>org.wwarn.cms.authentication.CasAlfrescoAuthenticator</class>
 			</authenticator>
 			
+			<endpoint>
+				<id>alfresco</id>
+				<name>Alfresco - user access</name>
+				<description>Access to Alfresco Repository WebScripts that require external user authentication</description>
+				<connector-id>alfresco</connector-id>
+                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
+				<identity>user</identity>
+				<external-auth>true</external-auth>
+			</endpoint>
+			
             <endpoint>
                 <id>alfresco-system</id>
                 <name>Alfresco - System access</name>
@@ -59,15 +69,6 @@
                 <connector-id>alfresco</connector-id>
                 <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
                 <identity>none</identity>
-            </endpoint>
-
-            <endpoint>
-                <id>alfresco</id>
-                <name>Alfresco - user access</name>
-                <description>Access to Alfresco Repository WebScripts that require user authentication</description>
-                <connector-id>alfresco</connector-id>
-                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
-                <identity>user</identity>
             </endpoint>
 
         </remote>
