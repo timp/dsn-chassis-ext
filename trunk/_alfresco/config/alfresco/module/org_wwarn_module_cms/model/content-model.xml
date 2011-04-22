@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model name="ww:contentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+<model name="wc:contentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
 
     <!-- Optional meta-data about the model -->
     <description>WWARN Document Content Model</description>
@@ -12,24 +12,440 @@
         <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
     </imports>
 
-    <!-- University of Westminster Document Content Model namespace -->
+    <!-- WWARN Project Content Model namespace -->
     <namespaces>
-        <namespace uri="http://www.wwarn.org/model/content/1.0" prefix="ww"/>
+        <namespace uri="http://www.wwarn.org/model/content/1.0" prefix="wc"/>
     </namespaces>
 
     <!-- ===============================================================================================================
         Constraints
         -->
+    <constraints>
 
+        <!--
+        World region list, used in the Study Folder type
+        -->
+        <constraint name="wc:region_options" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+
+                    <value>Africa</value>
+                    <value>Asia</value>
+                    <value>Central America</value>
+                    <value>Eastern Europe</value>
+                    <value>European Union</value>
+                    <value>Middle East</value>
+                    <value>North America</value>
+                    <value>Oceania</value>
+                    <value>South America</value>
+                    <value>The Caribbean</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <!--
+        Countries list, used in the Study Folder type
+        -->
+        <constraint name="wc:country_options" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Albania</value>
+                    <value>Algeria</value>
+                    <value>Angola</value>
+                    <value>Antigua &amp; Barbuda</value>
+                    <value>Argentina</value>
+                    <value>Armenia</value>
+                    <value>Australia</value>
+                    <value>Austria</value>
+                    <value>Azerbaijan</value>
+                    <value>Bahrain</value>
+                    <value>Bangladesh</value>
+                    <value>Barbados</value>
+                    <value>Belarus</value>
+                    <value>Belgium</value>
+                    <value>Benin</value>
+                    <value>Bermuda</value>
+                    <value>Bolivia</value>
+                    <value>Bosnia</value>
+                    <value>Botswana</value>
+                    <value>Brazil</value>
+                    <value>Bulgaria</value>
+                    <value>Burma</value>
+                    <value>Burkina Faso</value>
+                    <value>Burundi</value>
+                    <value>Cambodia</value>
+                    <value>Cameroon</value>
+                    <value>Canada</value>
+                    <value>Cape Verde</value>
+                    <value>Chad</value>
+                    <value>Chile</value>
+                    <value>Colombia</value>
+                    <value>Congo</value>
+                    <value>Congo DR</value>
+                    <value>Costa Rica</value>
+                    <value>Croatia</value>
+                    <value>Curacao</value>
+                    <value>Cyprus</value>
+                    <value>Czech Republic</value>
+                    <value>Denmark</value>
+                    <value>Djibouti</value>
+                    <value>Dominica</value>
+                    <value>Dominican Republic</value>
+                    <value>East Timor</value>
+                    <value>Ecuador</value>
+                    <value>Egypt</value>
+                    <value>El Salvador</value>
+                    <value>Eritrea</value>
+                    <value>Estonia</value>
+                    <value>Ethiopia</value>
+                    <value>Faroe Islands</value>
+                    <value>Fiji</value>
+                    <value>Finland</value>
+                    <value>France</value>
+                    <value>Gabon</value>
+                    <value>Gambia</value>
+                    <value>Georgia</value>
+                    <value>Germany</value>
+                    <value>Ghana</value>
+                    <value>Great Britain</value>
+                    <value>Greece</value>
+                    <value>Grenada</value>
+                    <value>Guatemala</value>
+                    <value>Guinea-Bissau</value>
+                    <value>Guinea-Conakry</value>
+                    <value>Guyana</value>
+                    <value>Honduras</value>
+                    <value>Hong Kong</value>
+                    <value>Hungary</value>
+                    <value>Iceland</value>
+                    <value>India</value>
+                    <value>Indonesia</value>
+                    <value>Iran</value>
+                    <value>Iraq</value>
+                    <value>Ireland</value>
+                    <value>Israel</value>
+                    <value>Italy</value>
+                    <value>Ivory Coast</value>
+                    <value>Jamaica</value>
+                    <value>Japan</value>
+                    <value>Jordan</value>
+                    <value>Kazakhstan</value>
+                    <value>Kenya</value>
+                    <value>Kiribati</value>
+                    <value>Korea</value>
+                    <value>Kosovo</value>
+                    <value>Kuwait</value>
+                    <value>Kyrgyzstan</value>
+                    <value>Latvia</value>
+                    <value>Lebanon</value>
+                    <value>Lesotho</value>
+                    <value>Liberia</value>
+                    <value>Lithuania</value>
+                    <value>Luxembourg</value>
+                    <value>Macedonia (FYR)</value>
+                    <value>Madagascar</value>
+                    <value>Malawi</value>
+                    <value>Malaysia</value>
+                    <value>Mali</value>
+                    <value>Malta</value>
+                    <value>Mauritania</value>
+                    <value>Mauritius</value>
+                    <value>Mexico</value>
+                    <value>Mongolia</value>
+                    <value>Montenegro</value>
+                    <value>Morocco</value>
+                    <value>Mozambique</value>
+                    <value>Namibia</value>
+                    <value>Nepal</value>
+                    <value>Netherlands</value>
+                    <value>New Zealand</value>
+                    <value>Nicaragua</value>
+                    <value>Niger</value>
+                    <value>Nigeria</value>
+                    <value>Norway</value>
+                    <value>Pakistan</value>
+                    <value>Palestine</value>
+                    <value>Panama</value>
+                    <value>Papua New Guinea</value>
+                    <value>Paraguay</value>
+                    <value>Peru</value>
+                    <value>Philippines</value>
+                    <value>Poland</value>
+                    <value>Portugal</value>
+                    <value>Puerto Rico</value>
+                    <value>Romania</value>
+                    <value>Russia</value>
+                    <value>Rwanda</value>
+                    <value>Senegal</value>
+                    <value>Serbia</value>
+                    <value>Sierra Leone</value>
+                    <value>Singapore</value>
+                    <value>Slovakia</value>
+                    <value>Slovenia</value>
+                    <value>Solomon Islands</value>
+                    <value>Somalia</value>
+                    <value>South Africa</value>
+                    <value>Spain</value>
+                    <value>Sri Lanka</value>
+                    <value>St. Lucia</value>
+                    <value>Swaziland</value>
+                    <value>Sweden</value>
+                    <value>Switzerland</value>
+                    <value>Taiwan</value>
+                    <value>Tanzania</value>
+                    <value>Thailand</value>
+                    <value>Togo</value>
+                    <value>Trinidad</value>
+                    <value>Tunisia</value>
+                    <value>Turkey</value>
+                    <value>Tuvalu</value>
+                    <value>Uganda</value>
+                    <value>Ukraine</value>
+                    <value>Uruguay</value>
+                    <value>USA</value>
+                    <value>Uzbekistan</value>
+                    <value>Vanuatu</value>
+                    <value>Venezuela</value>
+                    <value>Yemen</value>
+                    <value>Yugoslavia</value>
+                    <value>Zambia</value>
+                    <value>Zimbabwe</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <!--
+            Module list, used in the Study Folder type
+            -->
+        <constraint name="wc:module_options" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Clinical</value>
+                    <value>Molecular</value>
+                    <value>Pharmacology</value>
+                    <value>In vitro</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <!--
+            Study File Source
+            -->
+        <constraint name="wc:file_source_options" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Contributor</value>
+                    <value>Curator</value>
+                </list>
+            </parameter>
+        </constraint>
+
+    </constraints>
 
     <!-- ===============================================================================================================
 		Types
     -->
+
+    <types>
+        <!--
+              The Study Folder type is applied to all study folders under /Company Home/WWARN/Studies
+              -->
+        <type name="wc:study_folder">
+            <title>WWARN Study Folder</title>
+            <parent>cm:folder</parent>
+            <properties>
+                <property name="wc:modules">
+                    <title>The module(s) that the file belongs to</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="wc:module_options"/>
+                    </constraints>
+                </property>
+                <property name="wc:region">
+                    <title>The region where the study originated</title>
+                    <type>d:text</type>
+                    <constraints>
+                        <constraint ref="wc:region_options"/>
+                    </constraints>
+                </property>
+                <property name="wc:countries">
+                    <title>The country/countries where the study originated</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="wc:country_options"/>
+                    </constraints>
+                </property>
+                <property name="wc:study_info_link">
+                    <title>Link to the study metadata XML in Chassis</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+            <mandatory-aspects>
+                <aspect>wc:acknowledgements</aspect>
+            </mandatory-aspects>
+        </type>
+
+
+        <!--
+              A Generic Study File (base type).
+              All other study files extend this type.
+              -->
+        <type name="wc:study_file">
+            <title>Generic Study File</title>
+            <parent>cm:content</parent>
+            <mandatory-aspects>
+                <aspect>wc:file_data</aspect>
+                <aspect>wc:derivations</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <!--
+              A Data File belonging to a study.
+              -->
+        <type name="wc:data_file">
+            <title>Data File</title>
+            <parent>wc:study_file</parent>
+        </type>
+
+        <!--
+              A Data Dictionary study file.
+              -->
+        <type name="wc:data_dictionary">
+            <title>Data Dictionary</title>
+            <parent>wc:study_file</parent>
+        </type>
+
+        <!--
+              A Protocol study file.
+              -->
+        <type name="wc:protocol">
+            <title>Protocol</title>
+            <parent>wc:study_file</parent>
+        </type>
+
+        <!--
+              A Publication study file.
+              -->
+        <type name="wc:publication">
+            <title>Publication</title>
+            <parent>wc:study_file</parent>
+        </type>
+
+        <!--
+              Other type of study file.
+              Description of other type is kept in cm:description.
+              -->
+        <type name="wc:other">
+            <title>Other</title>
+            <parent>wc:study_file</parent>
+        </type>
+
+        <!--
+              An output file for a study.
+              Uploaded by curator.
+              -->
+        <type name="wc:output">
+            <title>Output</title>
+            <parent>wc:study_file</parent>
+        </type>
+
+        <!--
+              A Study Info file.
+              XML metadata for the study.
+              -->
+        <type name="wc:study_info">
+            <title>Study Info</title>
+            <parent>wc:study_file</parent>
+        </type>
+    </types>
 
 
     <!-- ===============================================================================================================
 		Aspects
     -->
 
+    <aspects>
+        <!--
+              Extra metadata for a study file type.
+              -->
+        <aspect name="wc:file_data">
+            <title>File Data</title>
+            <properties>
+                <property name="wc:file_id">
+                    <title>File ID</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                <property name="wc:file_source">
+                    <title>File Source</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <constraints>
+                        <constraint ref="wc:file_source_options"/>
+                    </constraints>
+                </property>
+            </properties>
+        </aspect>
+
+
+        <!--
+            A peer association to users that are the creators of this study (acknowledgements)
+            Source Study (many) ==> (many) Target Person
+        -->
+        <aspect name="wc:acknowledgements">
+            <title>Acknowledgements</title>
+            <associations>
+                <association name="wc:acknowledgements">
+                    <source>
+                        <class>wc:study_folder</class>
+                        <mandatory>true</mandatory>
+                        <many>true</many>
+                    </source>
+                    <target>
+                        <class>cm:person</class>
+                        <mandatory>true</mandatory>
+                        <many>true</many>
+                    </target>
+                </association>
+            </associations>
+        </aspect>
+
+        <!--
+            A peer association that links one or more output files (from curators)
+            to the study file from which they are derived
+            Source Any Study File (one) ==> (many) Target Output File
+        -->
+        <aspect name="wc:derivations">
+            <title>Derivations</title>
+            <properties>
+                <!-- Comment about the association -->
+                <property name="wc:comment">
+                    <title>Comment</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+            <associations>
+                <association name="wc:derivations">
+                    <source>
+                        <class>wc:study_file</class>
+                        <mandatory>true</mandatory>
+                        <many>false</many>
+                    </source>
+                    <target>
+                        <class>wc:output</class>
+                        <mandatory>true</mandatory>
+                        <many>true</many>
+                    </target>
+                </association>
+            </associations>
+        </aspect>
+
+    </aspects>
 
 </model>

@@ -179,9 +179,9 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/_alfresco/test/Test.iml" filepath="$PROJECT_DIR$/_alfresco/test/Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/_alfresco/source/_alfresco.iml" filepath="$PROJECT_DIR$/_alfresco/source/_alfresco.iml" />
       <module fileurl="file://$PROJECT_DIR$/_share/source/_share.iml" filepath="$PROJECT_DIR$/_share/source/_share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/manual_config/manual_config.iml" filepath="$PROJECT_DIR$/manual_config/manual_config.iml" />
     </modules>
   </component>
   <component name="ProjectResources">
@@ -190,8 +190,12 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="" />
+    <mapping directory="$PROJECT_DIR$/manual_config" vcs="svn" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
 </project>
