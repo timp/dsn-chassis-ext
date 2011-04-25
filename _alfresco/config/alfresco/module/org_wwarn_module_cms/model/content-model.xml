@@ -393,7 +393,6 @@
             </properties>
         </aspect>
 
-
         <!--
             A peer association to users that are the creators of this study (acknowledgements)
             Source Study (many) ==> (many) Target Person
@@ -403,13 +402,12 @@
             <associations>
                 <association name="wc:acknowledgements">
                     <source>
-                        <class>wc:study_folder</class>
                         <mandatory>true</mandatory>
                         <many>true</many>
                     </source>
                     <target>
                         <class>cm:person</class>
-                        <mandatory>true</mandatory>
+                        <mandatory>false</mandatory>
                         <many>true</many>
                     </target>
                 </association>
@@ -433,13 +431,12 @@
             <associations>
                 <association name="wc:derivations">
                     <source>
-                        <class>wc:study_file</class>
                         <mandatory>true</mandatory>
                         <many>false</many>
                     </source>
                     <target>
                         <class>wc:output</class>
-                        <mandatory>true</mandatory>
+                        <mandatory>false</mandatory>
                         <many>true</many>
                     </target>
                 </association>

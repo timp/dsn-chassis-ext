@@ -13,6 +13,9 @@
             <value>webscripts.messages.webscripts</value>
             <value>alfresco.messages.common</value>
             <value>alfresco.messages.slingshot</value>
+
+             <!-- WWARN Application Labels -->
+             <value>alfresco.messages.wwarn</value>
          </list>
       </property>
    </bean>
