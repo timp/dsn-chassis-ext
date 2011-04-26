@@ -294,7 +294,7 @@
 
         <!--
               A Generic Study File (base type).
-              All other study files extend this type.
+              All other study file types extend this type.
               -->
         <type name="wc:study_file">
             <title>Generic Study File</title>
@@ -423,8 +423,8 @@
             <title>Derivations</title>
             <properties>
                 <!-- Comment about the association -->
-                <property name="wc:comment">
-                    <title>Comment</title>
+                <property name="wc:derivations_comments">
+                    <title>Derivations comment</title>
                     <type>d:text</type>
                 </property>
             </properties>

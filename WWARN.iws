@@ -183,7 +183,7 @@
       <file leaf-file-name="content-model.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="396" column="40" selection-start="14820" selection-end="14820" vertical-scroll-proportion="0.0">
+            <state line="256" column="35" selection-start="10273" selection-end="10288" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -225,25 +225,25 @@
       <file leaf-file-name="wwarn.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="35" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
+            <state line="14" column="30" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="share-config-custom.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="share-config-custom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="63" selection-start="7814" selection-end="7828" vertical-scroll-proportion="0.0">
+            <state line="189" column="25" selection-start="8567" selection-end="8567" vertical-scroll-proportion="0.35814607">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="association.ftl" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="association.ftl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/form/controls/association.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="58" selection-start="502" selection-end="502" vertical-scroll-proportion="0.4455645">
+            <state line="21" column="51" selection-start="1061" selection-end="1061" vertical-scroll-proportion="-13.730769">
               <folding />
             </state>
           </provider>
@@ -265,11 +265,11 @@
         <option value="$PROJECT_DIR$/_alfresco/source/java/org/wwarn/cms/authentication/LoginCas.java" />
         <option value="$PROJECT_DIR$/_share/source/java/org/wwarn/cms/authentication/CasAuthenticationFilter.java" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.js" />
-        <option value="$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties" />
-        <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/custom-slingshot-application-context.xml" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/form/controls/association.ftl" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml" />
+        <option value="$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties" />
+        <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml" />
       </list>
     </option>
   </component>
@@ -892,17 +892,17 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16087654" sideWeight="0.6651481" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16087654" sideWeight="0.8667426" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3916084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33485195" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1332574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18546233" sideWeight="0.6651481" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18546233" sideWeight="0.8667426" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1007,13 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/context/services-context.xml">
       <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
         <state />
@@ -1034,13 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_share/source/java/org/wwarn/cms/authentication/CasAuthenticationFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="94" selection-start="3015" selection-end="3015" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_share/source/java/org/wwarn/cms/authentication/CasAlfrescoAuthenticator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="74" selection-start="3369" selection-end="3369" vertical-scroll-proportion="0.0" />
@@ -1056,23 +1042,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/form/controls/association.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="51" selection-start="1061" selection-end="1061" vertical-scroll-proportion="-13.730769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_share/source/java/org/wwarn/cms/authentication/CasAuthenticationFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="94" selection-start="3015" selection-end="3015" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="30" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="396" column="40" selection-start="14820" selection-end="14820" vertical-scroll-proportion="0.0">
+        <state line="256" column="35" selection-start="10273" selection-end="10288" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="63" selection-start="7814" selection-end="7828" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/form/controls/association.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="58" selection-start="502" selection-end="502" vertical-scroll-proportion="0.4455645">
+        <state line="189" column="25" selection-start="8567" selection-end="8567" vertical-scroll-proportion="0.35814607">
           <folding />
         </state>
       </provider>
