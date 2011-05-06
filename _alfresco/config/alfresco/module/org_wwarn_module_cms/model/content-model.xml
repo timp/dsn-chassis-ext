@@ -342,40 +342,11 @@
         <type name="wc:study_folder">
             <title>WWARN Study Folder</title>
             <parent>cm:folder</parent>
-            <properties>
-                <property name="wc:modules">
-                    <title>The module(s) that the file belongs to</title>
-                    <type>d:text</type>
-                    <multiple>true</multiple>
-                    <constraints>
-                        <constraint ref="wc:module_options"/>
-                    </constraints>
-                </property>
-                <property name="wc:region">
-                    <title>The region where the study originated</title>
-                    <type>d:text</type>
-                    <constraints>
-                        <constraint ref="wc:region_options"/>
-                    </constraints>
-                </property>
-                <property name="wc:countries">
-                    <title>The country/countries where the study originated</title>
-                    <type>d:text</type>
-                    <multiple>true</multiple>
-                    <constraints>
-                        <constraint ref="wc:country_options"/>
-                    </constraints>
-                </property>
-                <property name="wc:study_info_link">
-                    <title>Link to the study metadata XML in Chassis</title>
-                    <type>d:text</type>
-                </property>
-            </properties>
             <mandatory-aspects>
+                <aspect>wc:study_folder_data</aspect>
                 <aspect>wc:acknowledgements</aspect>
             </mandatory-aspects>
         </type>
-
 
         <!--
               A Generic Study File (base type).
@@ -456,6 +427,42 @@
     -->
 
     <aspects>
+        <!--
+              Extra metadata for a study folder type.
+              -->
+        <aspect name="wc:study_folder_data">
+            <title>WWARN Study Folder</title>
+            <properties>
+                <property name="wc:modules">
+                    <title>The module(s) that the file belongs to</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="wc:module_options"/>
+                    </constraints>
+                </property>
+                <property name="wc:region">
+                    <title>The region where the study originated</title>
+                    <type>d:text</type>
+                    <constraints>
+                        <constraint ref="wc:region_options"/>
+                    </constraints>
+                </property>
+                <property name="wc:countries">
+                    <title>The country/countries where the study originated</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="wc:country_options"/>
+                    </constraints>
+                </property>
+                <property name="wc:study_info_link">
+                    <title>Link to the study metadata XML in Chassis</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </aspect>
+
         <!--
               Extra metadata for a study file type.
               -->

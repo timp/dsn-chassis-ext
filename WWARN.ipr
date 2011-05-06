@@ -198,5 +198,33 @@
     <mapping directory="$PROJECT_DIR$/manual_config" vcs="svn" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
+  <component name="libraryTable">
+    <library name="Alfresco 3.4b Community">
+      <CLASSES>
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/commons" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/devenv" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/j2ee" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/jbpm" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/devenv" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/jbpm" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/j2ee" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/commons" />
+        <root url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/spring-surf" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+      <jarDirectory url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server" recursive="false" />
+      <jarDirectory url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies" recursive="false" />
+      <jarDirectory url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/commons" recursive="false" />
+      <jarDirectory url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/devenv" recursive="false" />
+      <jarDirectory url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/j2ee" recursive="false" />
+      <jarDirectory url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/jbpm" recursive="false" />
+      <jarDirectory url="file://X:/tools/alfresco-community-sdk-3.4.b/lib/server/dependencies/spring-surf" recursive="false" />
+    </library>
+  </component>
 </project>
 

@@ -22,7 +22,18 @@
                    <class>org.springframework.extensions.webscripts.connector.HttpConnector</class>
                </connector>-->
 
-            <!-- Connects to an Alfresco instance using ticket-based authentication, overrides the default alfresco connector to use ticket authenticator -->
+            <!-- Authenticator implementation used in CAS authentication scenario,
+                overrides the default alfresco-ticket authenticator
+                <class>org.alfresco.connector.AlfrescoAuthenticator</class>-->
+            <authenticator>
+                <id>alfresco-ticket</id>
+                <name>Alfresco Authenticator</name>
+                <description>Alfresco Authenticator</description>
+                <class>org.wwarn.cms.authentication.CasAlfrescoAuthenticator</class>
+            </authenticator>
+
+            <!-- Connects to an Alfresco instance using ticket-based authentication,
+                overrides the default alfresco connector to use ticket authenticator -->
             <connector>
                 <id>alfresco</id>
                 <name>Alfresco Connector</name>
@@ -31,16 +42,7 @@
                 <authenticator-id>alfresco-ticket</authenticator-id>
             </connector>
 
-            <!-- Authenticator Implementation used in CAS authentication scenario, overrides the default alfresco-ticket authenticator
-                <class>org.alfresco.connector.AlfrescoAuthenticator</class>
-            <authenticator>
-                <id>alfresco-ticket</id>
-                <name>Alfresco Authenticator</name>
-                <description>Alfresco Authenticator</description>
-
-                <class>org.wwarn.cms.authentication.CasAlfrescoAuthenticator</class>
-            </authenticator>
-
+            <!-- Endpoint using external authentication via CAS -->
             <endpoint>
                 <id>alfresco</id>
                 <name>Alfresco - user access</name>
@@ -50,8 +52,29 @@
                 <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
                 <identity>user</identity>
                 <external-auth>true</external-auth>
-            </endpoint>-->
+            </endpoint>
 
+
+            <!--
+              <connector>
+            <id>alfrescoCookie</id>
+            <name>Alfresco Connector</name>
+            <description>Connects to an Alfresco instance using cookie-based authentication</description>
+            <class>org.springframework.extensions.webscripts.connector.AlfrescoConnector</class>
+         </connector>
+
+         <endpoint>
+            <id>alfresco</id>
+            <name>Alfresco - user access</name>
+            <description>Access to Alfresco Repository WebScripts that require user authentication</description>
+            <connector-id>alfrescoCookie</connector-id>
+            <endpoint-url>http://localhost:8080/alfresco/wcs</endpoint-url>
+            <identity>user</identity>
+            <external-auth>true</external-auth>
+         </endpoint>
+         -->
+
+            <!--
             <endpoint>
                 <id>alfresco-system</id>
                 <name>Alfresco - System access</name>
@@ -72,7 +95,7 @@
                 <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
                 <identity>none</identity>
             </endpoint>
-
+                 -->
         </remote>
     </config>
 
