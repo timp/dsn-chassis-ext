@@ -18,7 +18,7 @@
         <jarDirectory url="file://$MODULE_DIR$/../lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Alfresco 3.4" level="application" />
+    <orderEntry type="library" name="Alfresco 3.4b Community" level="project" />
   </component>
 </module>
 

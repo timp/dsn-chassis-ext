@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="ww:workflowModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+    <!-- Optional meta-data about the model -->
+    <description>WWARN Workflow Content Model</description>
+    <author>Martin Bergljung</author>
+    <version>1.0</version>
+
+    <imports>
+        <!-- Import Alfresco Dictionary Definitions -->
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+        <!-- Import Alfresco Content Domain Model Definitions -->
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+        <!-- Import Alfresco jBPM Model Definitions -->
+        <import uri="http://www.alfresco.org/model/bpm/1.0" prefix="bpm"/>
+        <!-- Import WWARN document content model namespace -->
+        <import uri="http://www.wwarn.org/model/content/1.0" prefix="wc"/>
+    </imports>
+
+    <namespaces>
+		<!-- WWARN Workflow content model namespace -->
+        <namespace uri="http://www.wwarn.org/model/workflow/1.0" prefix="ww"/>
+    </namespaces>
+
+    <types>
+		<!-- Task Types for the Document Process  -->
+
+        <type name="ww:startClinicalProcessTask">
+            <parent>bpm:startTask</parent>
+        </type>
+
+		<type name="ww:baseTask">
+            <description>
+                This is the base type for all WWARN Tasks.
+            </description>
+            <parent>bpm:workflowTask</parent>
+            <properties>
+                <property name="ww:studyStatus">
+                    <title>Status indicating what phase the study process is in</title>
+                    <type>d:text</type>
+                </property>
+                <property name="ww:moreStudyInfo">
+                    <title>More study info</title>
+                    <type>d:text</type>
+                </property>
+                <property name="ww:moreSSQInfo">
+                    <title>More SSQ info</title>
+                    <type>d:text</type>
+                </property>
+                <property name="ww:moreMappingInfo">
+                    <title>More mapping info</title>
+                    <type>d:text</type>
+                </property>
+                <property name="ww:problemDesc">
+                    <title>Problem description</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+            <overrides>
+                <property name="bpm:packageActionGroup">
+                    <default>add_package_item_actions</default>
+                </property>
+            </overrides>
+            <mandatory-aspects>
+                <aspect>wc:study_folder_data</aspect>
+                <aspect>ww:assigneeCurator</aspect>
+                <aspect>ww:assigneeLiaison</aspect>
+                <aspect>ww:assigneeCentreHead</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <!-- Gate Keeper Phase Tasks -->
+		<type name="ww:GT01_CheckStudyTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:GT02_AssignCuratorTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:GT03_AskForMoreStudyInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:GT04_AssignLiaisonTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:GT05_CompleteSSQTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="GT06_ProvideSSQInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <!-- Curation Phase Tasks -->
+        <type name="ww:CU01_CompleteMappingTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:CU02_RunProcessingTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:CU03_UploadOutputsTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:CU04_ProvideMappingInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:CU05_ResolveMappingProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:CU06_ResolveProcessingProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <!-- Validation Phase Tasks -->
+        <type name="ww:VA01_CuratorValidateOutputsTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:VA02_DataManagerValidateOutputsTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+		<type name="ww:VA03_ResolveOutputsProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <!-- Approval Phase Tasks -->
+        <type name="ww:AP01_AssignCentreHeadTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <type name="ww:AP02_CheckReportTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <type name="ww:AP03_ProvideOutputsEmailInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <type name="ww:AP04_ReceiveApprovalTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <type name="ww:AP05_SendOutputsToModuleTask">
+            <parent>ww:baseTask</parent>
+        </type>
+
+    </types>
+
+	<aspects>
+        <aspect name="ww:assigneeCurator">
+            <associations>
+                <association name="ww:assigneeCurator">
+                    <source>
+                        <mandatory>true</mandatory>
+                        <many>false</many>
+                    </source>
+                    <target>
+                        <class>cm:person</class>
+                        <mandatory>true</mandatory>
+                        <many>false</many>
+                    </target>
+                </association>
+            </associations>
+        </aspect>
+
+        <aspect name="ww:assigneeLiaison">
+            <associations>
+                <association name="ww:assigneeLiaison">
+                    <source>
+                        <mandatory>true</mandatory>
+                        <many>false</many>
+                    </source>
+                    <target>
+                        <class>cm:person</class>
+                        <mandatory>true</mandatory>
+                        <many>false</many>
+                    </target>
+                </association>
+            </associations>
+        </aspect>
+
+        <aspect name="ww:assigneeCentreHead">
+            <associations>
+                <association name="ww:assigneeCentreHead">
+                    <source>
+                        <mandatory>true</mandatory>
+                        <many>false</many>
+                    </source>
+                    <target>
+                        <class>cm:person</class>
+                        <mandatory>true</mandatory>
+                        <many>false</many>
+                    </target>
+                </association>
+            </associations>
+        </aspect>
+
+	</aspects>
+</model>
+
