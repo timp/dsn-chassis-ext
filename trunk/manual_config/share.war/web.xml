@@ -40,7 +40,7 @@
       <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
    </filter>
    
-    <!--
+    <!-- SSO but only for NTLM and Kerberos
     <filter>
       <description>Share SSO authentication support filter.</description>
       <filter-name>Authentication Filter</filter-name>
