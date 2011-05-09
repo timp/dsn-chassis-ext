@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="893753fa-a7f1-41cc-9264-f2cd3eea715c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_config/README.txt" afterPath="$PROJECT_DIR$/manual_config/README.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_config/share.war/web.xml" afterPath="$PROJECT_DIR$/manual_config/share.war/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_config/tomcat/shared/classes/alfresco-global.properties" afterPath="$PROJECT_DIR$/manual_config/tomcat/shared/classes/alfresco-global.properties" />
     </list>
     <ignored path="WWARN.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -157,46 +155,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CasAuthenticationFilter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_share/source/java/org/wwarn/cms/authentication/CasAuthenticationFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="72" selection-start="4369" selection-end="4412" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manual_config/share.war/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="84" selection-start="3664" selection-end="3664" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="workflow-model.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="65" column="52" selection-start="2766" selection-end="2786" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lables-clinical_study-workflow.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/ui/lables-clinical_study-workflow.properties">
+      <file leaf-file-name="share-config-custom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="2166" column="76" selection-start="117356" selection-end="117356" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content-model.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
+      <file leaf-file-name="processdefinition.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="346" column="67" selection-start="15069" selection-end="15069" vertical-scroll-proportion="-2.9846878">
+            <state line="342" column="95" selection-start="14286" selection-end="14286" vertical-scroll-proportion="0.5270049">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wwarn.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="42" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -212,7 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/_alfresco/source/java/org/wwarn/cms/authentication/CasAuthenticationFilter.java" />
         <option value="$PROJECT_DIR$/_share/source/java/org/wwarn/cms/authentication/CasAlfrescoAuthenticator.java" />
         <option value="$PROJECT_DIR$/_alfresco/source/java/org/wwarn/cms/authentication/LoginCas.java" />
@@ -220,12 +208,15 @@
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.js" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/custom-slingshot-application-context.xml" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/form/controls/association.ftl" />
+        <option value="$PROJECT_DIR$/manual_config/share.war/web.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/ui/lables-clinical_study-workflow.properties" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/context/bootstrap-context.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml" />
+        <option value="$PROJECT_DIR$/README-HOW-TO-DEPLOY-WORKFLOW.txt" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml" />
-        <option value="$PROJECT_DIR$/manual_config/share.war/web.xml" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/ui/lables-clinical_study-workflow.properties" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml" />
       </list>
     </option>
   </component>
@@ -330,6 +321,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="_share" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_share" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_share" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="_alfresco" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -417,6 +470,10 @@
               <option name="myItemId" value="workflows" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clinical_study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -475,6 +532,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org_wwarn_module_cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -676,22 +763,22 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.105291285" sideWeight="0.7471526" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14644575" sideWeight="0.7289294" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25179857" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27107063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18492785" sideWeight="0.7471526" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21592732" sideWeight="0.7289294" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3929385" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1332574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -754,34 +841,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_alfresco/source/java/org/wwarn/cms/authentication/LoginCas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="3" selection-start="2197" selection-end="2197" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/form/controls/association.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="51" selection-start="1061" selection-end="1061" vertical-scroll-proportion="-13.730769" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="30" selection-start="480" selection-end="480" vertical-scroll-proportion="0.33426967" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="27" selection-start="111" selection-end="123" vertical-scroll-proportion="0.09550562" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/context/bootstrap-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/context/services-context.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -813,40 +872,82 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
+    <entry file="file://$PROJECT_DIR$/manual_config/share.war/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="76" selection-start="1968" selection-end="1968" vertical-scroll-proportion="0.0" />
+        <state line="88" column="84" selection-start="3664" selection-end="3664" vertical-scroll-proportion="0.34040046">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_share/source/java/org/wwarn/cms/authentication/CasAuthenticationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="72" selection-start="4369" selection-end="4412" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manual_config/share.war/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="84" selection-start="3664" selection-end="3664" vertical-scroll-proportion="0.0">
+        <state line="113" column="72" selection-start="4369" selection-end="4412" vertical-scroll-proportion="0.31919906">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml">
+    <entry file="file://$PROJECT_DIR$/build.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/ui/lables-clinical_study-workflow.properties">
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/context/bootstrap-context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="18" column="59" selection-start="846" selection-end="866" vertical-scroll-proportion="-13.909091">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/ui/labels-clinical_study-workflow.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="72" selection-start="1700" selection-end="1700" vertical-scroll-proportion="0.45107794">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="346" column="67" selection-start="15069" selection-end="15069" vertical-scroll-proportion="-2.9846878">
+        <state line="475" column="0" selection-start="19120" selection-end="19168" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README-HOW-TO-DEPLOY-WORKFLOW.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="95" selection-start="118" selection-end="208" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="42" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="52" selection-start="2766" selection-end="2786" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2166" column="76" selection-start="117356" selection-end="117356" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="342" column="95" selection-start="14286" selection-end="14286" vertical-scroll-proportion="0.5270049">
           <folding />
         </state>
       </provider>

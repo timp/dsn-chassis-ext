@@ -14,35 +14,27 @@
 
     <config evaluator="string-compare" condition="Remote">
         <remote>
-            <!-- Connector Implementations
-               <connector>
-                   <id>http</id>
-                   <name>Simple Http Connector</name>
-                   <description>Simple HTTP Connector</description>
-                   <class>org.springframework.extensions.webscripts.connector.HttpConnector</class>
-               </connector>-->
-
             <!-- Authenticator implementation used in CAS authentication scenario,
                 overrides the default alfresco-ticket authenticator
-                <class>org.alfresco.connector.AlfrescoAuthenticator</class>-->
+                <class>org.alfresco.connector.AlfrescoAuthenticator</class>
             <authenticator>
                 <id>alfresco-ticket</id>
                 <name>Alfresco Authenticator</name>
                 <description>Alfresco Authenticator</description>
                 <class>org.wwarn.cms.authentication.CasAlfrescoAuthenticator</class>
-            </authenticator>
+            </authenticator>                                               -->
 
             <!-- Connects to an Alfresco instance using ticket-based authentication,
-                overrides the default alfresco connector to use ticket authenticator -->
+                overrides the default alfresco connector to use ticket authenticator
             <connector>
                 <id>alfresco</id>
                 <name>Alfresco Connector</name>
                 <description>Connects to an Alfresco instance using ticket-based authentication</description>
                 <class>org.springframework.extensions.webscripts.connector.AlfrescoConnector</class>
                 <authenticator-id>alfresco-ticket</authenticator-id>
-            </connector>
+            </connector>                                                             -->
 
-            <!-- Endpoint using external authentication via CAS -->
+            <!-- Endpoint using external authentication via CAS
             <endpoint>
                 <id>alfresco</id>
                 <name>Alfresco - user access</name>
@@ -52,50 +44,9 @@
                 <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
                 <identity>user</identity>
                 <external-auth>true</external-auth>
-            </endpoint>
+            </endpoint>-->
 
 
-            <!--
-              <connector>
-            <id>alfrescoCookie</id>
-            <name>Alfresco Connector</name>
-            <description>Connects to an Alfresco instance using cookie-based authentication</description>
-            <class>org.springframework.extensions.webscripts.connector.AlfrescoConnector</class>
-         </connector>
-
-         <endpoint>
-            <id>alfresco</id>
-            <name>Alfresco - user access</name>
-            <description>Access to Alfresco Repository WebScripts that require user authentication</description>
-            <connector-id>alfrescoCookie</connector-id>
-            <endpoint-url>http://localhost:8080/alfresco/wcs</endpoint-url>
-            <identity>user</identity>
-            <external-auth>true</external-auth>
-         </endpoint>
-         -->
-
-            <!--
-            <endpoint>
-                <id>alfresco-system</id>
-                <name>Alfresco - System access</name>
-                <description>System account access to Alfresco</description>
-                <connector-id>alfresco</connector-id>
-                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
-                <identity>declared</identity>
-                <username>admin</username>
-                <password>admin</password>
-                <unsecure>true</unsecure>
-            </endpoint>
-
-            <endpoint>
-                <id>alfresco-noauth</id>
-                <name>Alfresco - unauthenticated access</name>
-                <description>Access to Alfresco Repository WebScripts that do not require authentication</description>
-                <connector-id>alfresco</connector-id>
-                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
-                <identity>none</identity>
-            </endpoint>
-                 -->
         </remote>
     </config>
 
@@ -133,17 +84,20 @@
     </config>
 
     <config evaluator="string-compare" condition="AdvancedSearch">
-      <advanced-search>
-         <!-- Additional Forms for the advanced search type list -->
-         <forms>
-            <form label="WWARN Study Folders" description="Searches for all WWARN Study Folders">wc:study_folder</form>
-        </forms>
-      </advanced-search>
-   </config>
+        <advanced-search>
+            <!-- Additional Forms for the advanced search type list -->
+            <forms>
+                <form label="WWARN Study Folders" description="Searches for all WWARN Study Folders">wc:study_folder
+                </form>
+            </forms>
+        </advanced-search>
+    </config>
 
 
-    <!-- Metadata form definition for WWARN Study Folder
-        VIEW and EDIT form definition -->
+    <!--
+        Metadata form definition for WWARN Study Folder
+        VIEW and EDIT form definition
+        -->
 
     <config evaluator="node-type" condition="wc:study_folder">
         <forms>
@@ -226,7 +180,9 @@
     </config>
 
 
-    <!-- Metadata form definitions for WWARN File types -->
+    <!--
+        Metadata form definitions for WWARN File types
+        -->
 
     <config evaluator="node-type" condition="wc:data_file">
         <forms>
@@ -738,7 +694,6 @@
                             <control-param name="displayMode">list</control-param>
                             <control-param name="compactMode">true</control-param>
                             <control-param name="startLocation">{parent}</control-param>
-
                         </control>
                     </field>
                 </appearance>
@@ -746,4 +701,1534 @@
         </forms>
     </config>
 
+    <!--
+        Clinical Study Workflow Task Forms
+        -->
+
+    <!-- Special start workflow task form -->
+    <config evaluator="string-compare" condition="jbpm$ww:clinicalStudyProcess">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="packageItems"/>
+                    <show id="wf:notifyMe"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID" force="true"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules" force="true"/>
+                    <show id="wc:region" force="true"/>
+                    <show id="wc:countries" force="true"/>
+                    <show id="wc:study_info_link" force="true"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="other" appearance="title" label-id="workflow.set.other"/>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata"/>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata"/>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata"/>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata"/>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "other" -->
+                    <field id="wf:notifyMe" set="other"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:GT01_CheckStudyTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:moreStudyInfo"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwNeedMoreInfo" appearance="bordered-panel" label-id="ww.need_more_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreStudyInfo" label-id="ww.metadata.moreStudyInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:GT02_AssignCuratorTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                    <show id="ww:assigneeCurator"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+                    <field id="ww:assigneeCurator" label-id="ww.metadata.assigneeCurator" set="wcMetadata">
+                        <control template="/org/alfresco/components/form/controls/authority.ftl">
+                            <control-param name="compactMode">true</control-param>
+                            <control-param name="forceEditable">true</control-param>
+                        </control>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:GT03_AskForMoreStudyInfoTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:moreStudyInfo" force="true"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwNeedMoreInfo" appearance="bordered-panel" label-id="ww.need_more_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreStudyInfo" label-id="ww.metadata.moreStudyInfo" set="wwNeedMoreInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:GT04_AssignLiaisonTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                    <show id="ww:assigneeLiaison"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+                    <field id="ww:assigneeLiaison" label-id="ww.metadata.assigneeLiaison" set="wcMetadata">
+                        <control template="/org/alfresco/components/form/controls/authority.ftl">
+                            <control-param name="compactMode">true</control-param>
+                            <control-param name="forceEditable">true</control-param>
+                        </control>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:GT05_CompleteSSQTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:moreSSQInfo"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwNeedMoreInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreSSQInfo" label-id="ww.metadata.moreSSQInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:GT06_ProvideSSQInfoTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:moreSSQInfo" force="true"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwNeedMoreInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreSSQInfo" label-id="ww.metadata.moreSSQInfo" set="wwNeedMoreInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:CU01_CompleteMappingTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:moreMappingInfo"/>
+                    <show id="ww:problemDesc"  force="true"/>
+                    <show id="ww:problemResolution"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwNeedMoreInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:CU02_RunProcessingTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:problemDesc" force="true"/>
+                    <show id="ww:problemResolution"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:CU03_UploadOutputsTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:CU04_ProvideMappingInfoTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:moreMappingInfo" force="true"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwNeedMoreInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:CU05_ResolveMappingProblemTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:moreMappingInfo"/>
+                    <show id="ww:problemDesc"/>
+                    <show id="ww:problemResolution" force="true"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwNeedMoreInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:CU06_ResolveProcessingProblemTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:problemDesc"/>
+                    <show id="ww:problemResolution" force="true"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:VA01_CuratorValidateOutputsTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:problemDesc" force="true"/>
+                    <show id="ww:problemResolution"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:VA02_DataManagerValidateOutputsTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:problemDesc" force="true"/>
+                    <show id="ww:problemResolution"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:VA03_ResolveOutputsProblemTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:problemDesc"/>
+                    <show id="ww:problemResolution" force="true"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:AP01_AssignCentreHeadTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                    <show id="ww:assigneeCentreHead"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+                    <field id="ww:assigneeCentreHead" label-id="ww.metadata.assigneeCentreHead" set="wcMetadata">
+                        <control template="/org/alfresco/components/form/controls/authority.ftl">
+                            <control-param name="compactMode">true</control-param>
+                            <control-param name="forceEditable">true</control-param>
+                        </control>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:AP02_CheckReportTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+                    <show id="ww:problemDesc" force="true"/>
+                    <show id="ww:problemResolution"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwProblemInfo" appearance="bordered-panel" label-id="ww.problem_info.header"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true"/>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "wwNeedMoreInfo" -->
+                    <field id="ww:moreMappingInfo" label-id="ww.metadata.moreMappingInfo" set="wwNeedMoreInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "wwProblemInfo" -->
+                    <field id="ww:problemDesc" label-id="ww.metadata.problemDesc" set="wwProblemInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="ww:problemResolution" label-id="ww.metadata.problemResolution" set="wwProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:AP03_ProvideOutputsEmailInfoTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:AP04_ReceiveApprovalTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+    <config evaluator="task-type" condition="ww:AP05_SendOutputsToModuleTask">
+        <forms>
+            <form>
+                <field-visibility>
+                    <show id="message"/>
+                    <show id="packageItems"/>
+                    <show id="bpm:comment"/>
+                    <show id="transitions"/>
+
+                    <!-- ww:baseTask -->
+                    <show id="ww:studyID"/>
+                    <show id="ww:studyStatus"/>
+                    <show id="ww:studyFolderLink"/>
+
+                    <!-- wc:study_folder -->
+                    <show id="wc:modules"/>
+                    <show id="wc:region"/>
+                    <show id="wc:countries"/>
+                    <show id="wc:study_info_link"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="" appearance="title" label-id="workflow.set.task.info"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header" template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="documents" appearance="title" label="Documents"/>
+                    <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
+                    <set id="response" appearance="title" label-id="workflow.set.response"/>
+
+                    <!-- Field set "" -->
+                    <field id="message">
+                        <control template="/org/alfresco/components/form/controls/info.ftl"/>
+                    </field>
+
+                    <!-- Field set "wcMetadata" -->
+                    <field id="ww:studyID" label-id="ww.metadata.study_id" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyStatus" label-id="ww.metadata.study_status" set="wcMetadata" read-only="true"/>
+                    <field id="ww:studyFolderLink" label-id="ww.metadata.study_folderLink" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:study_info_link" label-id="wc.metadata.study_info_link" set="wcMetadata" read-only="true"/>
+
+                    <!-- Field set "documents" -->
+                    <field id="packageItems" set="documents"/>
+
+                    <!-- Field set "progress" -->
+                    <field id="bpm:status" set="progress"/>
+
+                    <!-- Field set "response" -->
+                    <field id="bpm:comment" label-id="workflow.field.comment" set="response">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
+                    </field>
+                    <field id="transitions" set="response"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
 </alfresco-config>

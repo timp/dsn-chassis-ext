@@ -10,15 +10,28 @@
 
 
     <!-- Registration of new models -->
-    <bean 	id="uk.ac.westminster.dictionaryBootstrap" 
+    <bean 	id="org.wwarn.cms.dictionaryBootstrap"
 			parent="dictionaryModelBootstrap" 
 			depends-on="dictionaryBootstrap">
         <property name="models">
             <list>
                 <value>alfresco/module/org_wwarn_module_cms/model/content-model.xml</value>
+                <value>alfresco/module/org_wwarn_module_cms/model/workflow-model.xml</value>
             </list>
         </property>
     </bean>
+
+    <!--
+       Bootstrap label properties for the Clinical Study Workflow
+       -->
+   <bean id="org.wwarn.cms.properties.workflowBootstrap" parent="workflowDeployer">
+       <property name="labels">
+           <list>
+               <value>alfresco.module.org_wwarn_module_cms.ui.labels-clinical_study-workflow</value>
+           </list>
+       </property>
+   </bean>
+
 	
 
 

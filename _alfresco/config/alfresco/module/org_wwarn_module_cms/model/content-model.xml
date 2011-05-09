@@ -77,7 +77,7 @@
                     <value>BENIN</value>
                     <value>BERMUDA</value>
                     <value>BHUTAN</value>
-                    <value>BOLIVIA, PLURINATIONAL STATE OF</value>
+                    <value>BOLIVIA (PLURINATIONAL STATE OF)</value>
                     <value>BOSNIA AND HERZEGOVINA</value>
                     <value>BOTSWANA</value>
                     <value>BOUVET ISLAND</value>
@@ -101,7 +101,7 @@
                     <value>COLOMBIA</value>
                     <value>COMOROS</value>
                     <value>CONGO</value>
-                    <value>CONGO, THE DEMOCRATIC REPUBLIC OF THE</value>
+                    <value>CONGO (THE DEMOCRATIC REPUBLIC OF THE)</value>
                     <value>COOK ISLANDS</value>
                     <value>COSTA RICA</value>
                     <value>CÔTE D'IVOIRE</value>
@@ -153,7 +153,7 @@
                     <value>ICELAND</value>
                     <value>INDIA</value>
                     <value>INDONESIA</value>
-                    <value>IRAN, ISLAMIC REPUBLIC OF</value>
+                    <value>IRAN (ISLAMIC REPUBLIC OF)</value>
                     <value>IRAQ</value>
                     <value>IRELAND</value>
                     <value>ISLE OF MAN</value>
@@ -166,8 +166,8 @@
                     <value>KAZAKHSTAN</value>
                     <value>KENYA</value>
                     <value>KIRIBATI</value>
-                    <value>KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</value>
-                    <value>KOREA, REPUBLIC OF</value>
+                    <value>KOREA (DEMOCRATIC PEOPLE'S REPUBLIC OF)</value>
+                    <value>KOREA (REPUBLIC OF)</value>
                     <value>KUWAIT</value>
                     <value>KYRGYZSTAN</value>
                     <value>LAO PEOPLE'S DEMOCRATIC REPUBLIC</value>
@@ -180,7 +180,7 @@
                     <value>LITHUANIA</value>
                     <value>LUXEMBOURG</value>
                     <value>MACAO</value>
-                    <value>MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF</value>
+                    <value>MACEDONIA (THE FORMER YUGOSLAV REPUBLIC OF)</value>
                     <value>MADAGASCAR</value>
                     <value>MALAWI</value>
                     <value>MALAYSIA</value>
@@ -193,8 +193,8 @@
                     <value>MAURITIUS</value>
                     <value>MAYOTTE</value>
                     <value>MEXICO</value>
-                    <value>MICRONESIA, FEDERATED STATES OF</value>
-                    <value>MOLDOVA, REPUBLIC OF</value>
+                    <value>MICRONESIA (FEDERATED STATES OF)</value>
+                    <value>MOLDOVA (REPUBLIC OF)</value>
                     <value>MONACO</value>
                     <value>MONGOLIA</value>
                     <value>MONTENEGRO</value>
@@ -219,7 +219,7 @@
                     <value>OMAN</value>
                     <value>PAKISTAN</value>
                     <value>PALAU</value>
-                    <value>PALESTINIAN TERRITORY, OCCUPIED</value>
+                    <value>PALESTINIAN TERRITORY (OCCUPIED)</value>
                     <value>PANAMA</value>
                     <value>PAPUA NEW GUINEA</value>
                     <value>PARAGUAY</value>
@@ -265,9 +265,9 @@
                     <value>SWEDEN</value>
                     <value>SWITZERLAND</value>
                     <value>SYRIAN ARAB REPUBLIC</value>
-                    <value>TAIWAN, PROVINCE OF CHINA</value>
+                    <value>TAIWAN (PROVINCE OF CHINA)</value>
                     <value>TAJIKISTAN</value>
-                    <value>TANZANIA, UNITED REPUBLIC OF</value>
+                    <value>TANZANIA (UNITED REPUBLIC OF)</value>
                     <value>THAILAND</value>
                     <value>TIMOR-LESTE</value>
                     <value>TOGO</value>
@@ -288,10 +288,10 @@
                     <value>URUGUAY</value>
                     <value>UZBEKISTAN</value>
                     <value>VANUATU</value>
-                    <value>VENEZUELA, BOLIVARIAN REPUBLIC OF</value>
+                    <value>VENEZUELA (BOLIVARIAN REPUBLIC OF)</value>
                     <value>VIET NAM</value>
-                    <value>VIRGIN ISLANDS, BRITISH</value>
-                    <value>VIRGIN ISLANDS, U.S.</value>
+                    <value>VIRGIN ISLANDS (BRITISH)</value>
+                    <value>VIRGIN ISLANDS (U.S.)</value>
                     <value>WALLIS AND FUTUNA</value>
                     <value>WESTERN SAHARA</value>
                     <value>YEMEN</value>
