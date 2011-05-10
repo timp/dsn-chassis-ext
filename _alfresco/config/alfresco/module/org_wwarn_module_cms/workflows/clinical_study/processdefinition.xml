@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="ww:clinicalStudyProcess">
-	<!--
-         Assignees
-         -->
+<process-definition xmlns="urn:jbpm.org:jpdl-3.2" name="ww:clinicalStudyProcess">
+    <!--
+    Assignees
+    -->
 
     <swimlane name="initiator"/>
-    
+
     <swimlane name="DataManagers">
         <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
             <pooledactors>
@@ -14,28 +14,28 @@
             </pooledactors>
         </assignment>
     </swimlane>
-    
-	<!--
-         Workflow starts here
-         -->
 
-	<start-state name="Start">
-		<task name="ww:startClinicalProcessTask" swimlane="initiator">
-			<event type="task-create">
-				<!-- This creates the ww_phase process variable -->
-				<script>
-					<variable name="ww_studyStatus" access="write"/>
-					<expression>
-						ww_studyStatus = "Initiated";
-					</expression>
-				</script>
-			</event>
-		</task>
-	
-		<transition to="GateKeeping/GT01_CheckStudy"></transition>
-	</start-state>
+    <!--
+    Workflow starts here
+    -->
 
-	<super-state name="GateKeeping">
+    <start-state name="Start">
+        <task name="ww:startClinicalProcessTask" swimlane="initiator">
+            <event type="task-create">
+                <!-- This creates the ww_phase process variable -->
+                <script>
+                    <variable name="ww_studyStatus" access="write"/>
+                    <expression>
+                        ww_studyStatus = "Initiated";
+                    </expression>
+                </script>
+            </event>
+        </task>
+
+        <transition to="GateKeeping/GT01_CheckStudy"></transition>
+    </start-state>
+
+    <super-state name="GateKeeping">
         <event type="superstate-enter">
             <script>
                 <variable name="ww_studyStatus" access="write"/>
@@ -56,26 +56,26 @@
                 </script>
             </action>
         </event>
-	
-		<task-node name="GT01_CheckStudy">
-			<task name="ww:GT01_CheckStudyTask" swimlane="DataManagers">
-				<event type="task-create">
-					<action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-	                    <script>
-	                        <variable name="ww_studyID" access="read"/>
-	                        <expression>
-	                            taskInstance.description = "GT01-Check Study (" + ww_studyID + ")";
-	                        </expression>
-	                    </script>
-	                </action>				
-	        	</event>
-            </task>
-			<transition to="GT02_AssignCurator" name="OK"></transition>
-			<transition to="GT03_AskForMoreStudyInfo" name="NotOK"></transition>
-		</task-node>
 
-		<task-node name="GT02_AssignCurator">
-			<task name="ww:GT02_AssignCuratorTask" swimlane="DataManagers">
+        <task-node name="GT01_CheckStudy">
+            <task name="ww:GT01_CheckStudyTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "GT01-Check Study (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="GT02_AssignCurator" name="OK"></transition>
+            <transition to="GT03_AskForMoreStudyInfo" name="NotOK"></transition>
+        </task-node>
+
+        <task-node name="GT02_AssignCurator">
+            <task name="ww:GT02_AssignCuratorTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -87,11 +87,11 @@
                     </action>
                 </event>
             </task>
-			<transition to="GT04_AssignLiaison"></transition>
-		</task-node>
+            <transition to="GT04_AssignLiaison"></transition>
+        </task-node>
 
-		<task-node name="GT03_AskForMoreStudyInfo">
-			<task name="ww:GT03_AskForMoreStudyInfoTask" swimlane="DataManagers">
+        <task-node name="GT03_AskForMoreStudyInfo">
+            <task name="ww:GT03_AskForMoreStudyInfoTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -103,12 +103,12 @@
                     </action>
                 </event>
             </task>
-			<transition to="GT01_CheckStudy"></transition>
-		</task-node>
+            <transition to="GT01_CheckStudy"></transition>
+        </task-node>
 
-		<task-node name="GT04_AssignLiaison">
-			<task name="ww:GT04_AssignLiaisonTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="GT04_AssignLiaison">
+            <task name="ww:GT04_AssignLiaisonTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
                 <event type="task-create">
@@ -121,13 +121,13 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="GT05_CompleteSSQ"></transition>
-		</task-node>
+            </task>
+            <transition to="GT05_CompleteSSQ"></transition>
+        </task-node>
 
-		<task-node name="GT05_CompleteSSQ">
-			<task name="ww:GT05_CompleteSSQTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="GT05_CompleteSSQ">
+            <task name="ww:GT05_CompleteSSQTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
                 <event type="task-create">
@@ -140,14 +140,14 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="../Curation/CU01_CompleteMapping" name="OK"></transition>
-			<transition to="GT06_ProvideSSQInfo" name="NeedMoreInfo"></transition>
-		</task-node>
+            </task>
+            <transition to="../Curation/CU01_CompleteMapping" name="OK"></transition>
+            <transition to="GT06_ProvideSSQInfo" name="NeedMoreInfo"></transition>
+        </task-node>
 
-		<task-node name="GT06_ProvideSSQInfo">
-			<task name="ww:GT06_ProvideSSQInfoTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="GT06_ProvideSSQInfo">
+            <task name="ww:GT06_ProvideSSQInfoTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeLiaison}</actor>
                 </assignment>
                 <event type="task-create">
@@ -160,12 +160,12 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="GT05_CompleteSSQ"></transition>
-		</task-node>
-	</super-state>
+            </task>
+            <transition to="GT05_CompleteSSQ"></transition>
+        </task-node>
+    </super-state>
 
-	<super-state name="Curation">
+    <super-state name="Curation">
         <event type="superstate-enter">
             <script>
                 <variable name="ww_studyStatus" access="write"/>
@@ -175,9 +175,9 @@
             </script>
         </event>
 
-		<task-node name="CU01_CompleteMapping">
-			<task name="ww:CU01_CompleteMappingTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="CU01_CompleteMapping">
+            <task name="ww:CU01_CompleteMappingTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
                 <event type="task-create">
@@ -190,9 +190,9 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="CU02_RunProcessing" name="OK">
-                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+            </task>
+            <transition to="CU02_RunProcessing" name="OK">
+<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
                         <variable name="ww_problemDesc" access="write"/>
                         <variable name="ww_problemResolution" access="write"/>
@@ -201,15 +201,15 @@
                             ww_problemResolution = "";
                         </expression>
                     </script>
-                </action>
-			</transition>
-			<transition to="CU05_ResolveMappingProblem" name="HavaAProblem"></transition>
-			<transition to="fork1" name="NeedMoreInfo"></transition>
-		</task-node>
+                </action>-->
+            </transition>
+            <transition to="CU05_ResolveMappingProblem" name="HavaAProblem"></transition>
+            <transition to="CU04_ProvideMappingInfo" name="NeedMoreInfo"></transition>
+        </task-node>
 
-		<task-node name="CU02_RunProcessing">
-			<task name="ww:CU02_RunProcessingTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="CU02_RunProcessing">
+            <task name="ww:CU02_RunProcessingTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
                 <event type="task-create">
@@ -222,9 +222,9 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="CU03_UploadOutputs" name="OK">
-                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+            </task>
+            <transition to="CU03_UploadOutputs" name="OK">
+<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
                         <variable name="ww_problemDesc" access="write"/>
                         <variable name="ww_problemResolution" access="write"/>
@@ -233,14 +233,14 @@
                             ww_problemResolution = "";
                         </expression>
                     </script>
-                </action>
-			</transition>
-			<transition to="CU06_ResolveProcessingProblem" name="HavaAProblem"></transition>
-		</task-node>
+                </action>-->
+            </transition>
+            <transition to="CU06_ResolveProcessingProblem" name="HavaAProblem"></transition>
+        </task-node>
 
-		<task-node name="CU03_UploadOutputs">
-			<task name="ww:CU03_UploadOutputsTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="CU03_UploadOutputs">
+            <task name="ww:CU03_UploadOutputsTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
                 <event type="task-create">
@@ -253,15 +253,23 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="../Validation/VA01_CuratorValidateOutputs"></transition>
-		</task-node>
+            </task>
+            <transition to="../Validation/VA01_CuratorValidateOutputs"></transition>
+        </task-node>
 
-		<task-node name="CU04_ProvideMappingInfo">
-			<task name="ww:CU04_ProvideMappingInfoTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="CU04_ProvideMappingInfo">
+            <task name="ww:CU04_ProvideMappingInfoTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeLiaison}</actor>
                 </assignment>
+                <timer name="ProvideMappingInfoReminderTimer" duedate="1 minute" transition="SendReminderEmail">
+                    <script>
+                        <variable name="ww_studyID" access="read"/>
+                        <expression>
+                            System.out.println("CU04_ProvideMappingInfo: Timer timed out and email is sent as a reminder to complete CU04_ProvideMappingInfoTask (" + ww_studyID + ")");
+                        </expression>
+                    </script>
+                </timer>
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -272,12 +280,45 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="join1"></transition>
-		</task-node>
+            </task>
+            <transition to="CU01_CompleteMapping"></transition>
+            <transition to="EmailLiaisonAboutMappingInfoRequest" name="SendReminderEmail"></transition>
+        </task-node>
 
-		<task-node name="CU05_ResolveMappingProblem">
-			<task name="ww:CU05_ResolveMappingProblemTask" swimlane="DataManagers">
+        <node name="EmailLiaisonAboutMappingInfoRequest">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_studyID" access="read"/>
+                    <expression>
+                        System.out.println("EmailLiaisonAboutMappingInfoRequest: About to send reminder email about completing CU04_ProvideMappingInfoTask (" + ww_studyID + ")");
+                    </expression>
+                </script>
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_mapping_info_request_email.ftl");
+                        var txtMail = "";
+                        if (template != null) {
+                            var args = [];
+                            args["studyID"] = ww_studyID;
+                            txtMail = bpm_package.children[0].processTemplate(template, args);
+                        } else {
+                            txtMail = "You have a task for study (" + ww_studyID + ") to provide more mapping info, please attend to it.";
+                        }
+
+                        var mail = actions.create("mail");
+                        mail.parameters.to = ww_assigneeLiaison.properties.email;
+                        mail.parameters.from = "alfresco@wwarn.org";
+                        mail.parameters.subject = "Provide mapping info (" + ww_studyID + ")";
+                        mail.parameters.text = txtMail;
+                        mail.execute(bpm_package);
+                    </script>
+                </action>
+            </event>
+            <transition to="CU04_ProvideMappingInfo"></transition>
+        </node>
+
+        <task-node name="CU05_ResolveMappingProblem">
+            <task name="ww:CU05_ResolveMappingProblemTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -288,29 +329,12 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="CU01_CompleteMapping"></transition>
-		</task-node>
+            </task>
+            <transition to="CU01_CompleteMapping"></transition>
+        </task-node>
 
-		<node name="EmailLiaisonAboutMappingInfoRequest">
-			<transition to="join1"></transition>
-		</node>
-
-		<state name="Wait2Weeks">
-			<transition to="EmailLiaisonAboutMappingInfoRequest"></transition>
-		</state>
-
-		<fork name="fork1">
-			<transition to="Wait2Weeks" name="StartTimer"></transition>
-			<transition to="CU04_ProvideMappingInfo" name="ProvideMappingInfo"></transition>
-		</fork>
-
-		<join name="join1">
-			<transition to="CU01_CompleteMapping"></transition>
-		</join>
-
-		<task-node name="CU06_ResolveProcessingProblem">
-			<task name="ww:CU06_ResolveProcessingProblemTask" swimlane="DataManagers">
+        <task-node name="CU06_ResolveProcessingProblem">
+            <task name="ww:CU06_ResolveProcessingProblemTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -321,12 +345,12 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="CU02_RunProcessing"></transition>
-		</task-node>
-	</super-state>
+            </task>
+            <transition to="CU02_RunProcessing"></transition>
+        </task-node>
+    </super-state>
 
-	<super-state name="Validation">
+    <super-state name="Validation">
         <event type="superstate-enter">
             <script>
                 <variable name="ww_studyStatus" access="write"/>
@@ -336,9 +360,9 @@
             </script>
         </event>
 
-		<task-node name="VA01_CuratorValidateOutputs">
-			<task name="ww:VA01_CuratorValidateOutputsTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="VA01_CuratorValidateOutputs">
+            <task name="ww:VA01_CuratorValidateOutputsTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
                 <event type="task-create">
@@ -351,9 +375,9 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="VA02_DataManagerValidateOutputs" name="OK">
-                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+            </task>
+            <transition to="VA02_DataManagerValidateOutputs" name="OK">
+<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
                         <variable name="ww_problemDesc" access="write"/>
                         <variable name="ww_problemResolution" access="write"/>
@@ -362,13 +386,13 @@
                             ww_problemResolution = "";
                         </expression>
                     </script>
-                </action>
-			</transition>
-			<transition to="VA03_ResolveOutputsProblem" name="HavaAProblem"></transition>
-		</task-node>
+                </action>-->
+            </transition>
+            <transition to="VA03_ResolveOutputsProblem" name="HavaAProblem"></transition>
+        </task-node>
 
-		<task-node name="VA02_DataManagerValidateOutputs">
-			<task name="ww:VA02_DataManagerValidateOutputsTask" swimlane="DataManagers">
+        <task-node name="VA02_DataManagerValidateOutputs">
+            <task name="ww:VA02_DataManagerValidateOutputsTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -379,10 +403,10 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="VA03_ResolveOutputsProblem" name="HavaAProblem"></transition>
-			<transition to="../Approval/AP01_AssignCentreHead" name="OK">
-                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+            </task>
+            <transition to="VA03_ResolveOutputsProblem" name="HavaAProblem"></transition>
+            <transition to="../Approval/AP01_AssignCentreHead" name="OK">
+<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
                         <variable name="ww_problemDesc" access="write"/>
                         <variable name="ww_problemResolution" access="write"/>
@@ -391,12 +415,12 @@
                             ww_problemResolution = "";
                         </expression>
                     </script>
-                </action>
-			</transition>
-		</task-node>
+                </action>-->
+            </transition>
+        </task-node>
 
-		<task-node name="VA03_ResolveOutputsProblem">
-			<task name="ww:VA03_ResolveOutputsProblemTask" swimlane="DataManagers">
+        <task-node name="VA03_ResolveOutputsProblem">
+            <task name="ww:VA03_ResolveOutputsProblemTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -407,13 +431,13 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="../Curation/CU05_ResolveMappingProblem" name="MappingProblem"></transition>
-			<transition to="../Curation/CU06_ResolveProcessingProblem" name="ProcessorProblem"></transition>
-		</task-node>
-	</super-state>
+            </task>
+            <transition to="../Curation/CU05_ResolveMappingProblem" name="MappingProblem"></transition>
+            <transition to="../Curation/CU06_ResolveProcessingProblem" name="ProcessorProblem"></transition>
+        </task-node>
+    </super-state>
 
-	<super-state name="Approval">
+    <super-state name="Approval">
         <event type="superstate-enter">
             <script>
                 <variable name="ww_studyStatus" access="write"/>
@@ -423,9 +447,9 @@
             </script>
         </event>
 
-		<task-node name="AP01_AssignCentreHead">
-			<task name="ww:AP01_AssignCentreHeadTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="AP01_AssignCentreHead">
+            <task name="ww:AP01_AssignCentreHeadTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
                 <event type="task-create">
@@ -438,13 +462,13 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="AP02_CheckReport"></transition>
-		</task-node>
+            </task>
+            <transition to="AP02_CheckReport"></transition>
+        </task-node>
 
-		<task-node name="AP02_CheckReport">
-			<task name="ww:AP02_CheckReportTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="AP02_CheckReport">
+            <task name="ww:AP02_CheckReportTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCentreHead}</actor>
                 </assignment>
                 <event type="task-create">
@@ -457,9 +481,9 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="AP03_ProvideOutputsEmailInfo" name="OK">
-                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+            </task>
+            <transition to="AP03_ProvideOutputsEmailInfo" name="OK">
+<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
                         <variable name="ww_problemDesc" access="write"/>
                         <variable name="ww_problemResolution" access="write"/>
@@ -468,18 +492,14 @@
                             ww_problemResolution = "";
                         </expression>
                     </script>
-                </action>
-			</transition>
-			<transition to="../Validation/VA03_ResolveOutputsProblem" name="HavAProblem"></transition>
-		</task-node>
+                </action>-->
+            </transition>
+            <transition to="../Validation/VA03_ResolveOutputsProblem" name="HavAProblem"></transition>
+        </task-node>
 
-		<node name="EmailContributorAboutOutputs">
-			<transition to="AP04_ReceiveApproval"></transition>
-		</node>
-
-		<task-node name="AP03_ProvideOutputsEmailInfo">
-			<task name="ww:AP03_ProvideOutputsEmailInfoTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <task-node name="AP03_ProvideOutputsEmailInfo">
+            <task name="ww:AP03_ProvideOutputsEmailInfoTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeLiaison}</actor>
                 </assignment>
                 <event type="task-create">
@@ -492,13 +512,45 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="EmailContributorAboutOutputs"></transition>
-		</task-node>
+            </task>
+            <transition to="EmailContributorAboutOutputs"></transition>
+        </task-node>
 
-		<task-node name="AP04_ReceiveApproval">
-			<task name="ww:AP04_ReceiveApprovalTask" >
-			 	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+        <node name="EmailContributorAboutOutputs">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_studyID" access="read"/>
+                    <expression>
+                        System.out.println("EmailContributorAboutOutputs: About to send email to contributor about outputs (" + ww_studyID + ")");
+                    </expression>
+                </script>
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl");
+                        var txtMail = "";
+                        if (template != null) {
+                            var args = [];
+                            args["studyID"] = ww_studyID;
+                            txtMail = bpm_package.children[0].processTemplate(template, args);
+                        } else {
+                            txtMail = "The following output files have been uploaded by curators for study (" + ww_studyID + ")."
+                        }
+
+                        var mail = actions.create("mail");
+                        mail.parameters.to = ww_assigneeLiaison.properties.email;
+                        mail.parameters.from = "alfresco@wwarn.org";
+                        mail.parameters.subject = "Output files (" + ww_studyID + ")";
+                        mail.parameters.text = txtMail;
+                        mail.execute(bpm_package);
+                    </script>
+                </action>
+            </event>
+            <transition to="AP04_ReceiveApproval"></transition>
+        </node>
+
+        <task-node name="AP04_ReceiveApproval">
+            <task name="ww:AP04_ReceiveApprovalTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeLiaison}</actor>
                 </assignment>
                 <event type="task-create">
@@ -511,14 +563,18 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="../Validation/VA03_ResolveOutputsProblem" name="Rejected"></transition>
-			<transition to="AP05_SendOutputsToModule" name="ApprovedAndHide"></transition>
-			<transition to="UploadToExplorer" name="ApprovedAndDisplay"></transition>
-		</task-node>
+            </task>
+            <transition to="../Validation/VA03_ResolveOutputsProblem" name="Rejected"></transition>
+            <transition to="AP05_SendOutputsToModule" name="ApprovedAndHide"></transition>
+            <transition to="UploadToExplorer" name="ApprovedAndDisplay"></transition>
+        </task-node>
 
-		<task-node name="AP05_SendOutputsToModule">
-			<task name="ww:AP05_SendOutputsToModuleTask" swimlane="DataManagers">
+        <node name="UploadToExplorer">
+            <transition to="AP05_SendOutputsToModule"></transition>
+        </node>
+
+        <task-node name="AP05_SendOutputsToModule">
+            <task name="ww:AP05_SendOutputsToModuleTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
@@ -529,15 +585,11 @@
                         </script>
                     </action>
                 </event>
-			</task>
-			<transition to="../End"></transition>
-		</task-node>
+            </task>
+            <transition to="../End"></transition>
+        </task-node>
+    </super-state>
 
-		<node name="UploadToExplorer">
-			<transition to="AP05_SendOutputsToModule"></transition>
-		</node>
-	</super-state>
-
-	<end-state name="End"></end-state>
+    <end-state name="End"></end-state>
 
 </process-definition>
