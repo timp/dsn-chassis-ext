@@ -106,7 +106,7 @@
        */
       onTypeFilterClicked: function MyStudies_onTypeFilterClicked(p_oEvent)
       {
-    	 var query = 'select f.*, a.*, t.* from wc:study_folder as f join wc:study_folder_data as a on f.cmis:objectid = a.cmis:objectid';
+    	 var query = 'select f.*, a.*, t.* from wc:studyFolder as f join wc:studyFolderData as a on f.cmis:objectid = a.cmis:objectid';
  		 query += ' join cm:titled as t on f.cmis:objectid = t.cmis:objectid';
     	 var xmlquery = '<cmis:query xmlns:cmis="http://docs.oasis-open.org/ns/cmis/core/200908/"><cmis:statement><![CDATA['+query+']]></cmis:statement></cmis:query>';
     	  Alfresco.util.Ajax.request(
@@ -169,7 +169,7 @@
                article.createdOn = propertyEl.firstChild.firstChild.nodeValue;
             } else if (propertyDefinitionId == "cmis:objectId") {
                article.sitePreset = propertyEl.firstChild.firstChild.nodeValue;
-            } else if (propertyDefinitionId == "wc:study_info_link") {
+            } else if (propertyDefinitionId == "wc:studyInfoLink") {
                article.chassisLink = propertyEl.firstChild.firstChild.nodeValue;
             } else if (propertyDefinitionId == "wc:modules") {
             	var mods = propertyEl.firstElementChild;

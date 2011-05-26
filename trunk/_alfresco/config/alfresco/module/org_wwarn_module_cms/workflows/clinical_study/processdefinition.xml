@@ -20,39 +20,47 @@
     -->
 
     <start-state name="Start">
-        <task name="ww:startClinicalProcessTask" swimlane="initiator">
-            <event type="task-create">
-                <!-- This creates the ww_phase process variable -->
-                <script>
-                    <variable name="ww_studyStatus" access="write"/>
-                    <expression>
-                        ww_studyStatus = "Initiated";
-                    </expression>
-                </script>
-            </event>
-        </task>
-
+        <task name="ww:startClinicalProcessTask" swimlane="initiator"></task>
         <transition to="GateKeeping/GT01_CheckStudy"></transition>
+        <event type="node-leave">
+             <!-- Note. cannot use event "node-enter or task-create", process id will be null-->
+            <!-- AlfrescoJavaScript supports only one writable variable (i.e. access="write") so we do not use variable and expression syntax,
+                instead all variables are available -->
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    var status = "Initiated";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var procId = executionContext.processInstance.getId();
+                    var studyFolder = bpm_package.children[0].parent;
+                    if (studyFolder != null) {
+                        var properties = new Array();
+                        properties["cm:name"] = "clinicalWorkflowInfo-" + procId;
+                        properties["wc:jbpmId"] = procId;
+                        properties["wc:studyStatus"] = status;
+                        var workflowInfoNode = studyFolder.createNode(null, "wc:workflowInfo", properties, "wc:workflowInfos");
+                        executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
+                    }
+                </script>
+            </action>
+        </event>
     </start-state>
 
     <super-state name="GateKeeping">
         <event type="superstate-enter">
-            <script>
-                <variable name="ww_studyStatus" access="write"/>
-                <expression>
-                    ww_studyStatus = "Gate Keeping";
-                </expression>
-            </script>
             <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                 <script>
-                    <variable name="ww_studyFolderLink" access="write"/>
-                    <expression>
-                        var studyfolder = bpm_package.children[0].parent;
-                        if (studyfolder != null) {
-                            <!-- http://localhost:8080/share/page/repository#filter=path|/WWARN/Studies/KLMNO&page=1-->
-                            ww_studyFolderLink = "http://localhost:8080/share/page/repository#filter=path|/WWARN/Studies/" + studyfolder.name + "&amp;page=1";
-                        } <!-- studyfolder.getUrl(); -->
-                    </expression>
+                    <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
+                    var studyFolder = bpm_package.children[0].parent;
+                    if (studyFolder != null) {
+                        executionContext.setVariable("ww_studyFolderLink", "http://localhost:8080/share/page/repository?path=WWARN%2FStudies%2F" + studyFolder.name);
+                    }
+
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Gate Keeping";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
                 </script>
             </action>
         </event>
@@ -69,10 +77,60 @@
                         </script>
                     </action>
                 </event>
+                <event type="task-end">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            executionContext.setVariable("currentAssignedUserNodeRef", people.getPerson(taskInstance.actorId).nodeRef);
+                        </script>
+                    </action>
+                </event>
             </task>
-            <transition to="GT02_AssignCurator" name="OK"></transition>
+            <transition to="CuratorAssigned?" name="OK"></transition>
+            <transition to="CuratorAssigned?" name="OKAndAssignMeAsCuratorAndLiaison">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        <!-- We should set the user that is completing this task (GT01_CheckStudy) to Curator and Liaison -->
+                        executionContext.setVariable("ww_assigneeCurator", executionContext.getVariable("currentAssignedUserNodeRef"));
+                        executionContext.setVariable("ww_assigneeLiaison", executionContext.getVariable("currentAssignedUserNodeRef"));
+                    </script>
+                </action>
+            </transition>
             <transition to="GT03_AskForMoreStudyInfo" name="NotOK"></transition>
+            <event type="node-leave">
+                <!-- Using typeof to get the type of variable, if it is undefined then we do not do anything. If we do not do this then we get exception undefined variable -->
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        <!-- Set study info req and resp in Workflow Info object that is linked to the study folder -->
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_moreStudyInfoReq) !== 'undefined') workflowInfoNode.properties["wc:moreStudyInfoReq"] = wc_moreStudyInfoReq;
+                        if (typeof(wc_moreStudyInfoResponse) !== 'undefined') workflowInfoNode.properties["wc:moreStudyInfoResponse"] = wc_moreStudyInfoResponse;
+                        workflowInfoNode.save();
+
+                        if (typeof(ww_assigneeCuratorTemp) !== 'undefined') {
+                            <!-- Curator has been set in this task so make sure the task for setting this assignee is skipped later -->
+                            executionContext.setVariable("ww_assigneeCurator", ww_assigneeCuratorTemp);
+                        }
+
+                        if (typeof(ww_assigneeLiaisonTemp) !== 'undefined') {
+                            <!-- Liaison has been set in this task so make sure the task for setting this assignee is skipped later -->
+                            executionContext.setVariable("ww_assigneeLiaison", ww_assigneeLiaisonTemp);
+                        }
+                    </script>
+                </action>
+            </event>
         </task-node>
+
+        <decision name="CuratorAssigned?">
+            <description>
+                If the curator has already been assigned in GT01_CheckStudy then skip GT02_AssignCurator.
+                Note. The default transition "no" has to be first in this decision node otherwise the condition will
+                always evaluate to true.
+            </description>
+            <transition to="GT02_AssignCurator" name="no"></transition>
+            <transition to="LiaisonAssigned?" name="yes">
+                <condition>#{ww_assigneeCurator != null}</condition>
+            </transition>
+        </decision>
 
         <task-node name="GT02_AssignCurator">
             <task name="ww:GT02_AssignCuratorTask" swimlane="DataManagers">
@@ -87,7 +145,7 @@
                     </action>
                 </event>
             </task>
-            <transition to="GT04_AssignLiaison"></transition>
+            <transition to="LiaisonAssigned?"></transition>
         </task-node>
 
         <task-node name="GT03_AskForMoreStudyInfo">
@@ -105,6 +163,18 @@
             </task>
             <transition to="GT01_CheckStudy"></transition>
         </task-node>
+
+        <decision name="LiaisonAssigned?">
+            <description>
+                If the liaison has already been assigned in GT01_CheckStudy then skip GT04_AssignLiaison.
+                Note. The default transition "no" has to be first in this decision node otherwise the condition will
+                always evaluate to true.
+            </description>
+            <transition to="GT04_AssignLiaison" name="no"></transition>
+            <transition to="GT05_CompleteSSQ" name="yes">
+                <condition>#{ww_assigneeLiaison != null}</condition>
+            </transition>
+        </decision>
 
         <task-node name="GT04_AssignLiaison">
             <task name="ww:GT04_AssignLiaisonTask">
@@ -143,6 +213,16 @@
             </task>
             <transition to="../Curation/CU01_CompleteMapping" name="OK"></transition>
             <transition to="GT06_ProvideSSQInfo" name="NeedMoreInfo"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_moreSSQInfoReq) !== 'undefined') workflowInfoNode.properties["wc:moreSSQInfoReq"] = wc_moreSSQInfoReq;
+                        if (typeof(wc_moreSSQInfoResponse) !== 'undefined') workflowInfoNode.properties["wc:moreSSQInfoResponse"] = wc_moreSSQInfoResponse;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
         </task-node>
 
         <task-node name="GT06_ProvideSSQInfo">
@@ -168,9 +248,9 @@
     <super-state name="Curation">
         <event type="superstate-enter">
             <script>
-                <variable name="ww_studyStatus" access="write"/>
+                <variable name="wc_studyStatus" access="write"/>
                 <expression>
-                    ww_studyStatus = "Curation";
+                    wc_studyStatus = "Curation";
                 </expression>
             </script>
         </event>
@@ -191,20 +271,19 @@
                     </action>
                 </event>
             </task>
-            <transition to="CU02_RunProcessing" name="OK">
-<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                    <script>
-                        <variable name="ww_problemDesc" access="write"/>
-                        <variable name="ww_problemResolution" access="write"/>
-                        <expression>
-                            ww_problemDesc = "";
-                            ww_problemResolution = "";
-                        </expression>
-                    </script>
-                </action>-->
-            </transition>
-            <transition to="CU05_ResolveMappingProblem" name="HavaAProblem"></transition>
+            <transition to="CU02_RunProcessing" name="OK"></transition>
+            <transition to="CU05_ResolveMappingProblem" name="HavAProblem"></transition>
             <transition to="CU04_ProvideMappingInfo" name="NeedMoreInfo"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_moreMappingInfoReq) !== 'undefined') workflowInfoNode.properties["wc:moreMappingInfoReq"] = wc_moreMappingInfoReq;
+                        if (typeof(wc_moreMappingInfoResp) !== 'undefined') workflowInfoNode.properties["wc:moreMappingInfoResp"] = wc_moreMappingInfoResp;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
         </task-node>
 
         <task-node name="CU02_RunProcessing">
@@ -223,19 +302,8 @@
                     </action>
                 </event>
             </task>
-            <transition to="CU03_UploadOutputs" name="OK">
-<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                    <script>
-                        <variable name="ww_problemDesc" access="write"/>
-                        <variable name="ww_problemResolution" access="write"/>
-                        <expression>
-                            ww_problemDesc = "";
-                            ww_problemResolution = "";
-                        </expression>
-                    </script>
-                </action>-->
-            </transition>
-            <transition to="CU06_ResolveProcessingProblem" name="HavaAProblem"></transition>
+            <transition to="CU03_UploadOutputs" name="OK"></transition>
+            <transition to="CU06_ResolveProcessingProblem" name="HavAProblem"></transition>
         </task-node>
 
         <task-node name="CU03_UploadOutputs">
@@ -331,6 +399,16 @@
                 </event>
             </task>
             <transition to="CU01_CompleteMapping"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_mappingProblemDesc) !== 'undefined') workflowInfoNode.properties["wc:mappingProblemDesc"] = wc_mappingProblemDesc;
+                        if (typeof(wc_mappingProblemRes) !== 'undefined') workflowInfoNode.properties["wc:mappingProblemRes"] = wc_mappingProblemRes;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
         </task-node>
 
         <task-node name="CU06_ResolveProcessingProblem">
@@ -347,20 +425,38 @@
                 </event>
             </task>
             <transition to="CU02_RunProcessing"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_processorProblemDesc) !== 'undefined') workflowInfoNode.properties["wc:processorProblemDesc"] = wc_processorProblemDesc;
+                        if (typeof(wc_processorProblemRes) !== 'undefined') workflowInfoNode.properties["wc:processorProblemRes"] = wc_processorProblemRes;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
         </task-node>
     </super-state>
 
     <super-state name="Validation">
         <event type="superstate-enter">
             <script>
-                <variable name="ww_studyStatus" access="write"/>
+                <variable name="wc_studyStatus" access="write"/>
                 <expression>
-                    ww_studyStatus = "Validation";
+                    wc_studyStatus = "Validation";
                 </expression>
             </script>
         </event>
 
         <task-node name="VA01_CuratorValidateOutputs">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_genericProblemDesc" access="write"/>
+                    <expression>
+                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
+                    </expression>
+                </script>
+            </event>
             <task name="ww:VA01_CuratorValidateOutputsTask">
                 <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
@@ -376,22 +472,19 @@
                     </action>
                 </event>
             </task>
-            <transition to="VA02_DataManagerValidateOutputs" name="OK">
-<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                    <script>
-                        <variable name="ww_problemDesc" access="write"/>
-                        <variable name="ww_problemResolution" access="write"/>
-                        <expression>
-                            ww_problemDesc = "";
-                            ww_problemResolution = "";
-                        </expression>
-                    </script>
-                </action>-->
-            </transition>
-            <transition to="VA03_ResolveOutputsProblem" name="HavaAProblem"></transition>
+            <transition to="VA02_DataManagerValidateOutputs" name="OK"></transition>
+            <transition to="VA03_ResolveOutputsProblem" name="HavAProblem"></transition>
         </task-node>
 
         <task-node name="VA02_DataManagerValidateOutputs">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_genericProblemDesc" access="write"/>
+                    <expression>
+                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
+                    </expression>
+                </script>
+            </event>
             <task name="ww:VA02_DataManagerValidateOutputsTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
@@ -404,19 +497,8 @@
                     </action>
                 </event>
             </task>
-            <transition to="VA03_ResolveOutputsProblem" name="HavaAProblem"></transition>
-            <transition to="../Approval/AP01_AssignCentreHead" name="OK">
-<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                    <script>
-                        <variable name="ww_problemDesc" access="write"/>
-                        <variable name="ww_problemResolution" access="write"/>
-                        <expression>
-                            ww_problemDesc = "";
-                            ww_problemResolution = "";
-                        </expression>
-                    </script>
-                </action>-->
-            </transition>
+            <transition to="VA03_ResolveOutputsProblem" name="HavAProblem"></transition>
+            <transition to="../Approval/AP01_AssignCentreHead" name="OK"></transition>
         </task-node>
 
         <task-node name="VA03_ResolveOutputsProblem">
@@ -432,17 +514,35 @@
                     </action>
                 </event>
             </task>
-            <transition to="../Curation/CU05_ResolveMappingProblem" name="MappingProblem"></transition>
-            <transition to="../Curation/CU06_ResolveProcessingProblem" name="ProcessorProblem"></transition>
+            <transition to="../Curation/CU05_ResolveMappingProblem" name="MappingProblem">
+                <!-- Append the generic problem description to the mapping problem description -->
+                <script>
+                   <variable name="ww_genericProblemDesc" access="read"/>
+                   <variable name="wc_mappingProblemDesc" access="read,write"/>
+                   <expression>
+                       wc_mappingProblemDesc = wc_mappingProblemDesc + "\n" + ww_genericProblemDesc;
+                   </expression>
+               </script>
+            </transition>
+            <transition to="../Curation/CU06_ResolveProcessingProblem" name="ProcessorProblem">
+                <!-- Append the generic problem description to the processor problem description -->
+                <script>
+                   <variable name="ww_genericProblemDesc" access="read"/>
+                   <variable name="wc_processorProblemDesc" access="read,write"/>
+                   <expression>
+                       wc_processorProblemDesc = wc_processorProblemDesc + "\n" + ww_genericProblemDesc;
+                   </expression>
+               </script>
+            </transition>
         </task-node>
     </super-state>
 
     <super-state name="Approval">
         <event type="superstate-enter">
             <script>
-                <variable name="ww_studyStatus" access="write"/>
+                <variable name="wc_studyStatus" access="write"/>
                 <expression>
-                    ww_studyStatus = "Approval";
+                    wc_studyStatus = "Approval";
                 </expression>
             </script>
         </event>
@@ -467,6 +567,14 @@
         </task-node>
 
         <task-node name="AP02_CheckReport">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_genericProblemDesc" access="write"/>
+                    <expression>
+                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
+                    </expression>
+                </script>
+            </event>
             <task name="ww:AP02_CheckReportTask">
                 <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCentreHead}</actor>
@@ -482,18 +590,7 @@
                     </action>
                 </event>
             </task>
-            <transition to="AP03_ProvideOutputsEmailInfo" name="OK">
-<!--                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                    <script>
-                        <variable name="ww_problemDesc" access="write"/>
-                        <variable name="ww_problemResolution" access="write"/>
-                        <expression>
-                            ww_problemDesc = "";
-                            ww_problemResolution = "";
-                        </expression>
-                    </script>
-                </action>-->
-            </transition>
+            <transition to="AP03_ProvideOutputsEmailInfo" name="OK"></transition>
             <transition to="../Validation/VA03_ResolveOutputsProblem" name="HavAProblem"></transition>
         </task-node>
 
@@ -537,7 +634,7 @@
                         }
 
                         var mail = actions.create("mail");
-                        mail.parameters.to = ww_assigneeLiaison.properties.email;
+                        mail.parameters.to = initiator.properties.email; <!-- change to contributor -->
                         mail.parameters.from = "alfresco@wwarn.org";
                         mail.parameters.subject = "Output files (" + ww_studyID + ")";
                         mail.parameters.text = txtMail;
@@ -590,6 +687,15 @@
         </task-node>
     </super-state>
 
-    <end-state name="End"></end-state>
+    <end-state name="End">
+        <event type="process-end">
+            <script>
+                <variable name="wc_studyStatus" access="write"/>
+                <expression>
+                    wc_studyStatus = "Completed";
+                </expression>
+            </script>
+        </event>
+    </end-state>
 
 </process-definition>
