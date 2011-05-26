@@ -25,7 +25,7 @@
         <!--
         World region list, used in the Study Folder type
         -->
-        <constraint name="wc:region_options" type="LIST">
+        <constraint name="wc:regionOptions" type="LIST">
             <parameter name="allowedValues">
                 <list>
                     <value></value>
@@ -47,7 +47,7 @@
         <!--
         Countries list, used in the Study Folder type
         -->
-        <constraint name="wc:country_options" type="LIST">
+        <constraint name="wc:countryOptions" type="LIST">
             <parameter name="allowedValues">
                 <list>
                     <value></value>
@@ -304,7 +304,7 @@
         <!--
             Module list, used in the Study Folder type
             -->
-        <constraint name="wc:module_options" type="LIST">
+        <constraint name="wc:moduleOptions" type="LIST">
             <parameter name="allowedValues">
                 <list>
                     <value></value>
@@ -319,7 +319,7 @@
         <!--
             Study File Source
             -->
-        <constraint name="wc:file_source_options" type="LIST">
+        <constraint name="wc:fileSourceOptions" type="LIST">
             <parameter name="allowedValues">
                 <list>
                     <value></value>
@@ -339,12 +339,25 @@
         <!--
               The Study Folder type is applied to all study folders under /Company Home/WWARN/Studies
               -->
-        <type name="wc:study_folder">
+        <type name="wc:studyFolder">
             <title>WWARN Study Folder</title>
             <parent>cm:folder</parent>
             <mandatory-aspects>
-                <aspect>wc:study_folder_data</aspect>
-                <aspect>wc:acknowledgements</aspect>
+                <aspect>wc:studyFolderData</aspect>
+                <aspect>wc:workflowInfos</aspect>
+                <aspect>wc:admins</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <!--
+            The Workflow Information type. A study folder is associated with zero or more of these
+            (currently only one - clinical
+            -->
+        <type name="wc:workflowInfo">
+            <title>WWARN Workflow Information</title>
+            <parent>cm:cmobject</parent> <!-- extending this type makes the node invisible, which is what we want -->
+            <mandatory-aspects>
+                <aspect>wc:workflowInfoData</aspect>
             </mandatory-aspects>
         </type>
 
@@ -352,11 +365,11 @@
               A Generic Study File (base type).
               All other study file types extend this type.
               -->
-        <type name="wc:study_file">
+        <type name="wc:studyFile">
             <title>Generic Study File</title>
             <parent>cm:content</parent>
             <mandatory-aspects>
-                <aspect>wc:file_data</aspect>
+                <aspect>wc:fileData</aspect>
                 <aspect>wc:derivations</aspect>
             </mandatory-aspects>
         </type>
@@ -364,17 +377,17 @@
         <!--
               A Data File belonging to a study.
               -->
-        <type name="wc:data_file">
+        <type name="wc:dataFile">
             <title>Data File</title>
-            <parent>wc:study_file</parent>
+            <parent>wc:studyFile</parent>
         </type>
 
         <!--
               A Data Dictionary study file.
               -->
-        <type name="wc:data_dictionary">
+        <type name="wc:dataDictionary">
             <title>Data Dictionary</title>
-            <parent>wc:study_file</parent>
+            <parent>wc:studyFile</parent>
         </type>
 
         <!--
@@ -382,7 +395,7 @@
               -->
         <type name="wc:protocol">
             <title>Protocol</title>
-            <parent>wc:study_file</parent>
+            <parent>wc:studyFile</parent>
         </type>
 
         <!--
@@ -390,7 +403,7 @@
               -->
         <type name="wc:publication">
             <title>Publication</title>
-            <parent>wc:study_file</parent>
+            <parent>wc:studyFile</parent>
         </type>
 
         <!--
@@ -399,7 +412,7 @@
               -->
         <type name="wc:other">
             <title>Other</title>
-            <parent>wc:study_file</parent>
+            <parent>wc:studyFile</parent>
         </type>
 
         <!--
@@ -408,16 +421,16 @@
               -->
         <type name="wc:output">
             <title>Output</title>
-            <parent>wc:study_file</parent>
+            <parent>wc:studyFile</parent>
         </type>
 
         <!--
               A Study Info file.
               XML metadata for the study.
               -->
-        <type name="wc:study_info">
+        <type name="wc:studyInfo">
             <title>Study Info</title>
-            <parent>wc:study_file</parent>
+            <parent>wc:studyFile</parent>
         </type>
     </types>
 
@@ -430,7 +443,7 @@
         <!--
               Extra metadata for a study folder type.
               -->
-        <aspect name="wc:study_folder_data">
+        <aspect name="wc:studyFolderData">
             <title>WWARN Study Folder</title>
             <properties>
                 <property name="wc:modules">
@@ -438,14 +451,14 @@
                     <type>d:text</type>
                     <multiple>true</multiple>
                     <constraints>
-                        <constraint ref="wc:module_options"/>
+                        <constraint ref="wc:moduleOptions"/>
                     </constraints>
                 </property>
                 <property name="wc:region">
                     <title>The region where the study originated</title>
                     <type>d:text</type>
                     <constraints>
-                        <constraint ref="wc:region_options"/>
+                        <constraint ref="wc:regionOptions"/>
                     </constraints>
                 </property>
                 <property name="wc:countries">
@@ -453,10 +466,10 @@
                     <type>d:text</type>
                     <multiple>true</multiple>
                     <constraints>
-                        <constraint ref="wc:country_options"/>
+                        <constraint ref="wc:countryOptions"/>
                     </constraints>
                 </property>
-                <property name="wc:study_info_link">
+                <property name="wc:studyInfoLink">
                     <title>Link to the study metadata XML in Chassis</title>
                     <type>d:text</type>
                 </property>
@@ -466,33 +479,117 @@
         <!--
               Extra metadata for a study file type.
               -->
-        <aspect name="wc:file_data">
+        <aspect name="wc:fileData">
             <title>File Data</title>
             <properties>
-                <property name="wc:file_id">
+                <property name="wc:fileId">
                     <title>File ID</title>
                     <type>d:text</type>
                     <mandatory>true</mandatory>
                 </property>
-                <property name="wc:file_source">
+                <property name="wc:fileSource">
                     <title>File Source</title>
                     <type>d:text</type>
                     <mandatory>true</mandatory>
                     <constraints>
-                        <constraint ref="wc:file_source_options"/>
+                        <constraint ref="wc:fileSourceOptions"/>
                     </constraints>
                 </property>
             </properties>
         </aspect>
 
         <!--
-            A peer association to users that are the creators of this study (acknowledgements)
+            Workflow metadata collected when workflow is executed.
+            A study can have more than one workflow associated with it (at the moment only clinical though)
+        -->
+
+        <aspect name="wc:workflowInfoData">
+            <title>Workflow Information</title>
+            <properties>
+                <property name="wc:jbpmId"> <!-- Can be used to query for information about a workflow instance, for example via the Workflow Console -->
+                    <title>Process instance ID</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:studyStatus">
+                    <title>Status indicating what phase the process is in</title>
+                    <type>d:text</type>
+                </property>
+                <!-- The more info req & resp and the problem desc & resolution fields can contain
+                    more than one more info req & resp and problem desc and res,
+                    if you go through these tasks more than once -->
+                <property name="wc:moreStudyInfoReq">
+                    <title>More study info request</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreStudyInfoResponse">
+                    <title>More study info response</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreSSQInfoReq">
+                    <title>More SSQ info request</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreSSQInfoResponse">
+                    <title>More SSQ info response</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreMappingInfoReq">
+                    <title>More mapping info request</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreMappingInfoResp">
+                    <title>More mapping info response</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:mappingProblemDesc">
+                    <title>Mapping problem description</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:mappingProblemRes">
+                    <title>Mapping problem resolution</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:processorProblemDesc">
+                    <title>Processor problem description</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:processorProblemRes">
+                    <title>Processor problem resolution</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </aspect>
+
+        <!--
+            A parent - child association that links a study (parent) with zero or more workflow info objects (children)
+            Source Study Folder (one) ==> (many) Workflow Info
+            (Note. the workflow info data should be cascade deleted if the study folder is deleted, hence parent -> child)
+        -->
+        <aspect name="wc:workflowInfos">
+            <title>Derivations</title>
+            <associations>
+                <child-association name="wc:workflowInfos">
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>false</many>
+                    </source>
+                    <target>
+                        <class>wc:workflowInfo</class>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </target>
+                </child-association>
+            </associations>
+        </aspect>
+
+        <!--
+            A peer association to users that are the creators of this study (admins)
             Source Study (many) ==> (many) Target Person
         -->
-        <aspect name="wc:acknowledgements">
-            <title>Acknowledgements</title>
+        <aspect name="wc:admins">
+            <title>Admins (creators)</title>
             <associations>
-                <association name="wc:acknowledgements">
+                <association name="wc:admins">
                     <source>
                         <mandatory>true</mandatory>
                         <many>true</many>
@@ -515,7 +612,7 @@
             <title>Derivations</title>
             <properties>
                 <!-- Comment about the association -->
-                <property name="wc:derivations_comments">
+                <property name="wc:derivationsComments">
                     <title>Derivations comment</title>
                     <type>d:text</type>
                 </property>
@@ -524,10 +621,10 @@
                 <association name="wc:derivations">
                     <source>
                         <mandatory>true</mandatory>
-                        <many>false</many>
+                        <many>true</many>
                     </source>
                     <target>
-                        <class>wc:output</class>
+                        <class>wc:studyFile</class>
                         <mandatory>false</mandatory>
                         <many>true</many>
                     </target>
