@@ -174,7 +174,7 @@
             } else if (propertyDefinitionId == "cmis:objectId") {
                article.sitePreset = propertyEl.firstChild.firstChild.nodeValue;
             } else if (propertyDefinitionId == "wc:studyInfoLink") {
-            	if (propertyEl.firstChild.firstChild) {
+            	if (propertyEl.firstChild && propertyEl.firstChild.firstChild) {
             		article.chassisLink = propertyEl.firstChild.firstChild.nodeValue;
             	}
             } else if (propertyDefinitionId == "wc:modules") {
