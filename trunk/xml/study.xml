@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><atom:entry xmlns:atom="http://www.w3.org/2005/Atom">
+    <atom:id>http://localhost:8080/repository/service/content/studies/JXFNU</atom:id>
+    <atom:published>2011-04-15T13:05:42.903+01:00</atom:published>
+    <atom:updated>2011-04-15T13:09:06.262+01:00</atom:updated>
+    <atom:author>
+        <atom:email>cora@example.org</atom:email>
+    </atom:author>
+    <atom:title type="text">s1-changed</atom:title>
+    <app:control xmlns:app="http://www.w3.org/2007/app">
+        <draft>no</draft>
+    </app:control>
+    <atom:content type="application/vnd.chassis-manta+xml">
+        <study profile="http://www.cggh.org/2010/chassis/manta/1.2">
+            <ui-info>
+                <wizard-pane-to-show>confirmation</wizard-pane-to-show>
+            </ui-info>
+            <registrant-has-agreed-to-the-terms>yes</registrant-has-agreed-to-the-terms>
+            <study-is-published>Yes</study-is-published>
+            <explorer-display>notset</explorer-display>
+            <publications>
+                <publication>
+                    <publication-title>My title</publication-title>
+                    <pmid>15388456</pmid>
+                    <publication-references>
+                        <publication-reference type="url">gggggggggg</publication-reference>
+                        <publication-reference type="doi">10.1128/AAC.48.10.3940-3943.2004</publication-reference>
+                    </publication-references>
+                </publication>
+                <publication>
+                    <publication-title>my title 2</publication-title>
+                    <pmid>xxxxxxxxxxxxxxx</pmid>
+                    <publication-references/>
+                </publication>
+            </publications>
+            <acknowledgements>
+                <institution-ack>
+                    <institution-name>Department of Infectious and Tropical Diseases, London School of Hygiene and Tropical Medicine, Keppel St., London WC1E 7HT, United Kingdom.</institution-name>
+                    <institution-websites>
+                        <institution-url>inst url</institution-url>
+                    </institution-websites>
+                </institution-ack>
+                <person>
+                    <first-name>Rachel L</first-name>
+                    <middle-name/>
+                    <family-name>Hallett</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Colin J</first-name>
+                    <middle-name/>
+                    <family-name>Sutherland</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Neal</first-name>
+                    <middle-name/>
+                    <family-name>Alexander</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Rosalynn</first-name>
+                    <middle-name/>
+                    <family-name>Ord</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Musa</first-name>
+                    <middle-name/>
+                    <family-name>Jawara</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Chris J</first-name>
+                    <middle-name/>
+                    <family-name>Drakeley</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Margaret</first-name>
+                    <middle-name/>
+                    <family-name>Pinder</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Gijs</first-name>
+                    <middle-name/>
+                    <family-name>Walraven</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Geoffrey A T</first-name>
+                    <middle-name/>
+                    <family-name>Targett</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+                <person>
+                    <first-name>Ali</first-name>
+                    <middle-name/>
+                    <family-name>Alloueche</family-name>
+                    <email-address/>
+                    <institution/>
+                    <person-is-contactable/>
+                </person>
+            </acknowledgements>
+            <curator-notes/>
+            <study-status>new</study-status>
+            <modules>clinical molecular invitro pharmacology</modules>
+        </study>
+    </atom:content>
+    <ar:comment xmlns:ar="http://purl.org/atompub/revision/1.0">
+        <atom:author>
+            <atom:email>curtis@example.org</atom:email>
+        </atom:author>
+        <atom:updated>2011-04-15T13:09:06.262+01:00</atom:updated>
+        <atom:summary/>
+    </ar:comment>
+    <manta:id xmlns:manta="http://www.cggh.org/2010/chassis/manta/xmlns">JXFNU</manta:id>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="GET, PUT" rel="self" type="application/atom+xml;type=entry" href="http://localhost:8080/repository/service/content/studies/JXFNU"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="GET, PUT" rel="edit" type="application/atom+xml;type=entry" href="http://localhost:8080/repository/service/content/studies/JXFNU"/>
+    <atom:link rel="service" type="application/atomsvc+xml" href="http://localhost:8080/repository/service/"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="GET" rel="http://purl.org/atombeat/rel/security-descriptor" href="http://localhost:8080/repository/service/security/studies/JXFNU" type="application/atom+xml;type=entry"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="" rel="history" href="http://localhost:8080/repository/service/history/studies/JXFNU" type="application/atom+xml;type=feed"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="GET, POST" rel="http://www.cggh.org/2010/chassis/terms/submittedMedia" href="http://localhost:8080/repository/service/content/media/submitted/JXFNU" type="application/atom+xml;type=feed"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="GET" rel="http://www.cggh.org/2010/chassis/terms/curatedMedia" href="http://localhost:8080/repository/service/content/media/curated/JXFNU" type="application/atom+xml;type=feed"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="" rel="http://www.cggh.org/2010/chassis/terms/derivations" href="http://localhost:8080/repository/service/content/derivations/JXFNU" type="application/atom+xml;type=feed"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="" rel="http://www.cggh.org/2010/chassis/terms/personalDataReviews" href="http://localhost:8080/repository/service/content/reviews/personal-data/JXFNU" type="application/atom+xml;type=feed"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="GET, PUT" rel="http://www.cggh.org/2010/chassis/terms/studyInfo" href="http://localhost:8080/repository/service/content/study-info/JXFNU" type="application/atom+xml;type=entry"/>
+    <atom:link xmlns:atombeat="http://purl.org/atombeat/xmlns" atombeat:allow="GET, PUT" rel="http://www.cggh.org/2010/chassis/terms/groups" href="http://localhost:8080/repository/service/content/groups/JXFNU" type="application/atom+xml;type=entry"/>
+</atom:entry>
