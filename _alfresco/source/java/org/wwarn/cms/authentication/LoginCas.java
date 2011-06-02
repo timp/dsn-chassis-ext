@@ -45,9 +45,9 @@ import org.jasig.cas.client.validation.TicketValidationException;
  * trunk\_alfresco\config\alfresco\extension\templates\webscripts\org\wwarn\authentication
  */
 public class LoginCas extends DeclarativeWebScript {
-    private final static String CAS_WEBAPP_URL = "http://cloud1.cggh.org/sso";
+    private final static String CAS_WEBAPP_URL = "https://www.wwarn.org/sso";
     //private final static String ALFRESCO_WEBAPP_URL = "http://46.137.92.130:8080/alfresco";
-    private final static String ALFRESCO_WEBAPP_URL = "http://IXDV1210.ixxus.co.uk:8080/alfresco";
+    private final static String ALFRESCO_WEBAPP_URL = "https://129.67.45.218:8080/alfresco";
 
     private AuthenticationService authenticationService;
     private AuthenticationComponent authenticationComponent;
