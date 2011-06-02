@@ -11,7 +11,7 @@
 <link rel="down" href="http://129.67.45.57:8080/alfresco/service/cmis/s/workspace:SpacesStore/i/dd65aa53-2b08-4eb2-8112-bfb414e8bee8/children" type="application/atom+xml;type=feed"/>
 <link rel="down" href="http://129.67.45.57:8080/alfresco/service/cmis/s/workspace:SpacesStore/i/dd65aa53-2b08-4eb2-8112-bfb414e8bee8/descendants" type="application/cmistree+xml"/>
 <link rel="http://docs.oasis-open.org/ns/cmis/link/200908/foldertree" href="http://129.67.45.57:8080/alfresco/service/cmis/s/workspace:SpacesStore/i/dd65aa53-2b08-4eb2-8112-bfb414e8bee8/tree" type="application/atom+xml;type=feed"/>
-<link rel="describedby" href="http://129.67.45.57:8080/alfresco/service/cmis/type/F:wc:study_folder"/>
+<link rel="describedby" href="http://129.67.45.57:8080/alfresco/service/cmis/type/F:wc:studyFolder"/>
 <link rel="service" href="http://129.67.45.57:8080/alfresco/service/cmis"/>
 <published>2011-05-11T09:05:11.619+01:00</published>
 <summary/>
@@ -22,7 +22,7 @@
 <cmisra:object>
 <cmis:properties>
 <cmis:propertyId propertyDefinitionId="cmis:allowedChildObjectTypeIds" displayName="Allowed Child Object Types Ids" queryName="cmis:allowedChildObjectTypeIds"/>
-<cmis:propertyId propertyDefinitionId="cmis:objectTypeId" displayName="Object Type Id" queryName="cmis:objectTypeId"><cmis:value>F:wc:study_folder</cmis:value></cmis:propertyId>
+<cmis:propertyId propertyDefinitionId="cmis:objectTypeId" displayName="Object Type Id" queryName="cmis:objectTypeId"><cmis:value>F:wc:studyFolder</cmis:value></cmis:propertyId>
 <cmis:propertyString propertyDefinitionId="cmis:lastModifiedBy" displayName="Last Modified By" queryName="cmis:lastModifiedBy"><cmis:value>admin</cmis:value></cmis:propertyString>
 <cmis:propertyString propertyDefinitionId="cmis:path" displayName="Path" queryName="cmis:path"><cmis:value>/WWARN/studies/TYATT</cmis:value></cmis:propertyString>
 <cmis:propertyString propertyDefinitionId="cmis:name" displayName="Name" queryName="cmis:name"><cmis:value>TYATT</cmis:value></cmis:propertyString>
