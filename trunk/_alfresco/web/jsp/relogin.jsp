@@ -41,7 +41,7 @@ response.addCookie(authCookie);
 }
 
 // Logout from CAS
-response.sendRedirect("http://cloud1.cggh.org/sso/logout");
+response.sendRedirect("http://www.wwarn.org/sso/logout");
 %>
 
 <body bgcolor="#ffffff" style="background-image: url(<%=request.getContextPath()%>/images/logo/AlfrescoFadedBG.png); background-repeat: no-repeat; background-attachment: fixed">

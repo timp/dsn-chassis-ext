@@ -1,0 +1,10 @@
+<webscript>
+  <shortname>Study Files</shortname>
+  <description>Returns study files in current folder
+  To test: curl -u admin:admin http://localhost:8080/alfresco/service/wwarn/studyfiles?folderPath=/WWARN/Studies/ABCDE
+  </description>
+  <url>/wwarn/studyfiles?folderPath={folderPath}</url>
+  <format default="json"/>
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+</webscript>

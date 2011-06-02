@@ -13,4 +13,25 @@ function getContentTypes()
 	return contentTypes;
 }
 
+//var derivedFileNodes = [
+//    { nodeRef: "7272-2929292-2929292-29929", name: "SomeDoc.doc", type: "Data File", fileId : "3736272a-2921-2203-b625-92ab222b222a" },
+//    { nodeRef: "7272-2929292-2929292-29222", name: "SomeCal.xls", type: "Data Dictionary", fileId : "27383d2a-2543-a222-b621-91aa1122b22a" }
+//    ];
+
+// Check if CMIS call would be better than Alfresco Repository web script, look at my sites, my studies dashlets
+// My sites I could restric the types I am listing
+/*var allNodesInCurrentFolder = space.children;
+for each (node in allNodesInCurrentFolder) {
+      if (node.isSubType("wc:studyFile")) {
+        derivedFileNodes.push(node);
+      }
+} */
+
+var connector = remote.connect("alfresco");
+var studyFiles = connector.get("/wwarn/studyfiles?folderPath=/WWARN/Studies/ABCDE");
+
+// create json object from data
+var studyFilesJson = eval('(' + studyFiles + ')');
+
 model.contentTypes = getContentTypes();
+model.derivedFileList = studyFilesJson["studyFiles"];

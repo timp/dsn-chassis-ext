@@ -5,7 +5,7 @@
             <!-- Enable and adjust the following settings to allow for external access URLs to the
             WebScript Framework - to return an externally accessible address for absolute url generation.-->
             <scheme>http</scheme>
-            <hostname>IXDV1210.ixxus.co.uk</hostname>
+            <hostname>129.67.45.218</hostname>
             <port>8080</port>
         </server>
     </config>
@@ -22,7 +22,7 @@
                 <name>Alfresco Authenticator</name>
                 <description>Alfresco Authenticator</description>
                 <class>org.wwarn.cms.authentication.CasAlfrescoAuthenticator</class>
-            </authenticator>                                               -->
+            </authenticator>                                                -->
 
             <!-- Connects to an Alfresco instance using ticket-based authentication,
                 overrides the default alfresco connector to use ticket authenticator
@@ -32,7 +32,7 @@
                 <description>Connects to an Alfresco instance using ticket-based authentication</description>
                 <class>org.springframework.extensions.webscripts.connector.AlfrescoConnector</class>
                 <authenticator-id>alfresco-ticket</authenticator-id>
-            </connector>                                                             -->
+            </connector>-->
 
             <!-- Endpoint using external authentication via CAS
             <endpoint>
@@ -41,7 +41,7 @@
                 <description>Access to Alfresco Repository WebScripts that require external user authentication
                 </description>
                 <connector-id>alfresco</connector-id>
-                <endpoint-url>http://IXDV1210.ixxus.co.uk:8080/alfresco/s</endpoint-url>
+                <endpoint-url>https://129.67.45.218:8080/alfresco/s</endpoint-url>
                 <identity>user</identity>
                 <external-auth>true</external-auth>
             </endpoint>-->
