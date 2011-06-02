@@ -106,15 +106,20 @@
        */
       onTypeFilterClicked: function MyStudies_onTypeFilterClicked(p_oEvent)
       {
+    	 /* This query doesn't actually work quite right and the GET is easier and does the job
     	 var query = 'select f.*, a.*, t.* from wc:studyFolder as f join wc:studyFolderData as a on f.cmis:objectid = a.cmis:objectid';
  		 query += ' join cm:titled as t on f.cmis:objectid = t.cmis:objectid';
     	 var xmlquery = '<cmis:query xmlns:cmis="http://docs.oasis-open.org/ns/cmis/core/200908/"><cmis:statement><![CDATA['+query+']]></cmis:statement></cmis:query>';
+    	  */
     	  Alfresco.util.Ajax.request(
     		         {
+    		        	 /*
     		            url: Alfresco.constants.PROXY_URI + "cmis/queries",
     		            method: "POST",
     		            dataStr: xmlquery,
     		            requestContentType: 'application/cmisquery+xml',
+    		            */
+    		        	 url: Alfresco.constants.PROXY_URI + "cmis/p/WWARN/Studies/children",
     		            successCallback:
     		            {
     		               fn: this.getPrefs,
@@ -122,7 +127,7 @@
     		            }
     		         });
       },
-     
+      
       getJson: function MyStudies_getJson(p_response)
       {
     	  
@@ -147,45 +152,49 @@
             administrators: []
          };
          var objEl = entryEl.getElementsByTagNameNS('http://docs.oasis-open.org/ns/cmis/restatom/200908/','object');
-         var properties = entryEl.getElementsByTagNameNS('http://docs.oasis-open.org/ns/cmis/core/200908/','properties');
-         var propertyEl = properties[0].firstElementChild;
-         while(propertyEl != null)
-         {  
-        	 var propertyDefinitionId = propertyEl.getAttribute("propertyDefinitionId");
-            if (propertyDefinitionId == "cmis:name") {
-               article.shortName = propertyEl.firstChild.firstChild.nodeValue;
-            } else if (propertyDefinitionId == "cm:title") {
-            	if (propertyEl.firstChild.firstChild) {
-                   article.title = propertyEl.firstChild.firstChild.nodeValue;
-            	}
-            } else if (propertyDefinitionId == "cm:description") {
-            	if (propertyEl.firstChild.firstChild) {
-            		article.description = propertyEl.firstChild.firstChild.nodeValue;
-            	}
-            } else if (propertyDefinitionId == "cmis:lastModifiedBy") {
-               article.modifiedByUser = propertyEl.firstChild.firstChild.nodeValue;
-               article.modifiedBy = article.modifiedByUser;
-            } else if (propertyDefinitionId == "cmis:lastModificationDate") {
-               article.modifiedOn = propertyEl.firstChild.firstChild.nodeValue;
-            } else if (propertyDefinitionId == "cmis:objectId") {
-                article.objectId = propertyEl.firstChild.firstChild.nodeValue;
-            } else if (propertyDefinitionId == "cmis:creationDate") {
-               article.createdOn = propertyEl.firstChild.firstChild.nodeValue;
-            } else if (propertyDefinitionId == "cmis:objectId") {
-               article.sitePreset = propertyEl.firstChild.firstChild.nodeValue;
-            } else if (propertyDefinitionId == "wc:studyInfoLink") {
-            	if (propertyEl.firstChild && propertyEl.firstChild.firstChild) {
-            		article.chassisLink = propertyEl.firstChild.firstChild.nodeValue;
-            	}
-            } else if (propertyDefinitionId == "wc:modules") {
-            	var mods = propertyEl.firstElementChild;
-            	while (mods != null) {
-            		article.modules.push(mods.firstChild.nodeValue);
-            		mods = mods.nextElementSibling;
-            	}
-             }
-            
-            propertyEl = propertyEl.nextElementSibling;
+         var i = 0;
+         var propsNS = [ 'http://www.alfresco.org', 'http://docs.oasis-open.org/ns/cmis/core/200908/'];
+         while ((ns = propsNS[i++])) {
+        	 var properties = entryEl.getElementsByTagNameNS(ns,'properties');
+        	 var propertyEl = properties[0].firstElementChild;
+        	 while(propertyEl != null)
+        	 {  
+        		 var propertyDefinitionId = propertyEl.getAttribute("propertyDefinitionId");
+        		 if (propertyDefinitionId == "cmis:name") {
+        			 article.shortName = propertyEl.firstChild.firstChild.nodeValue;
+        		 } else if (propertyDefinitionId == "cm:title") {
+        			 if (propertyEl.firstChild.firstChild) {
+        				 article.title = propertyEl.firstChild.firstChild.nodeValue;
+        			 }
+        		 } else if (propertyDefinitionId == "cm:description") {
+        			 if (propertyEl.firstChild.firstChild) {
+        				 article.description = propertyEl.firstChild.firstChild.nodeValue;
+        			 }
+        		 } else if (propertyDefinitionId == "cmis:lastModifiedBy") {
+        			 article.modifiedByUser = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.modifiedBy = article.modifiedByUser;
+        		 } else if (propertyDefinitionId == "cmis:lastModificationDate") {
+        			 article.modifiedOn = propertyEl.firstChild.firstChild.nodeValue;
+        		 } else if (propertyDefinitionId == "cmis:objectId") {
+        			 article.objectId = propertyEl.firstChild.firstChild.nodeValue;
+        		 } else if (propertyDefinitionId == "cmis:creationDate") {
+        			 article.createdOn = propertyEl.firstChild.firstChild.nodeValue;
+        		 } else if (propertyDefinitionId == "cmis:objectId") {
+        			 article.sitePreset = propertyEl.firstChild.firstChild.nodeValue;
+        		 } else if (propertyDefinitionId == "wc:studyInfoLink") {
+        			 if (propertyEl.firstChild && propertyEl.firstChild.firstChild) {
+        				 article.chassisLink = propertyEl.firstChild.firstChild.nodeValue;
+        			 }
+        		 } else if (propertyDefinitionId == "wc:modules") {
+        			 var mods = propertyEl.firstElementChild;
+        			 while (mods != null) {
+        				 article.modules.push(mods.firstChild.nodeValue);
+        				 mods = mods.nextElementSibling;
+        			 }
+        		 }
+
+        		 propertyEl = propertyEl.nextElementSibling;
+        	 }
          }
          articles.push(article);
       }
@@ -422,9 +431,10 @@
           */
          var renderCellID = function MS_oR_renderCellID(elCell, oRecord, oColumn, oData)
          {
-            var siteId = oRecord.getData("shortName");
+            var siteId = oRecord.getData("shortName"),
+            objectId = oRecord.getData("objectId");
 
-            var desc = '<div class="study-id">' + $html(siteId) + '</a></div>';
+            var desc = '<div class="study-id"><a href="' + Alfresco.constants.URL_PAGECONTEXT + 'folder-details?nodeRef=' + objectId + '" class="theme-color-1">' + $html(siteId) + '</a></div>';
 
             elCell.innerHTML = desc;
          };
@@ -449,8 +459,15 @@
           */
          var renderCellCreated = function MS_oR_renderCellCreated(elCell, oRecord, oColumn, oData)
          {
-            var createdOn = oRecord.getData("createdOn");            
-            var desc = '<div class="study-created">' + $html(createdOn) + '</div>';
+            var createdOn = oRecord.getData("createdOn");
+            var formattedDate = '';
+            var format = { format: "%Y-%m-%d" };
+            var date = new Date(createdOn);
+                
+            // date is a JavaScript Date object
+            formattedDate = YAHOO.util.Date.format(date, format);
+           
+            var desc = '<div class="study-created">' + $html(formattedDate) + '</div>';
 
             elCell.innerHTML = desc;
          };
