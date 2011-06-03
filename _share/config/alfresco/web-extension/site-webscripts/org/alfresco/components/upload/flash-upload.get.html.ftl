@@ -94,19 +94,20 @@
         </div>
 
         <!-- @author IXXUS Start -->
-        <!-- Table as a data source to YUI DataTable with derived files-->
+        <!-- Table as a data source to YUI DataTable with derived files
+        Not used at the moment as we use a DataSource that is calling the studyfiles web script via AJAX
         <div style="display:none">
-            <table id="${el}-derived-data-table">
+            <table id="-derived-data-table">
                 <thead>
                     <tr><th>Node Ref</th><th>Name</th><th>Type</th><th>File Id</th></tr>
     	        </thead>
                 <tbody>
-                <#list derivedFileList as derivedFile>
-                    <tr><td>${derivedFile.nodeRef}</td><td>${derivedFile.name}</td><td>${derivedFile.type}</td><td>${derivedFile.fileId}</td></tr>
-                </#list>
+                #list derivedFileList as derivedFile>
+                    <tr><td>derivedFile.nodeRef</td><td>derivedFile.name</td><td>derivedFile.type</td><td>derivedFile.fileId</td></tr>
+                /#list
                 </tbody>
             </table>
-        </div>
+        </div>-->
         <!-- @author IXXUS End -->
 
         <div class="bdft">
