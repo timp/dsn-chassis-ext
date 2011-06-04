@@ -349,6 +349,26 @@
         description: null,
 
         /**
+         * @author IXXUS
+         *
+         * HTMLElement of type textarea for uploaded output files comment
+         *
+         * @property outputFilesComment
+         * @type HTMLElement
+         */
+        outputFilesComment: null,
+
+        /**
+         * A property that is set to true after all the selected study files have had the
+         * derivation aspect and comment setup. It is then used to check so the derivation aspect and comment
+         * is not setup when it is already set.
+         *
+         * @property outputFilesCommentAdded
+         * @type boolean
+         */
+        outputFilesCommentAdded: false,
+
+        /**
          * HTMLElement of type div that displays the version input form.
          *
          * @property versionSection
@@ -442,6 +462,9 @@
             this.singleUpdateTip = Dom.get(this.id + "-singleUpdateTip-span");
             this.statusText = Dom.get(this.id + "-status-span");
             this.description = Dom.get(this.id + "-description-textarea");
+
+            // @author IXXUS
+            this.outputFilesComment = Dom.get(this.id + "-outputFilesComment-textarea");
 
             // Save reference to version radio so we can reset and get its value later
             this.minorVersion = Dom.get(this.id + "-minorVersion-radioButton");
@@ -593,6 +616,10 @@
             Dom.removeClass(this.id + "-upload-button", "hidden");
             this.widgets.cancelOkButton.set("label", this.msg("button.cancel"));
             this.widgets.cancelOkButton.set("disabled", false);
+
+            // @author IXXUS
+            this.outputFilesComment.value = "";
+            this.outputFilesCommentAdded = false;
         },
 
         /**
@@ -1371,8 +1398,8 @@
         /**
          * @author IXXUS
          *
-         * Helper function to setup associations between output files (the files being uploaded)
-         * and contributed files.
+         * Helper function to setup associations between existing contributed files (study files) and
+         * output files (the files being uploaded).
          *
          * @method _setupDerivedFileAssociations
          * @private
@@ -1380,37 +1407,70 @@
         _setupDerivedFileAssociations: function FlashUpload__setupDerivedFileAssociations(fileInfo) {
             var outputFileNodeRef = fileInfo.nodeRef;
             var outputFileName = fileInfo.fileName;
-
             //window.alert("Upload of file: " + outputFileName + " is complete (" + outputFileNodeRef + ")");
+
+            // Get the first part of the Alfresco Repository URL (e.g. http://localhost:8080/alfresco)
+            var alfrescoUrl = Alfresco.constants.PROXY_URI.replace("/share/proxy", "");
+
+            var setDerivationCommentCallback = {
+                success: function(o) {
+                  //  window.alert( "Successfully setup derivation aspect and comment for studyFileNodeRef (" +
+                    //        studyFileNodeRef + ")");
+                },
+                failure: function(o) {
+                    window.alert("FAILED to setup derivation aspect and comment for studyFileNodeRef (" +
+                            studyFileNodeRef + ")");
+                }
+            };
+
+            var createDerivationCallback = {
+                success: function(o) {
+                    //window.alert( "Successfully setup association between output file (" +
+                      //      outputFileName + ") and studyFileNodeRef (" + studyFileNodeRef + ")");
+                },
+                failure: function(o) {
+                    window.alert("FAILED to setup association between output file (" +
+                            outputFileName + ") and studyFileNodeRef (" + studyFileNodeRef + ")");
+                }
+            };
+
+            //window.alert("Derivation comment: " + this.outputFilesComment.value);
 
             for (var i = 0; i < this.derivedFilesDataTable.getRecordSet().getLength(); i++) {
                 var record = this.derivedFilesDataTable.getRecordSet().getRecord(i);
                 var selected = record.getData("select");
                 if (selected) {
                     var studyFileNodeRef = record.getData("nodeRef");
-                    //window.alert("Derived file: " + record.getData("name") + " is selected (" + studyFileNodeRef + ")");
 
-                    // Generate get study files web script URL
-                    var alfrescoUrl = Alfresco.constants.PROXY_URI.replace("/share/proxy", "");
-                    var url = alfrescoUrl + "service/wwarn/createDerivedAssoc?outputFileNodeRef=" + outputFileNodeRef
-                            + "&studyFileNodeRef=" + studyFileNodeRef;
+                    // Generate create derived assoc web script URL
+                    var createDerivationUrl = alfrescoUrl + "service/wwarn/createDerivedAssoc?outputFileNodeRef=" +
+                            outputFileNodeRef + "&studyFileNodeRef=" + studyFileNodeRef;
 
-                    var callback = {
-                        success: function(o) {
-                            window.alert( "Successfully setup association between outputFileNodeRef (" +
-                                    outputFileNodeRef + ") and studyFileNodeRef (" + studyFileNodeRef + ")");
-                        },
-                        failure: function(o) {
-                            window.alert("FAILED to setup association between outputFileNodeRef (" +
-                                    outputFileNodeRef + ") and studyFileNodeRef (" + studyFileNodeRef + ")");
-                        }
-                    };
+                    //window.alert("Derivation file: " + record.getData("name") + " is selected (" + studyFileNodeRef + ")");
 
-                    var transaction = YAHOO.util.Connect.asyncRequest('GET', url, callback, null);
+                    // Make the call to setup association
+                    var transaction = YAHOO.util.Connect.asyncRequest('GET', createDerivationUrl,
+                            createDerivationCallback, null);
+
+                    if (!this.outputFilesCommentAdded &&
+                            this.outputFilesComment.value != null && this.outputFilesComment.value != "") {
+                        // Generate set derivation aspect and comment web script URL
+                        var setDerivationCommentUrl = alfrescoUrl +
+                                "service/wwarn/setDerivedAssocComment?studyFileNodeRef=" +
+                            studyFileNodeRef + "&comment=" + this.outputFilesComment.value;
+
+                        // Make the call to setup the derivation aspect and comment
+                        var transaction2 = YAHOO.util.Connect.asyncRequest('GET', setDerivationCommentUrl,
+                                setDerivationCommentCallback, null);
+                    }
                 } else {
-                    //window.alert("Derived file: " + record.getData("name") + " is NOT selected");
+                    //window.alert("Derivation file: " + record.getData("name") + " is NOT selected");
                 }
             }
+
+            // Derivation comments have now been setup for all the study files that where selected so we do not need to
+            // do it for the next output file.
+            this.outputFilesCommentAdded = true;
         },
 
         /**

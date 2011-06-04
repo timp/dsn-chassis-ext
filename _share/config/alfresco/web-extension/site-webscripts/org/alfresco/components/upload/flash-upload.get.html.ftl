@@ -22,6 +22,13 @@
             <div class="label">Select the file or files from which your uploads are derived.</div>
         </div>
         <div id="${el}-derivedfilelist-table" class="derivedFilelistTable"></div>
+        <div class="derivedFilesCaptionCenter">
+            <div class="label">Describe the work you did to create the files you are uploading...</div>
+        </div>
+        <div class="derivedFilelistTable">
+            <textarea id="${el}-outputFilesComment-textarea" name="outputFilesComment" rows="4"
+                      tabindex="0"></textarea>
+        </div>
         <!-- @author IXXUS End -->
 
         <div class="status-wrapper">
