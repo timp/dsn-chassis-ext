@@ -91,7 +91,7 @@
       <file leaf-file-name="flash-upload-custom-min.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom-min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1381" column="29" selection-start="0" selection-end="66889" vertical-scroll-proportion="0.0">
+            <state line="1411" column="24" selection-start="0" selection-end="69558" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,7 +100,16 @@
       <file leaf-file-name="flash-upload-custom.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1607" column="0" selection-start="66889" selection-end="66889" vertical-scroll-proportion="0.85087717">
+            <state line="1667" column="0" selection-start="69558" selection-end="69558" vertical-scroll-proportion="0.9513591">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setDerivedAssocComment.get.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -109,7 +118,7 @@
       <file leaf-file-name="createDerivedAssoc.get.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="19" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
+            <state line="7" column="111" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +127,16 @@
       <file leaf-file-name="flash-upload.get.html.ftl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.html.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="0" selection-start="4830" selection-end="4830" vertical-scroll-proportion="-19.615385">
+            <state line="28" column="31" selection-start="1271" selection-end="1299" vertical-scroll-proportion="-18.307692">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flash-upload-custom.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="302" column="12" selection-start="5604" selection-end="5604" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,21 +152,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/manual_config/alfresco.war/web.xml" />
-        <option value="$PROJECT_DIR$/manual_config/share.war/web.xml" />
-        <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties" />
         <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/backup.js" />
-        <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.css" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.json.ftl" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.desc.xml" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.js" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.js" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.js" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.json.ftl" />
-        <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom-min.js" />
+        <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.css" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.html.ftl" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.js" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.js" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.json.ftl" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.json.ftl" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.desc.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.desc.xml" />
+        <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom-min.js" />
         <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.js" />
       </list>
     </option>
@@ -833,17 +851,17 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11277392" sideWeight="0.82687926" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11277392" sideWeight="0.8667426" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4145786" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17312072" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1332574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25921968" sideWeight="0.82687926" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25334045" sideWeight="0.8667426" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -911,28 +929,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="26" selection-start="2378" selection-end="2378" vertical-scroll-proportion="0.9512195" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/alfresco/messages/wwarn.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="0" selection-start="2442" selection-end="2442" vertical-scroll-proportion="0.85365856" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/authentication/logincas.get.desc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="33" selection-start="115" selection-end="128" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="295" column="46" selection-start="5477" selection-end="5477" vertical-scroll-proportion="0.7539204">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="0" selection-start="2943" selection-end="2943" vertical-scroll-proportion="0.5376506">
@@ -954,30 +950,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.09756097">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="625" column="49" selection-start="25613" selection-end="25613" vertical-scroll-proportion="0.6097561">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.json.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="68" selection-start="52" selection-end="52" vertical-scroll-proportion="0.07317073">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="19" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -989,30 +964,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.desc.xml">
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.json.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="438" selection-end="438" vertical-scroll-proportion="0.12426901">
+        <state line="4" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.086845465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="41" selection-start="70" selection-end="70" vertical-scroll-proportion="0.043422733">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="614" column="54" selection-start="25179" selection-end="25201" vertical-scroll-proportion="0.39208174">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="302" column="12" selection-start="5604" selection-end="5604" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.html.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="4830" selection-end="4830" vertical-scroll-proportion="-19.615385">
+        <state line="28" column="31" selection-start="1271" selection-end="1299" vertical-scroll-proportion="-18.307692">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.desc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.12160229">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="111" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.desc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="558" selection-end="558" vertical-scroll-proportion="0.19456366">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom-min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1381" column="29" selection-start="0" selection-end="66889" vertical-scroll-proportion="0.0">
+        <state line="1411" column="24" selection-start="0" selection-end="69558" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1607" column="0" selection-start="66889" selection-end="66889" vertical-scroll-proportion="0.85087717">
+        <state line="1667" column="0" selection-start="69558" selection-end="69558" vertical-scroll-proportion="0.9513591">
           <folding />
         </state>
       </provider>

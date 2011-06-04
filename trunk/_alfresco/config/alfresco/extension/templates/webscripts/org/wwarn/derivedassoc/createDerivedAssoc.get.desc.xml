@@ -1,6 +1,6 @@
 <webscript>
   <shortname>Creates a Derived File Assoc</shortname>
-  <description>Creates a derived file association between an output file and a study file.
+  <description>Creates a derived file association between a study file and an output file.
   To test: curl -u admin:admin http://localhost:8080/alfresco/service/wwarn/createDerivedAssoc?outputFileNodeRef=workspace://SpacesStore/48e0d368-a90d-4692-8c48-8765a80678c0&amp;studyFileNodeRef=workspace://SpacesStore/48e0d368-a90d-4692-8c48-8765a80678c0
   </description>
   <url>/wwarn/createDerivedAssoc?outputFileNodeRef={outputFileNodeRef}&amp;studyFileNodeRef={studyFileNodeRef}</url>
