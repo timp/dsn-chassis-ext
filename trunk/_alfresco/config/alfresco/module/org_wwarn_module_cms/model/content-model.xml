@@ -53,7 +53,7 @@
                     <value></value>
                     <value>AFGHANISTAN</value>
                     <value>ÅLAND ISLANDS</value>
-                    <value>ALBANIA  </value>
+                    <value>ALBANIA</value>
                     <value>ALGERIA</value>
                     <value>AMERICAN SAMOA</value>
                     <value>ANDORRA</value>
@@ -345,7 +345,6 @@
             <mandatory-aspects>
                 <aspect>wc:studyFolderData</aspect>
                 <aspect>wc:workflowInfos</aspect>
-                <aspect>wc:admins</aspect>
             </mandatory-aspects>
         </type>
 
@@ -473,6 +472,11 @@
                     <title>Link to the study metadata XML in Chassis</title>
                     <type>d:text</type>
                 </property>
+                <property name="wc:admins">
+                    <title>Users (first name and last name) that are the creators of this study (admins)</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                </property>
             </properties>
         </aspect>
 
@@ -579,27 +583,6 @@
                         <many>true</many>
                     </target>
                 </child-association>
-            </associations>
-        </aspect>
-
-        <!--
-            A peer association to users that are the creators of this study (admins)
-            Source Study (many) ==> (many) Target Person
-        -->
-        <aspect name="wc:admins">
-            <title>Admins (creators)</title>
-            <associations>
-                <association name="wc:admins">
-                    <source>
-                        <mandatory>true</mandatory>
-                        <many>true</many>
-                    </source>
-                    <target>
-                        <class>cm:person</class>
-                        <mandatory>false</mandatory>
-                        <many>true</many>
-                    </target>
-                </association>
             </associations>
         </aspect>
 
