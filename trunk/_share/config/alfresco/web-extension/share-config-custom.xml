@@ -98,12 +98,11 @@
         <advanced-search>
             <!-- Additional Forms for the advanced search type list -->
             <forms>
-                <form label="WWARN Study Folders" description="Searches for all WWARN Study Folders">wc:studyFolder
-                </form>
+                <form label="WWARN Study Folders" description="Searches for all WWARN Study Folders">wc:studyFolder</form>
+                <form label="WWARN Study Workflow Info" description="Searches for all WWARN Study Workflow info">wc:workflowInfo</form>
             </forms>
         </advanced-search>
     </config>
-
 
     <!--
         Metadata form definition for WWARN Study Folder
@@ -188,12 +187,14 @@
                     <show id="wc:modules" force="true"/>
                     <show id="wc:region" force="true"/>
                     <show id="wc:countries" force="true"/>
+                    <show id="wc:admins"/>
                 </field-visibility>
                 <appearance>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="wc.studyFolder.metadata.header"/>
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata"/>
                     <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata"/>
                     <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata"/>
+                    <field id="wc:admins" label-id="wc.metadata.admins" set="wcMetadata"/>
                 </appearance>
             </form>
         </forms>
@@ -296,6 +297,62 @@
                             <control-param name="style">width: 99%</control-param>
                         </control>
                     </field>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+    <!-- SEARCH form definition -->
+    <config evaluator="model-type" condition="wc:workflowInfo">
+        <forms>
+            <form id="search">
+                <field-visibility>
+                    <show id="cm:name"/>
+
+                    <!-- wc:workflowInfo -->
+                    <show id="wc:jbpmId"/>
+                    <show id="wc:studyStatus"/>
+                    <show id="wc:processorProblemDesc"/>
+                    <show id="wc:processorProblemRes"/>
+                    <show id="wc:moreMappingInfoReq"/>
+                    <show id="wc:moreMappingInfoResp"/>
+                    <show id="wc:mappingProblemDesc"/>
+                    <show id="wc:mappingProblemRes"/>
+                    <show id="wc:moreSSQInfoReq"/>
+                    <show id="wc:moreSSQInfoResponse"/>
+                    <show id="wc:moreStudyInfoReq"/>
+                    <show id="wc:moreStudyInfoResponse"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="wwNeedMoreStudyInfo" appearance="bordered-panel" label-id="ww.need_more_study_info.header"/>
+                    <set id="wwNeedMoreSSQInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
+                    <set id="wwNeedMoreMappingInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
+                    <set id="wwMappingProblemInfo" appearance="bordered-panel" label-id="ww.mapping_problem_info.header"/>
+                    <set id="wwProcessorProblemInfo" appearance="bordered-panel" label-id="ww.processor_problem_info.header"/>
+
+                    <!-- Field set "" -->
+                    <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" />
+                    <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" />
+
+                    <!-- Field set "wwNeedMoreStudyInfo" -->
+                    <field id="wc:moreStudyInfoReq" label-id="ww.metadata.moreStudyInfoReq" set="wwNeedMoreStudyInfo" />
+                    <field id="wc:moreStudyInfoResponse" label-id="ww.metadata.moreStudyInfoResponse" set="wwNeedMoreStudyInfo" />
+
+                    <!-- Field set "wwNeedMoreSSQInfo" -->
+                    <field id="wc:moreSSQInfoReq" label-id="ww.metadata.moreSSQInfoReq" set="wwNeedMoreSSQInfo" />
+                    <field id="wc:moreSSQInfoResponse" label-id="ww.metadata.moreSSQInfoResponse" set="wwNeedMoreSSQInfo" />
+
+                    <!-- Field set "wwNeedMoreMappingInfo" -->
+                    <field id="wc:moreMappingInfoReq" label-id="ww.metadata.moreMappingInfoReq" set="wwNeedMoreMappingInfo" />
+                    <field id="wc:moreMappingInfoResp" label-id="ww.metadata.moreMappingInfoResponse" set="wwNeedMoreMappingInfo" />
+
+                    <!-- Field set "wwMappingProblemInfo" -->
+                    <field id="wc:mappingProblemDesc" label-id="ww.metadata.mappingProblemDesc" set="wwMappingProblemInfo" />
+                    <field id="wc:mappingProblemRes" label-id="ww.metadata.mappingProblemResolution" set="wwMappingProblemInfo" />
+
+                    <!-- Field set "wwProcessorProblemInfo" -->
+                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" />
+                    <field id="wc:processorProblemRes" label-id="ww.metadata.processorProblemResolution" set="wwProcessorProblemInfo" />
                 </appearance>
             </form>
         </forms>
