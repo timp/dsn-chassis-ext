@@ -162,12 +162,7 @@
                     <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata"/>
                     <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata"/>
                     <field id="wc:studyInfoLink" label-id="wc.metadata.studyInfoLink" set="wcMetadata"/>
-                    <field id="wc:admins" label-id="wc.metadata.admins" set="wcMetadata">
-                        <control template="/org/alfresco/components/form/controls/authority.ftl">
-                            <control-param name="compactMode">true</control-param>
-                            <control-param name="forceEditable">true</control-param>
-                        </control>
-                    </field>
+                    <field id="wc:admins" label-id="wc.metadata.admins" set="wcMetadata"/>
 
                     <!-- Field set "wcWorkflowData" -->
                     <field id="wc:workflowInfos" label-id="wc.metadata.workflowInfos" set="wcWorkflowData">
