@@ -329,6 +329,22 @@
             </parameter>
         </constraint>
 
+        <!--
+            Study Workflow Status Options
+            -->
+        <constraint name="wc:studyStatusOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Initiated</value>
+                    <value>Gate Keeping</value>
+                    <value>Curation</value>
+                    <value>Validation</value>
+                    <value>Approval</value>
+                    <value>Completed</value>
+                </list>
+            </parameter>
+        </constraint>
     </constraints>
 
     <!-- ===============================================================================================================
@@ -350,11 +366,11 @@
 
         <!--
             The Workflow Information type. A study folder is associated with zero or more of these
-            (currently only one - clinical
+            (currently only one - clinical)
             -->
         <type name="wc:workflowInfo">
             <title>WWARN Workflow Information</title>
-            <parent>cm:cmobject</parent> <!-- extending this type makes the node invisible, which is what we want -->
+            <parent>cm:content</parent> <!-- cannot extend the cm:cmobject type, indexing of properties does not work -->
             <mandatory-aspects>
                 <aspect>wc:workflowInfoData</aspect>
             </mandatory-aspects>
@@ -517,6 +533,9 @@
                 <property name="wc:studyStatus">
                     <title>Status indicating what phase the process is in</title>
                     <type>d:text</type>
+                    <constraints>
+                        <constraint ref="wc:studyStatusOptions"/>
+                    </constraints>
                 </property>
                 <!-- The more info req & resp and the problem desc & resolution fields can contain
                     more than one more info req & resp and problem desc and res,
