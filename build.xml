@@ -90,6 +90,16 @@
         </zip>
     </target>
 
+    <!--
+    <target name="deploy-alfresco-webscripts" depends="copy-alfresco-webscripts"
+            description="Refreshes the list of Alfresco Repo webscripts">
+        <exec executable="curl">
+            <arg value="-d"/>
+            <arg value="reset=on"/>
+            <arg value="http://${alfresco.web.url}/service/index"/>
+        </exec>
+    </target> -->
+
     <target name="deploy-alfresco-amp" depends="clean-reset-war, package-alfresco-amp">
         <echo>Merges extension AMP file into build/webapps/alfresco.war</echo>
         <java dir="." fork="true" classname="org.alfresco.repo.module.tool.ModuleManagementTool">
