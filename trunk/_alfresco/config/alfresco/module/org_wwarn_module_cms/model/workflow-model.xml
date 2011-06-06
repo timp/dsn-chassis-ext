@@ -47,6 +47,10 @@
                     <title>Generic problem description</title>
                     <type>d:text</type>
                 </property>
+                <property name="ww:contributorEmail">
+                    <title>Contributor email address, used in EmailContributorAboutOutputs</title>
+                    <type>d:text</type>
+                </property>
             </properties>
             <overrides>
                 <property name="bpm:packageActionGroup">

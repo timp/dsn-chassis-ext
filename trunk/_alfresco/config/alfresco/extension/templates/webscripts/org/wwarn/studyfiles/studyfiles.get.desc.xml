@@ -1,8 +1,8 @@
 <webscript>
   <shortname>Study Files</shortname>
   <description>Returns study files in current folder
-  To test: curl -u admin:admin http://localhost:8080/alfresco/service/wwarn/studyfiles?folderPath=/WWARN/Studies/ABCDE
-           curl -u admin:admin http://localhost:8080/alfresco/service/wwarn/studyfiles?folderNodeRef=workspace://SpacesStore/48e0d368-a90d-4692-8c48-8765a80678c0
+  To test: curl -v -u admin:admin http://localhost:8080/alfresco/service/wwarn/studyfiles?folderPath=/WWARN/Studies/ABCDE
+           curl -v -u admin:admin http://localhost:8080/alfresco/service/wwarn/studyfiles?folderNodeRef=workspace://SpacesStore/48e0d368-a90d-4692-8c48-8765a80678c0
   </description>
   <url>/wwarn/studyfiles?folderPath={folderPath}</url>
   <url>/wwarn/studyfiles?folderNodeRef={folderNodeRef}</url>

@@ -1,7 +1,7 @@
 <webscript>
   <shortname>Set Comment for Derived File Assoc</shortname>
   <description>Applies the wc:derivations aspect and its wc:derivationsComments to a study file.
-  To test: curl -u admin:admin "http://localhost:8080/alfresco/service/wwarn/setDerivedAssocComment?studyFileNodeRef=workspace://SpacesStore/48e0d368-a90d-4692-8c48-8765a80678c0&amp;comment=some comment"
+  To test: curl -v -u admin:admin "http://localhost:8080/alfresco/service/wwarn/setDerivedAssocComment?studyFileNodeRef=workspace://SpacesStore/48e0d368-a90d-4692-8c48-8765a80678c0&amp;comment=some comment"
   </description>
   <url>/wwarn/setDerivedAssocComment?studyFileNodeRef={studyFileNodeRef}&amp;comment={comment}</url>
   <format default="json"/>

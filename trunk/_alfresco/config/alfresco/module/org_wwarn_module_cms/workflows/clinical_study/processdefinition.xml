@@ -31,7 +31,10 @@
                     var status = "Initiated";
                     executionContext.setVariable("wc_studyStatus", status);
                     var procId = executionContext.processInstance.getId();
-                    var studyFolder = bpm_package.children[0].parent;
+                    var studyFolder = bpm_package.children[0]; <!-- Assume we have started workflow from web script, and folder is attached to web script -->
+                    if (studyFolder.isDocument) {
+                        studyFolder = bpm_package.children[0].parent; <!-- Workflow was started from Share UI and document is attached -->
+                    }
                     if (studyFolder != null) {
                         var properties = new Array();
                         properties["cm:name"] = "clinicalWorkflowInfo-" + procId;
@@ -634,7 +637,8 @@
                         }
 
                         var mail = actions.create("mail");
-                        mail.parameters.to = initiator.properties.email; <!-- change to contributor -->
+
+                        mail.parameters.to = ww_contributorEmail;
                         mail.parameters.from = "alfresco@wwarn.org";
                         mail.parameters.subject = "Output files (" + ww_studyID + ")";
                         mail.parameters.text = txtMail;

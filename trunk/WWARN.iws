@@ -60,19 +60,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="share-config-custom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
+      <file leaf-file-name="workflow-model.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="68" selection-start="3705" selection-end="3705" vertical-scroll-proportion="0.0">
+            <state line="35" column="27" selection-start="1423" selection-end="1423" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content-model.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
+      <file leaf-file-name="processdefinition.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="368" column="43" selection-start="15856" selection-end="15856" vertical-scroll-proportion="0.6386404">
+            <state line="50" column="46" selection-start="2435" selection-end="2435" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startworkflow.post.json.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.json.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.33452594">
               <folding />
             </state>
           </provider>
@@ -88,22 +97,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.json.ftl" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.desc.xml" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.js" />
-        <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.js" />
-        <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.css" />
-        <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.html.ftl" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.js" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.js" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.json.ftl" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.json.ftl" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.desc.xml" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.desc.xml" />
         <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom-min.js" />
         <option value="$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.js" />
         <option value="$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.get.js" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.get.json.ftl" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.get.desc.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.desc.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.desc.xml" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml" />
+        <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.desc.xml" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.json.js" />
       </list>
     </option>
   </component>
@@ -155,6 +164,234 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="_share" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webscripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wwarn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="workflow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webscripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wwarn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="studyfiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webscripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wwarn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="derivedassoc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webscripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wwarn" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WWARN" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="alfresco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extension" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -419,61 +656,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="18" selection-start="222" selection-end="222" vertical-scroll-proportion="0.17577548" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="68" selection-start="52" selection-end="52" vertical-scroll-proportion="0.07317073" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.desc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="26" selection-start="633" selection-end="633" vertical-scroll-proportion="0.2733918" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.086845465" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.json.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="41" selection-start="70" selection-end="70" vertical-scroll-proportion="0.043422733" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.desc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="0.12160229" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.desc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="558" selection-end="558" vertical-scroll-proportion="0.19456366" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom-min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1411" column="24" selection-start="0" selection-end="69558" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_share/config/META-INF/components/upload/flash-upload-custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1667" column="0" selection-start="69558" selection-end="69558" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="111" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/site-webscripts/org/alfresco/components/upload/flash-upload.get.html.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="31" selection-start="1271" selection-end="1299" vertical-scroll-proportion="0.0" />
@@ -484,19 +666,98 @@
         <state line="302" column="12" selection-start="5604" selection-end="5604" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="695" column="46" selection-start="35661" selection-end="35661" vertical-scroll-proportion="0.73991656" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_share/config/alfresco/web-extension/share-config-custom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="68" selection-start="3705" selection-end="3705" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="0" selection-end="170" vertical-scroll-proportion="0.18923934">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/studyfiles/studyfiles.get.desc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="243" selection-end="243" vertical-scroll-proportion="0.12927757">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.desc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="19" selection-start="188" selection-end="188" vertical-scroll-proportion="0.096958175">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/setDerivedAssocComment.get.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="17" selection-start="130" selection-end="143" vertical-scroll-proportion="0.12615955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/derivedassoc/createDerivedAssoc.get.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.12164579">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.json.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="73" selection-end="73" vertical-scroll-proportion="0.12164579">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="84" selection-start="4148" selection-end="4148" vertical-scroll-proportion="0.11806798">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.desc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="39" selection-start="579" selection-end="579" vertical-scroll-proportion="0.37362638">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="368" column="43" selection-start="15856" selection-end="15856" vertical-scroll-proportion="0.6386404">
+        <state line="48" column="43" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.030411448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/workflow-model.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="27" selection-start="1423" selection-end="1423" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="46" selection-start="2435" selection-end="2435" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.json.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.33452594">
           <folding />
         </state>
       </provider>
