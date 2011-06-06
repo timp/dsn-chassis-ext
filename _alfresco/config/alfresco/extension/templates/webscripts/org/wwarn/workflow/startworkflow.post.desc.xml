@@ -6,15 +6,15 @@
       {
         workflowName: "ww:clinicalStudyProcess",
         study: {
-            id: "ABCDE",
-            folderPath: "/WWARN/Studies/ABCDE",
-            modules: "Clinical",
+            id: "PQRST",
+            folderPath: "/WWARN/Studies/PQRST",
+            modules: [ "Clinical" ],
             region: "Africa",
-            countries: "ANGOLA,BOTSWANA",
+            countries: [ "ANGOLA", "BOTSWANA" ],
             contributorEmail: "contributor@wwarn.org"
         }
-      }
-  </description>
+     }
+   </description>
   <url>/wwarn/startworkflow</url>
   <authentication>user</authentication>
   <transaction>required</transaction>

@@ -78,10 +78,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="startworkflow.post.json.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="startworkflow.post.json.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.json.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.33452594">
+            <state line="11" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="startworkflow.post.desc.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.desc.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="544" selection-end="544" vertical-scroll-proportion="0.3649374">
               <folding />
             </state>
           </provider>
@@ -111,8 +120,8 @@
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml" />
-        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.desc.xml" />
         <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.json.js" />
+        <option value="$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.desc.xml" />
       </list>
     </option>
   </component>
@@ -574,7 +583,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -583,7 +592,7 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33029613" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33029613" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -727,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.desc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="39" selection-start="579" selection-end="579" vertical-scroll-proportion="0.37362638">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/module/org_wwarn_module_cms/model/content-model.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="43" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.030411448">
@@ -757,7 +759,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.json.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.33452594">
+        <state line="11" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_alfresco/config/alfresco/extension/templates/webscripts/org/wwarn/workflow/startworkflow.post.desc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="544" selection-end="544" vertical-scroll-proportion="0.3649374">
           <folding />
         </state>
       </provider>
