@@ -2757,6 +2757,9 @@
                     <!-- ww:baseTask -->
                     <show id="ww:studyID"/>
                     <show id="ww:studyFolderLink"/>
+                    <show id="ww:to"/>
+                    <show id="ww:subject"/>
+                    <show id="ww:body"/>
 
                     <!-- wc:studyFolder -->
                     <show id="wc:modules"/>
@@ -2772,6 +2775,7 @@
                     <set id="" appearance="title" label-id="workflow.set.task.info"/>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header"
                          template="/org/alfresco/components/form/2-column-set.ftl"/>
+                    <set id="wwEmailInfo" appearance="bordered-panel" label-id="ww.email_info.header"/>
                     <set id="documents" appearance="title" label="Documents"/>
                     <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
                     <set id="response" appearance="title" label-id="workflow.set.response"/>
@@ -2801,6 +2805,24 @@
                     </field>
                     <field id="wc:studyInfoLink" label-id="wc.metadata.studyInfoLink" set="wcMetadata"
                            read-only="true"/>
+
+                    <!-- Field set "wwEmailInfo" -->
+                    <field id="ww:to" label-id="ww.metadata.to" set="wwEmailInfo">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="ww:subject" label-id="ww.metadata.subject" set="wwEmailInfo">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="ww:body" label-id="ww.metadata.body" set="wwEmailInfo">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                            <control-param name="rows">20</control-param>
+                        </control>
+                    </field>
 
                     <!-- Field set "documents" -->
                     <field id="packageItems" set="documents"/>
