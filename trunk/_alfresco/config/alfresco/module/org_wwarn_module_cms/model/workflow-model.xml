@@ -150,6 +150,22 @@
 
         <type name="ww:AP03_ProvideOutputsEmailInfoTask">
             <parent>ww:baseTask</parent>
+            <properties>
+                <property name="ww:to">
+                    <title>To email addresses</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                <property name="ww:subject">
+                     <title>Email subject</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                <property name="ww:body">
+                    <title>Email body</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
         </type>
 
         <type name="ww:AP04_ReceiveApprovalTask">

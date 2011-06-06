@@ -36,6 +36,8 @@
                         studyFolder = bpm_package.children[0].parent; <!-- Workflow was started from Share UI and document is attached -->
                     }
                     if (studyFolder != null) {
+                        executionContext.setVariable("studyFolderNodeRef", studyFolder.nodeRef); <!-- Save this for later use in workflow -->
+
                         var properties = new Array();
                         properties["cm:name"] = "clinicalWorkflowInfo-" + procId;
                         properties["wc:jbpmId"] = procId;
@@ -500,8 +502,8 @@
                     </action>
                 </event>
             </task>
-            <transition to="VA03_ResolveOutputsProblem" name="HavAProblem"></transition>
             <transition to="../Approval/AP01_AssignCentreHead" name="OK"></transition>
+            <transition to="VA03_ResolveOutputsProblem" name="HavAProblem"></transition>
         </task-node>
 
         <task-node name="VA03_ResolveOutputsProblem">
@@ -605,15 +607,40 @@
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
-                            <variable name="ww_studyID" access="read"/>
-                            <expression>
-                                taskInstance.description = "AP03-Provide Outputs Email Info (" + ww_studyID + ")";
-                            </expression>
+                            taskInstance.description = "AP03-Provide Outputs Email Info (" + ww_studyID + ")";
+
+                            var studyFolderNode = search.findNode(executionContext.getVariable("studyFolderNodeRef"));
+                            var studyFolderPath = studyFolderNode.displayPath + "/" + studyFolderNode.name;
+                            var outputFileNames = "";
+                            var allNodesInFolder = studyFolderNode.children;
+                            for each (node in allNodesInFolder) {
+                                if (node.isSubType("wc:output")) {
+                                    outputFileNames = outputFileNames + node.name + "\r\n" ;
+                                }
+                            }
+
+                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl");
+                            var txtMail = "";
+                            if (template != null) {
+                                var args = [];
+                                args["studyID"] = ww_studyID;
+                                args["studyFolderPath"] = studyFolderPath;
+                                args["outputFiles"] = outputFileNames;
+                                txtMail = bpm_package.children[0].processTemplate(template, args);
+                            } else {
+                                txtMail = "The following output files have been uploaded by curators for study (" +
+                                            ww_studyID + ").\r\nStudy Folder: " + studyFolderPath + "\r\n\r\n" + outputFileNames;
+                            }
+
+                            taskInstance.setVariable("ww_to", ww_contributorEmail);
+                            <!--taskInstance.setVariable("ww_subject", ww_subject);-->
+                            taskInstance.setVariable("ww_body", txtMail);
                         </script>
                     </action>
                 </event>
             </task>
-            <transition to="EmailContributorAboutOutputs"></transition>
+            <transition to="EmailContributorAboutOutputs" name="OK"></transition>
+            <transition to="AP04_ReceiveApproval" name="DoNotSend"></transition>
         </task-node>
 
         <node name="EmailContributorAboutOutputs">
@@ -626,22 +653,11 @@
                 </script>
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
-                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl");
-                        var txtMail = "";
-                        if (template != null) {
-                            var args = [];
-                            args["studyID"] = ww_studyID;
-                            txtMail = bpm_package.children[0].processTemplate(template, args);
-                        } else {
-                            txtMail = "The following output files have been uploaded by curators for study (" + ww_studyID + ")."
-                        }
-
                         var mail = actions.create("mail");
-
                         mail.parameters.to = ww_contributorEmail;
                         mail.parameters.from = "alfresco@wwarn.org";
-                        mail.parameters.subject = "Output files (" + ww_studyID + ")";
-                        mail.parameters.text = txtMail;
+                        mail.parameters.subject = ww_subject;
+                        mail.parameters.text = ww_body;
                         mail.execute(bpm_package);
                     </script>
                 </action>
