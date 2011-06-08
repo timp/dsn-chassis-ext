@@ -1393,6 +1393,16 @@
                 var record = this.getRecord(elCheckbox);
                 record.setData("select", elCheckbox.checked);
             });
+            
+            this.derivedFilesDataTable.on('dataReturnEvent', function (oArgs) {
+                var req = oArgs.request;
+                var resp = oArgs.response;
+                if (resp.results.length == 0) {
+                	var derivedInputDiv = Dom.get("derivedInput");
+                	derivedInputDiv.style.visibility = 'hidden';
+                }
+            });
+           
         },
 
         /**
