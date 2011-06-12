@@ -39,15 +39,18 @@ import org.jasig.cas.client.validation.TicketValidationException;
 
 
 /**
- * Login via a CAS proxy ticket.
- * <p/>
- * Java implementation of WebScript LoginCas located here:
- * trunk\_alfresco\config\alfresco\extension\templates\webscripts\org\wwarn\authentication
+ * Web Script controller to support Login via a CAS proxy ticket.
+ *
+ * It is called from the Share Web App custom Authenticator.
+ *
+ * Call this Web Script via localhost:8080/alfresco/api/logincas?u={username}&t={ticket}
  */
 public class LoginCas extends DeclarativeWebScript {
-    private final static String CAS_WEBAPP_URL = "https://www.wwarn.org/sso";
+    //private final static String CAS_WEBAPP_URL = "https://www.wwarn.org/sso";
+    private final static String CAS_WEBAPP_URL = "https://localhost:8443/cas-server-webapp-3.4.6";
+
     //private final static String ALFRESCO_WEBAPP_URL = "http://46.137.92.130:8080/alfresco";
-    private final static String ALFRESCO_WEBAPP_URL = "https://129.67.45.218:8080/alfresco";
+    private final static String ALFRESCO_WEBAPP_URL = "http://localhost:8080/alfresco";
 
     private AuthenticationService authenticationService;
     private AuthenticationComponent authenticationComponent;
