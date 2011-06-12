@@ -5,7 +5,7 @@
             <!-- Enable and adjust the following settings to allow for external access URLs to the
             WebScript Framework - to return an externally accessible address for absolute url generation.-->
             <scheme>http</scheme>
-            <hostname>129.67.45.218</hostname>
+            <hostname>localhost</hostname>
             <port>8080</port>
         </server>
     </config>
@@ -16,35 +16,35 @@
         <remote>
             <!-- Authenticator implementation used in CAS authentication scenario,
                 overrides the default alfresco-ticket authenticator
-                <class>org.alfresco.connector.AlfrescoAuthenticator</class>
+                <class>org.alfresco.connector.AlfrescoAuthenticator</class> -->
             <authenticator>
                 <id>alfresco-ticket</id>
                 <name>Alfresco Authenticator</name>
                 <description>Alfresco Authenticator</description>
                 <class>org.wwarn.cms.authentication.CasAlfrescoAuthenticator</class>
-            </authenticator>                                                -->
+            </authenticator>
 
             <!-- Connects to an Alfresco instance using ticket-based authentication,
-                overrides the default alfresco connector to use ticket authenticator
+                overrides the default alfresco connector to use ticket authenticator-->
             <connector>
                 <id>alfresco</id>
                 <name>Alfresco Connector</name>
                 <description>Connects to an Alfresco instance using ticket-based authentication</description>
                 <class>org.springframework.extensions.webscripts.connector.AlfrescoConnector</class>
                 <authenticator-id>alfresco-ticket</authenticator-id>
-            </connector>-->
+            </connector>
 
-            <!-- Endpoint using external authentication via CAS
+            <!-- Endpoint using external authentication via CAS-->
             <endpoint>
                 <id>alfresco</id>
                 <name>Alfresco - user access</name>
                 <description>Access to Alfresco Repository WebScripts that require external user authentication
                 </description>
                 <connector-id>alfresco</connector-id>
-                <endpoint-url>https://129.67.45.218:8080/alfresco/s</endpoint-url>
+                <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
                 <identity>user</identity>
                 <external-auth>true</external-auth>
-            </endpoint>-->
+            </endpoint>
 
 
         </remote>

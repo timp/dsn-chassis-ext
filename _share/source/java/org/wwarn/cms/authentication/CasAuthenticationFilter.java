@@ -41,14 +41,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.cxf.security.SecurityContext;
 import org.jasig.cas.client.util.AbstractCasFilter;
 import org.jasig.cas.client.validation.Assertion;
-//import org.springframework.security.context.SecurityContextHolder;
-//import org.springframework.security.context.SecurityContext;
-//import org.springframework.security.providers.cas.CasAuthenticationToken;
-
 
 import org.springframework.extensions.surf.site.AuthenticationUtil;
 import org.springframework.context.ApplicationContext;
@@ -64,7 +58,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class CasAuthenticationFilter implements Filter {
     //private final static String ALFRESCO_WEBAPP_URL = "http://46.137.92.130:8080/alfresco";
-    private final static String ALFRESCO_WEBAPP_URL = "https://129.67.45.218:8080/alfresco";
+    private final static String ALFRESCO_WEBAPP_URL = "http://localhost:8080/alfresco";
 
     private ServletContext servletContext;
 
@@ -118,9 +112,6 @@ public class CasAuthenticationFilter implements Filter {
         }
 
         String proxyticket = assertion.getPrincipal().getProxyTicketFor(ALFRESCO_WEBAPP_URL);
-        //if (StringUtils.isBlank(proxyticket)) {
-          //  proxyticket = getProxyTicketForService(ALFRESCO_WEBAPP_URL);
-        //}
 
         try {
 
@@ -139,19 +130,6 @@ public class CasAuthenticationFilter implements Filter {
 
         chain.doFilter(sreq, sresp);
     }
-
-    /*
-    public static String getProxyTicketForService(String url) {
-        String proxyTicket = null;
-        SecurityContext ctx = SecurityContextHolder.getContext();
-        if (ctx.getAuthentication() != null) {
-            CasAuthenticationToken auth = (CasAuthenticationToken)ctx.getAuthentication();
-            Assertion assertion = auth.getAssertion();
-            proxyTicket = assertion.getPrincipal().getProxyTicketFor(url);
-        }
-        return proxyTicket;
-    } */
-
 
     /**
      * Retrieves the root application context

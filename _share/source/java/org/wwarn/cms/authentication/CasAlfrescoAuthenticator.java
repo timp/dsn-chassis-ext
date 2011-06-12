@@ -55,9 +55,9 @@ public class CasAlfrescoAuthenticator extends AbstractAuthenticator {
             throws AuthenticationException {
         ConnectorSession cs = null;
 
-        if (credentials != null) {    // credentials endpoint = 'alfresco'  cleartextUserName for example colin@example.org
+        if (credentials != null) {    // credentials endpoint = 'alfresco'  cleartextUserName for example martin@example.org
             // Build a new remote client
-            RemoteClient remoteClient = new RemoteClient(endpoint);    // endpoint = http://129.67.46.156:8080/alfresco/s
+            RemoteClient remoteClient = new RemoteClient(endpoint);    // endpoint = http://localhost:8080/alfresco/s
 
             // Call the login web script
             String username = (String) credentials.getProperty(Credentials.CREDENTIAL_USERNAME);
@@ -67,18 +67,12 @@ public class CasAlfrescoAuthenticator extends AbstractAuthenticator {
                 logger.debug("Authenticating user: " + username);
 
             // Call the LoginCas WebScript
-            //  (located in trunk\_alfresco\config\alfresco\extension\templates\webscripts\org\wwarn\authentication)
             if (proxyticket == null) {
                 proxyticket = "";
-
-                // The CAS Server can probably not reach Alfresco
-                // The following should have happened:
-                // 1) Call CAS to login with Share service: http://cloud1.cggh.org/sso/login?service=http://129.67.46.156:8080/share
-                // 2) CAS responds by calling back/redirecting with ticket:  http://129.67.46.156:8080/share?ticket=ST-31-1yGp0Dd3jbFIGH9PTcrN-sso
-
-                // later on: Turning ticket into username = http://cloud1.cggh.org/sso/login/serviceValidate?ticket=ST-31-1yGp0Dd3jbFIGH9PTcrN-sso&service=http://129.67.46.156:8080/share
-                logger.warn("Proxy ticket is null for user (" + username +
-                        "), make sure that the CAS Server can reach the Alfresco server");
+                throw new AuthenticationException("Proxy ticket is null for user (" + username +
+                        "), make sure that the CAS Server is accessed via https (secure) and that the " +
+                        "proxy validation (proxyCallbackUrl) is also secure (i.e. alfresco tomcat has to be https), " +
+                        "certificates has to also be imported properly into keystore");
             }
 
             String casLoginUrl = "/api/logincas?u=" + URLEncoder.encode(username) + "&t=" + URLEncoder.encode(proxyticket);
@@ -98,8 +92,9 @@ public class CasAlfrescoAuthenticator extends AbstractAuthenticator {
                     throw new AuthenticationException("Unable to retrieve ticket from Alfresco", de);
                 }
 
-                if (logger.isDebugEnabled())
+                if (logger.isDebugEnabled()) {
                     logger.debug("Parsed ticket: " + ticket);
+                }
 
                 // Place the ticket back into the connector session
                 if (connectorSession != null) {
@@ -109,8 +104,9 @@ public class CasAlfrescoAuthenticator extends AbstractAuthenticator {
                     cs = connectorSession;
                 }
             } else {
-                if (logger.isDebugEnabled())
+                if (logger.isDebugEnabled()) {
                     logger.debug("Authentication failed, received response code: " + response.getStatus().getCode());
+                }
             }
         } else {
             cs = connectorSession;      // connector session endpoint = 'alfresco'
