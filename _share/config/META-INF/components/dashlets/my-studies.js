@@ -191,6 +191,12 @@
         				 article.modules.push(mods.firstChild.nodeValue);
         				 mods = mods.nextElementSibling;
         			 }
+        		 } else if (propertyDefinitionId == "wc:admins") {
+        			 var admins = propertyEl.firstElementChild;
+        			 while (admins != null) {
+        				 article.administrators.push(admins.firstChild.nodeValue);
+        				 admins = admins.nextElementSibling;
+        			 }
         		 }
 
         		 propertyEl = propertyEl.nextElementSibling;
@@ -480,7 +486,7 @@
 
             var desc = '<div class="study-admins"><ul>';
             for(var i = 0,l=admins.length;i<l;i++) {
-            	desc += $html(admins[i]);
+            	desc += '<li>' + $html(admins[i]) + '</li>';
             }
             desc +=  '</ul></div>';
             
