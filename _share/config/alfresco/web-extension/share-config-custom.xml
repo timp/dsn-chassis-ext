@@ -1,4 +1,4 @@
-./<alfresco-config>
+<alfresco-config>
 
     <config evaluator="string-compare" condition="Server">
         <server>
