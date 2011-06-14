@@ -1,4 +1,4 @@
-<alfresco-config>
+./<alfresco-config>
 
     <config evaluator="string-compare" condition="Server">
         <server>
@@ -16,25 +16,25 @@
         <remote>
             <!-- Authenticator implementation used in CAS authentication scenario,
                 overrides the default alfresco-ticket authenticator
-                <class>org.alfresco.connector.AlfrescoAuthenticator</class> -->
+                <class>org.alfresco.connector.AlfrescoAuthenticator</class> EOC.cas
             <authenticator>
                 <id>alfresco-ticket</id>
                 <name>Alfresco Authenticator</name>
                 <description>Alfresco Authenticator</description>
                 <class>org.wwarn.cms.authentication.CasAlfrescoAuthenticator</class>
-            </authenticator>
+            </authenticator> EOC.default-->
 
             <!-- Connects to an Alfresco instance using ticket-based authentication,
-                overrides the default alfresco connector to use ticket authenticator-->
+                overrides the default alfresco connector to use ticket authenticator EOC.cas
             <connector>
                 <id>alfresco</id>
                 <name>Alfresco Connector</name>
                 <description>Connects to an Alfresco instance using ticket-based authentication</description>
                 <class>org.springframework.extensions.webscripts.connector.AlfrescoConnector</class>
                 <authenticator-id>alfresco-ticket</authenticator-id>
-            </connector>
+            </connector> EOC.default-->
 
-            <!-- Endpoint using external authentication via CAS-->
+            <!-- Endpoint using external authentication via CAS EOC.cas-->
             <endpoint>
                 <id>alfresco</id>
                 <name>Alfresco - user access</name>
@@ -44,7 +44,7 @@
                 <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
                 <identity>user</identity>
                 <external-auth>true</external-auth>
-            </endpoint>
+            </endpoint> EOC.default-->
 
 
         </remote>
