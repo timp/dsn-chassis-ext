@@ -34,7 +34,7 @@
                 <authenticator-id>alfresco-ticket</authenticator-id>
             </connector> EOC.default-->
 
-            <!-- Endpoint using external authentication via CAS EOC.cas-->
+            <!-- Endpoint using external authentication via CAS EOC.cas
             <endpoint>
                 <id>alfresco</id>
                 <name>Alfresco - user access</name>
