@@ -1,5 +1,15 @@
 <alfresco-config>
 
+
+    <!-- Apply custom theme -->
+    <config evaluator="string-compare" condition="WebFramework">
+        <web-framework>
+            <defaults>
+                <theme>wwarn</theme>
+            </defaults>
+        </web-framework>
+    </config>
+    
     <config evaluator="string-compare" condition="Server">
         <server>
             <!-- Enable and adjust the following settings to allow for external access URLs to the
