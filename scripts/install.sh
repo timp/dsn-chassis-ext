@@ -28,7 +28,7 @@ then
 	sed -i.bak -e "s#http://localhost:8080#https://${NEW_HOST}#" -e "s#https://localhost:8443/cas-server-webapp-3.4.6#https://${CAS_HOST}/sso#" ${SOURCE_HOME}/_alfresco/source/java/org/wwarn/cms/authentication/LoginCas.java
 	sed -i.bak -e "s#https://localhost:8443/cas-server-webapp-3.4.6#https://${CAS_HOST}/sso#" ${SOURCE_HOME}/_alfresco/web/jsp/relogin.jsp
 
-	sed -i.bak -e 's#EOC.cas$#EOC.cas-->#' -e 's# EOC.default-->#<!--EOC.default-->#' ${SOURCE_HOME}/_share/config/alfresco/web-extension/share-config-custom.xml
+	sed -i.bak -e "s#EOC.cas$#EOC.cas-->#" -e "s# EOC.default-->#<!--EOC.default-->#" ${SOURCE_HOME}/_share/config/alfresco/web-extension/share-config-custom.xml
 
 	cd ${ALF_HOME}/tomcat/webapps/share/WEB-INF
 	cp ${SOURCE_HOME}/_alfresco/lib/cas-client-core-3.1.12.jar lib
@@ -52,7 +52,7 @@ fi
 #End sso section
 cd ${SOURCE_HOME}
 fromdos build.properties
-sed -i -e 's#X:/#/opt/#' -e 's#Alfresco3.4EWWARN#${ALF_VERSION}#' -e 's#C:/Program Files/Java/jdk1.6.0_11#${ALF_HOME}/java#' -e 's#tools/##' build.properties
+sed -i -e "s#X:/#/opt/#" -e "s#Alfresco3.4EWWARN#${ALF_VERSION}#" -e "s#C:/Program Files/Java/jdk1.6.0_11#${ALF_HOME}/java#" -e "s#tools/##" build.properties
 export JAVA_HOME=${ALF_HOME}/java
 service alfresco stop
 ant deploy-alfresco-amp
