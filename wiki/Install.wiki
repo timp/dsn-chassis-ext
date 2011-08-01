@@ -1,0 +1,17 @@
+#summary How to install the customizations
+= Introduction =
+
+This page gives a brief overview of how to install the customizations into an installed instance of alfresco
+
+
+= Details =
+
+The easiest way is to use the install script scripts/install.sh
+
+To install using the Alfresco user repository then just run as 'install.sh'
+
+To install with CAS integration run as:
+install.sh <<alfresco server>> <<CAS server>>
+
+e.g.
+install.sh alfresco.example.org cas.example.org
