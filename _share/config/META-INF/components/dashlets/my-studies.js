@@ -188,7 +188,9 @@
         		 } else if (propertyDefinitionId == "wc:modules") {
         			 var mods = propertyEl.firstElementChild;
         			 while (mods != null) {
-        				 article.modules.push(mods.firstChild.nodeValue);
+        				 if (mods.firstChild != null) {
+        					 article.modules.push(mods.firstChild.nodeValue);
+        				 }
         				 mods = mods.nextElementSibling;
         			 }
         		 } else if (propertyDefinitionId == "wc:admins") {
