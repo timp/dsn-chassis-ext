@@ -389,6 +389,10 @@
             </mandatory-aspects>
         </type>
 
+        <type name="wc:studyMetadata">
+            <title>Generic Study File</title>
+            <parent>cm:content</parent>
+        </type>
         <!--
               A Data File belonging to a study.
               -->
@@ -419,6 +423,9 @@
         <type name="wc:publication">
             <title>Publication</title>
             <parent>wc:studyFile</parent>
+            <mandatory-aspects>
+                <aspect>wc:publicationData</aspect>
+            </mandatory-aspects>
         </type>
 
         <!--
@@ -445,7 +452,7 @@
               -->
         <type name="wc:studyInfo">
             <title>Study Info</title>
-            <parent>wc:studyFile</parent>
+            <parent>wc:studyMetadata</parent>
         </type>
     </types>
 
@@ -502,6 +509,11 @@
         <aspect name="wc:fileData">
             <title>File Data</title>
             <properties>
+                <property name="wc:submitter">
+                    <title>Submitter</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
                 <property name="wc:fileId">
                     <title>File ID</title>
                     <type>d:text</type>
@@ -608,7 +620,7 @@
         <!--
             A peer association that links one or more output files (from curators)
             to the study file from which they are derived
-            Source Any Study File (one) ==> (many) Target Output File
+            Source Any Study File (many) ==> (many) Target Output File
         -->
         <aspect name="wc:derivations">
             <title>Derivations</title>
@@ -617,6 +629,7 @@
                 <property name="wc:derivationsComments">
                     <title>Derivations comment</title>
                     <type>d:text</type>
+                    <multiple>true</multiple>
                 </property>
             </properties>
             <associations>
@@ -630,10 +643,33 @@
                         <mandatory>false</mandatory>
                         <many>true</many>
                     </target>
+                    
                 </association>
             </associations>
         </aspect>
-
+        <!--
+            Extra metadata for a publication file type.
+        -->
+        <aspect name="wc:publicationData">
+            <title>Publication Data</title>
+            <properties>
+                <property name="wc:DOI">
+                    <title>DOI</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+                <property name="wc:PMID">
+                    <title>Pubmed ID</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+                <property name="wc:URL">
+                    <title>URL</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+            </properties>
+        </aspect>
     </aspects>
 
 </model>
