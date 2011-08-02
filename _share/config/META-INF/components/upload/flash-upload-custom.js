@@ -1335,6 +1335,108 @@
          * @private
          */
         _createPopulatedDerivedFilesDataTable: function FlashUpload__createPopulatedDerivedDataTable() {
+        	 /* This query doesn't actually work quite right and the GET is easier and does the job
+       	 var query = 'select f.*, a.*, t.* from wc:studyFolder as f join wc:studyFolderData as a on f.cmis:objectid = a.cmis:objectid';
+    		 query += ' join cm:titled as t on f.cmis:objectid = t.cmis:objectid';
+       	 var xmlquery = '<cmis:query xmlns:cmis="http://docs.oasis-open.org/ns/cmis/core/200908/"><cmis:statement><![CDATA['+query+']]></cmis:statement></cmis:query>';
+       	  */
+        	/*
+        	this.showConfig.destination = workspace://SpacesStore/3f172edb-07ca-4e90-bc62-50256da9e8d5
+        	*/
+        	var dest = this.showConfig.destination.replace('//SpacesStore','SpacesStore/i');
+       	  Alfresco.util.Ajax.request(
+       		         {
+       		        	 /*
+       		            url: Alfresco.constants.PROXY_URI + "cmis/queries",
+       		            method: "POST",
+       		            dataStr: xmlquery,
+       		            requestContentType: 'application/cmisquery+xml',
+       		            */
+       		        	 url: Alfresco.constants.PROXY_URI + "cmis/s/" + dest + '/children',
+       		            successCallback:
+       		            {
+       		               fn: this._populateDerivedFilesDataTable,
+       		               scope: this
+       		            }
+       		         });
+        },
+        getJson: function FlashUpload__getJson(p_response)
+        {
+      	  
+            var entries = p_response.getElementsByTagName('entry'),
+            entriesLength = entries.length,
+            entryEl = null,
+            objEl,
+            propertiesEl,
+            propertiesList,
+            propertyEl,
+            studyFiles = [],
+            article;
+
+        // Convert to object format similar to the json response
+        for (var ei = 0; ei < entriesLength; ei++)
+        {
+           entryEl = entries[ei];
+           var found = false;
+           var objEl = entryEl.getElementsByTagNameNS('http://docs.oasis-open.org/ns/cmis/restatom/200908/','object');
+           var i = 0;
+           var propsNS = [ 'http://www.alfresco.org', 'http://docs.oasis-open.org/ns/cmis/core/200908/'];
+           var name = '', nodeRef = '', type = '', fileId = '';
+           while ((ns = propsNS[i++])) {
+          	 var properties = entryEl.getElementsByTagNameNS(ns,'properties');
+          	 var propertyEl = properties[0].firstElementChild;
+          	 while(propertyEl != null)
+          	 {  
+          		 var propertyDefinitionId = propertyEl.getAttribute("propertyDefinitionId");
+          		 if (propertyDefinitionId == "cmis:name") {
+          			 name = propertyEl.firstChild.firstChild.nodeValue;
+          		 } else if (propertyDefinitionId == "cmis:objectId") {
+          			 nodeRef = propertyEl.firstChild.firstChild.nodeValue;
+          		 } else if (propertyDefinitionId == "cmis:objectTypeId") {
+          			 type = propertyEl.firstChild.firstChild.nodeValue;
+          			 if (type == "D:wc:dataFile" || type == "D:wc:protocol"  || type == "D:wc:publication"  
+          				 || type == "D:wc:other"  || type == "D:wc:dataDictionary") {
+          				 found = true;
+          			 }
+          		 } else if (propertyDefinitionId == "wc:fileId") {
+        			 if (propertyEl.firstChild && propertyEl.firstChild.firstChild) {
+        				 fileId = propertyEl.firstChild.firstChild.nodeValue;
+        			 }
+        		 }
+
+          		 propertyEl = propertyEl.nextElementSibling;
+          	 }
+           }
+           if (found) {
+        	   var file =
+        	   {
+        			   nodeRef: nodeRef,
+        			   name: name,
+        			   type: type,
+        			   fileId: fileId
+        	   };
+        	   studyFiles.push(file);
+           }
+        }
+        return studyFiles;  
+        },
+        /**
+         * @author IXXUS
+         *
+         * Helper function to create and populate the derived files data table.
+         *
+         * @method _createPopulatedDerivedFilesDataTable
+         * @private
+         */
+        _populateDerivedFilesDataTable: function FlashUpload__populateDerivedFilesDataTable(p_response) {
+        	 //Convert CMIS response to json
+      	  	var items = this.getJson(p_response.serverResponse.responseXML);
+      	  	/*
+      	// DataSource definition
+      	  	var myDataSource = new YAHOO.util.DataSource(items,
+            {
+               responseType: YAHOO.util.DataSource.TYPE_JSARRAY
+            });
             // Generate get study files web script URL
             var alfrescoUrl = Alfresco.constants.PROXY_URI.replace("/share/proxy", "");
             var url = alfrescoUrl + "service/wwarn/studyfiles?folderNodeRef=" + this.showConfig.destination;
@@ -1344,10 +1446,13 @@
             //url += ";jsessionid=" + YAHOO.util.Cookie.get("JSESSIONID");
 
             //window.alert("_createPopulatedDerivedFilesDataTable: url = " + url);
-
-            var myDataSource = new YAHOO.util.XHRDataSource(url);
-            myDataSource.responseType = YAHOO.util.DataSource.TYPE_JSON;
-            myDataSource.connXhrMode = "queueRequests";
+            */
+         // DataSource definition
+            var myDataSource = new YAHOO.util.DataSource(items,
+            {
+               responseType: YAHOO.util.DataSource.TYPE_JSARRAY
+            });
+            
             myDataSource.responseSchema = {
                 resultsList: "studyFiles",
                 fields: [
