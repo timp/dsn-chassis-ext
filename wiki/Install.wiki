@@ -11,6 +11,10 @@ The easiest way is to use the install script scripts/install.sh
 To install using the Alfresco user repository then just run as 'install.sh'
 
 To install with CAS integration run as:
+follow http://ecmstuff.blogspot.com/2011/06/configuring-alfresco-for-sso-with-cas.html
+
+Some of this is done via the install script, you will still need to configure tomcat appropriately
+
 install.sh <<alfresco server>> <<CAS server>>
 
 e.g.
