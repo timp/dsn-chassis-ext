@@ -70,7 +70,7 @@ public class CasAlfrescoAuthenticator extends AbstractAuthenticator {
             if (proxyticket == null) {
                 proxyticket = "";
                 throw new AuthenticationException("Proxy ticket is null for user (" + username +
-                        "), make sure that the CAS Server is accessed via https (secure) and that the " +
+                        "), endpoint (" + endpoint + ") make sure that the CAS Server is accessed via https (secure) and that the " +
                         "proxy validation (proxyCallbackUrl) is also secure (i.e. alfresco tomcat has to be https), " +
                         "certificates has to also be imported properly into keystore");
             }
