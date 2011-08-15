@@ -1,7 +1,7 @@
 #summary How to install the customizations
 = Introduction =
 
-This page gives a brief overview of how to install the customizations into an installed instance of alfresco.
+This page gives a brief overview of how to install the customizations into an installed instance of Alfresco.
 
 
 = Details =
