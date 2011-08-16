@@ -1,5 +1,3 @@
 #summary http://www.virtualbox.org/.
 
-= http://www.virtualbox.org/ =
-
 http://www.virtualbox.org/
