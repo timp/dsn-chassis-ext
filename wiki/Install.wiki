@@ -8,7 +8,7 @@ This page gives a brief overview of how to install the customizations into an in
 
 The easiest way is to use the install script scripts/install.sh
 
-To install using the Alfresco user repository then just run as 'install.sh'
+Install using the Alfresco user repository then just run as 'install.sh'
 
 To install with CAS integration run as:
 follow http://ecmstuff.blogspot.com/2011/06/configuring-alfresco-for-sso-with-cas.html
