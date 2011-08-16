@@ -8,9 +8,19 @@
 
 Set up a VirtualBox VM as per http://tim-pizey.blogspot.com/2011/08/alfresco-setup.html
 
+{{{
+ wget http://sourceforge.net/projects/alfresco/files/Alfresco%203.4.d%20Community/alfresco-community-sdk-3.4.d.zip
 
+mkdir tmp
 
-Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+mv alfresco-community-sdk-3.4.d.zip tmp/
+
+cd tmp
+unzip alfresco-community-sdk-3.4.d.zip
+cd ..
+
+mv tmp /opt/alfresco-community-sdk-3.4
+ln -s alfresco-community-sdk-3.4 alfresco-community-sdk
+
+}}}
+edit dsn-chassis-ext/build.properties to reflect above paths. 
