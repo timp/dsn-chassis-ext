@@ -75,7 +75,7 @@ then
 	if [ $? -ne 0 ]
 	then
 		echo "### Enable CAS SSO Authentication via EXTERNAL subsystem" >> alfresco-global.properties
-		echo "authentication.chain=cas:external" >> alfresco-global.properties
+		echo "authentication.chain=cas:external,alfrescoNtlm1:alfrescoNtlm" >> alfresco-global.properties
 	fi
 fi
 #End sso section
