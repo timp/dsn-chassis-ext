@@ -48,7 +48,9 @@
     </target>
 
     <target name="compile">
-        <javac classpathref="src.classpath"
+    	<property name="myclasspath" refid="src.classpath"/>    	
+    	<echo message="Classpath = ${myclasspath}"/>
+    	<javac classpathref="src.classpath"
                srcdir="${source.alfresco.dir}"
                destdir="${classes.alfresco.dir}"
                debug="true"
