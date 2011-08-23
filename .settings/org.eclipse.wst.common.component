@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="alfresco">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/_alfresco/source/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/_share/source/java"/>
+        <property name="context-root" value="alfresco"/>
+        <property name="java-output-path" value="/alfresco/build/classes"/>
+    </wb-module>
+</project-modules>
