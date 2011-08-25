@@ -1,0 +1,97 @@
+#summary Tips for installing a CASified Alfresco on a Virtual Box VM
+
+= Details =
+
+== Create a named instance in a vm ==
+Hint: Keep the server name under 15 characters otherwise it will be truncated in the Alfresco CIFS interface
+
+In this example we are using the name alfresco
+
+=== Virtual Box ===
+Set up a host network
+
+In VirtualBox: File/Preferences/Host-Only Ethernet Adapter
+        IPv4 Address: 192.168.56.1
+
+In the VM:
+Adapter 2:
+
+Intel PRO/1000 MT Desktop (Host-only adapter, 'VirtualBox Host-Only Ethernet Adapter')
+
+=== Ubuntu VM ===
+On vm add to /etc/network/interfaces
+{{{
+auto eth1
+
+iface eth1 inet static
+        address 192.168.56.10
+        netmask 255.255.255.0
+}}}
+{{{
+/etc/init.d/networking restart
+}}}
+=== On Host Machine ===
+
+Add to hosts file
+{{{
+192.168.56.10	alfresco
+}}}
+
+== Create a self signed certificate ==
+
+(This example is replacing the default Apache file you might like to call it something different)
+
+The ssleay.cnf is used to ensure the CN in the certificate is the same as the hostname
+{{{
+cp /usr/share/ssl-cert/ssleay.cnf .
+make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
+}}}
+== Setup Apache ==
+{{{
+a2enmod ssl
+a2enmod rewrite
+a2enmod proxy_htty
+a2ensite default-ssl
+}}}
+Edit /etc/apache2/sites-enabled/default-ssl
+
+After the last /Directory add
+{{{
+        <Proxy *>
+               Order Allow,Deny
+               Allow from all
+        </Proxy>
+
+        # reverse proxy configuration for CAS
+        <Location /sso>
+                ProxyPass        <<CAS HOST>>/sso
+                ProxyPassReverse <<CAS HOST>>/sso
+        </Location>
+
+        # reverse proxy configuration for alfresco
+        <Location /share>
+                ProxyPass        <<ALF HOST>>/share
+                ProxyPassReverse <<ALF HOST>>/share
+        </Location>
+        <Location /alfresco>
+                ProxyPass        <<ALF HOST>>/alfresco
+                ProxyPassReverse <<ALF HOST>>/alfresco
+        </Location>
+}}}
+== Import the certificates to the relevant JVMs ==
+
+If you are running CAS on a different machine then you will need to do this there as well
+{{{
+cd /opt/alfresco-3.4.d/java/jre/lib/security/
+keytool -import -file /etc/ssl/certs/ssl-cert-snakeoil.pem -keystore ./cacerts
+}}}
+
+== Configure Alfresco ==
+
+install alfresco alfresco
+
+== Flash upload problems with self signed certificate ==
+
+https://bugbase.adobe.com/index.cfm?event=bug&id=2926796
+
+https://issues.alfresco.com/jira/browse/ALF-1324
