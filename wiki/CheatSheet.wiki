@@ -13,3 +13,7 @@ _share/config/alfresco/web-extension/share-config-custom.xml
 _alfresco/config/alfresco/module/org_wwarn_module_cms/model
 
 (which is referenced from ../context/bootstrap-context.xml which in turn is in ../module-context.xml)
+
+=== Workflows ===
+
+_alfresco/config/alfresco/module/org_wwarn_module_cms/workflows
