@@ -1,0 +1,15 @@
+#summary Hints and tips
+
+= Introduction =
+
+Some useful pointers to help you remember where things are
+
+
+=== Location of file which defines the appearance of forms etc ===
+_share/config/alfresco/web-extension/share-config-custom.xml
+
+=== Content Model ===
+
+_alfresco/config/alfresco/module/org_wwarn_module_cms/model
+
+(which is referenced from ../context/bootstrap-context.xml which in turn is in ../module-context.xml)
