@@ -15,8 +15,15 @@
         }
      }
    </description>
-  <url>/wwarn/startworkflow</url>
+  <url>/wwarn/startworkflow?workflow={workflow}</url>
+  <args>^M
+    <arg>^M
+        <shortname>workflow</shortname>^M
+        <description>the name of the workflow to start</description>^M
+    </arg>^M
+  </args>^M
+
   <authentication>user</authentication>
   <transaction>required</transaction>
-  <format default="json">any</format>
+  <format default="atomentry">any</format>
 </webscript>
