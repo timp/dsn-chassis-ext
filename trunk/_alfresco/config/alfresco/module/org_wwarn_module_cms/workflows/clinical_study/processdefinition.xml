@@ -45,6 +45,11 @@
                         var workflowInfoNode = studyFolder.createNode(null, "wc:workflowInfo", properties, "wc:workflowInfos");
                         executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
                     }
+                    <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
+                    <!-- 
+                    if (studyFolder != null) {
+                        executionContext.setVariable("ww_studyFolderLink", "http://localhost:8080/share/page/repository?path=WWARN%2FStudies%2F" + studyFolder.name);
+                    }-->
                 </script>
             </action>
         </event>
@@ -54,12 +59,7 @@
         <event type="superstate-enter">
             <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                 <script>
-                    <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
-                    var studyFolder = bpm_package.children[0].parent;
-                    if (studyFolder != null) {
-                        executionContext.setVariable("ww_studyFolderLink", "http://localhost:8080/share/page/repository?path=WWARN%2FStudies%2F" + studyFolder.name);
-                    }
-
+                    
                     <!-- Update study status in both process variable and WorkflowInfo object -->
                     var status = "Gate Keeping";
                     executionContext.setVariable("wc_studyStatus", status);
