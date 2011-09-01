@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <!-- The bootstrap-context.xml file is used for patch definitions, importers, 
+		 message loaders, loading custom web client configuration, 
+		 and loading custom content models.  -->
+
+
+    <!-- Registration of new models -->
+    <bean 	id="org.wwarn.cms.dictionaryBootstrap"
+			parent="dictionaryModelBootstrap" 
+			depends-on="dictionaryBootstrap">
+        <property name="models">
+            <list>
+                <value>alfresco/module/org_wwarn_module_cms/model/content-model.xml</value>
+                <value>alfresco/module/org_wwarn_module_cms/model/workflow-model.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--
+       Bootstrap label properties for the Clinical Study Workflow
+       -->
+   <bean id="org.wwarn.cms.properties.workflowBootstrap" parent="workflowDeployer">
+       <property name="labels">
+           <list>
+               <value>alfresco.module.org_wwarn_module_cms.ui.labels-clinical_study-workflow</value>
+           </list>
+       </property>
+   </bean>
+
+	
+
+
+</beans>

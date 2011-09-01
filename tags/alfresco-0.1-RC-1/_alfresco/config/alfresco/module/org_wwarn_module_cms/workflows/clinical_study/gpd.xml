@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="ww:clinicalStudyProcess" width="1002" height="504">
+  <node name="Start" x="0" y="0" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node-container name="Curation" x="0" y="0" width="360" height="240"/>
+  <node-container name="Validation" x="0" y="0" width="360" height="240"/>
+  <node-container name="Approval" x="0" y="0" width="360" height="240"/>
+  <node name="End" x="0" y="0" width="132" height="36"/>
+  <node-container name="GateKeeping" x="0" y="0" width="360" height="240"/>
+</root-container>

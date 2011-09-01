@@ -1,0 +1,94 @@
+/* Data Table */
+.my-studies .yui-dt table
+{
+   border: medium none;
+   width: 100%;
+}
+/*
+.my-studies .yui-dt thead
+{
+   display: none;
+}
+*/
+.my-studies .yui-dt tbody
+{
+   outline: none;
+}
+
+.my-studies .yui-dt tr.yui-dt-even,
+.my-studies .yui-dt tr.yui-dt-odd
+{
+   background-color: #ffffff;
+}
+
+.my-studies .yui-dt td
+{
+   border-bottom: 1px dashed #d9d9d9;
+   border-right: medium none;
+   vertical-align: top;
+}
+
+.my-studies .yui-dt td .yui-dt-liner
+{
+   padding: 4px 6px;
+}
+
+.my-studies .yui-dt .yui-dt-message td
+{
+   border: medium none;
+}
+
+/**
+ * Favourite document indicator.
+ * Note: We can't use the same "enabled" class on normal and IMAP favourites because IE6 can't cope
+ *       with the selector. No, really. Nice work, Microsoft muppets.
+*/
+.my-studies a.favourite-study,
+.my-studies a.imap-favourite-study
+{
+   background-image: url(images/star-deselected_16x16.png);
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+   padding: 6px 8px;
+}
+.my-studies a.imap-favourite-study
+{
+   background-image: url(images/imap-fav-deselected-16.png);
+}
+.my-studies a.favourite-study.enabled
+{
+   background-image: url(images/star-selected_16x16.png);
+}
+.my-studies a.imap-favourite-study.imap-enabled
+{
+   background-image: url(images/imap-fav-selected-16.png);
+}
+.my-studies a.favourite-study:active,
+.my-studies a.favourite-study:hover,
+.my-studies a.imap-favourite-study:active,
+.my-studies a.imap-favourite-study:hover
+{
+   text-decoration: none;
+}
+
+.my-studies div.study-favourites
+{
+   
+}
+
+.my-studies div.study-title
+{
+   background-repeat: no-repeat;
+   background-position: 0 0;
+   min-height: 24px;
+   padding-left: 32px;
+   padding-top: 0.2em;
+}
+
+.my-studies div.study-description
+{
+   margin-left: 32px;
+   position: relative;
+   top: -4px;
+}

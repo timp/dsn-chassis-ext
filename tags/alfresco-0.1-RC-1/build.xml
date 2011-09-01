@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+
+<project name="WWARN Code AMP Build File" default="package-alfresco-amp" basedir=".">
+    <property file="build.properties"/>
+
+    <property name="module.id" value="org_wwarn_module_cms"/>
+
+    <property name="config.alfresco.dir" value="${alfresco.ext.dir}/config"/>
+    <property name="config.share.dir" value="${share.ext.dir}/config"/>
+    <property name="source.alfresco.dir" value="${alfresco.ext.dir}/source/java"/>
+    <property name="source.share.dir" value="${share.ext.dir}/source/java"/>
+    <property name="testsource.alfresco.dir" value="${alfresco.ext.dir}/test/java"/>
+    <property name="classes.alfresco.dir" value="${build.dir}/classes"/>
+    <property name="classes.share.dir" value="${build.dir}/classes_share"/>
+
+    <path id="src.classpath">
+        <dirset dir="${build.dir}"/>
+        <fileset dir="${alfresco.sdk.dir}/lib/server" includes="**/*.jar"/>
+        <fileset dir="${alfresco.sdk.dir}/lib/remote" includes="**/*.jar"/>
+        <fileset dir="${alfresco.ext.dir}/lib" includes="**/*.jar"/>
+    </path>
+
+    <path id="test.classpath">
+        <path refid="src.classpath"/>
+        <fileset dir="${alfresco.ext.dir}/test/lib" includes="**/*.jar"/>
+    </path>
+
+    <target name="mkdirs">
+        <mkdir dir="${build.dir}/dist"/>
+        <mkdir dir="${build.dir}/lib"/>
+        <mkdir dir="${classes.alfresco.dir}"/>
+        <mkdir dir="${classes.share.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete quiet="yes" includeEmptyDirs="true" dir="${build.dir}"/>
+    </target>
+
+    <target name="clean-reset-war">
+        <echo>Deleting ${tomcat.webapps.dir}/alfresco dir and copying back original alfresco.war from alfresco.war.bak
+        </echo>
+        <available file="${alfresco.war.file}.bak" type="file" property="alfresco.war.bak.present"/>
+        <fail unless="alfresco.war.bak.present"
+              message="Could not find ${alfresco.war.file}.bak, please copy alfresco.war to alfresco.war.bak"/>
+        <delete quiet="yes" file="${alfresco.war.file}"/>
+        <delete quiet="yes" includeEmptyDirs="true" dir="${tomcat.webapps.dir}/alfresco"/>
+        <copy file="${alfresco.war.file}.bak" tofile="${alfresco.war.file}"/>
+    </target>
+
+    <target name="compile">
+    	<property name="myclasspath" refid="src.classpath"/>    	
+    	<echo message="Classpath = ${myclasspath}"/>
+    	<javac classpathref="src.classpath"
+               srcdir="${source.alfresco.dir}"
+               destdir="${classes.alfresco.dir}"
+               debug="true"
+               debuglevel="lines,vars,source"/>
+    </target>
+
+    <target name="compile-test">
+        <javac classpathref="test.classpath"
+               srcdir="${testsource.alfresco.dir}"
+               destdir="${classes.alfresco.dir}"/>
+    </target>
+
+    <target name="compile-share">
+        <javac classpathref="src.classpath"
+               srcdir="${source.share.dir}"
+               destdir="${classes.share.dir}"
+               debug="true"
+               debuglevel="lines,vars,source"/>
+    </target>
+
+    <target name="package-alfresco-jar" depends="clean, mkdirs, compile">
+        <echo>Packaging extension JAR for AMP</echo>
+        <jar destfile="${alfresco.jar.file}">
+            <zipfileset dir="${classes.alfresco.dir}" includes="**/*.class"/>
+            <zipfileset dir="${source.alfresco.dir}" includes="**/*.xml,**/*.properties"/>
+        </jar>
+    </target>
+
+    <target name="package-alfresco-amp" depends="package-alfresco-jar">
+        <echo>Packaging extension AMP file for alfresco.war</echo>
+        <zip destfile="${alfresco.amp.file}">
+            <zipfileset dir="${project.dir}/build" includes="lib/*.jar"/>
+            <zipfileset dir="${alfresco.ext.dir}" includes="config/**/*.*"
+                        excludes="**/module.properties,**/file-mapping.properties"/>
+            <zipfileset dir="${config.alfresco.dir}/alfresco/module/${module.id}"
+                        includes="module.properties,file-mapping.properties"/>
+            <zipfileset dir="${alfresco.ext.dir}" includes="lib/*.jar"/>
+            <zipfileset dir="${alfresco.ext.dir}" includes="web/**/*.*"/>
+        </zip>
+    </target>
+
+    <!--
+    <target name="deploy-alfresco-webscripts" depends="copy-alfresco-webscripts"
+            description="Refreshes the list of Alfresco Repo webscripts">
+        <exec executable="curl">
+            <arg value="-d"/>
+            <arg value="reset=on"/>
+            <arg value="http://${alfresco.web.url}/service/index"/>
+        </exec>
+    </target> -->
+
+    <target name="deploy-alfresco-amp" depends="clean-reset-war, package-alfresco-amp">
+        <echo>Merges extension AMP file into build/webapps/alfresco.war</echo>
+        <java dir="." fork="true" classname="org.alfresco.repo.module.tool.ModuleManagementTool">
+            <classpath refid="src.classpath"/>
+            <arg line="install ${alfresco.amp.file} ${alfresco.war.file} -force -verbose -nobackup"/>
+        </java>
+    </target>
+
+    <target name="package-share-jar" depends="clean, mkdirs, compile-share">
+        <echo>Packaging extension JAR file for share.war</echo>
+        <delete file="${share.jar.file}"/>
+        <jar destfile="${share.jar.file}">
+            <zipfileset dir="${config.share.dir}" includes="**/*.*"/>
+            <zipfileset dir="${classes.share.dir}" includes="**/*.class"/>
+        </jar>
+    </target>
+
+    <target name="deploy-share-jar" depends="package-share-jar">
+        <echo>Copies extension JAR file to share.war WEB-INF lib</echo>
+        <copy file="${share.jar.file}" todir="${tomcat.webapps.dir}/share/WEB-INF/lib"/>
+    </target>
+
+    <target name="unit-test" depends="compile, compile-test">
+        <echo>Running all the JUnit tests</echo>
+        <junit showoutput="yes" haltonfailure="yes" fork="on">
+            <formatter type="plain"/>
+            <classpath refid="test.classpath"/>
+            <batchtest>
+                <fileset dir="${classes.alfresco.dir}" casesensitive="no">
+                    <include name="**/*Test.class"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+</project>

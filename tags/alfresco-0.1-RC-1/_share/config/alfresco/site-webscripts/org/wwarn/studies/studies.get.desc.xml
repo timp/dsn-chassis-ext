@@ -1,0 +1,6 @@
+<webscript>
+  <shortname>Studies</shortname>
+  <description>Studies Dashlet</description>
+  <family>user-dashlet</family>
+  <url>/components/dashlets/studies</url>
+</webscript>

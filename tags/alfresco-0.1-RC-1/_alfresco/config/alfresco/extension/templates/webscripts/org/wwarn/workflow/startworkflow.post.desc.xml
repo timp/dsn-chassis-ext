@@ -1,0 +1,29 @@
+<webscript>
+  <shortname>Starts a WWARN workflow</shortname>
+  <description>Starts a WWARN workflow with the passed in name and parameters.
+  To test: curl -v -u admin:admin -d @startworkflow.json -H "Content-Type:application/json" http://localhost:8080/alfresco/service/wwarn/startworkflow
+      startworkflow.json file content:
+      {
+        workflowName: "ww:clinicalStudyProcess",
+        study: {
+            id: "PQRST",
+            folderPath: "/WWARN/Studies/PQRST",
+            modules: [ "Clinical" ],
+            region: "Africa",
+            countries: [ "ANGOLA", "BOTSWANA" ],
+            contributorEmail: "contributor@wwarn.org"
+        }
+     }
+   </description>
+  <url>/wwarn/startworkflow?workflow={workflow}</url>
+  <args>^M
+    <arg>^M
+        <shortname>workflow</shortname>^M
+        <description>the name of the workflow to start</description>^M
+    </arg>^M
+  </args>^M
+
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+  <format default="atomentry">any</format>
+</webscript>

@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="wc:contentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+    <!-- Optional meta-data about the model -->
+    <description>WWARN Document Content Model</description>
+    <author>Martin Bergljung</author>
+    <version>1.0</version>
+
+    <!-- Imports are required to allow references to definitions in other models -->
+    <imports>
+        <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+        <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+    </imports>
+
+    <!-- WWARN Project Content Model namespace -->
+    <namespaces>
+        <namespace uri="http://www.wwarn.org/model/content/1.0" prefix="wc"/>
+    </namespaces>
+
+    <!-- ===============================================================================================================
+        Constraints
+        -->
+    <constraints>
+
+        <!--
+        World region list, used in the Study Folder type
+        -->
+        <constraint name="wc:regionOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+
+                    <value>Africa</value>
+                    <value>Asia</value>
+                    <value>Central America</value>
+                    <value>Eastern Europe</value>
+                    <value>European Union</value>
+                    <value>Middle East</value>
+                    <value>North America</value>
+                    <value>Oceania</value>
+                    <value>South America</value>
+                    <value>The Caribbean</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <!--
+        Countries list, used in the Study Folder type
+        -->
+        <constraint name="wc:countryOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>AFGHANISTAN</value>
+                    <value>ÅLAND ISLANDS</value>
+                    <value>ALBANIA</value>
+                    <value>ALGERIA</value>
+                    <value>AMERICAN SAMOA</value>
+                    <value>ANDORRA</value>
+                    <value>ANGOLA</value>
+                    <value>ANGUILLA</value>
+                    <value>ANTARCTICA</value>
+                    <value>ANTIGUA AND BARBUDA</value>
+                    <value>ARGENTINA</value>
+                    <value>ARMENIA</value>
+                    <value>ARUBA</value>
+                    <value>AUSTRALIA</value>
+                    <value>AUSTRIA</value>
+                    <value>AZERBAIJAN</value>
+                    <value>BAHAMAS</value>
+                    <value>BAHRAIN</value>
+                    <value>BANGLADESH</value>
+                    <value>BARBADOS</value>
+                    <value>BELARUS</value>
+                    <value>BELGIUM</value>
+                    <value>BELIZE</value>
+                    <value>BENIN</value>
+                    <value>BERMUDA</value>
+                    <value>BHUTAN</value>
+                    <value>BOLIVIA (PLURINATIONAL STATE OF)</value>
+                    <value>BOSNIA AND HERZEGOVINA</value>
+                    <value>BOTSWANA</value>
+                    <value>BOUVET ISLAND</value>
+                    <value>BRAZIL</value>
+                    <value>BRITISH INDIAN OCEAN TERRITORY</value>
+                    <value>BRUNEI DARUSSALAM</value>
+                    <value>BULGARIA</value>
+                    <value>BURKINA FASO</value>
+                    <value>BURUNDI</value>
+                    <value>CAMBODIA</value>
+                    <value>CAMEROON</value>
+                    <value>CANADA</value>
+                    <value>CAPE VERDE</value>
+                    <value>CAYMAN ISLANDS</value>
+                    <value>CENTRAL AFRICAN REPUBLIC</value>
+                    <value>CHAD</value>
+                    <value>CHILE</value>
+                    <value>CHINA</value>
+                    <value>CHRISTMAS ISLAND</value>
+                    <value>COCOS (KEELING) ISLANDS</value>
+                    <value>COLOMBIA</value>
+                    <value>COMOROS</value>
+                    <value>CONGO</value>
+                    <value>CONGO (THE DEMOCRATIC REPUBLIC OF THE)</value>
+                    <value>COOK ISLANDS</value>
+                    <value>COSTA RICA</value>
+                    <value>CÔTE D'IVOIRE</value>
+                    <value>CROATIA</value>
+                    <value>CUBA</value>
+                    <value>CYPRUS</value>
+                    <value>CZECH REPUBLIC</value>
+                    <value>DENMARK</value>
+                    <value>DJIBOUTI</value>
+                    <value>DOMINICA</value>
+                    <value>DOMINICAN REPUBLIC</value>
+                    <value>ECUADOR</value>
+                    <value>EGYPT</value>
+                    <value>EL SALVADOR</value>
+                    <value>EQUATORIAL GUINEA</value>
+                    <value>ERITREA</value>
+                    <value>ESTONIA</value>
+                    <value>ETHIOPIA</value>
+                    <value>FALKLAND ISLANDS (MALVINAS)</value>
+                    <value>FAROE ISLANDS</value>
+                    <value>FIJI</value>
+                    <value>FINLAND</value>
+                    <value>FRANCE</value>
+                    <value>FRENCH GUIANA</value>
+                    <value>FRENCH POLYNESIA</value>
+                    <value>FRENCH SOUTHERN TERRITORIES</value>
+                    <value>GABON</value>
+                    <value>GAMBIA</value>
+                    <value>GEORGIA</value>
+                    <value>GERMANY</value>
+                    <value>GHANA</value>
+                    <value>GIBRALTAR</value>
+                    <value>GREECE</value>
+                    <value>GREENLAND</value>
+                    <value>GRENADA</value>
+                    <value>GUADELOUPE</value>
+                    <value>GUAM</value>
+                    <value>GUATEMALA</value>
+                    <value>GUERNSEY</value>
+                    <value>GUINEA</value>
+                    <value>GUINEA-BISSAU</value>
+                    <value>GUYANA</value>
+                    <value>HAITI</value>
+                    <value>HEARD ISLAND AND MCDONALD ISLANDS</value>
+                    <value>HOLY (VATICAN CITY STATE)</value>
+                    <value>HONDURAS</value>
+                    <value>HONG KONG</value>
+                    <value>HUNGARY</value>
+                    <value>ICELAND</value>
+                    <value>INDIA</value>
+                    <value>INDONESIA</value>
+                    <value>IRAN (ISLAMIC REPUBLIC OF)</value>
+                    <value>IRAQ</value>
+                    <value>IRELAND</value>
+                    <value>ISLE OF MAN</value>
+                    <value>ISRAEL</value>
+                    <value>ITALY</value>
+                    <value>JAMAICA</value>
+                    <value>JAPAN</value>
+                    <value>JERSEY</value>
+                    <value>JORDAN</value>
+                    <value>KAZAKHSTAN</value>
+                    <value>KENYA</value>
+                    <value>KIRIBATI</value>
+                    <value>KOREA (DEMOCRATIC PEOPLE'S REPUBLIC OF)</value>
+                    <value>KOREA (REPUBLIC OF)</value>
+                    <value>KUWAIT</value>
+                    <value>KYRGYZSTAN</value>
+                    <value>LAO PEOPLE'S DEMOCRATIC REPUBLIC</value>
+                    <value>LATVIA</value>
+                    <value>LEBANON</value>
+                    <value>LESOTHO</value>
+                    <value>LIBERIA</value>
+                    <value>LIBYAN ARAB JAMAHIRIYA</value>
+                    <value>LIECHTENSTEIN</value>
+                    <value>LITHUANIA</value>
+                    <value>LUXEMBOURG</value>
+                    <value>MACAO</value>
+                    <value>MACEDONIA (THE FORMER YUGOSLAV REPUBLIC OF)</value>
+                    <value>MADAGASCAR</value>
+                    <value>MALAWI</value>
+                    <value>MALAYSIA</value>
+                    <value>MALDIVES</value>
+                    <value>MALI</value>
+                    <value>MALTA</value>
+                    <value>MARSHALL ISLANDS</value>
+                    <value>MARTINIQUE</value>
+                    <value>MAURITANIA</value>
+                    <value>MAURITIUS</value>
+                    <value>MAYOTTE</value>
+                    <value>MEXICO</value>
+                    <value>MICRONESIA (FEDERATED STATES OF)</value>
+                    <value>MOLDOVA (REPUBLIC OF)</value>
+                    <value>MONACO</value>
+                    <value>MONGOLIA</value>
+                    <value>MONTENEGRO</value>
+                    <value>MONTSERRAT</value>
+                    <value>MOROCCO</value>
+                    <value>MOZAMBIQUE</value>
+                    <value>MYANMAR</value>
+                    <value>NAMIBIA</value>
+                    <value>NAURU</value>
+                    <value>NEPAL</value>
+                    <value>NETHERLANDS</value>
+                    <value>NETHERLANDS ANTILLES</value>
+                    <value>NEW CALEDONIA</value>
+                    <value>NEW ZEALAND</value>
+                    <value>NICARAGUA</value>
+                    <value>NIGER</value>
+                    <value>NIGERIA</value>
+                    <value>NIUE</value>
+                    <value>NORFOLK ISLAND</value>
+                    <value>NORTHERN MARIANA ISLANDS</value>
+                    <value>NORWAY</value>
+                    <value>OMAN</value>
+                    <value>PAKISTAN</value>
+                    <value>PALAU</value>
+                    <value>PALESTINIAN TERRITORY (OCCUPIED)</value>
+                    <value>PANAMA</value>
+                    <value>PAPUA NEW GUINEA</value>
+                    <value>PARAGUAY</value>
+                    <value>PERU</value>
+                    <value>PHILIPPINES</value>
+                    <value>PITCAIRN</value>
+                    <value>POLAND</value>
+                    <value>PORTUGAL</value>
+                    <value>PUERTO RICO</value>
+                    <value>QATAR</value>
+                    <value>RÉUNION</value>
+                    <value>ROMANIA</value>
+                    <value>RUSSIAN FEDERATION</value>
+                    <value>RWANDA</value>
+                    <value>SAINT BARTHÉLEMY</value>
+                    <value>SAINT HELENA</value>
+                    <value>SAINT KITTS AND NEVIS</value>
+                    <value>SAINT LUCIA</value>
+                    <value>SAINT MARTIN</value>
+                    <value>SAINT PIERRE AND MIQUELON</value>
+                    <value>SAINT VINCENT AND THE GRENADINES</value>
+                    <value>SAMOA</value>
+                    <value>SAN MARINO</value>
+                    <value>SAO TOME AND PRINCIPE</value>
+                    <value>SAUDI ARABIA</value>
+                    <value>SENEGAL</value>
+                    <value>SERBIA</value>
+                    <value>SEYCHELLES</value>
+                    <value>SIERRA LEONE</value>
+                    <value>SINGAPORE</value>
+                    <value>SLOVAKIA</value>
+                    <value>SLOVENIA</value>
+                    <value>SOLOMON ISLANDS</value>
+                    <value>SOMALIA</value>
+                    <value>SOUTH AFRICA</value>
+                    <value>SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</value>
+                    <value>SPAIN</value>
+                    <value>SRI LANKA</value>
+                    <value>SUDAN</value>
+                    <value>SURINAME</value>
+                    <value>SVALBARD AND JAN MAYEN</value>
+                    <value>SWAZILAND</value>
+                    <value>SWEDEN</value>
+                    <value>SWITZERLAND</value>
+                    <value>SYRIAN ARAB REPUBLIC</value>
+                    <value>TAIWAN (PROVINCE OF CHINA)</value>
+                    <value>TAJIKISTAN</value>
+                    <value>TANZANIA (UNITED REPUBLIC OF)</value>
+                    <value>THAILAND</value>
+                    <value>TIMOR-LESTE</value>
+                    <value>TOGO</value>
+                    <value>TOKELAU</value>
+                    <value>TONGA</value>
+                    <value>TRINIDAD AND TOBAGO</value>
+                    <value>TUNISIA</value>
+                    <value>TURKEY</value>
+                    <value>TURKMENISTAN</value>
+                    <value>TURKS AND CAICOS ISLANDS</value>
+                    <value>TUVALU</value>
+                    <value>UGANDA</value>
+                    <value>UKRAINE</value>
+                    <value>UNITED ARAB EMIRATES</value>
+                    <value>UNITED KINGDOM</value>
+                    <value>UNITED STATES</value>
+                    <value>UNITED STATES MINOR OUTLYING ISLANDS</value>
+                    <value>URUGUAY</value>
+                    <value>UZBEKISTAN</value>
+                    <value>VANUATU</value>
+                    <value>VENEZUELA (BOLIVARIAN REPUBLIC OF)</value>
+                    <value>VIET NAM</value>
+                    <value>VIRGIN ISLANDS (BRITISH)</value>
+                    <value>VIRGIN ISLANDS (U.S.)</value>
+                    <value>WALLIS AND FUTUNA</value>
+                    <value>WESTERN SAHARA</value>
+                    <value>YEMEN</value>
+                    <value>ZAMBIA</value>
+                    <value>ZIMBABWE</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <!--
+            Module list, used in the Study Folder type
+            -->
+        <constraint name="wc:moduleOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Clinical</value>
+                    <value>Molecular</value>
+                    <value>Pharmacology</value>
+                    <value>In vitro</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <!--
+            Study File Source
+            -->
+        <constraint name="wc:fileSourceOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Contributor</value>
+                    <value>Curator</value>
+                </list>
+            </parameter>
+        </constraint>
+
+        <!--
+            Study Workflow Status Options
+            -->
+        <constraint name="wc:studyStatusOptions" type="LIST">
+            <parameter name="allowedValues">
+                <list>
+                    <value></value>
+                    <value>Initiated</value>
+                    <value>Gate Keeping</value>
+                    <value>Curation</value>
+                    <value>Validation</value>
+                    <value>Approval</value>
+                    <value>Completed</value>
+                </list>
+            </parameter>
+        </constraint>
+    </constraints>
+
+    <!-- ===============================================================================================================
+		Types
+    -->
+
+    <types>
+        <!--
+              The Study Folder type is applied to all study folders under /Company Home/WWARN/Studies
+              -->
+        <type name="wc:studyFolder">
+            <title>WWARN Study Folder</title>
+            <parent>cm:folder</parent>
+            <mandatory-aspects>
+                <aspect>wc:studyFolderData</aspect>
+                <aspect>wc:workflowInfos</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <!--
+            The Workflow Information type. A study folder is associated with zero or more of these
+            (currently only one - clinical)
+            -->
+        <type name="wc:workflowInfo">
+            <title>WWARN Workflow Information</title>
+            <parent>cm:content</parent> <!-- cannot extend the cm:cmobject type, indexing of properties does not work -->
+            <mandatory-aspects>
+                <aspect>wc:workflowInfoData</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <!--
+              A Generic Study File (base type).
+              All other study file types extend this type.
+              -->
+        <type name="wc:studyFile">
+            <title>Generic Study File</title>
+            <parent>cm:content</parent>
+            <mandatory-aspects>
+                <aspect>wc:fileData</aspect>
+                <aspect>wc:derivations</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <type name="wc:studyMetadata">
+            <title>Generic Study File</title>
+            <parent>cm:content</parent>
+        </type>
+        <!--
+              A Data File belonging to a study.
+              -->
+        <type name="wc:dataFile">
+            <title>Data File</title>
+            <parent>wc:studyFile</parent>
+        </type>
+
+        <!--
+              A Data Dictionary study file.
+              -->
+        <type name="wc:dataDictionary">
+            <title>Data Dictionary</title>
+            <parent>wc:studyFile</parent>
+        </type>
+
+        <!--
+              A Protocol study file.
+              -->
+        <type name="wc:protocol">
+            <title>Protocol</title>
+            <parent>wc:studyFile</parent>
+        </type>
+
+        <!--
+              A Publication study file.
+              -->
+        <type name="wc:publication">
+            <title>Publication</title>
+            <parent>wc:studyFile</parent>
+            <mandatory-aspects>
+                <aspect>wc:publicationData</aspect>
+            </mandatory-aspects>
+        </type>
+
+        <!--
+              Other type of study file.
+              Description of other type is kept in cm:description.
+              -->
+        <type name="wc:other">
+            <title>Other</title>
+            <parent>wc:studyFile</parent>
+        </type>
+
+        <!--
+              An output file for a study.
+              Uploaded by curator.
+              -->
+        <type name="wc:output">
+            <title>Output</title>
+            <parent>wc:studyFile</parent>
+        </type>
+
+        <!--
+              A Study Info file.
+              XML metadata for the study.
+              -->
+        <type name="wc:studyInfo">
+            <title>Study Info</title>
+            <parent>wc:studyMetadata</parent>
+        </type>
+    </types>
+
+
+    <!-- ===============================================================================================================
+		Aspects
+    -->
+
+    <aspects>
+        <!--
+              Extra metadata for a study folder type.
+              -->
+        <aspect name="wc:studyFolderData">
+            <title>WWARN Study Folder</title>
+            <properties>
+                <property name="wc:modules">
+                    <title>The module(s) that the file belongs to</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="wc:moduleOptions"/>
+                    </constraints>
+                </property>
+                <property name="wc:region">
+                    <title>The region where the study originated</title>
+                    <type>d:text</type>
+                    <constraints>
+                        <constraint ref="wc:regionOptions"/>
+                    </constraints>
+                </property>
+                <property name="wc:countries">
+                    <title>The country/countries where the study originated</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                    <constraints>
+                        <constraint ref="wc:countryOptions"/>
+                    </constraints>
+                </property>
+                <property name="wc:studyInfoLink">
+                    <title>Link to the study metadata XML in Chassis</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:admins">
+                    <title>Users (first name and last name) that are the creators of this study (admins)</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                </property>
+            </properties>
+        </aspect>
+
+        <!--
+              Extra metadata for a study file type.
+              -->
+        <aspect name="wc:fileData">
+            <title>File Data</title>
+            <properties>
+                <property name="wc:submitter">
+                    <title>Submitter</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                <property name="wc:fileId">
+                    <title>File ID</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                <property name="wc:fileSource">
+                    <title>File Source</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                    <constraints>
+                        <constraint ref="wc:fileSourceOptions"/>
+                    </constraints>
+                </property>
+            </properties>
+        </aspect>
+
+        <!--
+            Workflow metadata collected when workflow is executed.
+            A study can have more than one workflow associated with it (at the moment only clinical though)
+        -->
+
+        <aspect name="wc:workflowInfoData">
+            <title>Workflow Information</title>
+            <properties>
+                <property name="wc:jbpmId"> <!-- Can be used to query for information about a workflow instance, for example via the Workflow Console -->
+                    <title>Process instance ID</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:studyStatus">
+                    <title>Status indicating what phase the process is in</title>
+                    <type>d:text</type>
+                    <constraints>
+                        <constraint ref="wc:studyStatusOptions"/>
+                    </constraints>
+                </property>
+                <!-- The more info req & resp and the problem desc & resolution fields can contain
+                    more than one more info req & resp and problem desc and res,
+                    if you go through these tasks more than once -->
+                <property name="wc:moreStudyInfoReq">
+                    <title>More study info request</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreStudyInfoResponse">
+                    <title>More study info response</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreSSQInfoReq">
+                    <title>More SSQ info request</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreSSQInfoResponse">
+                    <title>More SSQ info response</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreMappingInfoReq">
+                    <title>More mapping info request</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:moreMappingInfoResp">
+                    <title>More mapping info response</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:mappingProblemDesc">
+                    <title>Mapping problem description</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:mappingProblemRes">
+                    <title>Mapping problem resolution</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:processorProblemDesc">
+                    <title>Processor problem description</title>
+                    <type>d:text</type>
+                </property>
+                <property name="wc:processorProblemRes">
+                    <title>Processor problem resolution</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </aspect>
+
+        <!--
+            A parent - child association that links a study (parent) with zero or more workflow info objects (children)
+            Source Study Folder (one) ==> (many) Workflow Info
+            (Note. the workflow info data should be cascade deleted if the study folder is deleted, hence parent -> child)
+        -->
+        <aspect name="wc:workflowInfos">
+            <title>Derivations</title>
+            <associations>
+                <child-association name="wc:workflowInfos">
+                    <source>
+                        <mandatory>false</mandatory>
+                        <many>false</many>
+                    </source>
+                    <target>
+                        <class>wc:workflowInfo</class>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </target>
+                </child-association>
+            </associations>
+        </aspect>
+
+        <!--
+            A peer association that links one or more output files (from curators)
+            to the study file from which they are derived
+            Source Any Study File (many) ==> (many) Target Output File
+        -->
+        <aspect name="wc:derivations">
+            <title>Derivations</title>
+            <properties>
+                <!-- Comment about the association -->
+                <property name="wc:derivationsComments">
+                    <title>Derivations comment</title>
+                    <type>d:text</type>
+                    <multiple>true</multiple>
+                </property>
+            </properties>
+            <associations>
+                <association name="wc:derivations">
+                    <source>
+                        <mandatory>true</mandatory>
+                        <many>true</many>
+                    </source>
+                    <target>
+                        <class>wc:studyFile</class>
+                        <mandatory>false</mandatory>
+                        <many>true</many>
+                    </target>
+                    
+                </association>
+            </associations>
+        </aspect>
+        <!--
+            Extra metadata for a publication file type.
+        -->
+        <aspect name="wc:publicationData">
+            <title>Publication Data</title>
+            <properties>
+                <property name="wc:DOI">
+                    <title>DOI</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+                <property name="wc:PMID">
+                    <title>Pubmed ID</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+                <property name="wc:URL">
+                    <title>URL</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+            </properties>
+        </aspect>
+    </aspects>
+
+</model>

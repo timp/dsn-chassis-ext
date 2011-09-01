@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="_alfresco/source/java"/>
+	<classpathentry kind="src" path="_share/source/java"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_24">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<!-- ALFRESCO_SERVER is set to <<your path>>/community-sdk-3.4.b/lib/server -->
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/commons/commons-logging-1.1.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/dom4j-1.6.1.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/spring-surf/spring-webscripts-1.0.0.CI-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/alfresco-repository-3.4.b.jar"/>
+	<classpathentry kind="lib" path="_alfresco/lib/cas-client-core-3.1.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/spring-surf/spring-surf-core-1.0.0.CI-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/alfresco-data-model-3.4.b.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/alfresco-core-3.4.b.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/org.springframework.context-3.0.0.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/acegi-security-0.8.2_patched.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/org.springframework.web-3.0.0.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/spring-surf/spring-surf-core-configservice-1.0.0.CI-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/alfresco-web-client-3.4.b.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/jta.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/org.springframework.beans-3.0.0.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/org.springframework.core-3.0.0.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/myfaces-api-1.1.5.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/spring-surf/spring-surf-1.0.0.CI-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
