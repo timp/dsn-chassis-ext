@@ -455,10 +455,12 @@
                     <show id="size" for-mode="view"/>
                     <show id="cm:creator" for-mode="view"/>
                     <show id="cm:created" for-mode="view"/>
-                    <show id="cm:modifier" for-mode="view"/>
-                    <show id="cm:modified" for-mode="view"/>
+                    <hide id="cm:modifier" for-mode="view"/>
+                    <hide id="cm:modified" for-mode="view"/>
+                    <show id="wc:submitter"/>
                     <!-- wc:fileData and derivations association -->
-                    <show id="wc:fileId"/>
+                    <show id="wc:fileId" for-mode="edit"/>
+                    <hide id="wc:fileId" for-mode="view"/>
                     <show id="wc:fileSource"/>
                     <show id="wc:PMID"/>
                     <show id="wc:DOI"/>
@@ -494,8 +496,9 @@
                             <control-param name="compactMode">true</control-param>
                         </control>
                     </field>
-                    <set id="wcMetadata" appearance="bordered-panel" label-id="wc.datafile.metadata.header"/>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="wc.publication.metadata.header"/>
                     <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
+                    <field id="wc:submitter" label-id="wc.metadata.submitter" set="wcMetadata"/>
                     <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
                     <field id="wc:PMID" label-id="wc.metadata.PMID" set="wcMetadata"/>
                     <field id="wc:DOI" label-id="wc.metadata.DOI" set="wcMetadata"/>
@@ -671,75 +674,6 @@
                         </control>
                     </field>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="wc.protocol.metadata.header"/>
-                    <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
-                    <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
-                    <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
-                    </field>
-                    <field id="wc:derivations" label-id="wc.metadata.derivations" set="wcMetadata">
-                        <control template="/org/alfresco/components/form/controls/association.ftl">
-                            <control-param name="displayMode">list</control-param>
-                            <control-param name="compactMode">true</control-param>
-                            <control-param name="startLocation">{parent}</control-param>
-
-                        </control>
-                    </field>
-                </appearance>
-            </form>
-        </forms>
-    </config>
-
-    <config evaluator="node-type" condition="wc:publication">
-        <forms>
-            <form>
-                <field-visibility>
-                    <!-- cm:content -->
-                    <show id="cm:name"/>
-                    <show id="cm:title" force="true"/>
-                    <show id="cm:description" force="true"/>
-                    <show id="mimetype"/>
-                    <show id="cm:author" force="true"/>
-                    <show id="size" for-mode="view"/>
-                    <show id="cm:creator" for-mode="view"/>
-                    <show id="cm:created" for-mode="view"/>
-                    <show id="cm:modifier" for-mode="view"/>
-                    <show id="cm:modified" for-mode="view"/>
-
-                    <!-- wc:fileData and derivations association-->
-                    <show id="wc:fileId"/>
-                    <show id="wc:fileSource"/>
-                    <show id="wc:derivationsComments"/>
-                    <show id="wc:derivations"/>
-                </field-visibility>
-                <appearance>
-                    <field id="cm:title">
-                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
-                    </field>
-                    <field id="cm:description">
-                        <control>
-                            <control-param name="activateLinks">true</control-param>
-                        </control>
-                    </field>
-                    <field id="mimetype">
-                        <control template="/org/alfresco/components/form/controls/mimetype.ftl"/>
-                    </field>
-                    <field id="size">
-                        <control template="/org/alfresco/components/form/controls/size.ftl"/>
-                    </field>
-                    <field id="cm:taggable">
-                        <control>
-                            <control-param name="compactMode">true</control-param>
-                            <control-param name="params">aspect=cm:taggable</control-param>
-                            <control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
-                            <control-param name="createNewItemIcon">tag</control-param>
-                        </control>
-                    </field>
-                    <field id="cm:categories">
-                        <control>
-                            <control-param name="compactMode">true</control-param>
-                        </control>
-                    </field>
-                    <set id="wcMetadata" appearance="bordered-panel" label-id="wc.publication.metadata.header"/>
                     <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
                     <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
                     <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
