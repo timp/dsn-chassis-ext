@@ -28,5 +28,6 @@
 	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/org.springframework.beans-3.0.0.jar"/>
 	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/org.springframework.core-3.0.0.jar"/>
 	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/myfaces-api-1.1.5.jar"/>
+	<classpathentry kind="var" path="ALFRESCO_SERVER/dependencies/spring-surf/spring-surf-1.0.0.CI-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
