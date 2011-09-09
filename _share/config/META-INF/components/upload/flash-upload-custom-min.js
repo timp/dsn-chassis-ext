@@ -63,7 +63,7 @@
     Alfresco.FlashUpload = function(htmlId) {
         Alfresco.FlashUpload.superclass.constructor.call(this, "Alfresco.FlashUpload", htmlId, ["button", "container", "datatable", "datasource", "cookie", "uploader"]);
 
-        this.swf = Alfresco.constants.URL_CONTEXT + "yui/uploader/assets/uploader.swf?dt=" + (new Date()).getTime();
+      this.swf = Alfresco.constants.URL_RESCONTEXT + "yui/uploader/assets/uploader.swf?dt=" + (new Date()).getTime();
         this.hasRequiredFlashPlayer = Alfresco.util.hasRequiredFlashPlayer(9, 0, 45);
 
         this.fileStore = {};
@@ -1343,7 +1343,15 @@
         	/*
         	this.showConfig.destination = workspace://SpacesStore/3f172edb-07ca-4e90-bc62-50256da9e8d5
         	*/
-        	var dest = this.showConfig.destination.replace('//SpacesStore','SpacesStore/i');
+        	var destination = this.showConfig.destination;
+        	var dest = "";
+        	if (destination != null) {
+        		//In a repository folder
+        		dest = 's/' + destination.replace('//SpacesStore','SpacesStore/i');
+        	} else {
+        		//In a site folder
+        		dest = 'p/Sites/' + this.showConfig.siteId + '/' + this.showConfig.containerId + this.showConfig.uploadDirectory;
+        	}
        	  Alfresco.util.Ajax.request(
        		         {
        		        	 /*
@@ -1352,7 +1360,7 @@
        		            dataStr: xmlquery,
        		            requestContentType: 'application/cmisquery+xml',
        		            */
-       		        	 url: Alfresco.constants.PROXY_URI + "cmis/s/" + dest + '/children',
+       		        	 url: Alfresco.constants.PROXY_URI + "cmis/" + dest + '/children',
        		            successCallback:
        		            {
        		               fn: this._populateDerivedFilesDataTable,
@@ -1558,7 +1566,7 @@
                     var studyFileNodeRef = record.getData("nodeRef");
 
                     // Generate create derived assoc web script URL
-                    var createDerivationUrl = alfrescoUrl + "service/wwarn/createDerivedAssoc?outputFileNodeRef=" +
+                    var createDerivationUrl = alfrescoUrl + "wcservice/wwarn/createDerivedAssoc?outputFileNodeRef=" +
                             outputFileNodeRef + "&studyFileNodeRef=" + studyFileNodeRef;
 
                     //window.alert("Derivation file: " + record.getData("name") + " is selected (" + studyFileNodeRef + ")");
