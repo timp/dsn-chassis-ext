@@ -1533,7 +1533,7 @@
             //window.alert("Upload of file: " + outputFileName + " is complete (" + outputFileNodeRef + ")");
 
             // Get the first part of the Alfresco Repository URL (e.g. http://localhost:8080/alfresco)
-            var alfrescoUrl = Alfresco.constants.PROXY_URI.replace("/share/proxy", "");
+            var alfrescoUrl = Alfresco.constants.PROXY_URI;
 
             var setDerivationCommentCallback = {
                 success: function(o) {
@@ -1566,7 +1566,7 @@
                     var studyFileNodeRef = record.getData("nodeRef");
 
                     // Generate create derived assoc web script URL
-                    var createDerivationUrl = alfrescoUrl + "wcservice/wwarn/createDerivedAssoc?outputFileNodeRef=" +
+                    var createDerivationUrl = alfrescoUrl + "wwarn/createDerivedAssoc?outputFileNodeRef=" +
                             outputFileNodeRef + "&studyFileNodeRef=" + studyFileNodeRef;
 
                     //window.alert("Derivation file: " + record.getData("name") + " is selected (" + studyFileNodeRef + ")");
@@ -1579,7 +1579,7 @@
                             this.outputFilesComment.value != null && this.outputFilesComment.value != "") {
                         // Generate set derivation aspect and comment web script URL
                         var setDerivationCommentUrl = alfrescoUrl +
-                                "service/wwarn/setDerivedAssocComment?studyFileNodeRef=" +
+                                "wwarn/setDerivedAssocComment?studyFileNodeRef=" +
                             studyFileNodeRef + "&comment=" + this.outputFilesComment.value;
 
                         // Make the call to setup the derivation aspect and comment
