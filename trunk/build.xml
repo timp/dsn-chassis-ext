@@ -70,7 +70,33 @@
                debug="true"
                debuglevel="lines,vars,source"/>
     </target>
-
+    <!-- To use the full version put Share into debug mode by setting the client-debug flag to true 
+        (look in share-config-custom.xml ) 
+        see http://blogs.alfresco.com/wp/kevinr/2010/04/07/developer-tips-for-alfresco-share-33/-->
+    <target name="js.minify">
+        <apply executable="java" parallel="false">
+            <fileset dir="." includes="**/flash-upload-custom.js"/>
+            <arg line="-jar"/>
+            <arg path="lib/yuicompressor-2.4.8pre.jar"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.js" to="*-min.js"/>
+            <targetfile/>
+        </apply>
+    </target>
+      
+    <target name="css.minify">
+        <apply executable="java" parallel="false">
+            <fileset dir="." includes="**/flash-upload-custom.css"/>
+            <arg line="-jar"/>
+            <arg path="lib/yuicompressor-2.4.8pre.jar"/>
+            <arg line="--line-break 0"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.css" to="*-min.css"/>
+            <targetfile/>
+        </apply>
+    </target>
     <target name="package-alfresco-jar" depends="clean, mkdirs, compile">
         <echo>Packaging extension JAR for AMP</echo>
         <jar destfile="${alfresco.jar.file}">
@@ -110,7 +136,7 @@
         </java>
     </target>
 
-    <target name="package-share-jar" depends="clean, mkdirs, compile-share">
+    <target name="package-share-jar" depends="clean, mkdirs, compile-share, js.minify, css.minify">
         <echo>Packaging extension JAR file for share.war</echo>
         <delete file="${share.jar.file}"/>
         <jar destfile="${share.jar.file}">
