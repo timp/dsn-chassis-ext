@@ -357,17 +357,7 @@
          * @type HTMLElement
          */
         outputFilesComment: null,
-
-        /**
-         * A property that is set to true after all the selected study files have had the
-         * derivation aspect and comment setup. It is then used to check so the derivation aspect and comment
-         * is not setup when it is already set.
-         *
-         * @property outputFilesCommentAdded
-         * @type boolean
-         */
-        outputFilesCommentAdded: false,
-
+        
         /**
          * HTMLElement of type div that displays the version input form.
          *
@@ -619,7 +609,6 @@
 
             // @author IXXUS
             this.outputFilesComment.value = "";
-            this.outputFilesCommentAdded = false;
         },
 
         /**
@@ -1567,7 +1556,7 @@
 
                     // Generate create derived assoc web script URL
                     var createDerivationUrl = alfrescoUrl + "wwarn/createDerivedAssoc?outputFileNodeRef=" +
-                            outputFileNodeRef + "&studyFileNodeRef=" + studyFileNodeRef;
+                    studyFileNodeRef + "&studyFileNodeRef=" + outputFileNodeRef;
 
                     //window.alert("Derivation file: " + record.getData("name") + " is selected (" + studyFileNodeRef + ")");
 
@@ -1575,12 +1564,11 @@
                     var transaction = YAHOO.util.Connect.asyncRequest('GET', createDerivationUrl,
                             createDerivationCallback, null);
 
-                    if (!this.outputFilesCommentAdded &&
-                            this.outputFilesComment.value != null && this.outputFilesComment.value != "") {
+                    if (this.outputFilesComment.value != null && this.outputFilesComment.value != "") {
                         // Generate set derivation aspect and comment web script URL
                         var setDerivationCommentUrl = alfrescoUrl +
                                 "wwarn/setDerivedAssocComment?studyFileNodeRef=" +
-                            studyFileNodeRef + "&comment=" + this.outputFilesComment.value;
+                                outputFileNodeRef + "&comment=" + this.outputFilesComment.value;
 
                         // Make the call to setup the derivation aspect and comment
                         var transaction2 = YAHOO.util.Connect.asyncRequest('GET', setDerivationCommentUrl,
@@ -1590,10 +1578,7 @@
                     //window.alert("Derivation file: " + record.getData("name") + " is NOT selected");
                 }
             }
-
-            // Derivation comments have now been setup for all the study files that where selected so we do not need to
-            // do it for the next output file.
-            this.outputFilesCommentAdded = true;
+            
         },
 
         /**
