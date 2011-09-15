@@ -75,7 +75,7 @@
         see http://blogs.alfresco.com/wp/kevinr/2010/04/07/developer-tips-for-alfresco-share-33/-->
     <target name="js.minify">
         <apply executable="java" parallel="false">
-            <fileset dir="." includes="**/flash-upload-custom.js"/>
+            <fileset dir="." includes="**/flash-upload-custom.js, **/my-studies.js"/>
             <arg line="-jar"/>
             <arg path="lib/yuicompressor-2.4.8pre.jar"/>
             <srcfile/>
@@ -87,7 +87,7 @@
       
     <target name="css.minify">
         <apply executable="java" parallel="false">
-            <fileset dir="." includes="**/flash-upload-custom.css"/>
+            <fileset dir="." includes="**/flash-upload-custom.css, **/my-studies.css"/>
             <arg line="-jar"/>
             <arg path="lib/yuicompressor-2.4.8pre.jar"/>
             <arg line="--line-break 0"/>
