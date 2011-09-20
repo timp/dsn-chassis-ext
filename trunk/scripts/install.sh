@@ -5,7 +5,7 @@
 #apt-get install tofrodos
 ALF_VERSION=alfresco-3.4.d
 ALF_HOME=/opt/${ALF_VERSION}
-ALF_SDK=/opt/alfresco-community-sdk-3.4.b
+ALF_SDK=/opt/alfresco-community-sdk-3.4.d
 SOURCE_HOME=dsn-chassis-ext-read-only
 
 rm -rf ${SOURCE_HOME}
