@@ -8,6 +8,8 @@
 
 Set up a VirtualBox VM as per http://tim-pizey.blogspot.com/2011/08/alfresco-setup.html
 
+Then, within the VM:
+
 {{{
 
 svn checkout https://dsn-chassis-ext.googlecode.com/svn/trunk/ dsn-chassis-ext --username Tim.Pizey@gmail.com
@@ -39,4 +41,3 @@ ant deploy-share-jar
 
 sudo /etc/init.d/afresco start
 }}}
-
