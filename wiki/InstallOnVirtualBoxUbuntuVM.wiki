@@ -35,12 +35,16 @@ edit dsn-chassis-ext/build.properties to reflect above paths.
 
 {{{
 cd dsn-chassis-ext
-sudo apt-get install ant
-sudo apt-get install openjdk-6-jdk
+sudo su
 
-sudo /etc/init.d/afresco stop
-ant deploy-alfresco-amp
-ant deploy-share-jar
+apt-get install ant
+apt-get install openjdk-6-jdk
 
-sudo /etc/init.d/afresco start
+/etc/init.d/afresco stop
+cp /opt/alfresco-3.4.d/tomcat/webapps/alfresco.war /opt/alfresco-3.4.d/tomcat/webapps/alfresco.war.bak
+
+deploy-alfresco-amp
+deploy-share-jar
+
+/etc/init.d/afresco start
 }}}
