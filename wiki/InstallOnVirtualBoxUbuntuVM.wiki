@@ -48,3 +48,9 @@ deploy-share-jar
 
 /etc/init.d/afresco start
 }}}
+
+Goto http://alfresco:8080/share/
+login as admin/admin
+Add My Studies from http://alfresco:8080/share/page/customise-user-dashboard (Scroll down)
+
+Initialise studies TODO
