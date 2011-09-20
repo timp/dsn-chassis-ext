@@ -24,7 +24,10 @@ cd tmp
 unzip alfresco-community-sdk-3.4.d.zip
 cd ..
 
+sudo su
+
 mv tmp /opt/alfresco-community-sdk-3.4
+cd /opt
 ln -s alfresco-community-sdk-3.4 alfresco-community-sdk
 
 }}}
