@@ -12,8 +12,6 @@ Then, within the VM:
 
 {{{
 
-svn checkout https://dsn-chassis-ext.googlecode.com/svn/trunk/ dsn-chassis-ext --username Tim.Pizey@gmail.com
-
 wget http://sourceforge.net/projects/alfresco/files/Alfresco%203.4.d%20Community/alfresco-community-sdk-3.4.d.zip
 
 mkdir tmp
