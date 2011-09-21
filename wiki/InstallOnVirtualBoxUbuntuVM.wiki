@@ -31,7 +31,6 @@ cd /opt
 ln -s alfresco-community-sdk-3.4 alfresco-community-sdk
 
 }}}
-edit dsn-chassis-ext/build.properties to reflect above paths. 
 
 {{{
 cd dsn-chassis-ext
@@ -41,16 +40,8 @@ apt-get install ant
 apt-get install openjdk-6-jdk
 
 /etc/init.d/afresco stop
-cp /opt/alfresco-3.4.d/tomcat/webapps/alfresco.war /opt/alfresco-3.4.d/tomcat/webapps/alfresco.war.bak
+ln -s /opt/alfresco-3.4.d /opt/alfresco
 
-deploy-alfresco-amp
-deploy-share-jar
+cp /opt/alfresco/tomcat/webapps/alfresco.war /opt/alfresco/tomcat/webapps/alfresco.war.bak
 
-/etc/init.d/afresco start
 }}}
-
-Goto http://alfresco:8080/share/
-login as admin/admin
-Add My Studies from http://alfresco:8080/share/page/customise-user-dashboard (Scroll down)
-
-Initialise studies TODO
