@@ -43,3 +43,38 @@ ln -s /opt/alfresco-3.4.d /opt/alfresco
 cp /opt/alfresco/tomcat/webapps/alfresco.war /opt/alfresco/tomcat/webapps/alfresco.war.bak
 
 }}}
+
+{{{
+
+svn checkout https://dsn-chassis-ext.googlecode.com/svn/trunk/ dsn-chassis-ext --username Tim.Pizey@gmail.com
+cd dsn-chassis-ext
+cd scripts
+sudo su
+./install.sh
+
+}}}
+
+
+= Install with CAS integration = 
+Follow http://ecmstuff.blogspot.com/2011/06/configuring-alfresco-for-sso-with-cas.html
+
+Some of this is done via the install script, you will still need to configure tomcat appropriately.
+
+install.sh <<alfresco server>> <<CAS server>>
+
+e.g.
+{{{
+install.sh alfresco.example.org cas.example.org
+}}}
+
+= Initialise studies =
+
+Goto http://alfresco:8080/share/
+login as admin/admin
+http://alfresco/share/page/repository
+Ensure that there is a directory WWARN containing a directory Studies
+
+
+Add My Studies from http://alfresco:8080/share/page/customise-user-dashboard (Scroll down)
+
+Now you should be good to go.
