@@ -19,3 +19,11 @@ install.sh <<alfresco server>> <<CAS server>>
 
 e.g.
 install.sh alfresco.example.org cas.example.org
+
+
+= Initialise studies=
+
+Goto http://alfresco:8080/share/
+login as admin/admin
+Add My Studies from http://alfresco:8080/share/page/customise-user-dashboard (Scroll down)
+
