@@ -15,6 +15,13 @@
         </assignment>
     </swimlane>
 
+    <swimlane name="BioInformatics">
+        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+            <pooledactors>
+                #{people.getGroup('GROUP_BioInformatics')}
+            </pooledactors>
+        </assignment>
+    </swimlane>
     <!--
     Workflow starts here
     -->
@@ -39,7 +46,7 @@
                         executionContext.setVariable("studyFolderNodeRef", studyFolder.nodeRef); <!-- Save this for later use in workflow -->
 
                         var properties = new Array();
-                        properties["cm:name"] = "clinicalWorkflowInfo-" + procId;
+                        properties["cm:name"] = "molecularWorkflowInfo-" + procId;
                         properties["wc:jbpmId"] = procId;
                         properties["wc:studyStatus"] = status;
                         var workflowInfoNode = studyFolder.createNode(null, "wc:workflowInfo", properties, "wc:workflowInfos");
@@ -260,8 +267,8 @@
             </script>
         </event>
 
-        <task-node name="CU01_CompleteMapping">
-            <task name="ww:CU01_CompleteMappingTask">
+        <task-node name="MC01_TransformData">
+            <task name="ww:MC01_TransformData">
                 <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
@@ -270,15 +277,15 @@
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "CU01-Complete Mapping (" + ww_studyID + ")";
+                                taskInstance.description = "MC01 Transform Data in Template(" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
                 </event>
             </task>
-            <transition to="CU02_RunProcessing" name="OK"></transition>
-            <transition to="CU05_ResolveMappingProblem" name="HavAProblem"></transition>
-            <transition to="CU04_ProvideMappingInfo" name="NeedMoreInfo"></transition>
+            <transition to="MC02_UploadFiles" name="OK"></transition>
+            <transition to="MC05_ResolveTransformProblem" name="HaveAProblem"></transition>
+            <transition to="MC04_ProvideTransformInfo" name="NeedMoreInfo"></transition>
             <event type="node-leave">
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
@@ -291,8 +298,8 @@
             </event>
         </task-node>
 
-        <task-node name="CU02_RunProcessing">
-            <task name="ww:CU02_RunProcessingTask">
+        <task-node name="MC02_UploadFiles">
+            <task name="ww:MC02_UploadFiles">
                 <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
@@ -301,7 +308,7 @@
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "CU02-Run Processing (" + ww_studyID + ")";
+                                taskInstance.description = "MC02- Upload Files (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
@@ -390,20 +397,20 @@
             <transition to="CU04_ProvideMappingInfo"></transition>
         </node>
 
-        <task-node name="CU05_ResolveMappingProblem">
-            <task name="ww:CU05_ResolveMappingProblemTask" swimlane="DataManagers">
+        <task-node name="MC05_ResolveTransformProblem">
+            <task name="ww:MC05_ResolveTransformProblem" swimlane="BioInformatics">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "CU05-Resolve Mapping Problem (" + ww_studyID + ")";
+                                taskInstance.description = "MC05-Resolve Transform Problem (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
                 </event>
             </task>
-            <transition to="CU01_CompleteMapping"></transition>
+            <transition to="MC01_TransformData"></transition>
             <event type="node-leave">
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
