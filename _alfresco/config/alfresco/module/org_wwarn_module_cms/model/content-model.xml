@@ -668,6 +668,21 @@
                     <type>d:text</type>
                     <mandatory>false</mandatory>
                 </property>
+                <property name="wc:year">
+                    <title>Year of Publication</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+                <property name="wc:authorFirst">
+                    <title>Author First Name</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
+                <property name="wc:authorLast">
+                    <title>Author Last Name</title>
+                    <type>d:text</type>
+                    <mandatory>false</mandatory>
+                </property>
             </properties>
         </aspect>
     </aspects>
