@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="ww:clinicalStudyProcess" width="1724" height="1050">
+  <node name="Start" x="0" y="0" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node-container name="GateKeeping" x="238" y="7" width="1482" height="276">
+    <node name="GT01_CheckStudy" x="33" y="8" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="3" y="-15"/>
+      </edge>
+    </node>
+    <node name="CuratorAssigned?" x="37" y="61" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="GT02_AssignCurator" x="231" y="54" width="240" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="GT03_AskForMoreStudyInfo" x="687" y="9" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="LiaisonAssigned?" x="35" y="114" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="GT04_AssignLiaison" x="266" y="106" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="GT05_CompleteSSQ" x="4" y="177" width="164" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="GT06_ProvideSSQInfo" x="375" y="164" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Curation" x="-2" y="315" width="1341" height="229">
+    <node name="MC01_TransformData" x="16" y="36" width="200" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MC02_UploadFiles" x="313" y="27" width="140" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MC03_UploadCalcs" x="564" y="25" width="169" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MC04_ProvideTransformInfo" x="10" y="102" width="225" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="EmailLiaisonAboutMappingInfoRequest" x="27" y="162" width="266" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MC05_ResolveTransformProblem" x="317" y="114" width="238" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MC06_ResolveCalculationProblem" x="925" y="28" width="223" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MC07_UploadOutputs" x="583" y="97" width="196" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MC08_UploadExplorerCalcs" x="864" y="168" width="226" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Validation" x="18" y="569" width="1301" height="212">
+    <node name="MV01_DataManagerValidateOutputs" x="361" y="69" width="277" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MV02_DataManagerValidateExplorerOutputs" x="809" y="115" width="312" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MV03_ResolveExplorerOutputsProblemTask" x="980" y="12" width="303" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Approval" x="68" y="788" width="1183" height="205">
+    <node name="MA01_ProvideOutputsEmailInfo" x="637" y="9" width="261" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="EmailContributorAboutOutputs" x="713" y="67" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MA02_ReceiveApproval" x="407" y="67" width="228" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="UploadToExplorer" x="201" y="9" width="196" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="MA04_SendOutputsToRepository" x="916" y="12" width="250" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="AP05_SendOutputsToModule" x="341" y="145" width="207" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node name="End" x="612" y="1012" width="132" height="36"/>
+</root-container>

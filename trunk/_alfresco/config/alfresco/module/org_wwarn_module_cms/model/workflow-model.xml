@@ -28,6 +28,10 @@
             <parent>bpm:startTask</parent>
         </type>
 
+        <type name="ww:startMolecularProcessTask">
+            <parent>bpm:startTask</parent>
+        </type>
+        
 		<type name="ww:baseTask">
             <description>
                 This is the base type for all WWARN Tasks.
@@ -123,6 +127,37 @@
             <parent>ww:baseTask</parent>
         </type>
 
+        <type name="ww:MC01_TransformData">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MC02_UploadFiles">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MC03_UploadCalcs">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MC04_ProvideTransformInfo">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MC05_ResolveTransformProblem">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MC06_ResolveCalculationProblem">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <type name="ww:MC05_ResolveTransformProblem">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MC08_UploadExplorerCalcs">
+            <parent>ww:baseTask</parent>
+        </type>
         <!-- Validation Phase Tasks -->
         <type name="ww:VA01_CuratorValidateOutputsTask">
             <parent>ww:baseTask</parent>
@@ -136,6 +171,17 @@
             <parent>ww:baseTask</parent>
         </type>
 
+        <type name="ww:MV01_DataManagerValidateOutputs">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MV02_DataManagerValidateExplorerOutputs">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MV03_ResolveExplorerOutputsProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
         <!-- Approval Phase Tasks -->
         <type name="ww:AP01_AssignCentreHeadTask">
             <parent>ww:baseTask</parent>
@@ -176,6 +222,34 @@
             <parent>ww:baseTask</parent>
         </type>
 
+        <type name="ww:MA01_ProvideOutputsEmailInfo">
+            <parent>ww:baseTask</parent>
+            <properties>
+                <property name="ww:to">
+                    <title>To email addresses</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                <property name="ww:subject">
+                    <title>Email subject</title>
+                    <type>d:text</type>
+                    <mandatory>true</mandatory>
+                </property>
+                <property name="ww:body">
+                    <title>Email body</title>
+                    <type>d:text</type>
+                </property>
+            </properties>
+        </type>
+
+        <type name="ww:MA02_ReceiveApproval">
+            <parent>ww:baseTask</parent>
+        </type>
+
+        <type name="ww:MA04_SendOutputsToRepository">
+            <parent>ww:baseTask</parent>
+        </type>
+        
     </types>
 
 	<aspects>
