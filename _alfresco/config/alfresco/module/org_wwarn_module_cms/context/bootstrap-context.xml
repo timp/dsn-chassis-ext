@@ -28,6 +28,9 @@
        <property name="labels">
            <list>
                <value>alfresco.module.org_wwarn_module_cms.ui.labels-clinical_study-workflow</value>
+               <value>alfresco.module.org_wwarn_module_cms.ui.labels-molecular_study-workflow</value>
+               <value>alfresco.module.org_wwarn_module_cms.ui.labels-invitro_study-workflow</value>
+               <value>alfresco.module.org_wwarn_module_cms.ui.labels-pk_study-workflow</value>
            </list>
        </property>
    </bean>
