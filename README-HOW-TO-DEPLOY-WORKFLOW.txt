@@ -5,6 +5,9 @@ Command to deploy:
 
     Note. The group "Data Managers" must exist, with at least one member, as the workflow will assign tasks to members of it.
 
+	deploy alfresco/module/org_wwarn_module_cms/workflows/molecular_study/processdefinition.xml
+	Note. The group "BioInformatics" must exist, with at least one member, as the workflow will assign tasks to members of it.
+	
 Command to view deployed process definition:
     show file alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml
 

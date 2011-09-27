@@ -67,6 +67,12 @@
             </mandatory-aspects>
         </type>
 
+        <type name="ww:emailTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:email</aspect>
+            </mandatory-aspects>
+        </type>
         <!-- Gate Keeper Phase Tasks -->
 		<type name="ww:GT01_CheckStudyTask">
             <parent>ww:baseTask</parent>
@@ -102,6 +108,39 @@
             <parent>ww:baseTask</parent>
         </type>
 
+        <type name="ww:MG01_CheckStudyTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCuratorTemp</aspect>
+                <aspect>ww:assigneeLiaisonTemp</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:MG02_AssignCuratorTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCurator</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:MG03_AskForMoreStudyInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MG04_AssignLiaisonTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeLiaison</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:MG05_CompleteSSQTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MG06_ProvideSSQInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
         <!-- Curation Phase Tasks -->
         <type name="ww:CU01_CompleteMappingTask">
             <parent>ww:baseTask</parent>
@@ -151,13 +190,11 @@
             <parent>ww:baseTask</parent>
         </type>
 
-        <type name="ww:MC05_ResolveTransformProblem">
+        <type name="ww:MC07_UploadOutputs">
             <parent>ww:baseTask</parent>
         </type>
         
-        <type name="ww:MC08_UploadExplorerCalcs">
-            <parent>ww:baseTask</parent>
-        </type>
+       
         <!-- Validation Phase Tasks -->
         <type name="ww:VA01_CuratorValidateOutputsTask">
             <parent>ww:baseTask</parent>
@@ -175,13 +212,6 @@
             <parent>ww:baseTask</parent>
         </type>
         
-        <type name="ww:MV02_DataManagerValidateExplorerOutputs">
-            <parent>ww:baseTask</parent>
-        </type>
-        
-        <type name="ww:MV03_ResolveExplorerOutputsProblemTask">
-            <parent>ww:baseTask</parent>
-        </type>
         <!-- Approval Phase Tasks -->
         <type name="ww:AP01_AssignCentreHeadTask">
             <parent>ww:baseTask</parent>
@@ -195,23 +225,7 @@
         </type>
 
         <type name="ww:AP03_ProvideOutputsEmailInfoTask">
-            <parent>ww:baseTask</parent>
-            <properties>
-                <property name="ww:to">
-                    <title>To email addresses</title>
-                    <type>d:text</type>
-                    <mandatory>true</mandatory>
-                </property>
-                <property name="ww:subject">
-                     <title>Email subject</title>
-                    <type>d:text</type>
-                    <mandatory>true</mandatory>
-                </property>
-                <property name="ww:body">
-                    <title>Email body</title>
-                    <type>d:text</type>
-                </property>
-            </properties>
+            <parent>ww:emailTask</parent>
         </type>
 
         <type name="ww:AP04_ReceiveApprovalTask">
@@ -223,33 +237,32 @@
         </type>
 
         <type name="ww:MA01_ProvideOutputsEmailInfo">
-            <parent>ww:baseTask</parent>
-            <properties>
-                <property name="ww:to">
-                    <title>To email addresses</title>
-                    <type>d:text</type>
-                    <mandatory>true</mandatory>
-                </property>
-                <property name="ww:subject">
-                    <title>Email subject</title>
-                    <type>d:text</type>
-                    <mandatory>true</mandatory>
-                </property>
-                <property name="ww:body">
-                    <title>Email body</title>
-                    <type>d:text</type>
-                </property>
-            </properties>
+            <parent>ww:emailTask</parent>
         </type>
 
         <type name="ww:MA02_ReceiveApproval">
             <parent>ww:baseTask</parent>
         </type>
 
-        <type name="ww:MA04_SendOutputsToRepository">
+        <type name="ww:MA03_SendOutputsToModule">
             <parent>ww:baseTask</parent>
         </type>
         
+        <type name="ww:MA04_UploadExplorerCalcs">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MA05_DataManagerValidateExplorerOutputs">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MA06_ResolveExplorerOutputsProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:MA07_SendOutputsToRepository">
+            <parent>ww:baseTask</parent>
+        </type>
     </types>
 
 	<aspects>
@@ -333,6 +346,25 @@
             </associations>
         </aspect>
 
+	    <aspect name="ww:email">
+	        <title>Email fields</title>
+	        <properties>
+	            <property name="ww:to">
+	                <title>To email addresses</title>
+	                <type>d:text</type>
+	                <mandatory>true</mandatory>
+	            </property>
+	            <property name="ww:subject">
+	                <title>Email subject</title>
+	                <type>d:text</type>
+	                <mandatory>true</mandatory>
+	            </property>
+	            <property name="ww:body">
+	                <title>Email body</title>
+	                <type>d:text</type>
+	            </property>
+	        </properties>
+	    </aspect>
 	</aspects>
 </model>
 

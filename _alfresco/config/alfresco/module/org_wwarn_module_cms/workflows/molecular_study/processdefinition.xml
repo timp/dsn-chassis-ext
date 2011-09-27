@@ -1,6 +1,6 @@
-M<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<process-definition xmlns="urn:jbpm.org:jpdl-3.2" name="ww:clinicalStudyProcess">
+<process-definition xmlns="urn:jbpm.org:jpdl-3.2" name="ww:molecularStudyProcess">
     <!--
     Assignees
     -->
@@ -28,7 +28,7 @@ M<?xml version="1.0" encoding="UTF-8"?>
 
     <start-state name="Start">
         <task name="ww:startMolecularProcessTask" swimlane="initiator"></task>
-        <transition to="GateKeeping/GT01_CheckStudy"></transition>
+        <transition to="GateKeeping/MG01_CheckStudy"></transition>
         <event type="node-leave">
              <!-- Note. cannot use event "node-enter or task-create", process id will be null-->
             <!-- AlfrescoJavaScript supports only one writable variable (i.e. access="write") so we do not use variable and expression syntax,
@@ -77,14 +77,14 @@ M<?xml version="1.0" encoding="UTF-8"?>
             </action>
         </event>
 
-        <task-node name="GT01_CheckStudy">
-            <task name="ww:GT01_CheckStudyTask" swimlane="DataManagers">
+        <task-node name="MG01_CheckStudy">
+            <task name="ww:MG01_CheckStudyTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "GT01-Check Study (" + ww_studyID + ")";
+                                taskInstance.description = "MG01- Molecular Check Study (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
@@ -101,13 +101,13 @@ M<?xml version="1.0" encoding="UTF-8"?>
             <transition to="CuratorAssigned?" name="OKAndAssignMeAsCuratorAndLiaison">
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
-                        <!-- We should set the user that is completing this task (GT01_CheckStudy) to Curator and Liaison -->
+                        <!-- We should set the user that is completing this task (MG01_CheckStudy) to Curator and Liaison -->
                         executionContext.setVariable("ww_assigneeCurator", executionContext.getVariable("currentAssignedUserNodeRef"));
                         executionContext.setVariable("ww_assigneeLiaison", executionContext.getVariable("currentAssignedUserNodeRef"));
                     </script>
                 </action>
             </transition>
-            <transition to="GT03_AskForMoreStudyInfo" name="NotOK"></transition>
+            <transition to="MG03_AskForMoreStudyInfo" name="NotOK"></transition>
             <event type="node-leave">
                 <!-- Using typeof to get the type of variable, if it is undefined then we do not do anything. If we do not do this then we get exception undefined variable -->
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
@@ -134,24 +134,24 @@ M<?xml version="1.0" encoding="UTF-8"?>
 
         <decision name="CuratorAssigned?">
             <description>
-                If the curator has already been assigned in GT01_CheckStudy then skip GT02_AssignCurator.
+                If the curator has already been assigned in MG01_CheckStudy then skip MG02_AssignCurator.
                 Note. The default transition "no" has to be first in this decision node otherwise the condition will
                 always evaluate to true.
             </description>
-            <transition to="GT02_AssignCurator" name="no"></transition>
+            <transition to="MG02_AssignCurator" name="no"></transition>
             <transition to="LiaisonAssigned?" name="yes">
                 <condition>#{ww_assigneeCurator != null}</condition>
             </transition>
         </decision>
 
-        <task-node name="GT02_AssignCurator">
-            <task name="ww:GT02_AssignCuratorTask" swimlane="DataManagers">
+        <task-node name="MG02_AssignCurator">
+            <task name="ww:MG02_AssignCuratorTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "GT02-Assign Curator (" + ww_studyID + ")";
+                                taskInstance.description = "MG02-Assign Curator (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
@@ -160,36 +160,36 @@ M<?xml version="1.0" encoding="UTF-8"?>
             <transition to="LiaisonAssigned?"></transition>
         </task-node>
 
-        <task-node name="GT03_AskForMoreStudyInfo">
-            <task name="ww:GT03_AskForMoreStudyInfoTask" swimlane="DataManagers">
+        <task-node name="MG03_AskForMoreStudyInfo">
+            <task name="ww:MG03_AskForMoreStudyInfoTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "GT03-More Study Info Required (" + ww_studyID + ")";
+                                taskInstance.description = "MG03-More Study Info Required (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
                 </event>
             </task>
-            <transition to="GT01_CheckStudy"></transition>
+            <transition to="MG01_CheckStudy"></transition>
         </task-node>
 
         <decision name="LiaisonAssigned?">
             <description>
-                If the liaison has already been assigned in GT01_CheckStudy then skip GT04_AssignLiaison.
+                If the liaison has already been assigned in MG01_CheckStudy then skip MG04_AssignLiaison.
                 Note. The default transition "no" has to be first in this decision node otherwise the condition will
                 always evaluate to true.
             </description>
-            <transition to="GT04_AssignLiaison" name="no"></transition>
-            <transition to="GT05_CompleteSSQ" name="yes">
+            <transition to="MG04_AssignLiaison" name="no"></transition>
+            <transition to="MG05_CompleteSSQ" name="yes">
                 <condition>#{ww_assigneeLiaison != null}</condition>
             </transition>
         </decision>
 
-        <task-node name="GT04_AssignLiaison">
-            <task name="ww:GT04_AssignLiaisonTask">
+        <task-node name="MG04_AssignLiaison">
+            <task name="ww:MG04_AssignLiaisonTask">
                 <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
@@ -198,17 +198,17 @@ M<?xml version="1.0" encoding="UTF-8"?>
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "GT04-Assign Liaison (" + ww_studyID + ")";
+                                taskInstance.description = "MG04-Assign Liaison (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
                 </event>
             </task>
-            <transition to="GT05_CompleteSSQ"></transition>
+            <transition to="MG05_CompleteSSQ"></transition>
         </task-node>
 
-        <task-node name="GT05_CompleteSSQ">
-            <task name="ww:GT05_CompleteSSQTask">
+        <task-node name="MG05_CompleteSSQ">
+            <task name="ww:MG05_CompleteSSQTask">
                 <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeCurator}</actor>
                 </assignment>
@@ -217,14 +217,14 @@ M<?xml version="1.0" encoding="UTF-8"?>
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "GT05-Complete SSQ (" + ww_studyID + ")";
+                                taskInstance.description = "MG05-Complete SSQ (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
                 </event>
             </task>
             <transition to="../Curation/MC01_TransformData" name="OK"></transition>
-            <transition to="GT06_ProvideSSQInfo" name="NeedMoreInfo"></transition>
+            <transition to="MG06_ProvideSSQInfo" name="NeedMoreInfo"></transition>
             <event type="node-leave">
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
@@ -237,8 +237,8 @@ M<?xml version="1.0" encoding="UTF-8"?>
             </event>
         </task-node>
 
-        <task-node name="GT06_ProvideSSQInfo">
-            <task name="ww:GT06_ProvideSSQInfoTask">
+        <task-node name="MG06_ProvideSSQInfo">
+            <task name="ww:MG06_ProvideSSQInfoTask">
                 <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
                     <actor>#{ww_assigneeLiaison}</actor>
                 </assignment>
@@ -247,13 +247,13 @@ M<?xml version="1.0" encoding="UTF-8"?>
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "GT06-Provide SSQ Info (" + ww_studyID + ")";
+                                taskInstance.description = "MG06-Provide SSQ Info (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
                 </event>
             </task>
-            <transition to="GT05_CompleteSSQ"></transition>
+            <transition to="MG05_CompleteSSQ"></transition>
         </task-node>
     </super-state>
 
@@ -466,21 +466,6 @@ M<?xml version="1.0" encoding="UTF-8"?>
             <transition to="../Validation/MV01_DataManagerValidateOutputs"></transition>
         </task-node>
         
-        <task-node name="MC08_UploadExplorerCalcs">
-            <task name="ww:MC08_UploadExplorerCalcs" swimlane="BioInformatics">
-                <event type="task-create">
-                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                        <script>
-                            <variable name="ww_studyID" access="read"/>
-                            <expression>
-                                taskInstance.description = "MC08 - Produce and upload explorer calculations (" + ww_studyID + ")";
-                            </expression>
-                        </script>
-                    </action>
-                </event>
-            </task>
-            <transition to="../Validation/MV02_DataManagerValidateExplorerOutputs" name="HavAProblem"></transition>
-        </task-node>
     </super-state>
 
     <super-state name="Validation">
@@ -519,54 +504,6 @@ M<?xml version="1.0" encoding="UTF-8"?>
             <transition to="../Curation/MC05_ResolveTransformProblem" name="TransformProblem"></transition>
         </task-node>
 
-<task-node name="MV02_DataManagerValidateExplorerOutputs">
-            <event type="node-enter">
-                 <script>
-                    <variable name="ww_genericProblemDesc" access="write"/>
-                    <expression>
-                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
-                    </expression>
-                </script>
-            </event>
-            <task name="ww:MV02_DataManagerValidateExplorerOutputs" swimlane="DataManagers">
-                <event type="task-create">
-                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                        <script>
-                            <variable name="ww_studyID" access="read"/>
-                            <expression>
-                                taskInstance.description = "MV02-Validate Explorer Outputs (" + ww_studyID + ")";
-                            </expression>
-                        </script>
-                    </action>
-                </event>
-            </task>
-            <transition to="../Approval/MA04_SendOutputsToRepository" name="OK"></transition>
-            <transition to="MV03_ResolveExplorerOutputsProblemTask" name="HavAProblem"></transition>
-        </task-node>
-        <task-node name="MV03_ResolveExplorerOutputsProblemTask">
-            <task name="ww:MV03_ResolveExplorerOutputsProblemTask" swimlane="BioInfomatics">
-                <event type="task-create">
-                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                        <script>
-                            <variable name="ww_studyID" access="read"/>
-                            <expression>
-                                taskInstance.description = "MV03-Resolve Explorer Calcs Problem (" + ww_studyID + ")";
-                            </expression>
-                        </script>
-                    </action>
-                </event>
-            </task>
-            <transition to="../Curation/MC08_UploadExplorerCalcs" name="MappingProblem">
-                <!-- Append the generic problem description to the mapping problem description -->
-                <script>
-                   <variable name="ww_genericProblemDesc" access="read"/>
-                   <variable name="wc_mappingProblemDesc" access="read,write"/>
-                   <expression>
-                       wc_mappingProblemDesc = wc_mappingProblemDesc + "\n" + ww_genericProblemDesc;
-                   </expression>
-               </script>
-            </transition>
-        </task-node>
     </super-state>
 
     <super-state name="Approval">
@@ -662,22 +599,18 @@ M<?xml version="1.0" encoding="UTF-8"?>
                 </event>
             </task>
             <transition to="../Validation/MV01_DataManagerValidateOutputs" name="Rejected"></transition>
-            <transition to="AP05_SendOutputsToModule" name="ApprovedAndHide"></transition>
-            <transition to="../Curation/MC08_UploadExplorerCalcs" name="ApprovedAndDisplay"></transition>
+            <transition to="MA03_SendOutputsToModule" name="ApprovedAndHide"></transition>
+            <transition to="MA04_UploadExplorerCalcs" name="ApprovedAndDisplay"></transition>
         </task-node>
 
-        <node name="UploadToExplorer">
-            <transition to="AP05_SendOutputsToModule"></transition>
-        </node>
-
- 		<task-node name="MA04_SendOutputsToRepository">
-            <task name="ww:MA04_SendOutputsToRepository" swimlane="DataManagers">
+    	<task-node name="MA03_SendOutputsToModule">
+            <task name="ww:MA03_SendOutputsToModuleTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "MA04-Send Outputs To Explorer (" + ww_studyID + ")";
+                                taskInstance.description = "MA03-Send Outputs To Module (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
@@ -686,20 +619,86 @@ M<?xml version="1.0" encoding="UTF-8"?>
             <transition to="../End"></transition>
         </task-node>
         
-        <task-node name="AP05_SendOutputsToModule">
-            <task name="ww:AP05_SendOutputsToModuleTask" swimlane="DataManagers">
+        <task-node name="MA04_UploadExplorerCalcs">
+            <task name="ww:MA04_UploadExplorerCalcs" swimlane="BioInformatics">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "AP05-Send Outputs To Module (" + ww_studyID + ")";
+                                taskInstance.description = "MA04 - Produce and upload explorer calculations (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
                 </event>
             </task>
-            <transition to="../End"></transition>
+            <transition to="MA05_DataManagerValidateExplorerOutputs" name="OK"></transition>
+        </task-node>
+        
+        
+        <task-node name="MA05_DataManagerValidateExplorerOutputs">
+            <event type="node-enter">
+                <script>
+                    <variable name="ww_genericProblemDesc" access="write"/>
+                    <expression>
+                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
+                    </expression>
+                </script>
+            </event>
+            <task name="ww:MA05_DataManagerValidateExplorerOutputs" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "MA05-Validate Explorer Outputs (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="../Approval/MA07_SendOutputsToRepository" name="OK"></transition>
+            <transition to="MA06_ResolveExplorerOutputsProblemTask" name="HavAProblem"></transition>
+        </task-node>
+        <task-node name="MA06_ResolveExplorerOutputsProblemTask">
+            <task name="ww:MA06_ResolveExplorerOutputsProblemTask" swimlane="BioInformatics">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "MA06-Resolve Explorer Calcs Problem (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="MA04_UploadExplorerCalcs" name="MappingProblem">
+                <!-- Append the generic problem description to the mapping problem description -->
+                <script>
+                   <variable name="ww_genericProblemDesc" access="read"/>
+                   <variable name="wc_mappingProblemDesc" access="read,write"/>
+                   <expression>
+                       wc_mappingProblemDesc = wc_mappingProblemDesc + "\n" + ww_genericProblemDesc;
+                   </expression>
+               </script>
+            </transition>
+        </task-node>
+        
+        <task-node name="MA07_SendOutputsToRepository">
+            <task name="ww:MA07_SendOutputsToRepository" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "MA07-Send Outputs To Explorer (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="MA03_SendOutputsToModule"></transition>
         </task-node>
     </super-state>
 
