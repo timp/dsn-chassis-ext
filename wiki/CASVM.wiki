@@ -88,6 +88,12 @@ keytool -import -file /etc/ssl/certs/ssl-cert-snakeoil.pem -keystore ./cacerts
 
 == Configure Alfresco ==
 
+In tomcat/conf/context.xml add
+{{{
+<WatchedResource>WEB-INF/lib/WWARN_Share_Code-1.0.jar</WatchedResource>
+}}}
+
+== Customize Alfresco ==
 install alfresco alfresco
 
 == Flash upload problems with self signed certificate ==
