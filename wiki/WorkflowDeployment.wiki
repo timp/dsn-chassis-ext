@@ -25,6 +25,15 @@ Command to view deployed process definition:
 {{{
     show file alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml
 }}}
+
+== Templates ==
+The following email templates are used:
+{{{
+Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl
+}}}
+{{{
+Data Dictionary/Email Templates/wwarn_output_info_to_contributor_molecular_email.ftl
+}}}
 == Starting ==
 Where study.xml is the file containing the atom entry for the study
 {{{
