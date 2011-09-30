@@ -32,6 +32,10 @@
             <parent>bpm:startTask</parent>
         </type>
         
+        <type name="ww:startInVitroProcessTask">
+            <parent>bpm:startTask</parent>
+        </type>
+        
 		<type name="ww:baseTask">
             <description>
                 This is the base type for all WWARN Tasks.
@@ -67,6 +71,16 @@
             </mandatory-aspects>
         </type>
 
+        <type name="ww:molecularTask">
+            <description>
+                This is the base type for all WWARN Tasks.
+            </description>
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>wc:molecularWorkflowInfoData</aspect>
+            </mandatory-aspects>
+        </type>
+        
         <type name="ww:emailTask">
             <parent>ww:baseTask</parent>
             <mandatory-aspects>
@@ -109,7 +123,7 @@
         </type>
 
         <type name="ww:MG01_CheckStudyTask">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
             <mandatory-aspects>
                 <aspect>ww:assigneeCuratorTemp</aspect>
                 <aspect>ww:assigneeLiaisonTemp</aspect>
@@ -117,28 +131,62 @@
         </type>
         
         <type name="ww:MG02_AssignCuratorTask">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
             <mandatory-aspects>
                 <aspect>ww:assigneeCurator</aspect>
             </mandatory-aspects>
         </type>
         
         <type name="ww:MG03_AskForMoreStudyInfoTask">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MG04_AssignLiaisonTask">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
             <mandatory-aspects>
                 <aspect>ww:assigneeLiaison</aspect>
             </mandatory-aspects>
         </type>
         
         <type name="ww:MG05_CompleteSSQTask">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MG06_ProvideSSQInfoTask">
+            <parent>ww:molecularTask</parent>
+        </type>
+        
+        <type name="ww:IG01_CheckStudyTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCuratorTemp</aspect>
+                <aspect>ww:assigneeLiaisonTemp</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:IG02_AssignCuratorTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCurator</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:IG03_AskForMoreStudyInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IG04_AssignLiaisonTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeLiaison</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:IG05_CompleteSSQTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IG06_ProvideSSQInfoTask">
             <parent>ww:baseTask</parent>
         </type>
         <!-- Curation Phase Tasks -->
@@ -167,34 +215,60 @@
         </type>
 
         <type name="ww:MC01_TransformData">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MC02_UploadFiles">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MC03_UploadCalcs">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MC04_ProvideTransformInfo">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MC05_ResolveTransformProblem">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MC06_ResolveCalculationProblem">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
 
         <type name="ww:MC07_UploadOutputs">
+            <parent>ww:molecularTask</parent>
+        </type>
+        
+        <type name="ww:IC01_CompleteMappingTask">
             <parent>ww:baseTask</parent>
         </type>
         
-       
+        <type name="ww:IC02_RunTransformTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IC03_UploadOutputsTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IC04_ProvideMappingInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IC05_ResolveMappingProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IC06_ResolveProcessingProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IC07_AnalyseTransformTask">
+            <parent>ww:baseTask</parent>
+        </type>
         <!-- Validation Phase Tasks -->
         <type name="ww:VA01_CuratorValidateOutputsTask">
             <parent>ww:baseTask</parent>
@@ -209,6 +283,18 @@
         </type>
 
         <type name="ww:MV01_DataManagerValidateOutputs">
+            <parent>ww:molecularTask</parent>
+        </type>
+        
+        <type name="ww:IV01_CuratorValidateOutputsTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IV02_DataManagerValidateOutputsTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IV03_ResolveOutputsProblemTask">
             <parent>ww:baseTask</parent>
         </type>
         
@@ -225,7 +311,10 @@
         </type>
 
         <type name="ww:AP03_ProvideOutputsEmailInfoTask">
-            <parent>ww:emailTask</parent>
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:email</aspect>
+            </mandatory-aspects>
         </type>
 
         <type name="ww:AP04_ReceiveApprovalTask">
@@ -237,32 +326,62 @@
         </type>
 
         <type name="ww:MA01_ProvideOutputsEmailInfo">
-            <parent>ww:emailTask</parent>
+            <parent>ww:molecularTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:email</aspect>
+            </mandatory-aspects>
         </type>
 
         <type name="ww:MA02_ReceiveApproval">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
 
-        <type name="ww:MA03_SendOutputsToModule">
-            <parent>ww:baseTask</parent>
+        <type name="ww:MA03_SendOutputsToModuleTask">
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MA04_UploadExplorerCalcs">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MA05_DataManagerValidateExplorerOutputs">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MA06_ResolveExplorerOutputsProblemTask">
-            <parent>ww:baseTask</parent>
+            <parent>ww:molecularTask</parent>
         </type>
         
         <type name="ww:MA07_SendOutputsToRepository">
+            <parent>ww:molecularTask</parent>
+        </type>
+        
+        <type name="ww:IA01_AssignCentreHeadTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCentreHead</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:IA02_CheckReportTask">
             <parent>ww:baseTask</parent>
         </type>
+        
+        <type name="ww:IA03_ProvideOutputsEmailInfoTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:email</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:IA04_ReceiveApprovalTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:IA05_SendOutputsToModuleTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
     </types>
 
 	<aspects>
