@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="ww:invitroStudyProcess" width="936" height="436">
+  <node name="Start" x="0" y="0" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node-container name="GateKeeping" x="0" y="0" width="360" height="240">
+    <node name="IG01_CheckStudy" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="CuratorAssigned?" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IG02_AssignCurator" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IG03_AskForMoreStudyInfo" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="LiaisonAssigned?" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IG04_AssignLiaison" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IG05_CompleteSSQ" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IG06_ProvideSSQInfo" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Curation" x="0" y="0" width="360" height="240">
+    <node name="IC01_CompleteMapping" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IC02_RunTransform" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IC03_UploadOutputs" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IC04_ProvideMappingInfo" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="EmailLiaisonAboutMappingInfoRequest" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IC05_ResolveMappingProblem" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IC06_ResolveProcessingProblem" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IC07_AnalyseTransformTask" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Validation" x="0" y="0" width="360" height="240">
+    <node name="IV01_CuratorValidateOutputs" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IV02_DataManagerValidateOutputs" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IV03_ResolveOutputsProblem" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Approval" x="0" y="0" width="360" height="240">
+    <node name="IA01_AssignCentreHead" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA02_CheckReport" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA03_ProvideOutputsEmailInfo" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="EmailContributorAboutOutputs" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA04_ReceiveApproval" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="UploadToExplorer" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA05_SendOutputsToModule" x="0" y="0" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node name="End" x="0" y="0" width="132" height="36"/>
+</root-container>

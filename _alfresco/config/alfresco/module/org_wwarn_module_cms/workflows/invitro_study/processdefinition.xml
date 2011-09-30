@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="urn:jbpm.org:jpdl-3.2" name="ww:invitroStudyProcess">
+    <!--
+    Assignees
+    -->
+
+    <swimlane name="initiator"/>
+
+    <swimlane name="DataManagers">
+        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+            <pooledactors>
+                #{people.getGroup('GROUP_Data Managers')}
+            </pooledactors>
+        </assignment>
+    </swimlane>
+
+    <!--
+    Workflow starts here
+    -->
+
+    <start-state name="Start">
+        <task name="ww:startInVitroProcessTask" swimlane="initiator"></task>
+        <transition to="GateKeeping/IG01_CheckStudy"></transition>
+        <event type="node-leave">
+             <!-- Note. cannot use event "node-enter or task-create", process id will be null-->
+            <!-- AlfrescoJavaScript supports only one writable variable (i.e. access="write") so we do not use variable and expression syntax,
+                instead all variables are available -->
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    var status = "Initiated";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var procId = executionContext.processInstance.getId();
+                    var studyFolder = bpm_package.children[0]; <!-- Assume we have started workflow from web script, and folder is attached to web script -->
+                    if (studyFolder.isDocument) {
+                        studyFolder = bpm_package.children[0].parent; <!-- Workflow was started from Share UI and document is attached -->
+                    }
+                    if (studyFolder != null) {
+                        executionContext.setVariable("studyFolderNodeRef", studyFolder.nodeRef); <!-- Save this for later use in workflow -->
+
+                        var properties = new Array();
+                        properties["cm:name"] = "invitroWorkflowInfo-" + procId;
+                        properties["wc:jbpmId"] = procId;
+                        properties["wc:studyStatus"] = status;
+                        var workflowInfoNode = studyFolder.createNode(null, "wc:workflowInfo", properties, "wc:workflowInfos");
+                        executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
+                    }
+                    <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
+                    <!-- 
+                    if (studyFolder != null) {
+                        executionContext.setVariable("ww_studyFolderLink", "http://localhost:8080/share/page/repository?path=WWARN%2FStudies%2F" + studyFolder.name);
+                    }-->
+                </script>
+            </action>
+        </event>
+    </start-state>
+
+    <super-state name="GateKeeping">
+        <event type="superstate-enter">
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Gate Keeping";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
+        </event>
+
+        <task-node name="IG01_CheckStudy">
+            <task name="ww:IG01_CheckStudyTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IG01-Check Study (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+                <event type="task-end">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            executionContext.setVariable("currentAssignedUserNodeRef", people.getPerson(taskInstance.actorId).nodeRef);
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="CuratorAssigned?" name="OK"></transition>
+            <transition to="CuratorAssigned?" name="OKAndAssignMeAsCuratorAndLiaison">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        <!-- We should set the user that is completing this task (IG01_CheckStudy) to Curator and Liaison -->
+                        executionContext.setVariable("ww_assigneeCurator", executionContext.getVariable("currentAssignedUserNodeRef"));
+                        executionContext.setVariable("ww_assigneeLiaison", executionContext.getVariable("currentAssignedUserNodeRef"));
+                    </script>
+                </action>
+            </transition>
+            <transition to="IG03_AskForMoreStudyInfo" name="NotOK"></transition>
+            <event type="node-leave">
+                <!-- Using typeof to get the type of variable, if it is undefined then we do not do anything. If we do not do this then we get exception undefined variable -->
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        <!-- Set study info req and resp in Workflow Info object that is linked to the study folder -->
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_moreStudyInfoReq) !== 'undefined') workflowInfoNode.properties["wc:moreStudyInfoReq"] = wc_moreStudyInfoReq;
+                        if (typeof(wc_moreStudyInfoResponse) !== 'undefined') workflowInfoNode.properties["wc:moreStudyInfoResponse"] = wc_moreStudyInfoResponse;
+                        workflowInfoNode.save();
+
+                        if (typeof(ww_assigneeCuratorTemp) !== 'undefined') {
+                            <!-- Curator has been set in this task so make sure the task for setting this assignee is skipped later -->
+                            executionContext.setVariable("ww_assigneeCurator", ww_assigneeCuratorTemp);
+                        }
+
+                        if (typeof(ww_assigneeLiaisonTemp) !== 'undefined') {
+                            <!-- Liaison has been set in this task so make sure the task for setting this assignee is skipped later -->
+                            executionContext.setVariable("ww_assigneeLiaison", ww_assigneeLiaisonTemp);
+                        }
+                    </script>
+                </action>
+            </event>
+        </task-node>
+
+        <decision name="CuratorAssigned?">
+            <description>
+                If the curator has already been assigned in IG01_CheckStudy then skip IG02_AssignCurator.
+                Note. The default transition "no" has to be first in this decision node otherwise the condition will
+                always evaluate to true.
+            </description>
+            <transition to="IG02_AssignCurator" name="no"></transition>
+            <transition to="LiaisonAssigned?" name="yes">
+                <condition>#{ww_assigneeCurator != null}</condition>
+            </transition>
+        </decision>
+
+        <task-node name="IG02_AssignCurator">
+            <task name="ww:IG02_AssignCuratorTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IG02-Assign Curator (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="LiaisonAssigned?"></transition>
+        </task-node>
+
+        <task-node name="IG03_AskForMoreStudyInfo">
+            <task name="ww:IG03_AskForMoreStudyInfoTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IG03-More Study Info Required (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IG01_CheckStudy"></transition>
+        </task-node>
+
+        <decision name="LiaisonAssigned?">
+            <description>
+                If the liaison has already been assigned in IG01_CheckStudy then skip IG04_AssignLiaison.
+                Note. The default transition "no" has to be first in this decision node otherwise the condition will
+                always evaluate to true.
+            </description>
+            <transition to="IG04_AssignLiaison" name="no"></transition>
+            <transition to="IG05_CompleteSSQ" name="yes">
+                <condition>#{ww_assigneeLiaison != null}</condition>
+            </transition>
+        </decision>
+
+        <task-node name="IG04_AssignLiaison">
+            <task name="ww:IG04_AssignLiaisonTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IG04-Assign Liaison (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IG05_CompleteSSQ"></transition>
+        </task-node>
+
+        <task-node name="IG05_CompleteSSQ">
+            <task name="ww:IG05_CompleteSSQTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IG05-Complete SSQ (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="../Curation/IC01_CompleteMapping" name="OK"></transition>
+            <transition to="IG06_ProvideSSQInfo" name="NeedMoreInfo"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_moreSSQInfoReq) !== 'undefined') workflowInfoNode.properties["wc:moreSSQInfoReq"] = wc_moreSSQInfoReq;
+                        if (typeof(wc_moreSSQInfoResponse) !== 'undefined') workflowInfoNode.properties["wc:moreSSQInfoResponse"] = wc_moreSSQInfoResponse;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
+        </task-node>
+
+        <task-node name="IG06_ProvideSSQInfo">
+            <task name="ww:IG06_ProvideSSQInfoTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeLiaison}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IG06-Provide SSQ Info (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IG05_CompleteSSQ"></transition>
+        </task-node>
+    </super-state>
+
+    <super-state name="Curation">
+        <event type="superstate-enter">
+            <script>
+                <variable name="wc_studyStatus" access="write"/>
+                <expression>
+                    wc_studyStatus = "Curation";
+                </expression>
+            </script>
+        </event>
+
+        <task-node name="IC01_CompleteMapping">
+            <task name="ww:IC01_CompleteMappingTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IC01-Complete Well Mapping (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IC02_RunTransform" name="OK"></transition>
+            <transition to="IC05_ResolveMappingProblem" name="HavAProblem"></transition>
+            <transition to="IC04_ProvideMappingInfo" name="NeedMoreInfo"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_moreMappingInfoReq) !== 'undefined') workflowInfoNode.properties["wc:moreMappingInfoReq"] = wc_moreMappingInfoReq;
+                        if (typeof(wc_moreMappingInfoResp) !== 'undefined') workflowInfoNode.properties["wc:moreMappingInfoResp"] = wc_moreMappingInfoResp;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
+        </task-node>
+
+        <task-node name="IC02_RunTransform">
+            <task name="ww:IC02_RunTransformTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IC02-Run Transform (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IC07_AnalyseTransformTask" name="OK"></transition>
+        </task-node>
+
+        <task-node name="IC03_UploadOutputs">
+            <task name="ww:IC03_UploadOutputsTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IC03-Upload Outputs (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="../Validation/IV01_CuratorValidateOutputs"></transition>
+        </task-node>
+
+        <task-node name="IC04_ProvideMappingInfo">
+            <task name="ww:IC04_ProvideMappingInfoTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeLiaison}</actor>
+                </assignment>
+                <timer name="ProvideMappingInfoReminderTimer" duedate="1 minute" transition="SendReminderEmail">
+                    <script>
+                        <variable name="ww_studyID" access="read"/>
+                        <expression>
+                            System.out.println("IC04_ProvideMappingInfo: Timer timed out and email is sent as a reminder to complete IC04_ProvideMappingInfoTask (" + ww_studyID + ")");
+                        </expression>
+                    </script>
+                </timer>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IC04-Provide Mapping Info (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IC01_CompleteMapping"></transition>
+            <transition to="EmailLiaisonAboutMappingInfoRequest" name="SendReminderEmail"></transition>
+        </task-node>
+
+        <node name="EmailLiaisonAboutMappingInfoRequest">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_studyID" access="read"/>
+                    <expression>
+                        System.out.println("EmailLiaisonAboutMappingInfoRequest: About to send reminder email about completing IC04_ProvideMappingInfoTask (" + ww_studyID + ")");
+                    </expression>
+                </script>
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_mapping_info_request_email.ftl");
+                        var txtMail = "";
+                        if (template != null) {
+                            var args = [];
+                            args["studyID"] = ww_studyID;
+                            txtMail = bpm_package.children[0].processTemplate(template, args);
+                        } else {
+                            txtMail = "You have a task for study (" + ww_studyID + ") to provide more mapping info, please attend to it.";
+                        }
+
+                        var mail = actions.create("mail");
+                        mail.parameters.to = ww_assigneeLiaison.properties.email;
+                        mail.parameters.from = "alfresco@wwarn.org";
+                        mail.parameters.subject = "Provide mapping info (" + ww_studyID + ")";
+                        mail.parameters.text = txtMail;
+                        mail.execute(bpm_package);
+                    </script>
+                </action>
+            </event>
+            <transition to="IC04_ProvideMappingInfo"></transition>
+        </node>
+
+        <task-node name="IC05_ResolveMappingProblem">
+            <task name="ww:IC05_ResolveMappingProblemTask">
+            	<assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IC05-Resolve Mapping Problem (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IC01_CompleteMapping"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_mappingProblemDesc) !== 'undefined') workflowInfoNode.properties["wc:mappingProblemDesc"] = wc_mappingProblemDesc;
+                        if (typeof(wc_mappingProblemRes) !== 'undefined') workflowInfoNode.properties["wc:mappingProblemRes"] = wc_mappingProblemRes;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
+        </task-node>
+
+        <task-node name="IC06_ResolveProcessingProblem">
+            <task name="ww:IC06_ResolveProcessingProblemTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IC06-Resolve Processing Problem (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IC02_RunTransform"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_processorProblemDesc) !== 'undefined') workflowInfoNode.properties["wc:processorProblemDesc"] = wc_processorProblemDesc;
+                        if (typeof(wc_processorProblemRes) !== 'undefined') workflowInfoNode.properties["wc:processorProblemRes"] = wc_processorProblemRes;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
+        </task-node>
+        
+        <task-node name="IC07_AnalyseTransformTask">
+        	<task name="ww:IC07_AnalyseTransformTask" swimlane="DataManagers">
+        	    <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IC07-Analyse Transform (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+        	</task>
+        	<transition to="IC03_UploadOutputs"></transition>
+            <transition to="IC06_ResolveProcessingProblem" name="HavAProblem"></transition>
+        </task-node>
+    </super-state>
+
+    <super-state name="Validation">
+        <event type="superstate-enter">
+            <script>
+                <variable name="wc_studyStatus" access="write"/>
+                <expression>
+                    wc_studyStatus = "Validation";
+                </expression>
+            </script>
+        </event>
+
+        <task-node name="IV01_CuratorValidateOutputs">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_genericProblemDesc" access="write"/>
+                    <expression>
+                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
+                    </expression>
+                </script>
+            </event>
+            <task name="ww:IV01_CuratorValidateOutputsTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IV01-Validate Outputs (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IV02_DataManagerValidateOutputs" name="OK"></transition>
+            <transition to="IV03_ResolveOutputsProblem" name="HavAProblem"></transition>
+        </task-node>
+
+        <task-node name="IV02_DataManagerValidateOutputs">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_genericProblemDesc" access="write"/>
+                    <expression>
+                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
+                    </expression>
+                </script>
+            </event>
+            <task name="ww:IV02_DataManagerValidateOutputsTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IV02-Validate Outputs (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="../Approval/IA01_AssignCentreHead" name="OK"></transition>
+            <transition to="IV03_ResolveOutputsProblem" name="HavAProblem"></transition>
+        </task-node>
+
+        <task-node name="IV03_ResolveOutputsProblem">
+            <task name="ww:IV03_ResolveOutputsProblemTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IV03-Resolve Outputs Problem (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="../Curation/IC05_ResolveMappingProblem" name="MappingProblem">
+                <!-- Append the generic problem description to the mapping problem description -->
+                <script>
+                   <variable name="ww_genericProblemDesc" access="read"/>
+                   <variable name="wc_mappingProblemDesc" access="read,write"/>
+                   <expression>
+                       wc_mappingProblemDesc = wc_mappingProblemDesc + "\n" + ww_genericProblemDesc;
+                   </expression>
+               </script>
+            </transition>
+            <transition to="../Curation/IC06_ResolveProcessingProblem" name="ProcessorProblem">
+                <!-- Append the generic problem description to the processor problem description -->
+                <script>
+                   <variable name="ww_genericProblemDesc" access="read"/>
+                   <variable name="wc_processorProblemDesc" access="read,write"/>
+                   <expression>
+                       wc_processorProblemDesc = wc_processorProblemDesc + "\n" + ww_genericProblemDesc;
+                   </expression>
+               </script>
+            </transition>
+        </task-node>
+    </super-state>
+
+    <super-state name="Approval">
+        <event type="superstate-enter">
+            <script>
+                <variable name="wc_studyStatus" access="write"/>
+                <expression>
+                    wc_studyStatus = "Approval";
+                </expression>
+            </script>
+        </event>
+
+        <task-node name="IA01_AssignCentreHead">
+            <task name="ww:IA01_AssignCentreHeadTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCurator}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IA01-Assign Centre Head (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IA02_CheckReport"></transition>
+        </task-node>
+
+        <task-node name="IA02_CheckReport">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_genericProblemDesc" access="write"/>
+                    <expression>
+                        ww_genericProblemDesc = ""; <!-- Set the problem description to empty string each time we enter this task -->
+                    </expression>
+                </script>
+            </event>
+            <task name="ww:IA02_CheckReportTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeCentreHead}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IA02-Check Report (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IA03_ProvideOutputsEmailInfo" name="OK"></transition>
+            <transition to="../Validation/IV03_ResolveOutputsProblem" name="HavAProblem"></transition>
+        </task-node>
+
+        <task-node name="IA03_ProvideOutputsEmailInfo">
+            <task name="ww:IA03_ProvideOutputsEmailInfoTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeLiaison}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            taskInstance.description = "IA03-Provide Outputs Email Info (" + ww_studyID + ")";
+
+                            var studyFolderNode = search.findNode(executionContext.getVariable("studyFolderNodeRef"));
+                            var studyFolderPath = studyFolderNode.displayPath + "/" + studyFolderNode.name;
+                            var outputFileNames = "";
+                            var allNodesInFolder = studyFolderNode.children;
+                            for each (node in allNodesInFolder) {
+                                if (node.isSubType("wc:output")) {
+                                    outputFileNames = outputFileNames + node.name + "\r\n" ;
+                                }
+                            }
+
+                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl");
+                            var txtMail = "";
+                            if (template != null) {
+                                var args = [];
+                                args["studyID"] = ww_studyID;
+                                args["studyFolderPath"] = studyFolderPath;
+                                args["outputFiles"] = outputFileNames;
+                                txtMail = bpm_package.children[0].processTemplate(template, args);
+                            } else {
+                                txtMail = "The following output files have been uploaded by curators for study (" +
+                                            ww_studyID + ").\r\nStudy Folder: " + studyFolderPath + "\r\n\r\n" + outputFileNames;
+                            }
+
+                            taskInstance.setVariable("ww_to", ww_contributorEmail);
+                            <!--taskInstance.setVariable("ww_subject", ww_subject);-->
+                            taskInstance.setVariable("ww_body", txtMail);
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="EmailContributorAboutOutputs" name="OK"></transition>
+            <transition to="IA04_ReceiveApproval" name="DoNotSend"></transition>
+        </task-node>
+
+        <node name="EmailContributorAboutOutputs">
+            <event type="node-enter">
+                 <script>
+                    <variable name="ww_studyID" access="read"/>
+                    <expression>
+                        System.out.println("EmailContributorAboutOutputs: About to send email to contributor about outputs (" + ww_studyID + ")");
+                    </expression>
+                </script>
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var mail = actions.create("mail");
+                        mail.parameters.to = ww_contributorEmail;
+                        mail.parameters.from = "alfresco@wwarn.org";
+                        mail.parameters.subject = ww_subject;
+                        mail.parameters.text = ww_body;
+                        mail.execute(bpm_package);
+                    </script>
+                </action>
+            </event>
+            <transition to="IA04_ReceiveApproval"></transition>
+        </node>
+
+        <task-node name="IA04_ReceiveApproval">
+            <task name="ww:IA04_ReceiveApprovalTask">
+                <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+                    <actor>#{ww_assigneeLiaison}</actor>
+                </assignment>
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IA04-Receive Approval (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="../Validation/IV03_ResolveOutputsProblem" name="Rejected"></transition>
+            <transition to="IA05_SendOutputsToModule" name="ApprovedAndHide"></transition>
+            <transition to="UploadToExplorer" name="ApprovedAndDisplay"></transition>
+        </task-node>
+
+        <node name="UploadToExplorer">
+            <transition to="IA05_SendOutputsToModule"></transition>
+        </node>
+
+        <task-node name="IA05_SendOutputsToModule">
+            <task name="ww:IA05_SendOutputsToModuleTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IA05-Send Outputs To Module (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="../End"></transition>
+        </task-node>
+    </super-state>
+
+    <end-state name="End">
+        <event type="process-end">
+            <script>
+                <variable name="wc_studyStatus" access="write"/>
+                <expression>
+                    wc_studyStatus = "Completed";
+                </expression>
+            </script>
+        </event>
+    </end-state>
+
+</process-definition>
