@@ -1,7 +1,7 @@
 var postedObject = entry;
 var workflow = args['workflow'];
 
-function startWorkflow(workflowName, studyId, chassis) {
+function startWorkflow(workflowName, studyId, author, chassis) {
 var studyFolderPath = '/WWARN/Studies/' + studyId;
 
 var folder = null;
@@ -23,7 +23,8 @@ if (workflowName == null || workflowName == "") {
     workflow.parameters["ww:studyID"] = studyId;
     workflow.parameters["ww:studyFolderLink"] = '/share/page/folder-details?nodeRef=' + folder.nodeRef;
     workflow.parameters["wc:studyInfoLink"] = '/repository/study/dashboard?tab=study-info&study=' + chassis;
-    //workflow.parameters["ww:contributorEmail"] = contributorEmail;
+    //Used to send email
+    workflow.parameters["ww:contributorEmail"] = author;
     //workflow.parameters["wc:modules"] = modules;
     //workflow.parameters["wc:region"] = region;
     //workflow.parameters["wc:countries"] = countries;
@@ -35,8 +36,8 @@ if (workflowName == null || workflowName == "") {
 }
 var studyId = postedObject.title;
 var chassis = postedObject.id;
-
-startWorkflow(workflow, studyId, chassis);
+var author = postedObject.author.email;
+startWorkflow(workflow, studyId, author, chassis);
 model.message = status.message;
 model.workflow = workflow;
 model.study = studyId;
