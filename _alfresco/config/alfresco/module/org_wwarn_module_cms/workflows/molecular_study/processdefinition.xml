@@ -49,7 +49,7 @@
                         properties["cm:name"] = "molecularWorkflowInfo-" + procId;
                         properties["wc:jbpmId"] = procId;
                         properties["wc:studyStatus"] = status;
-                        var workflowInfoNode = studyFolder.createNode(null, "wc:workflowInfo", properties, "wc:workflowInfos");
+                        var workflowInfoNode = studyFolder.createNode(null, "wc:molecularWorkflowInfo", properties, "wc:workflowInfos");
                         executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
                     }
                     <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
@@ -258,14 +258,20 @@
     </super-state>
 
     <super-state name="Curation">
-        <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Curation";
-                </expression>
-            </script>
+       <event type="superstate-enter">
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Curation";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
+
 
         <task-node name="MC01_TransformData">
             <task name="ww:MC01_TransformData">
@@ -331,7 +337,7 @@
                 </event>
             </task>
             <transition to="MC07_UploadOutputs" name="OK"></transition>
-            <transition to="MC06_ResolveCalculationProblem" name="HavAProblem"></transition>
+            <transition to="MC06_ResolveCalculationProblem" name="HaveAProblem"></transition>
         </task-node>
         
 
@@ -470,12 +476,17 @@
 
     <super-state name="Validation">
         <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Validation";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Validation";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
         
         <task-node name="MV01_DataManagerValidateOutputs">
@@ -493,7 +504,7 @@
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "VA02-Validate Outputs (" + ww_studyID + ")";
+                                taskInstance.description = "MV01-Validate Outputs (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
@@ -507,13 +518,18 @@
     </super-state>
 
     <super-state name="Approval">
-        <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Approval";
-                </expression>
-            </script>
+           <event type="superstate-enter">
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Approval";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
 
         <task-node name="MA01_ProvideOutputsEmailInfo">
@@ -536,7 +552,7 @@
                                 }
                             }
 
-                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl");
+                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_molecular_email.ftl");
                             var txtMail = "";
                             if (template != null) {
                                 var args = [];
@@ -659,6 +675,16 @@
             </task>
             <transition to="../Approval/MA07_SendOutputsToRepository" name="OK"></transition>
             <transition to="MA06_ResolveExplorerOutputsProblemTask" name="HavAProblem"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_explorerCalcProblemDesc) !== 'undefined') workflowInfoNode.properties["wc:explorerCalcProblemDesc"] = wc_explorerCalcProblemDesc;
+                        if (typeof(wc_explorerCalcProblemRes) !== 'undefined') workflowInfoNode.properties["wc:explorerCalcProblemRes"] = wc_explorerCalcProblemRes;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
         </task-node>
         <task-node name="MA06_ResolveExplorerOutputsProblemTask">
             <task name="ww:MA06_ResolveExplorerOutputsProblemTask" swimlane="BioInformatics">
@@ -704,12 +730,17 @@
 
     <end-state name="End">
         <event type="process-end">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Completed";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Completed";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
     </end-state>
 
