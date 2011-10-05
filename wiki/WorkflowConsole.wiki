@@ -1,0 +1,18 @@
+#summary Tips using the workflow console
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+{{{
+show workflows all
+use workflow jbpm$14
+
+show paths
+desc path jbpm$14-@
+show transitions
+signal jbpm$14-@ OKAndAssignMeAsCuratorAndLiaison 
+}}}
