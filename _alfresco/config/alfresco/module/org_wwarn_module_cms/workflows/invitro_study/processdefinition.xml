@@ -252,12 +252,17 @@
 
     <super-state name="Curation">
         <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Curation";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Curation";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
 
         <task-node name="IC01_CompleteMapping">
@@ -367,7 +372,7 @@
                 </script>
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
-                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_mapping_info_request_email.ftl");
+                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/iv_wwarn_mapping_info_request_email.ftl");
                         var txtMail = "";
                         if (template != null) {
                             var args = [];
@@ -464,12 +469,17 @@
 
     <super-state name="Validation">
         <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Validation";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Validation";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
 
         <task-node name="IV01_CuratorValidateOutputs">
@@ -563,12 +573,17 @@
 
     <super-state name="Approval">
         <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Approval";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Approval";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
 
         <task-node name="IA01_AssignCentreHead">
@@ -638,7 +653,7 @@
                                 }
                             }
 
-                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl");
+                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/iv_wwarn_output_info_to_contributor_email.ftl");
                             var txtMail = "";
                             if (template != null) {
                                 var args = [];
@@ -728,12 +743,17 @@
 
     <end-state name="End">
         <event type="process-end">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Completed";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Completed";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
     </end-state>
 
