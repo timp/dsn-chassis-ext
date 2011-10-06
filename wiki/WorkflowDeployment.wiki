@@ -25,6 +25,10 @@ Note. The group "BioInformatics" must exist, with at least one member, as the wo
     deploy alfresco/module/org_wwarn_module_cms/workflows/invitro_study/processdefinition.xml
 }}}
 
+{{{
+    deploy alfresco/module/org_wwarn_module_cms/workflows/pk_study/processdefinition.xml
+}}}
+
 Command to view deployed process definition:
 {{{
     show file alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml
@@ -37,6 +41,16 @@ Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl
 }}}
 {{{
 Data Dictionary/Email Templates/wwarn_output_info_to_contributor_molecular_email.ftl
+}}}
+
+{{{
+Data Dictionary/Email Templates/iv_wwarn_mapping_info_request_email.ftl
+Data Dictionary/Email Templates/iv_wwarn_output_info_to_contributor_email.ftl
+}}}
+
+{{{
+Data Dictionary/Email Templates/pk_wwarn_mapping_info_request_email.ftl
+Data Dictionary/Email Templates/pk_wwarn_output_info_to_contributor_email.ftl
 }}}
 == Starting ==
 Where study.xml is the file containing the atom entry for the study
