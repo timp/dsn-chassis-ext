@@ -36,6 +36,10 @@
             <parent>bpm:startTask</parent>
         </type>
         
+        <type name="ww:startPkProcessTask">
+            <parent>bpm:startTask</parent>
+        </type>
+        
 		<type name="ww:baseTask">
             <description>
                 This is the base type for all WWARN Tasks.
@@ -189,6 +193,41 @@
         <type name="ww:IG06_ProvideSSQInfoTask">
             <parent>ww:baseTask</parent>
         </type>
+        
+        <type name="ww:PG01_CheckStudyTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCuratorTemp</aspect>
+                <aspect>ww:assigneeLiaisonTemp</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:PG02_AssignCuratorTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCurator</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:PG03_AskForMoreStudyInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:PG04_AssignLiaisonTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeLiaison</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:PG05_CompleteSSQTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:PG06_ProvideSSQInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
         <!-- Curation Phase Tasks -->
         <type name="ww:CU01_CompleteMappingTask">
             <parent>ww:baseTask</parent>
@@ -269,6 +308,22 @@
         <type name="ww:IC07_AnalyseTransformTask">
             <parent>ww:baseTask</parent>
         </type>
+        <type name="ww:PC01_ExtractPkVariablesTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        <type name="ww:PC02_RunImportTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        <type name="ww:PC03_TransformCurateTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        <type name="ww:PC04_ProvideImportInfoTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:PC05_ResolveProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
         <!-- Validation Phase Tasks -->
         <type name="ww:VA01_CuratorValidateOutputsTask">
             <parent>ww:baseTask</parent>
@@ -295,6 +350,14 @@
         </type>
         
         <type name="ww:IV03_ResolveOutputsProblemTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:PV01_CheckAllTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:PV02_GenerateStudyReportTask">
             <parent>ww:baseTask</parent>
         </type>
         
@@ -382,6 +445,31 @@
             <parent>ww:baseTask</parent>
         </type>
         
+        <type name="ww:PA01_AssignCentreHeadTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:assigneeCentreHead</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:PA02_CheckReportTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:PA03_ProvideOutputsEmailInfoTask">
+            <parent>ww:baseTask</parent>
+            <mandatory-aspects>
+                <aspect>ww:email</aspect>
+            </mandatory-aspects>
+        </type>
+        
+        <type name="ww:PA04_ReceiveApprovalTask">
+            <parent>ww:baseTask</parent>
+        </type>
+        
+        <type name="ww:PA05_SendOutputsToModuleTask">
+            <parent>ww:baseTask</parent>
+        </type>
     </types>
 
 	<aspects>

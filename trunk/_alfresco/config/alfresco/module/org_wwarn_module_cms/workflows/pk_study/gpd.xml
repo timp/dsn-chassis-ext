@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="ww:pkStudyProcess" width="1392" height="860">
+  <node name="Start" x="0" y="0" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node-container name="GateKeeping" x="146" y="0" width="1230" height="264">
+    <node name="PG01_CheckStudy" x="129" y="27" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="-98" y="8"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="CuratorAssigned?" x="488" y="11" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PG02_AssignCurator" x="727" y="27" width="233" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PG03_AskForMoreStudyInfo" x="89" y="122" width="205" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="LiaisonAssigned?" x="400" y="112" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PG04_AssignLiaison" x="760" y="98" width="176" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PG05_CompleteSSQ" x="616" y="163" width="221" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="-28" y="-21"/>
+      </edge>
+    </node>
+    <node name="PG06_ProvideSSQInfo" x="982" y="159" width="212" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Curation" x="20" y="305" width="1333" height="240">
+    <node name="PC01_ExtractPkVariables" x="0" y="0" width="201" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PC02_RunImport" x="250" y="5" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PC03_TransformCurate" x="447" y="27" width="234" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PC04_ProvideImportInfo" x="58" y="75" width="200" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="EmailLiaisonAboutMappingInfoRequest" x="16" y="138" width="270" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PC05_ResolveProblem" x="1042" y="148" width="197" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Validation" x="20" y="562" width="475" height="74">
+    <node name="PV01_CheckAll" x="304" y="15" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PV02_GenerateStudyReport" x="19" y="9" width="199" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node-container name="Approval" x="10" y="656" width="1354" height="129">
+    <node name="PA01_AssignCentreHead" x="0" y="0" width="176" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PA02_CheckReport" x="204" y="6" width="149" height="36">
+      <edge>
+        <label x="-8" y="5"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PA03_ProvideOutputsEmailInfo" x="402" y="4" width="206" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="-31" y="-11"/>
+      </edge>
+    </node>
+    <node name="EmailContributorAboutOutputs" x="469" y="69" width="209" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PA04_ReceiveApproval" x="679" y="4" width="185" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="-44" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="UploadToExplorer" x="878" y="58" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="PA05_SendOutputsToModule" x="1023" y="3" width="235" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node name="End" x="999" y="809" width="132" height="36"/>
+</root-container>
