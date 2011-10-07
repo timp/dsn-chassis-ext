@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<root-container name="ww:invitroStudyProcess" width="936" height="436">
+<root-container name="ww:invitroStudyProcess" width="1346" height="842">
   <node name="Start" x="0" y="0" width="132" height="36">
     <edge>
       <label x="5" y="-10"/>
@@ -63,10 +63,10 @@
       </edge>
     </node>
   </node-container>
-  <node-container name="Curation" x="0" y="0" width="360" height="240">
-    <node name="IC01_CompleteMapping" x="0" y="0" width="132" height="36">
+  <node-container name="Curation" x="17" y="196" width="1321" height="203">
+    <node name="IC01_CompleteMapping" x="678" y="39" width="207" height="36">
       <edge>
-        <label x="5" y="-10"/>
+        <label x="-81" y="30"/>
       </edge>
       <edge>
         <label x="5" y="-10"/>
@@ -75,40 +75,17 @@
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="IC02_RunTransform" x="0" y="0" width="132" height="36">
+    <node name="IC02_RunTransform" x="293" y="20" width="234" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="IC03_UploadOutputs" x="0" y="0" width="132" height="36">
+    <node name="IC03_UploadOutputs" x="18" y="132" width="182" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="IC04_ProvideMappingInfo" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="EmailLiaisonAboutMappingInfoRequest" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="IC05_ResolveMappingProblem" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="IC06_ResolveProcessingProblem" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="IC07_AnalyseTransformTask" x="0" y="0" width="132" height="36">
+    <node name="IC04_ProvideMappingInfo" x="1023" y="17" width="229" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
@@ -116,25 +93,22 @@
         <label x="5" y="-10"/>
       </edge>
     </node>
-  </node-container>
-  <node-container name="Validation" x="0" y="0" width="360" height="240">
-    <node name="IV01_CuratorValidateOutputs" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
+    <node name="EmailLiaisonAboutMappingInfoRequest" x="1161" y="75" width="132" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="IV02_DataManagerValidateOutputs" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
+    <node name="IC05_ResolveMappingProblem" x="850" y="114" width="213" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="IV03_ResolveOutputsProblem" x="0" y="0" width="132" height="36">
+    <node name="IC06_ResolveProcessingProblem" x="555" y="109" width="245" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IC07_AnalyseTransformTask" x="255" y="95" width="212" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
@@ -143,13 +117,8 @@
       </edge>
     </node>
   </node-container>
-  <node-container name="Approval" x="0" y="0" width="360" height="240">
-    <node name="IA01_AssignCentreHead" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="IA02_CheckReport" x="0" y="0" width="132" height="36">
+  <node-container name="Validation" x="8" y="424" width="1332" height="139">
+    <node name="IV01_CuratorValidateOutputs" x="80" y="103" width="230" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
@@ -157,7 +126,7 @@
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="IA03_ProvideOutputsEmailInfo" x="0" y="0" width="132" height="36">
+    <node name="IV02_DataManagerValidateOutputs" x="353" y="138" width="258" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
@@ -165,32 +134,63 @@
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="EmailContributorAboutOutputs" x="0" y="0" width="132" height="36">
+    <node name="IV03_ResolveOutputsProblem" x="739" y="97" width="239" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
-    </node>
-    <node name="IA04_ReceiveApproval" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="UploadToExplorer" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="IA05_SendOutputsToModule" x="0" y="0" width="132" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
   </node-container>
-  <node name="End" x="0" y="0" width="132" height="36"/>
+  <node-container name="Approval" x="49" y="583" width="1295" height="195">
+    <node name="IA01_AssignCentreHead" x="41" y="24" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA02_CheckReport" x="284" y="30" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA03_ProvideOutputsEmailInfo" x="491" y="31" width="172" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="-30" y="-15"/>
+      </edge>
+    </node>
+    <node name="EmailContributorAboutOutputs" x="510" y="100" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA04_ReceiveApproval" x="793" y="34" width="205" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="UploadToExplorer" x="711" y="126" width="132" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="IA05_SendOutputsToModule" x="972" y="111" width="244" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+  </node-container>
+  <node name="End" x="827" y="804" width="132" height="36"/>
 </root-container>

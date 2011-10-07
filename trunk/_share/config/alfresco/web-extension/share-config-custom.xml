@@ -5943,7 +5943,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -6099,7 +6102,7 @@
                     </field>
 
                     <!-- Field set "wwProcessorProblemInfo" -->
-                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" read-only="true">
+                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl">
                             <control-param name="style">width: 99%</control-param>
                         </control>
@@ -6657,7 +6660,7 @@
                     </field>
                     
                     <!-- Field set "wwProcessorProblemInfo" -->
-                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo">
+                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl">
                             <control-param name="style">width: 99%</control-param>
                         </control>
@@ -7064,6 +7067,12 @@
 
                     <!-- wc:workflowInfo -->
                     <show id="wc:studyStatus"/>
+                    <!-- Generic problem will be copied to the right one of these depending on the branch selected
+                    <show id="wc:processorProblemDesc"/>
+                    <show id="wc:processorProblemRes"/>
+                    <show id="wc:mappingProblemDesc"/>
+                    <show id="wc:mappingProblemRes"/>
+                    -->
                 </field-visibility>
                 <appearance>
                     <!-- Field sets -->
@@ -7071,6 +7080,8 @@
                     <set id="wcMetadata" appearance="bordered-panel" label-id="ww.study.metadata.header"
                          template="/org/alfresco/components/form/2-column-set.ftl"/>
                     <set id="wwGenericProblemInfo" appearance="bordered-panel" label-id="ww.generic_problem_info.header"/>
+                    <set id="wwProcessorProblemInfo" appearance="bordered-panel" label-id="ww.processor_problem_info.header"/>
+                    <set id="wwMappingProblemInfo" appearance="bordered-panel" label-id="ww.mapping_problem_info.header"/>
                     <set id="documents" appearance="title" label="Documents"/>
                     <set id="progress" appearance="title" label-id="workflow.set.task.progress"/>
                     <set id="response" appearance="title" label-id="workflow.set.response"/>
@@ -7103,12 +7114,12 @@
                     </field>
 
                     <!-- Field set "wwGenericProblemInfo" -->
-                    <field id="ww:genericProblemDesc" label-id="ww.metadata.genericProblemDesc" set="wwGenericProblemInfo" read-only="true">
+                    <field id="ww:genericProblemDesc" label-id="ww.metadata.genericProblemDesc" set="wwGenericProblemInfo">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl">
                             <control-param name="style">width: 99%</control-param>
                         </control>
                     </field>
-
+                    
                     <!-- Field set "documents" -->
                     <field id="packageItems" set="documents"/>
 
