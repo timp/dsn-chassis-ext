@@ -3954,7 +3954,6 @@
                     <field-visibility>
                         <show id="message"/>
                         <show id="packageItems"/>
-                        <show id="bpm:comment"/>
                         <show id="transitions"/>
                         
                         <!-- ww:baseTask -->
@@ -4090,9 +4089,6 @@
                         <field id="bpm:status" set="progress"/>
                         
                         <!-- Field set "response" -->
-                        <field id="bpm:comment" label-id="workflow.field.comment" set="response">
-                            <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
-                        </field>
                         <field id="transitions" set="response"/>
                     </appearance>
                 </form>
@@ -4105,7 +4101,6 @@
                     <field-visibility>
                         <show id="message"/>
                         <show id="packageItems"/>
-                        <show id="bpm:comment"/>
                         <show id="transitions"/>
                         
                         <!-- ww:baseTask -->
@@ -4182,9 +4177,6 @@
                         <field id="bpm:status" set="progress"/>
                         
                         <!-- Field set "response" -->
-                        <field id="bpm:comment" label-id="workflow.field.comment" set="response">
-                            <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
-                        </field>
                         <field id="transitions" set="response"/>
                     </appearance>
                 </form>
@@ -4329,7 +4321,6 @@
                     <field-visibility>
                         <show id="message"/>
                         <show id="packageItems"/>
-                        <show id="bpm:comment"/>
                         <show id="transitions"/>
                         
                         <!-- ww:baseTask -->
@@ -4405,9 +4396,6 @@
                         <field id="bpm:status" set="progress"/>
                         
                         <!-- Field set "response" -->
-                        <field id="bpm:comment" label-id="workflow.field.comment" set="response">
-                            <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
-                        </field>
                         <field id="transitions" set="response"/>
                     </appearance>
                 </form>
@@ -4419,7 +4407,6 @@
                     <field-visibility>
                         <show id="message"/>
                         <show id="packageItems"/>
-                        <show id="bpm:comment"/>
                         <show id="transitions"/>
                         
                         <!-- ww:baseTask -->
@@ -4558,9 +4545,6 @@
                         <field id="bpm:status" set="progress"/>
                         
                         <!-- Field set "response" -->
-                        <field id="bpm:comment" label-id="workflow.field.comment" set="response">
-                            <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
-                        </field>
                         <field id="transitions" set="response"/>
                     </appearance>
                 </form>
@@ -4574,13 +4558,11 @@
                     <field-visibility>
                         <show id="message"/>
                         <show id="packageItems"/>
-                        <show id="bpm:comment"/>
                         <show id="transitions"/>
                         
                         <!-- ww:baseTask -->
                         <!-- <show id="ww:studyID"/> -->
                         <show id="ww:studyFolderLink"/>
-                        <show id="ww:genericProblemDesc"/>
                         
                         <!-- wc:studyFolder -->
                         <!--
@@ -4711,9 +4693,6 @@
                         <field id="bpm:status" set="progress"/>
                         
                         <!-- Field set "response" -->
-                        <field id="bpm:comment" label-id="workflow.field.comment" set="response">
-                            <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
-                        </field>
                         <field id="transitions" set="response"/>
                     </appearance>
                 </form>
