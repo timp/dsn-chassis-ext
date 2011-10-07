@@ -50,6 +50,7 @@
                         properties["wc:jbpmId"] = procId;
                         properties["wc:studyStatus"] = status;
                         var workflowInfoNode = studyFolder.createNode(null, "wc:molecularWorkflowInfo", properties, "wc:workflowInfos");
+                        workflowInfoNode.setPermission("Collaborator","GROUP_Curators");
                         executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
                     }
                     <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
