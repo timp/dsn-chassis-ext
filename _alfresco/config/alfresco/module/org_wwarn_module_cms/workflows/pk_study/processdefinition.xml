@@ -42,7 +42,7 @@
                     properties["cm:name"] = "pkWorkflowInfo-" + procId;
                     properties["wc:jbpmId"] = procId;
                     properties["wc:studyStatus"] = status;
-                    var workflowInfoNode = studyFolder.createNode(null, "wc:workflowInfo", properties, "wc:workflowInfos");
+                    var workflowInfoNode = studyFolder.createNode(null, "wc:pkWorkflowInfo", properties, "wc:workflowInfos");
                     workflowInfoNode.setPermission("Collaborator","GROUP_Curators");
                     executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
                     }
