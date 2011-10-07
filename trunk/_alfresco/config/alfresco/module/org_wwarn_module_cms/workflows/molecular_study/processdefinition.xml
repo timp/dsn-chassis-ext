@@ -380,7 +380,7 @@
                 </script>
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
-                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_mapping_info_request_email.ftl");
+                        var template = companyhome.childByNamePath("Data Dictionary/Email Templates/molecular_wwarn_mapping_info_request_email.ftl");
                         var txtMail = "";
                         if (template != null) {
                             var args = [];
@@ -553,7 +553,7 @@
                                 }
                             }
 
-                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/wwarn_output_info_to_contributor_molecular_email.ftl");
+                            var template = companyhome.childByNamePath("Data Dictionary/Email Templates/molecular_wwarn_output_info_to_contributor_email.ftl");
                             var txtMail = "";
                             if (template != null) {
                                 var args = [];
