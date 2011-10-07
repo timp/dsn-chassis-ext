@@ -37,10 +37,12 @@ Command to view deployed process definition:
 == Templates ==
 The following email templates are used:
 {{{
-Data Dictionary/Email Templates/wwarn_output_info_to_contributor_email.ftl
+Data Dictionary/Email Templates/clinical_wwarn_mapping_info_request_email.ftl
+Data Dictionary/Email Templates/clinical_wwarn_output_info_to_contributor_email.ftl
 }}}
 {{{
-Data Dictionary/Email Templates/wwarn_output_info_to_contributor_molecular_email.ftl
+Data Dictionary/Email Templates/molecular_wwarn_mapping_info_request_email.ftl
+Data Dictionary/Email Templates/molecular_wwarn_output_info_to_contributor_email.ftl
 }}}
 
 {{{
