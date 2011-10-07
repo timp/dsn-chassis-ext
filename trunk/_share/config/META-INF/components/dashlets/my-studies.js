@@ -177,6 +177,8 @@
         			 article.modifiedOn = propertyEl.firstChild.firstChild.nodeValue;
         		 } else if (propertyDefinitionId == "cmis:objectId") {
         			 article.objectId = propertyEl.firstChild.firstChild.nodeValue;
+        		 } else if (propertyDefinitionId == "cmis:path") {
+        			 article.path = propertyEl.firstChild.firstChild.nodeValue;
         		 } else if (propertyDefinitionId == "cmis:creationDate") {
         			 article.createdOn = propertyEl.firstChild.firstChild.nodeValue;
         		 } else if (propertyDefinitionId == "cmis:objectId") {
@@ -277,6 +279,7 @@
                shortName: p_items[i].shortName,
                title: p_items[i].title,
                objectId: p_items[i].objectId,
+               path: p_items[i].path,
                description: p_items[i].description,
                createdOn: p_items[i].createdOn,
                administrators: p_items[i].administrators,
@@ -440,9 +443,10 @@
          var renderCellID = function MS_oR_renderCellID(elCell, oRecord, oColumn, oData)
          {
             var siteId = oRecord.getData("shortName"),
+            path = oRecord.getData("path");
             objectId = oRecord.getData("objectId");
 
-            var desc = '<div class="study-id"><a href="' + Alfresco.constants.URL_PAGECONTEXT + 'folder-details?nodeRef=' + objectId + '" class="theme-color-1">' + $html(siteId) + '</a></div>';
+            var desc = '<div class="study-id"><a href="' + Alfresco.constants.URL_PAGECONTEXT + 'repository#filter=path|' + path + '" class="theme-color-1">' + $html(siteId) + '</a></div>';
 
             elCell.innerHTML = desc;
          };
