@@ -43,6 +43,7 @@
                     properties["wc:jbpmId"] = procId;
                     properties["wc:studyStatus"] = status;
                     var workflowInfoNode = studyFolder.createNode(null, "wc:workflowInfo", properties, "wc:workflowInfos");
+                    workflowInfoNode.setPermission("Collaborator","GROUP_Curators");
                     executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
                     }
                     <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
@@ -349,6 +350,16 @@
             </task>
             <transition to="PC01_ExtractPkVariables"></transition>
             <transition to="EmailLiaisonAboutMappingInfoRequest" name="SendReminderEmail"></transition>
+            <event type="node-leave">
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                        var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                        if (typeof(wc_moreMappingInfoReq) !== 'undefined') workflowInfoNode.properties["wc:moreMappingInfoReq"] = wc_moreMappingInfoReq;
+                        if (typeof(wc_moreMappingInfoResp) !== 'undefined') workflowInfoNode.properties["wc:moreMappingInfoResp"] = wc_moreMappingInfoResp;
+                        workflowInfoNode.save();
+                    </script>
+                </action>
+            </event>
         </task-node>
         
         <node name="EmailLiaisonAboutMappingInfoRequest">
