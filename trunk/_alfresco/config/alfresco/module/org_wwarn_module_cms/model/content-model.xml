@@ -387,6 +387,20 @@
                 <aspect>wc:molecularWorkflowInfoData</aspect>
             </mandatory-aspects>
         </type>
+        <type name="wc:invitroWorkflowInfo">
+            <title>WWARN Workflow Information</title>
+            <parent>wc:workflowInfo</parent> <!-- cannot extend the cm:cmobject type, indexing of properties does not work -->
+            <mandatory-aspects>
+                <aspect>wc:workflowInfoData</aspect>
+            </mandatory-aspects>
+        </type>
+        <type name="wc:pkWorkflowInfo">
+            <title>WWARN Workflow Information</title>
+            <parent>wc:workflowInfo</parent> <!-- cannot extend the cm:cmobject type, indexing of properties does not work -->
+            <mandatory-aspects>
+                <aspect>wc:workflowInfoData</aspect>
+            </mandatory-aspects>
+        </type>
         <!--
               A Generic Study File (base type).
               All other study file types extend this type.

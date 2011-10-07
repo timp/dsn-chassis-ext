@@ -231,108 +231,7 @@
             </form>
         </forms>
     </config>
-
-
-    <config evaluator="node-type" condition="wc:workflowInfo">
-        <forms>
-            <form>
-                <field-visibility>
-                    <!-- cm:cmobject -->
-                    <show id="cm:name"/>
-
-                    <!-- wc:workflowInfo -->
-                    <show id="wc:jbpmId"/>
-                    <show id="wc:studyStatus"/>
-                    <show id="wc:processorProblemDesc"/>
-                    <show id="wc:processorProblemRes"/>
-                    <show id="wc:moreMappingInfoReq"/>
-                    <show id="wc:moreMappingInfoResp"/>
-                    <show id="wc:mappingProblemDesc"/>
-                    <show id="wc:mappingProblemRes"/>
-                    <show id="wc:moreSSQInfoReq"/>
-                    <show id="wc:moreSSQInfoResponse"/>
-                    <show id="wc:moreStudyInfoReq"/>
-                    <show id="wc:moreStudyInfoResponse"/>
-                </field-visibility>
-                <appearance>
-                    <!-- Field sets -->
-                    <set id="wwNeedMoreStudyInfo" appearance="bordered-panel" label-id="ww.need_more_study_info.header"/>
-                    <set id="wwNeedMoreSSQInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
-                    <set id="wwNeedMoreMappingInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
-                    <set id="wwMappingProblemInfo" appearance="bordered-panel" label-id="ww.mapping_problem_info.header"/>
-                    <set id="wwProcessorProblemInfo" appearance="bordered-panel" label-id="ww.processor_problem_info.header"/>
-
-                    <!-- Field set "" -->
-                    <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
-                    </field>
-                    <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
-                    </field>
-
-                    <!-- Field set "wwNeedMoreStudyInfo" -->
-                    <field id="wc:moreStudyInfoReq" label-id="ww.metadata.moreStudyInfoReq" set="wwNeedMoreStudyInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-                    <field id="wc:moreStudyInfoResponse" label-id="ww.metadata.moreStudyInfoResponse" set="wwNeedMoreStudyInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-
-                    <!-- Field set "wwNeedMoreSSQInfo" -->
-                    <field id="wc:moreSSQInfoReq" label-id="ww.metadata.moreSSQInfoReq" set="wwNeedMoreSSQInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-                    <field id="wc:moreSSQInfoResponse" label-id="ww.metadata.moreSSQInfoResponse" set="wwNeedMoreSSQInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-
-                    <!-- Field set "wwNeedMoreMappingInfo" -->
-                    <field id="wc:moreMappingInfoReq" label-id="ww.metadata.moreMappingInfoReq" set="wwNeedMoreMappingInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-                    <field id="wc:moreMappingInfoResp" label-id="ww.metadata.moreMappingInfoResponse" set="wwNeedMoreMappingInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-
-                    <!-- Field set "wwMappingProblemInfo" -->
-                    <field id="wc:mappingProblemDesc" label-id="ww.metadata.mappingProblemDesc" set="wwMappingProblemInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-                    <field id="wc:mappingProblemRes" label-id="ww.metadata.mappingProblemResolution" set="wwMappingProblemInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-
-                    <!-- Field set "wwProcessorProblemInfo" -->
-                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-                    <field id="wc:processorProblemRes" label-id="ww.metadata.processorProblemResolution" set="wwProcessorProblemInfo" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                            <control-param name="style">width: 99%</control-param>
-                        </control>
-                    </field>
-                </appearance>
-            </form>
-        </forms>
-    </config>
+    
     <!-- SEARCH form definition -->
     <config evaluator="model-type" condition="wc:workflowInfo">
         <forms>
@@ -904,6 +803,106 @@
     <!--
         Clinical Study Workflow Task Forms
         -->
+    <config evaluator="node-type" condition="wc:clinicalWorkflowInfo">
+        <forms>
+            <form>
+                <field-visibility>
+                    <!-- cm:cmobject -->
+                    <show id="cm:name"/>
+                    
+                    <!-- wc:workflowInfo -->
+                    <show id="wc:jbpmId"/>
+                    <show id="wc:studyStatus"/>
+                    <show id="wc:processorProblemDesc"/>
+                    <show id="wc:processorProblemRes"/>
+                    <show id="wc:moreMappingInfoReq"/>
+                    <show id="wc:moreMappingInfoResp"/>
+                    <show id="wc:mappingProblemDesc"/>
+                    <show id="wc:mappingProblemRes"/>
+                    <show id="wc:moreSSQInfoReq"/>
+                    <show id="wc:moreSSQInfoResponse"/>
+                    <show id="wc:moreStudyInfoReq"/>
+                    <show id="wc:moreStudyInfoResponse"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="wwNeedMoreStudyInfo" appearance="bordered-panel" label-id="ww.need_more_study_info.header"/>
+                    <set id="wwNeedMoreSSQInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
+                    <set id="wwNeedMoreMappingInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
+                    <set id="wwMappingProblemInfo" appearance="bordered-panel" label-id="ww.mapping_problem_info.header"/>
+                    <set id="wwProcessorProblemInfo" appearance="bordered-panel" label-id="ww.processor_problem_info.header"/>
+                    
+                    <!-- Field set "" -->
+                    <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreStudyInfo" -->
+                    <field id="wc:moreStudyInfoReq" label-id="ww.metadata.moreStudyInfoReq" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreStudyInfoResponse" label-id="ww.metadata.moreStudyInfoResponse" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreSSQInfo" -->
+                    <field id="wc:moreSSQInfoReq" label-id="ww.metadata.moreSSQInfoReq" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreSSQInfoResponse" label-id="ww.metadata.moreSSQInfoResponse" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreMappingInfo" -->
+                    <field id="wc:moreMappingInfoReq" label-id="ww.metadata.moreMappingInfoReq" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreMappingInfoResp" label-id="ww.metadata.moreMappingInfoResponse" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwMappingProblemInfo" -->
+                    <field id="wc:mappingProblemDesc" label-id="ww.metadata.mappingProblemDesc" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:mappingProblemRes" label-id="ww.metadata.mappingProblemResolution" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwProcessorProblemInfo" -->
+                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:processorProblemRes" label-id="ww.metadata.processorProblemResolution" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                </appearance>
+            </form>
+        </forms>
+    </config>
 
     <!-- Special start workflow task form -->
     <config evaluator="string-compare" condition="jbpm$ww:clinicalStudyProcess">
@@ -914,7 +913,7 @@
                     <show id="wf:notifyMe"/>
 
                     <!-- ww:baseTask -->
-                    <!-- <show id="ww:studyID" force="true"/> -->
+                    <show id="ww:studyID" force="true"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -931,7 +930,8 @@
                     <set id="other" appearance="title" label-id="workflow.set.other"/>
 
                     <!-- Field set "wcMetadata" -->
-                 <!--   <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata"/>
+                    <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata"/>
+                    <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata"/>
                     <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata"/>
                     <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata"/> -->
@@ -3085,6 +3085,120 @@
         Molecular Study Workflow Task Forms
         -->
 
+    <config evaluator="node-type" condition="wc:molecularWorkflowInfo">
+        <forms>
+            <form>
+                <field-visibility>
+                    <!-- cm:cmobject -->
+                    <show id="cm:name"/>
+                    
+                    <!-- wc:workflowInfo -->
+                    <show id="wc:jbpmId"/>
+                    <show id="wc:studyStatus"/>
+                    <show id="wc:processorProblemDesc"/>
+                    <show id="wc:processorProblemRes"/>
+                    <show id="wc:moreMappingInfoReq"/>
+                    <show id="wc:moreMappingInfoResp"/>
+                    <show id="wc:mappingProblemDesc"/>
+                    <show id="wc:mappingProblemRes"/>
+                    <show id="wc:moreSSQInfoReq"/>
+                    <show id="wc:moreSSQInfoResponse"/>
+                    <show id="wc:moreStudyInfoReq"/>
+                    <show id="wc:moreStudyInfoResponse"/>
+                    <show id="wc:explorerCalcProblemDesc"/>
+                    <show id="wc:explorerCalcProblemRes"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="wwNeedMoreStudyInfo" appearance="bordered-panel" label-id="ww.need_more_study_info.header"/>
+                    <set id="wwNeedMoreSSQInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
+                    <set id="wwProcessorProblemInfo" appearance="bordered-panel" label-id="ww.calculation_problem_info.header"/>
+                    <set id="wwNeedMoreMappingInfo" appearance="bordered-panel" label-id="ww.need_more_transformation_info.header"/>
+                    <set id="wwMappingProblemInfo" appearance="bordered-panel" label-id="ww.transformation_problem_info.header"/>
+                    <set id="wwExplorerCalculationProblemInfo" appearance="bordered-panel" label-id="ww.explorer_calculation_problem_info.header"/>
+                    <!-- Field set "" -->
+                    <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreStudyInfo" -->
+                    <field id="wc:moreStudyInfoReq" label-id="ww.metadata.moreStudyInfoReq" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreStudyInfoResponse" label-id="ww.metadata.moreStudyInfoResponse" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreSSQInfo" -->
+                    <field id="wc:moreSSQInfoReq" label-id="ww.metadata.moreSSQInfoReq" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreSSQInfoResponse" label-id="ww.metadata.moreSSQInfoResponse" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreMappingInfo" -->
+                    <field id="wc:moreMappingInfoReq" label-id="ww.metadata.moreMappingInfoReq" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreMappingInfoResp" label-id="ww.metadata.moreMappingInfoResponse" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwMappingProblemInfo" -->
+                    <field id="wc:mappingProblemDesc" label-id="ww.metadata.mappingProblemDesc" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:mappingProblemRes" label-id="ww.metadata.mappingProblemResolution" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwProcessorProblemInfo" -->
+                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:processorProblemRes" label-id="ww.metadata.processorProblemResolution" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwExplorerCalculationProblemInfo" -->
+                    <field id="wc:explorerCalcProblemDesc" label-id="ww.metadata.explorerCalcProblemDesc" set="wwExplorerCalculationProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:explorerCalcProblemRes" label-id="ww.metadata.explorerCalcProblemResolution" set="wwExplorerCalculationProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                </appearance>
+            </form>
+        </forms>
+    </config>
     <!-- Special start workflow task form -->
     <config evaluator="string-compare" condition="jbpm$ww:molecularStudyProcess">
         <forms>
@@ -5274,7 +5388,106 @@
      <!--
         In Vitro Study Workflow Task Forms
         -->
-
+    <config evaluator="node-type" condition="wc:invitroWorkflowInfo">
+        <forms>
+            <form>
+                <field-visibility>
+                    <!-- cm:cmobject -->
+                    <show id="cm:name"/>
+                    
+                    <!-- wc:workflowInfo -->
+                    <show id="wc:jbpmId"/>
+                    <show id="wc:studyStatus"/>
+                    <show id="wc:processorProblemDesc"/>
+                    <show id="wc:processorProblemRes"/>
+                    <show id="wc:moreMappingInfoReq"/>
+                    <show id="wc:moreMappingInfoResp"/>
+                    <show id="wc:mappingProblemDesc"/>
+                    <show id="wc:mappingProblemRes"/>
+                    <show id="wc:moreSSQInfoReq"/>
+                    <show id="wc:moreSSQInfoResponse"/>
+                    <show id="wc:moreStudyInfoReq"/>
+                    <show id="wc:moreStudyInfoResponse"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="wwNeedMoreStudyInfo" appearance="bordered-panel" label-id="ww.need_more_study_info.header"/>
+                    <set id="wwNeedMoreSSQInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
+                    <set id="wwNeedMoreMappingInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
+                    <set id="wwMappingProblemInfo" appearance="bordered-panel" label-id="ww.mapping_problem_info.header"/>
+                    <set id="wwProcessorProblemInfo" appearance="bordered-panel" label-id="ww.processor_problem_info.header"/>
+                    
+                    <!-- Field set "" -->
+                    <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreStudyInfo" -->
+                    <field id="wc:moreStudyInfoReq" label-id="ww.metadata.moreStudyInfoReq" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreStudyInfoResponse" label-id="ww.metadata.moreStudyInfoResponse" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreSSQInfo" -->
+                    <field id="wc:moreSSQInfoReq" label-id="ww.metadata.moreSSQInfoReq" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreSSQInfoResponse" label-id="ww.metadata.moreSSQInfoResponse" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreMappingInfo" -->
+                    <field id="wc:moreMappingInfoReq" label-id="ww.metadata.moreMappingInfoReq" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreMappingInfoResp" label-id="ww.metadata.moreMappingInfoResponse" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwMappingProblemInfo" -->
+                    <field id="wc:mappingProblemDesc" label-id="ww.metadata.mappingProblemDesc" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:mappingProblemRes" label-id="ww.metadata.mappingProblemResolution" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwProcessorProblemInfo" -->
+                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:processorProblemRes" label-id="ww.metadata.processorProblemResolution" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                </appearance>
+            </form>
+        </forms>
+    </config>
     <!-- Special start workflow task form -->
     <config evaluator="string-compare" condition="jbpm$ww:inVitroStudyProcess">
         <forms>
@@ -5284,7 +5497,7 @@
                     <show id="wf:notifyMe"/>
 
                     <!-- ww:baseTask -->
-                    <!-- <show id="ww:studyID" force="true"/> -->
+                    <show id="ww:studyID" force="true"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -5301,7 +5514,8 @@
                     <set id="other" appearance="title" label-id="workflow.set.other"/>
 
                     <!-- Field set "wcMetadata" -->
-                 <!--   <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata"/>
+                    <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata"/>
+                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata"/>
                     <field id="wc:region" label-id="wc.metadata.region" set="wcMetadata"/>
                     <field id="wc:countries" label-id="wc.metadata.countries" set="wcMetadata"/> -->
@@ -7605,7 +7819,106 @@
        <!--
         PK Study Workflow Task Forms
         -->
-
+    <config evaluator="node-type" condition="wc:pkWorkflowInfo">
+        <forms>
+            <form>
+                <field-visibility>
+                    <!-- cm:cmobject -->
+                    <show id="cm:name"/>
+                    
+                    <!-- wc:workflowInfo -->
+                    <show id="wc:jbpmId"/>
+                    <show id="wc:studyStatus"/>
+                    <show id="wc:processorProblemDesc"/>
+                    <show id="wc:processorProblemRes"/>
+                    <show id="wc:moreMappingInfoReq"/>
+                    <show id="wc:moreMappingInfoResp"/>
+                    <show id="wc:mappingProblemDesc"/>
+                    <show id="wc:mappingProblemRes"/>
+                    <show id="wc:moreSSQInfoReq"/>
+                    <show id="wc:moreSSQInfoResponse"/>
+                    <show id="wc:moreStudyInfoReq"/>
+                    <show id="wc:moreStudyInfoResponse"/>
+                </field-visibility>
+                <appearance>
+                    <!-- Field sets -->
+                    <set id="wwNeedMoreStudyInfo" appearance="bordered-panel" label-id="ww.need_more_study_info.header"/>
+                    <set id="wwNeedMoreSSQInfo" appearance="bordered-panel" label-id="ww.need_more_ssq_info.header"/>
+                    <set id="wwNeedMoreMappingInfo" appearance="bordered-panel" label-id="ww.need_more_mapping_info.header"/>
+                    <set id="wwMappingProblemInfo" appearance="bordered-panel" label-id="ww.mapping_problem_info.header"/>
+                    <set id="wwProcessorProblemInfo" appearance="bordered-panel" label-id="ww.processor_problem_info.header"/>
+                    
+                    <!-- Field set "" -->
+                    <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreStudyInfo" -->
+                    <field id="wc:moreStudyInfoReq" label-id="ww.metadata.moreStudyInfoReq" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreStudyInfoResponse" label-id="ww.metadata.moreStudyInfoResponse" set="wwNeedMoreStudyInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreSSQInfo" -->
+                    <field id="wc:moreSSQInfoReq" label-id="ww.metadata.moreSSQInfoReq" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreSSQInfoResponse" label-id="ww.metadata.moreSSQInfoResponse" set="wwNeedMoreSSQInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwNeedMoreMappingInfo" -->
+                    <field id="wc:moreMappingInfoReq" label-id="ww.metadata.moreMappingInfoReq" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:moreMappingInfoResp" label-id="ww.metadata.moreMappingInfoResponse" set="wwNeedMoreMappingInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwMappingProblemInfo" -->
+                    <field id="wc:mappingProblemDesc" label-id="ww.metadata.mappingProblemDesc" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:mappingProblemRes" label-id="ww.metadata.mappingProblemResolution" set="wwMappingProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    
+                    <!-- Field set "wwProcessorProblemInfo" -->
+                    <field id="wc:processorProblemDesc" label-id="ww.metadata.processorProblemDesc" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                    <field id="wc:processorProblemRes" label-id="ww.metadata.processorProblemResolution" set="wwProcessorProblemInfo" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                            <control-param name="style">width: 99%</control-param>
+                        </control>
+                    </field>
+                </appearance>
+            </form>
+        </forms>
+    </config>
     <!-- Special start workflow task form -->
     <config evaluator="string-compare" condition="jbpm$ww:pkStudyProcess">
         <forms>
