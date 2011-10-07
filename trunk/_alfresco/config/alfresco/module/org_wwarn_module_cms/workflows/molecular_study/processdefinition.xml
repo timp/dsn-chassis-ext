@@ -700,16 +700,7 @@
                     </action>
                 </event>
             </task>
-            <transition to="MA04_UploadExplorerCalcs" name="MappingProblem">
-                <!-- Append the generic problem description to the mapping problem description -->
-                <script>
-                   <variable name="ww_genericProblemDesc" access="read"/>
-                   <variable name="wc_mappingProblemDesc" access="read,write"/>
-                   <expression>
-                       wc_mappingProblemDesc = wc_mappingProblemDesc + "\n" + ww_genericProblemDesc;
-                   </expression>
-               </script>
-            </transition>
+            <transition to="MA04_UploadExplorerCalcs" name="OK"/>
         </task-node>
         
         <task-node name="MA07_SendOutputsToRepository">
