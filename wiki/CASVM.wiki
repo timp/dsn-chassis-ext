@@ -54,7 +54,8 @@ a2ensite default-ssl
 }}}
 Edit /etc/apache2/sites-enabled/default-ssl
 
-After the last /Directory add
+After the last /Directory add the following, where 
+cashost is the name your cas installation is known by:
 {{{
         <Proxy *>
                Order Allow,Deny
@@ -63,18 +64,19 @@ After the last /Directory add
 
         # reverse proxy configuration for CAS
         <Location /sso>
-                ProxyPass        <<CAS HOST>>/sso
-                ProxyPassReverse <<CAS HOST>>/sso
+                ProxyPass        http://cashost/sso
+                ProxyPassReverse http://cashost/sso
         </Location>
 
-        # reverse proxy configuration for alfresco
+        # reverse proxy configuration for alfresco 
+        # to enable https urls 
         <Location /share>
-                ProxyPass        <<ALF HOST>>/share
-                ProxyPassReverse <<ALF HOST>>/share
+                ProxyPass        http://localhost/share
+                ProxyPassReverse http://localhost/share
         </Location>
         <Location /alfresco>
-                ProxyPass        <<ALF HOST>>/alfresco
-                ProxyPassReverse <<ALF HOST>>/alfresco
+                ProxyPass        http://localhost/alfresco
+                ProxyPassReverse http://localhost/alfresco
         </Location>
 }}}
 == Import the certificates to the relevant JVMs ==
