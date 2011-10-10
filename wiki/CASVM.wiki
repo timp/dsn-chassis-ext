@@ -1,4 +1,4 @@
-#summary Tips for installing a CASified Alfresco on a Virtual Box VM
+#summary Installing a CASified Alfresco on a Virtual Box VM
 
 = Details =
 
