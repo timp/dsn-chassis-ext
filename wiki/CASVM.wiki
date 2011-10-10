@@ -96,7 +96,7 @@ In /opt/alfresco/tomcat/conf/context.xml add
 == Customize Alfresco ==
 {{{
 cd ~
-install alfresco alfresco
+./install.sh alfresco alfresco
 }}}
 == Flash upload problems with self signed certificate ==
 
