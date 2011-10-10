@@ -64,19 +64,19 @@ cashost is the name your cas installation is known by:
 
         # reverse proxy configuration for CAS
         <Location /sso>
-                ProxyPass        http://cashost/sso
-                ProxyPassReverse http://cashost/sso
+                ProxyPass        http://cashost:8080/sso
+                ProxyPassReverse http://cashost:8080/sso
         </Location>
 
         # reverse proxy configuration for alfresco 
         # to enable https urls 
         <Location /share>
-                ProxyPass        http://localhost/share
-                ProxyPassReverse http://localhost/share
+                ProxyPass        http://localhost:8080/share
+                ProxyPassReverse http://localhost:8080/share
         </Location>
         <Location /alfresco>
-                ProxyPass        http://localhost/alfresco
-                ProxyPassReverse http://localhost/alfresco
+                ProxyPass        http://localhost:8080/alfresco
+                ProxyPassReverse http://localhost:8080/alfresco
         </Location>
 }}}
 == Import the certificates to the relevant JVMs ==
