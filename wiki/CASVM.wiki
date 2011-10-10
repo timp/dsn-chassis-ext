@@ -88,14 +88,16 @@ keytool -import -file /etc/ssl/certs/ssl-cert-snakeoil.pem -keystore ./cacerts
 
 == Configure Alfresco ==
 
-In tomcat/conf/context.xml add
+In /opt/alfresco/tomcat/conf/context.xml add
 {{{
 <WatchedResource>WEB-INF/lib/WWARN_Share_Code-1.0.jar</WatchedResource>
 }}}
 
 == Customize Alfresco ==
+{{{
+cd ~
 install alfresco alfresco
-
+}}}
 == Flash upload problems with self signed certificate ==
 
 https://bugbase.adobe.com/index.cfm?event=bug&id=2926796
