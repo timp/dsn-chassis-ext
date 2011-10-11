@@ -56,16 +56,9 @@ sudo su
 
 
 = Install with CAS integration = 
-Follow http://ecmstuff.blogspot.com/2011/06/configuring-alfresco-for-sso-with-cas.html
+Read http://ecmstuff.blogspot.com/2011/06/configuring-alfresco-for-sso-with-cas.html
 
-Some of this is done via the install script, you will still need to configure tomcat appropriately.
-
-install.sh <<alfresco server>> <<CAS server>>
-
-e.g.
-{{{
-install.sh alfresco.example.org cas.example.org
-}}}
+Then CASVM  
 
 = Initialise studies =
 
