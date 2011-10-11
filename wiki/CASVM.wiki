@@ -82,13 +82,31 @@ cd ~
 cp /usr/share/ssl-cert/ssleay.cnf .
 make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
 }}}
-== Import the certificates to the relevant JVMs ==
+== Import the certificates to the Alfresco JVM ==
 
-If you are running CAS on a different machine then you will need to do this there as well
 {{{
 cd /opt/alfresco-3.4.d/java/jre/lib/security/
 keytool -import -file /etc/ssl/certs/ssl-cert-snakeoil.pem -keystore ./cacerts
 }}}
+If you are running CAS on a different machine then you will need to 
+import the ssl certificate of the alfresco machine to it as well. 
+
+Get `/etc/ssl/certs/ssl-cert-snakeoil.pem` off the Alfresco machine 
+and import to JVM as above on CAS machine.
+On Alfresco machine:
+{{{
+cp /etc/ssl/certs/ssl-cert-snakeoil.pem /media/sf_toAlfresco/
+}}}
+On CAS machine:
+{{{
+cd /opt/alfresco-3.4.d/java/jre/lib/security/
+keytool -import -file /home/timp/toAlfresco/ssl-cert-snakeoil.pem -keystore ./cacerts
+
+}}}
+
+Then repeat the same process for the CAS machine.
+
+
 
 == Configure Alfresco ==
 
