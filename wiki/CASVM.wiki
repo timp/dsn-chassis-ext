@@ -42,6 +42,7 @@ Add to hosts file
 
 The ssleay.cnf is used to ensure the CN in the certificate is the same as the hostname
 {{{
+cd /usr/share/ssl-cert/
 cp /usr/share/ssl-cert/ssleay.cnf .
 make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
 }}}
