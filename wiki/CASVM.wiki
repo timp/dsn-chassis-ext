@@ -99,13 +99,19 @@ cp /etc/ssl/certs/ssl-cert-snakeoil.pem /media/sf_toAlfresco/
 }}}
 On CAS machine:
 {{{
-cd /opt/alfresco-3.4.d/java/jre/lib/security/
+cd /etc/java-6-sun/security/
 keytool -import -file /home/timp/toAlfresco/ssl-cert-snakeoil.pem -keystore ./cacerts
-
 }}}
 
-Then repeat the same process for the CAS machine.
-
+Then generate certificate for CAS machine 
+{{{
+sudo su
+cd ~
+cp /usr/share/ssl-cert/ssleay.cnf .
+make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
+cp /etc/ssl/certs/ssl-cert-snakeoil.pem /home/timp/toAlfresco/cas-ssl-cert-snakeoil.pem
+keytool -import -file /home/timp/toAlfresco/ssl-cert-snakeoil.pem -alias cashost -keystore ./cacerts
+}}}
 
 
 == Configure Alfresco ==
