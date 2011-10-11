@@ -45,6 +45,10 @@ a2ensite default-ssl
 }}}
 Edit /etc/apache2/sites-enabled/default-ssl
 
+If you are using two separate (virtual) machines 
+then you will need to split the following onto the 
+appropriate machines. 
+
 After the last /Directory add the following, where 
 cashost is the name your cas installation is known by:
 {{{
