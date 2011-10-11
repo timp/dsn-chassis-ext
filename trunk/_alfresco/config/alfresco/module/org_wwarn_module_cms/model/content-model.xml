@@ -520,6 +520,10 @@
                     <title>Link to the study metadata XML in Chassis</title>
                     <type>d:text</type>
                 </property>
+                <property name="wc:studyGroup">
+                    <title>Name of the group of studies</title>
+                    <type>d:text</type>
+                </property>
                 <property name="wc:admins">
                     <title>Users (first name and last name) that are the creators of this study (admins)</title>
                     <type>d:text</type>
