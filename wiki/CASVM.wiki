@@ -37,7 +37,7 @@ Add to hosts file
 }}}
 
 == Setup Apache on Alfresco==
-We are going to use Apache proxying such that both the CAS url and the Alfresco url are to the alfresco box, but the CAS URL is actually proxied to the chassi/cas box. 
+We are going to use Apache proxying such that both the CAS url and the Alfresco url are to the alfresco box, but the CAS URL is actually proxied to the Chassis/CAS box. 
 
 {{{
 a2enmod ssl
