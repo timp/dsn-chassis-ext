@@ -471,6 +471,10 @@
             <parent>wc:studyFile</parent>
         </type>
 
+        <type name="wc:explorerData">
+            <title>Data for explorer</title>
+            <parent>cm:content</parent>
+        </type>
         <!--
               A Study Info file.
               XML metadata for the study.
