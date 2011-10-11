@@ -36,13 +36,14 @@ Add to hosts file
 192.168.56.10	alfresco
 }}}
 
-== Self-signed certificate on CAS machine==
+== Self-signed certificate on Alfresco machine==
 
 (This example is replacing the default Apache file you might like to call it something different)
 
-The ssleay.cnf is used to ensure the CN in the certificate is the same as the hostname
+The `ssleay.cnf` is used to ensure the CN in the certificate is the same as the hostname
 {{{
-cd /usr/share/ssl-cert/
+sudo su
+cd ~
 cp /usr/share/ssl-cert/ssleay.cnf .
 make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
 }}}
