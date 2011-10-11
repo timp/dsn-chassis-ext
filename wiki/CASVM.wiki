@@ -36,17 +36,6 @@ Add to hosts file
 192.168.56.10	alfresco
 }}}
 
-== Self-signed certificate on Alfresco machine==
-
-(This example is replacing the default Apache file you might like to call it something different)
-
-The `ssleay.cnf` is used to ensure the CN in the certificate is the same as the hostname
-{{{
-sudo su
-cd ~
-cp /usr/share/ssl-cert/ssleay.cnf .
-make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
-}}}
 == Setup Apache on Alfresco==
 {{{
 a2enmod ssl
@@ -80,6 +69,18 @@ cashost is the name your cas installation is known by:
                 ProxyPass        http://localhost:8080/alfresco
                 ProxyPassReverse http://localhost:8080/alfresco
         </Location>
+}}}
+
+== Create Self-signed certificate on Apache machine==
+
+(This example is replacing the default Apache file you might like to call it something different)
+
+The `ssleay.cnf` is used to ensure the CN in the certificate is the same as the hostname, though following command is interactive (use hostname alfresco)
+{{{
+sudo su
+cd ~
+cp /usr/share/ssl-cert/ssleay.cnf .
+make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
 }}}
 == Import the certificates to the relevant JVMs ==
 
