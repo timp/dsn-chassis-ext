@@ -1,7 +1,7 @@
 #summary Installing a CASified Alfresco on a Virtual Box VM
 
 == Create a named instance in a vm ==
-Hint: Keep the server name under 15 characters otherwise it will be truncated in the Alfresco CIFS interface
+*NOTE*: Keep the server name under 15 characters otherwise it will be truncated in the Alfresco CIFS interface
 
 In this example we are using the name `alfresco`
 
@@ -37,6 +37,8 @@ Add to hosts file
 }}}
 
 == Setup Apache on Alfresco==
+We are going to use Apache proxying such that both the CAS url and the Alfresco url are to the alfresco box, but the CAS URL is actually proxied to the chassi/cas box. 
+
 {{{
 a2enmod ssl
 a2enmod rewrite
@@ -45,12 +47,8 @@ a2ensite default-ssl
 }}}
 Edit /etc/apache2/sites-enabled/default-ssl
 
-If you are using two separate (virtual) machines 
-then you will need to split the following onto the 
-appropriate machines. 
-
 After the last /Directory add the following, where 
-cashost is the name your cas installation is known by:
+cashost is the name your CAS/Chassis installation is known by:
 {{{
         <Proxy *>
                Order Allow,Deny
@@ -75,7 +73,7 @@ cashost is the name your cas installation is known by:
         </Location>
 }}}
 
-== Create Self-signed certificate on Apache machine==
+== Create Self-signed certificate on Alfresco machine==
 
 (This example is replacing the default Apache file you might like to call it something different)
 
@@ -86,37 +84,13 @@ cd ~
 cp /usr/share/ssl-cert/ssleay.cnf .
 make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
 }}}
+
 == Import the certificates to the Alfresco JVM ==
 
 {{{
 cd /opt/alfresco-3.4.d/java/jre/lib/security/
 keytool -import -file /etc/ssl/certs/ssl-cert-snakeoil.pem -keystore ./cacerts
 }}}
-If you are running CAS on a different machine then you will need to 
-import the ssl certificate of the alfresco machine to it as well. 
-
-Get `/etc/ssl/certs/ssl-cert-snakeoil.pem` off the Alfresco machine 
-and import to JVM as above on CAS machine.
-On Alfresco machine:
-{{{
-cp /etc/ssl/certs/ssl-cert-snakeoil.pem /media/sf_toAlfresco/
-}}}
-On CAS machine:
-{{{
-cd /etc/java-6-sun/security/
-keytool -import -file /home/timp/toAlfresco/ssl-cert-snakeoil.pem -keystore ./cacerts
-}}}
-
-Then generate certificate for CAS machine 
-{{{
-sudo su
-cd ~
-cp /usr/share/ssl-cert/ssleay.cnf .
-make-ssl-cert ssleay.cnf generate-default-snakeoil --force-overwrite
-cp /etc/ssl/certs/ssl-cert-snakeoil.pem /home/timp/toAlfresco/cas-ssl-cert-snakeoil.pem
-keytool -import -file /home/timp/toAlfresco/ssl-cert-snakeoil.pem -alias cashost -keystore ./cacerts
-}}}
-
 
 == Configure Alfresco ==
 
@@ -128,7 +102,7 @@ In /opt/alfresco/tomcat/conf/context.xml add
 == Customize Alfresco ==
 {{{
 cd ~
-./install.sh alfresco.well.ox.ac.uk timp.well.ox.ac.uk
+./install.sh alfresco.well.ox.ac.uk alfresco.well.ox.ac.uk
 }}}
 == Flash upload problems with self signed certificate ==
 
