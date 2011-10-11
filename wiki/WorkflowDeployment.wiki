@@ -6,8 +6,11 @@ This page describes how to deploy a workflow and how to trigger it once it has b
 
 
 = Details =
-
+http://wiki.alfresco.com/wiki/WorkflowAdministration#Manually_deploying_a_jPDL_XML_file_or_Process_Archive
 == Deployment ==
+
+The first time the application is installed these workflows will be automatically installed.
+
 Login as admin then go to http://localhost:8080/alfresco/faces/jsp/admin/workflow-console.jsp
 
 Command to deploy:
