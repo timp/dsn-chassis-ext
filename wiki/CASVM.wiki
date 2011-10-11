@@ -109,3 +109,5 @@ cd ~
 https://bugbase.adobe.com/index.cfm?event=bug&id=2926796
 
 https://issues.alfresco.com/jira/browse/ALF-1324
+
+Linux workaround is to create content as text by hand. 
