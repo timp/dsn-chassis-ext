@@ -3210,7 +3210,7 @@
                     <set id="wwExplorerCalculationProblemInfo" appearance="bordered-panel" label-id="ww.explorer_calculation_problem_info.header"/>
                     <!-- Field set "" -->
                     <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                        <control template="/org/wwarn/components/form/controls/workflowidfield.ftl"/>
                     </field>
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -5580,7 +5580,7 @@
                     
                     <!-- Field set "" -->
                     <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                        <control template="/org/wwarn/components/form/controls/workflowidfield.ftl"/>
                     </field>
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -8086,7 +8086,7 @@
                     
                     <!-- Field set "" -->
                     <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                        <control template="/org/wwarn/components/form/controls/workflowidfield.ftl"/>
                     </field>
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
