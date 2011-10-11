@@ -62,11 +62,6 @@
             </list>
         </property>
     </bean>
-    
-    <bean id="workflowBootstrap" parent="workflowDeployer">
-        
-    </bean>
-    
-    
+      
     
 </beans>
