@@ -8,7 +8,8 @@ function getContentTypes()
         { id: "wc:publication", value: "type.wc_publication" },
         { id: "wc:other", value: "type.wc_other" },
         { id: "wc:output", value: "type.wc_output" },
-        { id: "wc:studyInfo", value: "type.wc_studyInfo" }
+        { id: "wc:studyInfo", value: "type.wc_studyInfo" },
+        { id: "wc:explorerData", value: "type.wc_explorerData" }
 		];
 	return contentTypes;
 }
