@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
-
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    
     <!-- The bootstrap-context.xml file is used for patch definitions, importers, 
-		 message loaders, loading custom web client configuration, 
-		 and loading custom content models.  -->
-
-
+        message loaders, loading custom web client configuration, 
+        and loading custom content models.  -->
+    
+    
     <!-- Registration of new models -->
     <bean 	id="org.wwarn.cms.dictionaryBootstrap"
-			parent="dictionaryModelBootstrap" 
-			depends-on="dictionaryBootstrap">
+        parent="dictionaryModelBootstrap" 
+        depends-on="dictionaryBootstrap">
         <property name="models">
             <list>
                 <value>alfresco/module/org_wwarn_module_cms/model/content-model.xml</value>
@@ -20,22 +20,53 @@
             </list>
         </property>
     </bean>
-
+    
     <!--
-       Bootstrap label properties for the Clinical Study Workflow
-       -->
-   <bean id="org.wwarn.cms.properties.workflowBootstrap" parent="workflowDeployer">
-       <property name="labels">
-           <list>
-               <value>alfresco.module.org_wwarn_module_cms.ui.labels-clinical_study-workflow</value>
-               <value>alfresco.module.org_wwarn_module_cms.ui.labels-molecular_study-workflow</value>
-               <value>alfresco.module.org_wwarn_module_cms.ui.labels-invitro_study-workflow</value>
-               <value>alfresco.module.org_wwarn_module_cms.ui.labels-pk_study-workflow</value>
-           </list>
-       </property>
-   </bean>
-
-	
-
-
+        Bootstrap label properties for the Clinical Study Workflow
+    -->
+    <bean id="org.wwarn.cms.properties.workflowBootstrap" parent="workflowDeployer">
+        <property name="workflowDefinitions">
+            <list>
+                <props>
+                    <prop key="engineId">jbpm</prop>
+                    <prop key="location">alfresco/module/org_wwarn_module_cms/workflows/clinical_study/processdefinition.xml</prop>
+                    <prop key="mimetype">text/xml</prop>
+                    <prop key="redeploy">false</prop>
+                </props>
+                <props>
+                    <prop key="engineId">jbpm</prop>
+                    <prop key="location">alfresco/module/org_wwarn_module_cms/workflows/molecular_study/processdefinition.xml</prop>
+                    <prop key="mimetype">text/xml</prop>
+                    <prop key="redeploy">false</prop>
+                </props>
+                <props>
+                    <prop key="engineId">jbpm</prop>
+                    <prop key="location">alfresco/module/org_wwarn_module_cms/workflows/invitro_study/processdefinition.xml</prop>
+                    <prop key="mimetype">text/xml</prop>
+                    <prop key="redeploy">false</prop>
+                </props>
+                <props>
+                    <prop key="engineId">jbpm</prop>
+                    <prop key="location">alfresco/module/org_wwarn_module_cms/workflows/pk_study/processdefinition.xml</prop>
+                    <prop key="mimetype">text/xml</prop>
+                    <prop key="redeploy">false</prop>
+                </props>
+            </list>
+        </property>
+        <property name="labels">
+            <list>
+                <value>alfresco.module.org_wwarn_module_cms.ui.labels-clinical_study-workflow</value>
+                <value>alfresco.module.org_wwarn_module_cms.ui.labels-molecular_study-workflow</value>
+                <value>alfresco.module.org_wwarn_module_cms.ui.labels-invitro_study-workflow</value>
+                <value>alfresco.module.org_wwarn_module_cms.ui.labels-pk_study-workflow</value>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="workflowBootstrap" parent="workflowDeployer">
+        
+    </bean>
+    
+    
+    
 </beans>
