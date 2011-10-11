@@ -311,7 +311,10 @@
                     <show id="cm:modified" for-mode="view"/>
 
                     <!-- wc:fileData and derivations association -->
-                    <show id="wc:fileId"/>
+                    <show id="wc:submitter"/>
+                    <!-- wc:fileData and derivations association -->
+                    <show id="wc:fileId" for-mode="edit"/>
+                    <hide id="wc:fileId" for-mode="view"/>
                     <show id="wc:fileSource"/>
                     <show id="wc:derivationsComments"/>
                     <show id="wc:derivations"/>
@@ -345,8 +348,9 @@
                         </control>
                     </field>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="wc.datafile.metadata.header"/>
-                    <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
+                    <!--<field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/> -->
                     <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
+                    <field id="wc:submitter" label-id="wc.metadata.submitter" set="wcMetadata"/>
                     <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
                     </field>
@@ -492,7 +496,10 @@
                     <show id="cm:modified" for-mode="view"/>
 
                     <!-- wc:fileData and derivations association-->
-                    <show id="wc:fileId"/>
+                    <show id="wc:submitter"/>
+                    <!-- wc:fileData and derivations association -->
+                    <show id="wc:fileId" for-mode="edit"/>
+                    <hide id="wc:fileId" for-mode="view"/>
                     <show id="wc:fileSource"/>
                     <show id="wc:derivationsComments"/>
                     <show id="wc:derivations"/>
@@ -526,8 +533,10 @@
                         </control>
                     </field>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="wc.dataDictionary.metadata.header"/>
-                    <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
+                    <!--<field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/> -->
                     <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
+                    <field id="wc:submitter" label-id="wc.metadata.submitter" set="wcMetadata"/>
+                    
                     <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
                     </field>
@@ -561,7 +570,10 @@
                     <show id="cm:modified" for-mode="view"/>
 
                     <!-- wc:fileData and derivations association-->
-                    <show id="wc:fileId"/>
+                    <show id="wc:submitter"/>
+                    <!-- wc:fileData and derivations association -->
+                    <show id="wc:fileId" for-mode="edit"/>
+                    <hide id="wc:fileId" for-mode="view"/>
                     <show id="wc:fileSource"/>
                     <show id="wc:derivationsComments"/>
                     <show id="wc:derivations"/>
@@ -595,8 +607,9 @@
                         </control>
                     </field>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="wc.protocol.metadata.header"/>
-                    <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
+                    <!--<field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/> -->
                     <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
+                    <field id="wc:submitter" label-id="wc.metadata.submitter" set="wcMetadata"/>
                     <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
                     </field>
@@ -630,7 +643,10 @@
                     <show id="cm:modified" for-mode="view"/>
 
                     <!-- wc:fileData and derivations association-->
-                    <show id="wc:fileId"/>
+                    <show id="wc:submitter"/>
+                    <!-- wc:fileData and derivations association -->
+                    <show id="wc:fileId" for-mode="edit"/>
+                    <hide id="wc:fileId" for-mode="view"/>
                     <show id="wc:fileSource"/>
                     <show id="wc:derivationsComments"/>
                     <show id="wc:derivations"/>
@@ -664,8 +680,9 @@
                         </control>
                     </field>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="wc.other.metadata.header"/>
-                    <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
+                    <!--<field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/> -->
                     <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
+                    <field id="wc:submitter" label-id="wc.metadata.submitter" set="wcMetadata"/>
                     <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
                     </field>
@@ -699,7 +716,10 @@
                     <show id="cm:modified" for-mode="view"/>
 
                     <!-- wc:fileData and derivations association-->
-                    <show id="wc:fileId"/>
+                    <show id="wc:submitter"/>
+                    <!-- wc:fileData and derivations association -->
+                    <show id="wc:fileId" for-mode="edit"/>
+                    <hide id="wc:fileId" for-mode="view"/>
                     <show id="wc:fileSource"/>
                     <show id="wc:derivationsComments"/>
                     <show id="wc:derivations"/>
@@ -733,8 +753,9 @@
                         </control>
                     </field>
                     <set id="wcMetadata" appearance="bordered-panel" label-id="wc.output.metadata.header"/>
-                    <field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/>
+                    <!--<field id="wc:fileId" label-id="wc.metadata.fileId" set="wcMetadata"/> -->
                     <field id="wc:fileSource" label-id="wc.metadata.fileSource" set="wcMetadata"/>
+                    <field id="wc:submitter" label-id="wc.metadata.submitter" set="wcMetadata"/>
                     <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
                     </field>
@@ -834,7 +855,7 @@
                     
                     <!-- Field set "" -->
                     <field id="wc:jbpmId" label-id="ww.metadata.jbpmId" read-only="true">
-                        <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
+                        <control template="/org/wwarn/components/form/controls/workflowidfield.ftl"/>
                     </field>
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -957,7 +978,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCuratorTemp"/>
                     <show id="ww:assigneeLiaisonTemp"/>
 
@@ -1047,7 +1069,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1066,7 +1089,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCurator"/>
 
                     <!-- wc:studyFolder -->
@@ -1130,7 +1154,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1149,7 +1174,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!-- <show id="wc:modules"/>
@@ -1181,7 +1207,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -1213,7 +1242,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1232,7 +1262,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeLiaison"/>
 
                     <!-- wc:studyFolder -->
@@ -1296,7 +1327,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1315,8 +1347,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
-
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <!-- wc:studyFolder -->
                     <!--
                     <show id="wc:modules"/>
@@ -1403,8 +1435,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
-
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
                 </appearance>
@@ -1422,7 +1454,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -1456,7 +1489,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -1490,7 +1526,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1509,7 +1546,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -1552,7 +1590,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -1624,7 +1665,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1643,7 +1685,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -1689,7 +1732,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -1771,7 +1817,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1790,7 +1837,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -1922,7 +1970,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -1941,7 +1990,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -1975,7 +2025,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -2010,7 +2063,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2029,7 +2083,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -2063,7 +2118,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -2097,7 +2155,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2116,7 +2175,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -2150,7 +2210,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -2184,7 +2247,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2203,7 +2267,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -2251,7 +2316,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -2340,7 +2408,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2359,7 +2428,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -2407,7 +2477,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -2496,7 +2569,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2515,7 +2589,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -2548,7 +2623,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -2577,7 +2655,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2597,7 +2676,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -2661,7 +2741,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2680,7 +2761,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -2728,7 +2810,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -2817,7 +2902,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2836,7 +2922,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:to"/>
                     <show id="ww:subject"/>
                     <show id="ww:body"/>
@@ -2915,7 +3002,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -2934,7 +3022,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -2991,7 +3080,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3010,7 +3100,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -3067,7 +3158,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3252,7 +3344,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCuratorTemp"/>
                     <show id="ww:assigneeLiaisonTemp"/>
 
@@ -3342,7 +3435,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3361,7 +3455,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCurator"/>
 
                     <!-- wc:studyFolder -->
@@ -3425,7 +3520,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3444,7 +3540,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!-- <show id="wc:modules"/>
@@ -3476,7 +3573,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -3508,7 +3608,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3527,7 +3628,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeLiaison"/>
 
                     <!-- wc:studyFolder -->
@@ -3591,7 +3693,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3610,7 +3713,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -3698,7 +3802,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3717,7 +3822,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -3751,7 +3857,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -3785,7 +3894,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3804,7 +3914,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -3847,7 +3958,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                        read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                         <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -3919,7 +4033,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -3938,7 +4053,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -3981,7 +4097,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                        read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                         <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -4053,7 +4172,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -4072,7 +4192,8 @@
                         
                         <!-- ww:baseTask -->
                         <!-- <show id="ww:studyID"/> -->
-                        <show id="ww:studyFolderLink"/>
+                       <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                         
                         <!-- wc:studyFolder -->
                         <!--
@@ -4118,7 +4239,10 @@
                         <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                         <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                         <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                            read-only="true"/>
+                            read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                                <control-param name="activateLinks">true</control-param>
+                            </control>
+                        </field>
                         <!--
                             <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                             <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -4200,7 +4324,8 @@
                         <field id="packageItems" set="documents"/>
                         
                         <!-- Field set "progress" -->
-                        <field id="bpm:status" set="progress"/>
+                       <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                         
                         <!-- Field set "response" -->
                         <field id="transitions" set="response"/>
@@ -4219,7 +4344,8 @@
                         
                         <!-- ww:baseTask -->
                         <!-- <show id="ww:studyID"/> -->
-                        <show id="ww:studyFolderLink"/>
+                       <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                         
                         <!-- wc:studyFolder -->
                         <!--
@@ -4253,7 +4379,10 @@
                         <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                         <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                         <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                            read-only="true"/>
+                            read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                                <control-param name="activateLinks">true</control-param>
+                            </control>
+                        </field>
                         <!--
                             <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                             <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -4288,7 +4417,8 @@
                         <field id="packageItems" set="documents"/>
                         
                         <!-- Field set "progress" -->
-                        <field id="bpm:status" set="progress"/>
+                       <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                         
                         <!-- Field set "response" -->
                         <field id="transitions" set="response"/>
@@ -4306,7 +4436,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -4349,7 +4480,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                        read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                         <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -4421,7 +4555,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -4439,7 +4574,8 @@
                         
                         <!-- ww:baseTask -->
                         <!-- <show id="ww:studyID"/> -->
-                        <show id="ww:studyFolderLink"/>
+                       <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                         
                         <!-- wc:studyFolder -->
                         <!--
@@ -4473,7 +4609,10 @@
                         <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                         <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                         <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                            read-only="true"/>
+                            read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                                <control-param name="activateLinks">true</control-param>
+                            </control>
+                        </field>
                         <!--
                             <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                             <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -4507,7 +4646,8 @@
                         <field id="packageItems" set="documents"/>
                         
                         <!-- Field set "progress" -->
-                        <field id="bpm:status" set="progress"/>
+                       <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                         
                         <!-- Field set "response" -->
                         <field id="transitions" set="response"/>
@@ -4525,7 +4665,8 @@
                         
                         <!-- ww:baseTask -->
                         <!-- <show id="ww:studyID"/> -->
-                        <show id="ww:studyFolderLink"/>
+                       <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                         
                         <!-- wc:studyFolder -->
                         <!--
@@ -4656,7 +4797,8 @@
                         <field id="packageItems" set="documents"/>
                         
                         <!-- Field set "progress" -->
-                        <field id="bpm:status" set="progress"/>
+                       <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                         
                         <!-- Field set "response" -->
                         <field id="transitions" set="response"/>
@@ -4676,7 +4818,8 @@
                         
                         <!-- ww:baseTask -->
                         <!-- <show id="ww:studyID"/> -->
-                        <show id="ww:studyFolderLink"/>
+                       <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                         
                         <!-- wc:studyFolder -->
                         <!--
@@ -4722,7 +4865,10 @@
                         <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                         <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                         <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                            read-only="true"/>
+                            read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                                <control-param name="activateLinks">true</control-param>
+                            </control>
+                        </field>
                         <!--
                             <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                             <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -4804,7 +4950,8 @@
                         <field id="packageItems" set="documents"/>
                         
                         <!-- Field set "progress" -->
-                        <field id="bpm:status" set="progress"/>
+                       <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                         
                         <!-- Field set "response" -->
                         <field id="transitions" set="response"/>
@@ -4824,7 +4971,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:to"/>
                     <show id="ww:subject"/>
                     <show id="ww:body"/>
@@ -4903,7 +5051,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -4922,7 +5071,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -4979,7 +5129,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -4998,7 +5149,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -5043,7 +5195,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5061,7 +5214,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -5119,7 +5273,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5137,7 +5292,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -5209,7 +5365,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5227,7 +5384,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -5299,7 +5457,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5318,7 +5477,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -5375,7 +5535,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5541,7 +5702,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCuratorTemp"/>
                     <show id="ww:assigneeLiaisonTemp"/>
 
@@ -5631,7 +5793,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5650,7 +5813,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCurator"/>
 
                     <!-- wc:studyFolder -->
@@ -5714,7 +5878,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5733,7 +5898,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!-- <show id="wc:modules"/>
@@ -5765,7 +5931,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -5797,7 +5966,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5816,7 +5986,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeLiaison"/>
 
                     <!-- wc:studyFolder -->
@@ -5880,7 +6051,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -5899,7 +6071,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -5987,7 +6160,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6006,7 +6180,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -6040,7 +6215,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -6074,7 +6252,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6093,7 +6272,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -6211,7 +6391,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6230,7 +6411,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -6276,7 +6458,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -6358,7 +6543,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6377,7 +6563,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -6507,7 +6694,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6526,7 +6714,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -6560,7 +6749,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -6595,7 +6787,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6614,7 +6807,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -6648,7 +6842,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -6682,7 +6879,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6701,7 +6899,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -6735,7 +6934,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -6769,7 +6971,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6788,7 +6991,8 @@
                     
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -6834,7 +7038,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                        read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                         <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -6916,7 +7123,8 @@
                     <field id="packageItems" set="documents"/>
                     
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -6935,7 +7143,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -6983,7 +7192,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -7072,7 +7284,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7091,7 +7304,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -7139,7 +7353,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -7228,7 +7445,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7247,7 +7465,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -7288,7 +7507,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -7317,7 +7539,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7337,7 +7560,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -7401,7 +7625,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7420,7 +7645,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:genericProblemDesc"/>
 
                     <!-- wc:studyFolder -->
@@ -7468,7 +7694,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -7557,7 +7786,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7576,7 +7806,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:to"/>
                     <show id="ww:subject"/>
                     <show id="ww:body"/>
@@ -7655,7 +7886,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7674,7 +7906,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -7731,7 +7964,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7750,7 +7984,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -7807,7 +8042,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -7972,7 +8208,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCuratorTemp"/>
                     <show id="ww:assigneeLiaisonTemp"/>
 
@@ -8061,7 +8298,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                    
                     <field id="transitions" set="response"/>
                 </appearance>
@@ -8079,7 +8317,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeCurator"/>
 
                     <!-- wc:studyFolder -->
@@ -8142,7 +8381,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
                     
                     <field id="transitions" set="response"/>
                 </appearance>
@@ -8160,7 +8400,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!-- <show id="wc:modules"/>
@@ -8192,7 +8433,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -8224,7 +8468,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <field id="transitions" set="response"/>
                 </appearance>
@@ -8242,7 +8487,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:assigneeLiaison"/>
 
                     <!-- wc:studyFolder -->
@@ -8306,7 +8552,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                   
                     <field id="transitions" set="response"/>
@@ -8325,7 +8572,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -8413,7 +8661,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                   
                     <field id="transitions" set="response"/>
@@ -8432,7 +8681,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -8466,7 +8716,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -8500,7 +8753,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                   
                     <field id="transitions" set="response"/>
@@ -8519,7 +8773,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -8559,7 +8814,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -8619,7 +8877,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -8638,7 +8897,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -8756,7 +9016,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -8775,7 +9036,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -8883,7 +9145,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -8902,7 +9165,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -8936,7 +9200,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -8971,7 +9238,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -8990,7 +9258,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -9024,7 +9293,10 @@
                     <!-- <field id="ww:studyID" label-id="ww.metadata.studyId" set="wcMetadata" read-only="true"/> -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                     <!--
                     <field id="wc:modules" label-id="wc.metadata.modules" set="wcMetadata" read-only="true">
                         <control template="/org/alfresco/components/form/controls/textfield.ftl"/>
@@ -9058,7 +9330,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -9078,7 +9351,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -9185,7 +9459,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -9204,7 +9479,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -9246,7 +9522,10 @@
                     <!-- Field set "wcMetadata" -->
                     <field id="wc:studyStatus" label-id="ww.metadata.studyStatus" set="wcMetadata" read-only="true"/>
                     <field id="ww:studyFolderLink" label-id="ww.metadata.studyFolderLink" set="wcMetadata"
-                           read-only="true"/>
+                        read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
+                            <control-param name="activateLinks">true</control-param>
+                        </control>
+                    </field>
                    
                     <field id="wc:studyInfoLink" label-id="wc.metadata.studyInfoLink" set="wcMetadata"
                            read-only="true"><control template="/org/wwarn/components/form/controls/textfield.ftl">
@@ -9306,7 +9585,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -9327,7 +9607,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -9391,7 +9672,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -9410,7 +9692,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     
                     <!-- wc:studyFolder -->
                     <!--
@@ -9517,7 +9800,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -9536,7 +9820,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
                     <show id="ww:to"/>
                     <show id="ww:subject"/>
                     <show id="ww:body"/>
@@ -9605,7 +9890,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -9624,7 +9910,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -9694,7 +9981,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
@@ -9713,7 +10001,8 @@
 
                     <!-- ww:baseTask -->
                     <!-- <show id="ww:studyID"/> -->
-                    <show id="ww:studyFolderLink"/>
+                   <show id="ww:studyFolderLink"/>
+                    <show id="bpm:priority"/>
 
                     <!-- wc:studyFolder -->
                     <!--
@@ -9770,7 +10059,8 @@
                     <field id="packageItems" set="documents"/>
 
                     <!-- Field set "progress" -->
-                    <field id="bpm:status" set="progress"/>
+                   <field id="bpm:status" set="progress"/>
+                    <field id="bpm:priority" set="progress"/>
 
                     <!-- Field set "response" -->
                     <field id="transitions" set="response"/>
