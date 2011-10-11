@@ -58,7 +58,7 @@ sudo su
 = Install with CAS integration = 
 Read http://ecmstuff.blogspot.com/2011/06/configuring-alfresco-for-sso-with-cas.html
 
-Then CASVM  
+Then [http://code.google.com/p/dsn-chassis-ext/wiki/CASVM CASVM]  
 
 = Initialise studies =
 
