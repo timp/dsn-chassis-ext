@@ -717,7 +717,7 @@
                         mail.parameters.to = "curation@wwarn.org";
                         mail.parameters.from = "curation@wwarn.org";
                         mail.parameters.subject = ww_studyID + " is ready for explorer";
-                        mail.parameters.text = "It's ready:" + ww_studyID + outputFilesNames;
+                        mail.parameters.text = "It's ready:" + ww_studyID;
                         mail.execute(bpm_package);
                     </script>
                 </action>
