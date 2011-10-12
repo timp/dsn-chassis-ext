@@ -1,11 +1,10 @@
-#summary Tips using the workflow console
+#summary Tips on using the workflow console
 
 = Introduction =
 
-Add your content here.
+Console available at https://alfresco/alfresco/faces/jsp/admin/workflow-console.jsp
 
-
-= Details =
+= Useful commands =
 
 {{{
 show workflows all
