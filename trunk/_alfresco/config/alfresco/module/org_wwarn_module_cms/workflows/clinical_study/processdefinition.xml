@@ -252,13 +252,18 @@
     </super-state>
 
     <super-state name="Curation">
-        <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Curation";
-                </expression>
-            </script>
+       <event type="superstate-enter">
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Curation";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
 
         <task-node name="CU01_CompleteMapping">
@@ -446,12 +451,17 @@
 
     <super-state name="Validation">
         <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Validation";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Validation";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
 
         <task-node name="VA01_CuratorValidateOutputs">
@@ -545,12 +555,17 @@
 
     <super-state name="Approval">
         <event type="superstate-enter">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Approval";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Approval";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
 
         <task-node name="AP01_AssignCentreHead">
@@ -688,6 +703,25 @@
         </task-node>
 
         <node name="UploadToExplorer">
+        	 <event type="node-enter">
+                 <script>
+                    <variable name="ww_studyID" access="read"/>
+                    <expression>
+                        System.out.println("UploadToExplorer: About to send email to contributor about outputs (" + ww_studyID + ")");
+                    </expression>
+                </script>
+                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                    <script>
+                            
+                        var mail = actions.create("mail");
+                        mail.parameters.to = "curation@wwarn.org";
+                        mail.parameters.from = "curation@wwarn.org";
+                        mail.parameters.subject = ww_studyID + " is ready for explorer";
+                        mail.parameters.text = "It's ready:" + ww_studyID + outputFilesNames;
+                        mail.execute(bpm_package);
+                    </script>
+                </action>
+            </event>
             <transition to="AP05_SendOutputsToModule"></transition>
         </node>
 
@@ -710,12 +744,17 @@
 
     <end-state name="End">
         <event type="process-end">
-            <script>
-                <variable name="wc_studyStatus" access="write"/>
-                <expression>
-                    wc_studyStatus = "Completed";
-                </expression>
-            </script>
+            <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                <script>
+                    
+                    <!-- Update study status in both process variable and WorkflowInfo object -->
+                    var status = "Completed";
+                    executionContext.setVariable("wc_studyStatus", status);
+                    var workflowInfoNode = search.findNode(executionContext.getVariable("workflowInfoNodeRef"));
+                    workflowInfoNode.properties["wc:studyStatus"] = status;
+                    workflowInfoNode.save();
+                </script>
+            </action>
         </event>
     </end-state>
 

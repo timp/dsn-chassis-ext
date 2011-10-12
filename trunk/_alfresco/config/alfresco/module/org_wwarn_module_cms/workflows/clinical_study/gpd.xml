@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<root-container name="ww:clinicalStudyProcess" width="1087" height="758">
+<root-container name="ww:clinicalStudyProcess" width="1392" height="857">
   <node name="Start" x="0" y="0" width="132" height="36">
     <edge>
       <label x="5" y="-10"/>
     </edge>
   </node>
-  <node-container name="GateKeeping" x="0" y="0" width="360" height="240">
-    <node name="GT01_CheckStudy" x="0" y="0" width="132" height="36">
+  <node-container name="GateKeeping" x="153" y="0" width="1212" height="201">
+    <node name="GT01_CheckStudy" x="56" y="13" width="132" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
+      <edge>
+        <label x="-97" y="-12"/>
+      </edge>
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="CuratorAssigned?" x="477" y="15" width="132" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
@@ -18,7 +26,17 @@
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="CuratorAssigned?" x="0" y="0" width="132" height="36">
+    <node name="GT02_AssignCurator" x="305" y="78" width="220" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="GT03_AskForMoreStudyInfo" x="11" y="85" width="223" height="36">
+      <edge>
+        <label x="5" y="-10"/>
+      </edge>
+    </node>
+    <node name="LiaisonAssigned?" x="863" y="19" width="132" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
@@ -26,17 +44,12 @@
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="GT02_AssignCurator" x="0" y="0" width="132" height="36">
+    <node name="GT04_AssignLiaison" x="940" y="120" width="228" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="GT03_AskForMoreStudyInfo" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="LiaisonAssigned?" x="0" y="0" width="132" height="36">
+    <node name="GT05_CompleteSSQ" x="634" y="129" width="229" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
@@ -44,148 +57,38 @@
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="GT04_AssignLiaison" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="GT05_CompleteSSQ" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="GT06_ProvideSSQInfo" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-  </node-container>
-  <node-container name="Curation" x="0" y="0" width="360" height="240">
-    <node name="CU01_CompleteMapping" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="CU02_RunProcessing" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="CU03_UploadOutputs" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="CU04_ProvideMappingInfo" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="EmailLiaisonAboutMappingInfoRequest" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="CU05_ResolveMappingProblem" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="CU06_ResolveProcessingProblem" x="0" y="0" width="132" height="36">
+    <node name="GT06_ProvideSSQInfo" x="261" y="127" width="223" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
   </node-container>
-  <node-container name="Validation" x="0" y="0" width="360" height="240">
-    <node name="VA01_CuratorValidateOutputs" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="VA02_DataManagerValidateOutputs" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="VA03_ResolveOutputsProblem" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
+  <node-container name="Curation" x="8" y="222" width="1306" height="206">
+    <node name="CU01_CompleteMapping" x="0" y="0" width="132" height="36"/>
+    <node name="CU02_RunProcessing" x="0" y="0" width="132" height="36"/>
+    <node name="CU03_UploadOutputs" x="0" y="0" width="132" height="36"/>
+    <node name="CU04_ProvideMappingInfo" x="0" y="0" width="132" height="36"/>
+    <node name="EmailLiaisonAboutMappingInfoRequest" x="0" y="0" width="132" height="36"/>
+    <node name="CU05_ResolveMappingProblem" x="0" y="0" width="132" height="36"/>
+    <node name="CU06_ResolveProcessingProblem" x="0" y="0" width="132" height="36"/>
   </node-container>
-  <node-container name="Approval" x="0" y="0" width="360" height="240">
-    <node name="AP01_AssignCentreHead" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="AP02_CheckReport" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="AP03_ProvideOutputsEmailInfo" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="EmailContributorAboutOutputs" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
-    <node name="AP04_ReceiveApproval" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
+  <node-container name="Validation" x="7" y="465" width="1277" height="124">
+    <node name="VA01_CuratorValidateOutputs" x="0" y="0" width="132" height="36"/>
+    <node name="VA02_DataManagerValidateOutputs" x="0" y="0" width="132" height="36"/>
+    <node name="VA03_ResolveOutputsProblem" x="0" y="0" width="132" height="36"/>
+  </node-container>
+  <node-container name="Approval" x="16" y="618" width="1243" height="170">
+    <node name="AP01_AssignCentreHead" x="0" y="0" width="132" height="36"/>
+    <node name="AP02_CheckReport" x="0" y="0" width="132" height="36"/>
+    <node name="AP03_ProvideOutputsEmailInfo" x="0" y="0" width="132" height="36"/>
+    <node name="EmailContributorAboutOutputs" x="0" y="0" width="132" height="36"/>
+    <node name="AP04_ReceiveApproval" x="0" y="0" width="132" height="36"/>
     <node name="UploadToExplorer" x="0" y="0" width="132" height="36">
       <edge>
         <label x="5" y="-10"/>
       </edge>
     </node>
-    <node name="AP05_SendOutputsToModule" x="0" y="0" width="132" height="36">
-      <edge>
-        <label x="5" y="-10"/>
-      </edge>
-    </node>
+    <node name="AP05_SendOutputsToModule" x="0" y="0" width="132" height="36"/>
   </node-container>
-  <node name="End" x="0" y="0" width="132" height="36"/>
+  <node name="End" x="1105" y="806" width="132" height="36"/>
 </root-container>
