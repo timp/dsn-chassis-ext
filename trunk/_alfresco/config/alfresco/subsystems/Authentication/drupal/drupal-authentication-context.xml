@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+<!--
+    Note. For the this file, and associated properties file, to be loaded automatically it needs to be placed
+          in the /alfresco/subsystems/{category}/{type} folder
+
+          This is because it is a new implementation of an Authentication component and not an
+          overriding configuration of an already existing type such as ldap.
+
+          Users can override this implementation of the Drupal Authentication Component
+          by placing this file and the associated properties file in the
+          /alfresco/extension/subsystems/{category}/{type} folder
+    -->
+
+    <!-- The Data Source used to connect to the Drupal database during authentication -->
+    <bean id="drupalDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${drupal.db.driver}"/>
+        <property name="url" value="${drupal.db.url}"/>
+        <property name="username" value="${drupal.db.username}"/>
+        <property name="password" value="${drupal.db.password}"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <property name="maxWait" value="5000"/>
+    </bean>
+
+    <!-- The Drupal authentication component that can be added to the authentication chain -->
+    <bean id="drupalAuthenticationComponent" class="org.wwarn.cms.authentication.DrupalAuthenticationComponentImpl"
+          parent="authenticationComponentBase">
+        <property name="dataSource" ref="drupalDataSource"/>
+        <property name="nodeService">
+           <ref bean="nodeService" />
+        </property>
+        <property name="personService">
+           <ref bean="personService" />
+        </property>
+        <property name="transactionService">
+           <ref bean="transactionService" />
+        </property>
+    </bean>
+
+    <!-- Wrapped Drupal authentication component to be used within subsystem -->
+    <bean id="AuthenticationComponent" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <value>org.alfresco.repo.security.authentication.AuthenticationComponent</value>
+        </property>
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="target">
+            <ref bean="drupalAuthenticationComponent"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">${server.transaction.mode.default}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Authentication service for authentication component chaining
+     Note. the name of this bean must be 'localAuthenticationService' for it to be looked up by
+     the SubsystemChainingAuthenticationService
+    -->
+    <bean id="localAuthenticationService" class="org.alfresco.repo.security.authentication.AuthenticationServiceImpl">
+        <property name="ticketComponent">
+            <ref bean="ticketComponent"/>
+        </property>
+        <property name="authenticationComponent">
+            <ref bean="drupalAuthenticationComponent"/>
+        </property>
+        <property name="sysAdminParams">
+            <ref bean="sysAdminParams"/>
+        </property>
+    </bean>
+
+</beans>
