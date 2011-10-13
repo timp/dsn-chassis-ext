@@ -131,7 +131,10 @@
             <!-- Additional Forms for the advanced search type list -->
             <forms>
                 <form label="WWARN Study Folders" description="Searches for all WWARN Study Folders">wc:studyFolder</form>
-                <form label="WWARN Study Workflow Info" description="Searches for all WWARN Study Workflow info">wc:workflowInfo</form>
+                <form label="WWARN Study Workflow Info" description="Searches for all WWARN Clinical Study Workflow info">wc:clinicalWorkflowInfo</form>
+                <!--
+                <form label="WWARN Publications" description="Searches for all WWARN Publications">wc:publication</form>
+                -->
             </forms>
         </advanced-search>
     </config>
@@ -233,7 +236,7 @@
     </config>
     
     <!-- SEARCH form definition -->
-    <config evaluator="model-type" condition="wc:workflowInfo">
+    <config evaluator="model-type" condition="wc:clinicalWorkflowInfo">
         <forms>
             <form id="search">
                 <field-visibility>
@@ -289,6 +292,35 @@
         </forms>
     </config>
 
+    <config evaluator="model-type" condition="wc:publication">
+        <forms>
+            <form id="search">
+                <field-visibility>
+                    <show id="cm:name"/>
+                    <show id="cm:title" force="true"/>
+                    <show id="cm:description" force="true"/>
+                    
+                    <show id="wc:submitter"/>
+                    <show id="wc:PMID"/>
+                    <show id="wc:DOI"/>
+                    <show id="wc:URL"/>
+                    <show id="wc:pubYear"/>
+                    <show id="wc:authorFirst"/>
+                    <show id="wc:authorLast"/>
+                </field-visibility>
+                <appearance>
+                    <set id="wcMetadata" appearance="bordered-panel" label-id="wc.publication.metadata.header"/>
+                    <field id="wc:submitter" label-id="wc.metadata.submitter" set="wcMetadata"/>
+                    <field id="wc:PMID" label-id="wc.metadata.PMID" set="wcMetadata"/>
+                    <field id="wc:DOI" label-id="wc.metadata.DOI" set="wcMetadata"/>
+                    <field id="wc:URL" label-id="wc.metadata.URL" set="wcMetadata"/>
+                    <field id="wc:pubYear" label-id="wc.metadata.pubYear" set="wcMetadata"/>
+                    <field id="wc:authorFirst" label-id="wc.metadata.authorFirst" set="wcMetadata"/>
+                    <field id="wc:authorLast" label-id="wc.metadata.authorLast" set="wcMetadata"/>
+                </appearance>
+            </form>
+        </forms>
+    </config>
 
     <!--
         Metadata form definitions for WWARN File types
@@ -390,6 +422,9 @@
                     <show id="wc:PMID"/>
                     <show id="wc:DOI"/>
                     <show id="wc:URL"/>
+                    <show id="wc:pubYear"/>
+                    <show id="wc:authorFirst"/>
+                    <show id="wc:authorLast"/>
                     <show id="wc:derivationsComments"/>
                     <show id="wc:derivations"/>
                 </field-visibility>
@@ -428,6 +463,9 @@
                     <field id="wc:PMID" label-id="wc.metadata.PMID" set="wcMetadata"/>
                     <field id="wc:DOI" label-id="wc.metadata.DOI" set="wcMetadata"/>
                     <field id="wc:URL" label-id="wc.metadata.URL" set="wcMetadata"/>
+                    <field id="wc:pubYear" label-id="wc.metadata.pubYear" set="wcMetadata"/>
+                    <field id="wc:authorFirst" label-id="wc.metadata.authorFirst" set="wcMetadata"/>
+                    <field id="wc:authorLast" label-id="wc.metadata.authorLast" set="wcMetadata"/>
                     <field id="wc:derivationsComments" label-id="wc.metadata.derivationsComments" set="wcMetadata">
                         <control template="/org/alfresco/components/form/controls/textarea.ftl"/>
                     </field>
