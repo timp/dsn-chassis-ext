@@ -5,8 +5,8 @@
           http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 
-<!--
-    Note. For the this file, and associated properties file, to be loaded automatically it needs to be placed
+    <!--
+    Note. For this file, and associated properties file, to be loaded automatically it needs to be placed
           in the /alfresco/subsystems/{category}/{type} folder
 
           This is because it is a new implementation of an Authentication component and not an
@@ -34,13 +34,13 @@
           parent="authenticationComponentBase">
         <property name="dataSource" ref="drupalDataSource"/>
         <property name="nodeService">
-           <ref bean="nodeService" />
+            <ref bean="nodeService"/>
         </property>
         <property name="personService">
-           <ref bean="personService" />
+            <ref bean="personService"/>
         </property>
         <property name="transactionService">
-           <ref bean="transactionService" />
+            <ref bean="transactionService"/>
         </property>
     </bean>
 
@@ -63,8 +63,10 @@
     </bean>
 
     <!-- Authentication service for authentication component chaining
-     Note. the name of this bean must be 'localAuthenticationService' for it to be looked up by
-     the SubsystemChainingAuthenticationService
+
+     Note. the id of this bean must be 'localAuthenticationService' for it to
+     be picked up, as an authentication service, by the
+     Subsystem Chaining Authentication Service
     -->
     <bean id="localAuthenticationService" class="org.alfresco.repo.security.authentication.AuthenticationServiceImpl">
         <property name="ticketComponent">
@@ -77,5 +79,68 @@
             <ref bean="sysAdminParams"/>
         </property>
     </bean>
+
+    <!-- Regularly exports user and group information from Drupal
+
+        Note. For this bean to be picked up, as a user registry, by the
+        Chaining user registry synchronizer its id has to be 'userRegistry'
+    -->
+    <bean id="userRegistry" class="org.wwarn.cms.synchronization.DrupalUserRegistry">
+        <property name="dataSource" ref="drupalDataSource"/>
+
+        <property name="active">
+            <value>${drupal.synchronization.active}</value>
+        </property>
+
+        <!--
+        This property defines a mapping between columns held on Drupal USERS table and
+        the properties of user objects held in the repository. The key is the QName of an property in
+        the repository, the value is the column name from the USERS table in the Drupal database.
+        -->
+        <property name="repoPropName2DrupalColMap">
+            <map>
+                <entry key="cm:userName">
+                    <value>name</value>
+                </entry>
+                <entry key="cm:email">
+                    <value>mail</value>
+                </entry>
+                <!-- Always use the default -->
+                <entry key="cm:homeFolderProvider">
+                    <null/>
+                </entry>
+            </map>
+        </property>
+
+        <!-- Set a default home folder provider -->
+        <!-- Defaults only apply for values above -->
+        <property name="personPropertyDefaults">
+            <map>
+                <entry key="cm:homeFolderProvider">
+                    <value>${ldap.synchronization.defaultHomeFolderProvider}</value>
+                </entry>
+            </map>
+        </property>
+
+        <!--
+        This property defines a mapping between properties held on Drupal ROLE and
+        the properties of authorities held in the repository. The key is the QName of an attribute in
+        the repository, the value is the column name from the ROLE table in the Drupal database.
+
+        <property name="groupPropertyMapping">
+            <map>
+                <entry key="cm:authorityName">
+                    <value>name</value>
+                </entry>
+            </map>
+        </property>
+
+        -->
+
+        <property name="namespaceService">
+            <ref bean="namespaceService"/>
+        </property>
+    </bean>
+
 
 </beans>

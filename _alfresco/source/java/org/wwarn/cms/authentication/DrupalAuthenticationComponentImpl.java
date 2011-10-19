@@ -27,17 +27,35 @@ public class DrupalAuthenticationComponentImpl extends AbstractAuthenticationCom
     public static final String GET_USER_PWD_SQL = "SELECT PASS FROM USERS WHERE NAME=?";
 
     private final Log logger = LogFactory.getLog(getClass());
+
+    /**
+     * Spring JDBC template used to query or update a JDBC data source
+     */
     private JdbcTemplate m_jdbcTemplate;
+
+    /**
+     * Is this bean active? I.e. should this part of the subsystem be used?
+     */
     private boolean m_active = true;
 
     public DrupalAuthenticationComponentImpl() {
         super();
     }
 
+    /**
+     * Controls whether this bean is active. I.e. should this part of the subsystem be used?
+     *
+     * @param active <code>true</code> if this bean is active
+     */
     public void setActive(boolean active) {
         m_active = active;
     }
 
+    /**
+     * Dependeny Injects the data source to be used for querying Drupal database
+     *
+     * @param dataSource the data source to use
+     */
     public void setDataSource(DataSource dataSource) {
         m_jdbcTemplate = new JdbcTemplate(dataSource);
     }
