@@ -30,13 +30,7 @@ iface eth1 inet static
 /etc/init.d/networking restart
 }}}
 
-=== Mount shared directory ===
 
-Share the directory in VirtualBox and add to /etc/fstab
-
-{{{
-virtual-shared /export/shared vboxsf defaults 0 0
-}}}
 === On Host Machine ===
 
 Add to hosts file
