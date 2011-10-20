@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <project name="WWARN Code AMP Build File" default="package-alfresco-amp" basedir=".">
+    <property file="build-${user.name}.properties"/>
     <property file="build.properties"/>
 
     <property name="module.id" value="org_wwarn_module_cms"/>
@@ -70,6 +71,7 @@
                debug="true"
                debuglevel="lines,vars,source"/>
     </target>
+
     <!-- To use the full version put Share into debug mode by setting the client-debug flag to true 
         (look in share-config-custom.xml ) 
         see http://blogs.alfresco.com/wp/kevinr/2010/04/07/developer-tips-for-alfresco-share-33/-->
@@ -97,6 +99,7 @@
             <targetfile/>
         </apply>
     </target>
+
     <target name="package-alfresco-jar" depends="clean, mkdirs, compile">
         <echo>Packaging extension JAR for AMP</echo>
         <jar destfile="${alfresco.jar.file}">
