@@ -22,6 +22,13 @@
             </pooledactors>
         </assignment>
     </swimlane>
+    <swimlane name="Informatics">
+        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+            <pooledactors>
+                #{people.getGroup('GROUP_INFORMATICS')}
+            </pooledactors>
+        </assignment>
+    </swimlane>
     <!--
     Workflow starts here
     -->
@@ -711,6 +718,22 @@
                             <variable name="ww_studyID" access="read"/>
                             <expression>
                                 taskInstance.description = "MA07-Send Outputs To Explorer (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="MA08_UploadToExplorer"></transition>
+        </task-node>
+        
+         <task-node name="MA08_UploadToExplorer">
+            <task name="ww:MA08_UploadToExplorerTask" swimlane="Informatics">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "MA08-UploadToExplorer (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>

@@ -10,11 +10,18 @@
     <swimlane name="DataManagers">
         <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
             <pooledactors>
-                #{people.getGroup('GROUP_Data Managers')}
+                #{people.getGroup('GROUP_Clinical Data Managers')}
             </pooledactors>
         </assignment>
     </swimlane>
 
+	<swimlane name="Informatics">
+        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+            <pooledactors>
+                #{people.getGroup('GROUP_INFORMATICS')}
+            </pooledactors>
+        </assignment>
+    </swimlane>
     <!--
     Workflow starts here
     -->
@@ -45,6 +52,8 @@
                         var workflowInfoNode = studyFolder.createNode(null, "wc:clinicalWorkflowInfo", properties, "wc:workflowInfos");
                         workflowInfoNode.setPermission("Collaborator","GROUP_Curators");
                         executionContext.setVariable("workflowInfoNodeRef", workflowInfoNode.nodeRef);  <!-- Cannot store the complete workflowInfo object as it is not serializable -->
+                        
+                        
                     }
                     <!-- Setup link to study, for example: http://localhost:8080/share/page/repository?path=WWARN/Studies/ABCDE -->
                     <!-- 
@@ -59,8 +68,7 @@
     <super-state name="GateKeeping">
         <event type="superstate-enter">
             <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                <script>
-                    
+                <script> 
                     <!-- Update study status in both process variable and WorkflowInfo object -->
                     var status = "Gate Keeping";
                     executionContext.setVariable("wc_studyStatus", status);
@@ -386,7 +394,7 @@
 
                         var mail = actions.create("mail");
                         mail.parameters.to = ww_assigneeLiaison.properties.email;
-                        mail.parameters.from = "alfresco@wwarn.org";
+                        mail.parameters.from = "curation@wwarn.org";
                         mail.parameters.subject = "Provide mapping info (" + ww_studyID + ")";
                         mail.parameters.text = txtMail;
                         mail.execute(bpm_package);
@@ -668,14 +676,16 @@
                     </expression>
                 </script>
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                    <script>
+                    <script>                    
                         var mail = actions.create("mail");
-                        mail.parameters.to = ww_contributorEmail;
-                        mail.parameters.from = "alfresco@wwarn.org";
+                        mail.parameters.to = ww_to;
+                        mail.parameters.from = "curation@wwarn.org";
                         mail.parameters.subject = ww_subject;
-                        mail.parameters.text = ww_body;
+                        mail.parameters.text = ww_body + outputFileNames;
+                        
                         mail.execute(bpm_package);
                     </script>
+                    <!-- mail.parameters.node = bpm_package; -->
                 </action>
             </event>
             <transition to="AP04_ReceiveApproval"></transition>
@@ -698,35 +708,28 @@
                 </event>
             </task>
             <transition to="../Validation/VA03_ResolveOutputsProblem" name="Rejected"></transition>
-            <transition to="AP05_SendOutputsToModule" name="ApprovedAndHide"></transition>
-            <transition to="UploadToExplorer" name="ApprovedAndDisplay"></transition>
+            <transition to="AP06_SendOutputsToModule" name="ApprovedAndHide"></transition>
+            <transition to="AP05_UploadToExplorer" name="ApprovedAndDisplay"></transition>
         </task-node>
 
-        <node name="UploadToExplorer">
-        	 <event type="node-enter">
-                 <script>
-                    <variable name="ww_studyID" access="read"/>
-                    <expression>
-                        System.out.println("UploadToExplorer: About to send email to contributor about outputs (" + ww_studyID + ")");
-                    </expression>
-                </script>
-                <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
-                    <script>
-                            
-                        var mail = actions.create("mail");
-                        mail.parameters.to = "curation@wwarn.org";
-                        mail.parameters.from = "curation@wwarn.org";
-                        mail.parameters.subject = ww_studyID + " is ready for explorer";
-                        mail.parameters.text = "It's ready:" + ww_studyID;
-                        mail.execute(bpm_package);
-                    </script>
-                </action>
-            </event>
-            <transition to="AP05_SendOutputsToModule"></transition>
-        </node>
-
-        <task-node name="AP05_SendOutputsToModule">
-            <task name="ww:AP05_SendOutputsToModuleTask" swimlane="DataManagers">
+		<task-node name="AP05_UploadToExplorer">
+            <task name="ww:AP05_UploadToExplorerTask" swimlane="Informatics">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "AP05-UploadToExplorer (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="AP06_SendOutputsToModule"></transition>
+        </task-node>
+        
+        <task-node name="AP06_SendOutputsToModule">
+            <task name="ww:AP06_SendOutputsToModuleTask" swimlane="DataManagers">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>

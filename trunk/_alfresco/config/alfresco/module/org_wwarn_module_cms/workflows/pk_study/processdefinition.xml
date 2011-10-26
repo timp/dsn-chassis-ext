@@ -14,7 +14,13 @@
             </pooledactors>
         </assignment>
     </swimlane>
-    
+  	<swimlane name="Informatics">
+        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+            <pooledactors>
+                #{people.getGroup('GROUP_INFORMATICS')}
+            </pooledactors>
+        </assignment>
+    </swimlane>  
     <!--
         Workflow starts here
     -->
@@ -639,13 +645,25 @@
                 </event>
             </task>
             <transition to="../Curation/PC05_ResolveProblem" name="Rejected"></transition>
-            <transition to="PA05_SendOutputsToModule" name="ApprovedAndHide"></transition>
-            <transition to="UploadToExplorer" name="ApprovedAndDisplay"></transition>
+            <transition to="PA06_SendOutputsToModule" name="ApprovedAndHide"></transition>
+            <transition to="PA05_UploadToExplorer" name="ApprovedAndDisplay"></transition>
         </task-node>
         
-        <node name="UploadToExplorer">
+       <task-node name="PA05_UploadToExplorer">
+            <task name="ww:PA05_UploadToExplorerTask" swimlane="Informatics">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "PA05-UploadToExplorer (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
             <transition to="PA05_SendOutputsToModule"></transition>
-        </node>
+        </task-node>
         
         <task-node name="PA05_SendOutputsToModule">
             <task name="ww:PA05_SendOutputsToModuleTask" swimlane="DataManagers">
