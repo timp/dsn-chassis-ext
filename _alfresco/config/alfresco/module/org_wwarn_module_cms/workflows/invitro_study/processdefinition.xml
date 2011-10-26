@@ -14,7 +14,13 @@
             </pooledactors>
         </assignment>
     </swimlane>
-
+	<swimlane name="Informatics">
+        <assignment class="org.alfresco.repo.workflow.jbpm.AlfrescoAssignment">
+            <pooledactors>
+                #{people.getGroup('GROUP_INFORMATICS')}
+            </pooledactors>
+        </assignment>
+    </swimlane>
     <!--
     Workflow starts here
     -->
@@ -717,22 +723,34 @@
                 </event>
             </task>
             <transition to="../Validation/IV03_ResolveOutputsProblem" name="Rejected"></transition>
-            <transition to="IA05_SendOutputsToModule" name="ApprovedAndHide"></transition>
-            <transition to="UploadToExplorer" name="ApprovedAndDisplay"></transition>
+            <transition to="IA06_SendOutputsToModule" name="ApprovedAndHide"></transition>
+            <transition to="IA05_UploadToExplorer" name="ApprovedAndDisplay"></transition>
         </task-node>
 
-        <node name="UploadToExplorer">
-            <transition to="IA05_SendOutputsToModule"></transition>
-        </node>
-
-        <task-node name="IA05_SendOutputsToModule">
-            <task name="ww:IA05_SendOutputsToModuleTask" swimlane="DataManagers">
+		<task-node name="IA05_UploadToExplorer">
+            <task name="ww:IA05_UploadToExplorerTask" swimlane="Informatics">
                 <event type="task-create">
                     <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                         <script>
                             <variable name="ww_studyID" access="read"/>
                             <expression>
-                                taskInstance.description = "IA05-Send Outputs To Module (" + ww_studyID + ")";
+                                taskInstance.description = "IA05-UploadToExplorer (" + ww_studyID + ")";
+                            </expression>
+                        </script>
+                    </action>
+                </event>
+            </task>
+            <transition to="IA06_SendOutputsToModule"></transition>
+        </task-node>
+        
+        <task-node name="IA06_SendOutputsToModule">
+            <task name="ww:IA06_SendOutputsToModuleTask" swimlane="DataManagers">
+                <event type="task-create">
+                    <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
+                        <script>
+                            <variable name="ww_studyID" access="read"/>
+                            <expression>
+                                taskInstance.description = "IA06-Send Outputs To Module (" + ww_studyID + ")";
                             </expression>
                         </script>
                     </action>
