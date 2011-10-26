@@ -505,7 +505,8 @@
          var renderCellActions = function MS_oR_renderCellActions(elCell, oRecord, oColumn, oData)
          {  
             var chassisLink = oRecord.getData("chassisLink");
-        	var desc = '<div class="study-title"><a href="' + chassisLink + '" class="theme-color-1">' + me.msg("link.chassis")  + '</a></div>';
+            var dashboard = chassisLink.replace(/service\/content\/studies\/([A-Z]*)/,'study/dashboard\?study=');
+        	var desc = '<div class="study-title"><a href="' + dashboard + chassisLink + '" class="theme-color-1">' + me.msg("link.chassis")  + '</a></div>';
         
             elCell.innerHTML = desc;
          };
