@@ -1337,9 +1337,14 @@
         	if (destination != null) {
         		//In a repository folder
         		dest = 's/' + destination.replace('//SpacesStore','SpacesStore/i');
-        	} else {
+        	} else if (this.showConfig.siteId != null){
         		//In a site folder
         		dest = 'p/Sites/' + this.showConfig.siteId + '/' + this.showConfig.containerId + this.showConfig.uploadDirectory;
+        	} else if (this.showConfig.updateNodeRef != null){
+        		//Upload new version
+        		return;
+        	} else {
+        		return;
         	}
        	  Alfresco.util.Ajax.request(
        		         {
