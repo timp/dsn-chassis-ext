@@ -44,12 +44,12 @@
                         <item type="user" id="status">{userprofilepage}</item>
                         <item type="link" id="my-profile">{userprofilepage}</item>
                         <item type="link" id="change-password" condition="user.capabilities.isMutable">
-                            /user/change-password
+                            /user/../../../user
                         </item>
                         <item type="external-link" id="help">{share-help}</item>
 
                         <item type="link" id="logout" condition="!context.externalAuthentication">
-                            https://localhost:8443/cas-server-webapp-3.4.6/logout
+                            /user/../../../sso/logout
                         </item>
                     </container-group>
                 </item>
