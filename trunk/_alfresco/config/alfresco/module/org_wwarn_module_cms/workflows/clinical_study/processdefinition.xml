@@ -663,7 +663,9 @@
                     </action>
                 </event>
             </task>
+            <!-- 
             <transition to="EmailContributorAboutOutputs" name="OK"></transition>
+             -->
             <transition to="AP04_ReceiveApproval" name="DoNotSend"></transition>
         </task-node>
 
