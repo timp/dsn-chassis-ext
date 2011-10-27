@@ -602,7 +602,9 @@
                     </action>
                 </event>
             </task>
+            <!-- 
             <transition to="EmailContributorAboutOutputs" name="OK"></transition>
+            -->
             <transition to="PA04_ReceiveApproval" name="DoNotSend"></transition>
         </task-node>
         
@@ -617,7 +619,7 @@
                 <action class="org.alfresco.repo.workflow.jbpm.AlfrescoJavaScript">
                     <script>
                         var mail = actions.create("mail");
-                        mail.parameters.to = ww_contributorEmail;
+                        mail.parameters.to = ww_to;
                         mail.parameters.from = "alfresco@wwarn.org";
                         mail.parameters.subject = ww_subject;
                         mail.parameters.text = ww_body;
