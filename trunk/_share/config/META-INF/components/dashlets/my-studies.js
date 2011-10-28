@@ -151,59 +151,82 @@
             modules: [],
             administrators: []
          };
-         var objEl = entryEl.getElementsByTagNameNS('http://docs.oasis-open.org/ns/cmis/restatom/200908/','object');
+         var objEl;
+         var propsNS;
+         if (entryEl.getElementsByTagNameNS === undefined) {
+        	objEl = entryEl.getElementsByTagName('cmisra:object');
+        	propsNS = [ 'alf', 'cmis'];
+         } else {
+      	   	objEl = entryEl.getElementsByTagNameNS('http://docs.oasis-open.org/ns/cmis/restatom/200908/','object');
+      	  propsNS = [ 'http://www.alfresco.org', 'http://docs.oasis-open.org/ns/cmis/core/200908/'];
+         }
          var i = 0;
-         var propsNS = [ 'http://www.alfresco.org', 'http://docs.oasis-open.org/ns/cmis/core/200908/'];
          while ((ns = propsNS[i++])) {
-        	 var properties = entryEl.getElementsByTagNameNS(ns,'properties');
-        	 var propertyEl = properties[0].firstElementChild;
-        	 while(propertyEl != null)
-        	 {  
+        	 var properties;
+        	 if (entryEl.getElementsByTagNameNS === undefined) {
+        		 var name = ns + ':' + 'properties';
+        		 properties = entryEl.getElementsByTagName(name);
+        	 } else {
+        		 properties = entryEl.getElementsByTagNameNS(ns,'properties');
+        	 }
+        	 if (properties == null || properties.length == 0) {
+        		 continue;
+        	 }
+        	 var propertyEl;
+        	 
+        	 propertyEl = properties[0].firstChild;
+        	 
+        	 while(propertyEl != null) {
+        		 //Node.TEXT_NODE is not portable
+        		 if (propertyEl.nodeType == 3) {
+        			 propertyEl = propertyEl.nextSibling;
+        			 continue;
+        		 }
         		 var propertyDefinitionId = propertyEl.getAttribute("propertyDefinitionId");
+        		 var cmisValue = "";
+        		 if (propertyEl.firstChild != null && propertyEl.firstChild.firstChild != null) {
+        			 cmisValue = propertyEl.firstChild.firstChild.nodeValue;
+        		 }
         		 if (propertyDefinitionId == "cmis:name") {
-        			 article.shortName = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.shortName = cmisValue;
         		 } else if (propertyDefinitionId == "cm:title") {
         			 if (propertyEl.firstChild.firstChild) {
-        				 article.title = propertyEl.firstChild.firstChild.nodeValue;
+        				 article.title = cmisValue;
         			 }
         		 } else if (propertyDefinitionId == "cm:description") {
-        			 if (propertyEl.firstChild.firstChild) {
-        				 article.description = propertyEl.firstChild.firstChild.nodeValue;
-        			 }
+        				 article.description = cmisValue;
         		 } else if (propertyDefinitionId == "cmis:lastModifiedBy") {
-        			 article.modifiedByUser = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.modifiedByUser = cmisValue;
         			 article.modifiedBy = article.modifiedByUser;
         		 } else if (propertyDefinitionId == "cmis:lastModificationDate") {
-        			 article.modifiedOn = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.modifiedOn = cmisValue;
         		 } else if (propertyDefinitionId == "cmis:objectId") {
-        			 article.objectId = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.objectId = cmisValue;
         		 } else if (propertyDefinitionId == "cmis:path") {
-        			 article.path = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.path = cmisValue;
         		 } else if (propertyDefinitionId == "cmis:creationDate") {
-        			 article.createdOn = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.createdOn = cmisValue;
         		 } else if (propertyDefinitionId == "cmis:objectId") {
-        			 article.sitePreset = propertyEl.firstChild.firstChild.nodeValue;
+        			 article.sitePreset = cmisValue;
         		 } else if (propertyDefinitionId == "wc:studyInfoLink") {
-        			 if (propertyEl.firstChild && propertyEl.firstChild.firstChild) {
-        				 article.chassisLink = propertyEl.firstChild.firstChild.nodeValue;
-        			 }
+        				 article.chassisLink = cmisValue;
         		 } else if (propertyDefinitionId == "wc:modules") {
-        			 var mods = propertyEl.firstElementChild;
+        			 var mods = propertyEl.firstChild;
         			 while (mods != null) {
         				 if (mods.firstChild != null) {
         					 article.modules.push(mods.firstChild.nodeValue);
         				 }
-        				 mods = mods.nextElementSibling;
+        				 mods = mods.nextSibling;
         			 }
         		 } else if (propertyDefinitionId == "wc:admins") {
-        			 var admins = propertyEl.firstElementChild;
+        			 var admins = propertyEl.firstChild;
         			 while (admins != null) {
         				 article.administrators.push(admins.firstChild.nodeValue);
-        				 admins = admins.nextElementSibling;
+        				 admins = admins.nextSibling;
         			 }
         		 }
-
-        		 propertyEl = propertyEl.nextElementSibling;
+        		 
+           		 propertyEl = propertyEl.nextSibling;
         	 }
          }
          articles.push(article);
@@ -475,7 +498,12 @@
             var formattedDate = '';
             var format = { format: "%Y-%m-%d" };
             var date = new Date(createdOn);
-                
+            if (isNaN(date)) {
+            	var dateOnly = createdOn.substring(0,10);
+            	var da = dateOnly.split('-');
+            	//IE Data.parse requires mm-dd-yyyy
+            	date = new Date(Date.parse(da[1] + '-' + da[2] + '-' + da[0]));
+            }
             // date is a JavaScript Date object
             formattedDate = YAHOO.util.Date.format(date, format);
            
@@ -505,10 +533,12 @@
          var renderCellActions = function MS_oR_renderCellActions(elCell, oRecord, oColumn, oData)
          {  
             var chassisLink = oRecord.getData("chassisLink");
-            var dashboard = chassisLink.replace(/service\/content\/studies\/([A-Z]*)/,'study/dashboard\?study=');
-        	var desc = '<div class="study-title"><a href="' + dashboard + chassisLink + '" class="theme-color-1">' + me.msg("link.chassis")  + '</a></div>';
+            if (chassisLink != null) {
+            	var dashboard = chassisLink.replace(/service\/content\/studies\/([A-Z]*)/,'study/dashboard\?study=');
+            	var desc = '<div class="study-title"><a href="' + dashboard + chassisLink + '" class="theme-color-1">' + me.msg("link.chassis")  + '</a></div>';
         
-            elCell.innerHTML = desc;
+            	elCell.innerHTML = desc;
+            }
          };
        
          // DataTable column defintions
