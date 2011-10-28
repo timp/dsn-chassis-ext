@@ -1380,33 +1380,61 @@
         {
            entryEl = entries[ei];
            var found = false;
-           var objEl = entryEl.getElementsByTagNameNS('http://docs.oasis-open.org/ns/cmis/restatom/200908/','object');
+           var objEl;
+           var propsNS;
+           if (entryEl.getElementsByTagNameNS === undefined) {
+          	objEl = entryEl.getElementsByTagName('cmisra:object');
+          	propsNS = [ 'alf', 'cmis'];
+           } else {
+        	   	objEl = entryEl.getElementsByTagNameNS('http://docs.oasis-open.org/ns/cmis/restatom/200908/','object');
+        	  propsNS = [ 'http://www.alfresco.org', 'http://docs.oasis-open.org/ns/cmis/core/200908/'];
+           }
            var i = 0;
-           var propsNS = [ 'http://www.alfresco.org', 'http://docs.oasis-open.org/ns/cmis/core/200908/'];
+           
            var name = '', nodeRef = '', type = '', fileId = '';
            while ((ns = propsNS[i++])) {
-          	 var properties = entryEl.getElementsByTagNameNS(ns,'properties');
-          	 var propertyEl = properties[0].firstElementChild;
-          	 while(propertyEl != null)
-          	 {  
+        	 var properties;
+          	 if (entryEl.getElementsByTagNameNS === undefined) {
+          		 var name = ns + ':' + 'properties';
+          		 properties = entryEl.getElementsByTagName(name);
+          	 } else {
+          		 properties = entryEl.getElementsByTagNameNS(ns,'properties');
+          	 }
+          	 if (properties == null || properties.length == 0) {
+          		 continue;
+          	 }
+          	 var propertyEl;
+          	 
+          	 propertyEl = properties[0].firstChild;
+          	 
+          	 while(propertyEl != null) {
+          		 //Node.TEXT_NODE is not portable
+          		 if (propertyEl.nodeType == 3) {
+          			 propertyEl = propertyEl.nextSibling;
+          			 continue;
+          		 }
           		 var propertyDefinitionId = propertyEl.getAttribute("propertyDefinitionId");
+          		 var cmisValue = "";
+          		 if (propertyEl.firstChild != null && propertyEl.firstChild.firstChild != null) {
+          			cmisValue = propertyEl.firstChild.firstChild.nodeValue;
+          		 }
           		 if (propertyDefinitionId == "cmis:name") {
-          			 name = propertyEl.firstChild.firstChild.nodeValue;
+          			 name = cmisValue;
           		 } else if (propertyDefinitionId == "cmis:objectId") {
-          			 nodeRef = propertyEl.firstChild.firstChild.nodeValue;
+          			 nodeRef = cmisValue;
           		 } else if (propertyDefinitionId == "cmis:objectTypeId") {
-          			 type = propertyEl.firstChild.firstChild.nodeValue;
+          			 type = cmisValue;
           			 if (type == "D:wc:dataFile" || type == "D:wc:protocol"  || type == "D:wc:publication"  
           				 || type == "D:wc:other"  || type == "D:wc:dataDictionary") {
           				 found = true;
           			 }
           		 } else if (propertyDefinitionId == "wc:fileId") {
         			 if (propertyEl.firstChild && propertyEl.firstChild.firstChild) {
-        				 fileId = propertyEl.firstChild.firstChild.nodeValue;
+        				 fileId = cmisValue;
         			 }
         		 }
 
-          		 propertyEl = propertyEl.nextElementSibling;
+          		 propertyEl = propertyEl.nextSibling;
           	 }
            }
            if (found) {
@@ -1420,6 +1448,9 @@
         	   studyFiles.push(file);
            }
         }
+        	if (studyFiles.length == 0) {
+        		 Dom.addClass("derivedInput", "hidden");
+        	}
         return studyFiles;  
         },
         /**
@@ -1478,9 +1509,9 @@
 
             var myColumnDefs = [
                 {key:'select', label: "Select", formatter:'checkbox'},
-                {key:"fileId", label: "File Id", className:"col-left"},
                 {key:"name", label: "Name", className:"col-center"},
-                {key:"type", label: "Type", className:"col-right"}
+                {key:"type", label: "Type", className:"col-right"},
+                {key:"fileId", label: "File Id", className:"col-left"}
             ];
 
             var myConfigs = {
@@ -1499,15 +1530,6 @@
                 var elCheckbox = oArgs.target;
                 var record = this.getRecord(elCheckbox);
                 record.setData("select", elCheckbox.checked);
-            });
-            
-            this.derivedFilesDataTable.on('dataReturnEvent', function (oArgs) {
-                var req = oArgs.request;
-                var resp = oArgs.response;
-                if (resp.results.length == 0) {
-                	var derivedInputDiv = Dom.get("derivedInput");
-                	derivedInputDiv.style.visibility = 'hidden';
-                }
             });
            
         },
