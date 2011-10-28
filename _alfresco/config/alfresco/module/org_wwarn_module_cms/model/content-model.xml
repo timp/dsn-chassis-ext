@@ -541,17 +541,14 @@
                 <property name="wc:submitter">
                     <title>Submitter</title>
                     <type>d:text</type>
-                    <mandatory>true</mandatory>
                 </property>
                 <property name="wc:fileId">
                     <title>File ID</title>
                     <type>d:text</type>
-                    <mandatory>true</mandatory>
                 </property>
                 <property name="wc:fileSource">
                     <title>File Source</title>
                     <type>d:text</type>
-                    <mandatory>true</mandatory>
                     <constraints>
                         <constraint ref="wc:fileSourceOptions"/>
                     </constraints>
