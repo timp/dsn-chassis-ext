@@ -6,7 +6,7 @@
             <!--
                Developer debugging setting to turn on DEBUG mode for client scripts in the browser
             -->
-            <client-debug>true</client-debug>
+            <client-debug>false</client-debug>
             <!--
                LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, Ctrl, Shift, Shift).
                This flag automatically activates logging on page load.
@@ -18,8 +18,10 @@
                 <!-- defaults: icon="{id}.png" label="header.{id}.label" description="header.{id}.description" -->
                 <item type="link" id="my-dashboard">{userdashboardpage}</item>
                 <item type="js" id="sites">Alfresco.module.Sites</item>
+                <!--
                 <item type="link" id="people">/people-finder</item>
                 <item type="link" id="repository">/repository</item>
+                -->
                 <item type="container" id="more">
                     <container-group id="my">
                         <item type="link" id="my-tasks">/my-tasks</item>
@@ -63,6 +65,10 @@
         </header>
     </config>
     
+    <!-- Hide repository button -->
+    <config evaluator="string-compare" condition="RepositoryLibrary" replace="true">
+        <visible>false</visible>
+    </config>
     <!-- Apply custom theme -->
     <config evaluator="string-compare" condition="WebFramework">
         <web-framework>
