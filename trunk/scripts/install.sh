@@ -28,7 +28,7 @@ then
 	sed -i.bak -e "s#https://localhost:8443/cas-server-webapp-3.4.6#https://${CAS_HOST}/sso#" ${SCRIPT_HOME}/${SOURCE_HOME}/_alfresco/web/jsp/relogin.jsp
 
 	sed -i.bak -e 's#EOC.cas$#EOC.cas-->#' -e 's# EOC.default-->#<!--EOC.default-->#' -e "s#http://localhost:8080/alfresco#${NEW_HOST}/alfresco#" ${SCRIPT_HOME}/${SOURCE_HOME}/_share/config/alfresco/web-extension/share-config-custom.xml
-
+	sed -i.bak -e "s#https://alfresco#https://${CAS_HOST}#" ${SCRIPT_HOME}/${SOURCE_HOME}/_share/config/alfresco/web-extension/custom-slingshot-application-context.xml
 
 fi
 cd ${SOURCE_HOME}
