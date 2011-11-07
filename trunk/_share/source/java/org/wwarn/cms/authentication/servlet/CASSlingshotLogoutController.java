@@ -51,10 +51,6 @@ public class CASSlingshotLogoutController extends LogoutController {
 	@Override
 	public ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		logger.error("CASSlingshotLogoutController");
-		logger.error("CASSlingshotLogoutController" + casHost);
-		logger.error("CASSlingshotLogoutController" + casPath);
-		
 		
 		try {
 			HttpSession session = request.getSession(false);
@@ -88,7 +84,6 @@ public class CASSlingshotLogoutController extends LogoutController {
 		} finally {
 			AuthenticationUtil.logout(request, response);
 			String target = request.getContextPath();
-			logger.error("Logout to:" + target);
 			if (casHost != null && casHost.length() > 0) {
 				target = casHost;
 			} else {
@@ -101,7 +96,9 @@ public class CASSlingshotLogoutController extends LogoutController {
 			if (casPath != null && casPath.length() > 0) {
 				target += '/' + casPath;
 			}
-			logger.error("Logout to:" + target);
+			if (logger.isDebugEnabled()) {
+				logger.debug("Logout to:" + target);
+			}
 			response.sendRedirect(target);
 		}
 
