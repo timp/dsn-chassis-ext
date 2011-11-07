@@ -51,7 +51,7 @@
                         <item type="external-link" id="help">{share-help}</item>
 
                         <item type="link" id="logout" condition="!context.externalAuthentication">
-                            /user/../../../sso/logout
+                            /dologout
                         </item>
                     </container-group>
                 </item>

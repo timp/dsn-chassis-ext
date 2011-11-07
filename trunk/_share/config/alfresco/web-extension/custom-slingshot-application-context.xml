@@ -19,4 +19,17 @@
          </list>
       </property>
    </bean>
+   
+   <!-- Override Logout Controller - to expire Alfresco tickets -->
+   <bean id="logoutController" class="org.wwarn.cms.authentication.servlet.CASSlingshotLogoutController">
+      <property name="cacheSeconds" value="-1" />
+      <property name="useExpiresHeader"><value>true</value></property>
+      <property name="useCacheControlHeader"><value>true</value></property>
+      <property name="connectorService" ref="connector.service" />
+      <!-- if blank assumes the same as Share -->
+      
+      <property name="casHost"><value>https://alfresco</value></property>
+      <property name="casPath"><value>sso/logout</value></property>
+      
+   </bean>
 </beans>
