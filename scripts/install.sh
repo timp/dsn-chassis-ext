@@ -6,6 +6,10 @@
 ALF_VERSION=alfresco-3.4.d
 ALF_HOME=/opt/${ALF_VERSION}
 ALF_SDK=/opt/alfresco-community-sdk-3.4.d
+JAVA_HOME=/usr/lib/jvm/java-6-sun
+JAVA_HOME=${ALF_HOME}/java
+export JAVA_HOME
+ 
 SOURCE_HOME=dsn-chassis-ext-read-only
 
 rm -rf ${SOURCE_HOME}
@@ -33,8 +37,7 @@ then
 fi
 cd ${SOURCE_HOME}
 fromdos build.properties
-sed -i -e "s#^alfresco.dir=.*#alfresco.dir=/opt/${ALF_VERSION}#" -e "s#^jdk.dir=.*#jdk.dir=/opt/${ALF_VERSION}/java#" -e "s#^alfresco.sdk.dir=.*#alfresco.sdk.dir=${ALF_SDK}#" build.properties
-export JAVA_HOME=${ALF_HOME}/java
+sed -i -e "s#^alfresco.dir=.*#alfresco.dir=/opt/${ALF_VERSION}#" -e "s#^jdk.dir=.*#jdk.dir=${JAVA_HOME}#" -e "s#^alfresco.sdk.dir=.*#alfresco.sdk.dir=${ALF_SDK}#" build.properties
 service alfresco stop
 ant deploy-alfresco-amp
 ant deploy-share-jar
