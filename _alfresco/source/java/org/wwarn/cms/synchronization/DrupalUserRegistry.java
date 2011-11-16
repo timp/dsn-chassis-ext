@@ -26,9 +26,9 @@ import java.util.*;
 public class DrupalUserRegistry implements UserRegistry, InitializingBean, ActivateableBean {
     private final Log logger = LogFactory.getLog(getClass());
 
-    public static final String USERS_USERNAME_UNIQUE_KEY = "NAME";
-    public static final String GET_USERS_SQL = "select " + USERS_USERNAME_UNIQUE_KEY + ", MAIL from USERS";
-    public static final String GET_USERS_NAME_SQL = "select " + USERS_USERNAME_UNIQUE_KEY + " from USERS";
+    public static final String USERS_USERNAME_UNIQUE_KEY = "name";
+    public static final String GET_USERS_SQL = "select " + USERS_USERNAME_UNIQUE_KEY + ", mail from users";
+    public static final String GET_USERS_NAME_SQL = "select " + USERS_USERNAME_UNIQUE_KEY + " from users";
 
     /**
      * Alfresco services
