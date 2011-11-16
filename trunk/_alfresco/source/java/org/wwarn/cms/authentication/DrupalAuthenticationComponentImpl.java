@@ -24,7 +24,7 @@ import java.security.MessageDigest;
  * @author martin.bergljung@ixxus.co.uk
  */
 public class DrupalAuthenticationComponentImpl extends AbstractAuthenticationComponent implements ActivateableBean {
-    public static final String GET_USER_PWD_SQL = "SELECT PASS FROM USERS WHERE NAME=?";
+    public static final String GET_USER_PWD_SQL = "SELECT pass FROM users WHERE name=?";
 
     private final Log logger = LogFactory.getLog(getClass());
 
